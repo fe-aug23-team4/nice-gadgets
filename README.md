@@ -2,7 +2,7 @@
 
 <br />
 
-To get started, you need to mount the repository locally and run the next command:
+To get started, you need to clone the repository locally and run the next command:
 
 ```
 npm install
@@ -110,6 +110,6 @@ This is the structure of the files in the project:
     ├── package.json
     ├── README.md
     └── tsconfig.json
-```в
+```
 
 <p align="center">The description will be supplemented</p>
