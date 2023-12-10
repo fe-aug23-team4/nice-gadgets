@@ -1,3 +1,15 @@
-.title {
-  color: red;
+// Utils
+@import './styles/utils/reset';
+@import './styles/utils/typography';
+
+// Mixins
+@import './styles/utils/mixins/mixin-media';
+
+// Variables
+@import './styles/utils/variables/colors';
+
+
+:root {
+  font-family: 'Mont', sans-serif;
+  scroll-behavior: smooth;
 }
