@@ -1,4 +1,4 @@
-<h1 align="center">Nice Gadgets</h1>
+<h1 align="center">Nice Gadgets 👌</h1>
 
 <br />
 

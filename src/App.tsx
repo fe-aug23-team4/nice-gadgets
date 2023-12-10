@@ -1,6 +1,19 @@
-import React from 'react';
 import './App.scss';
 
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+
+import { Header } from './modules/shared/components/Header';
+import { Footer } from './modules/shared/components/Footer';
+
 export const App: React.FC = () => {
-  return <h1 className="title">Hello dear team!</h1>;
+  return (
+    <>
+      <Header />
+      ----------
+      <Outlet />
+      ----------
+      <Footer />
+    </>
+  );
 };
