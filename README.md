@@ -88,25 +88,26 @@ This is the structure of the files in the project:
     │
     ├── public                  # public files (favicon, .htaccess, manifest, ...)
     ├── src                     # source files
-    │   ├── components
-    │   ├── pages
-    │   ├── resources           # images, constants and other static resources
+    │   ├── api
+    │   ├── fonts
+    │   ├── modules             # Pages, shared components constants and other resources
+    │   │   ├── Pages
+    │   │   └── shared
     │   ├── store               # Redux store
-    │   │   ├── actions         # store's actions
     │   │   └── reducers        # store's reducers
     │   ├── styles
-    │   ├── tests               # all test files
     │   ├── types               # data interfaces
-    │   ├── utility             # utilities functions and custom components
+    │   ├── utils               # utilities functions
+    │   ├── App.scss
     │   ├── App.tsx
     │   ├── index.tsx
     │   ├── react-app-env.d.ts
-    │   ├── RootComponent.tsx   # React component with all the routes
-    │   ├── serviceWorker.ts
-    │   └── setupTests.ts
+    │   └── Root.tsx            # React component with all the routes
+    ├── .editorconfig
     ├── .eslintrc.js
     ├── .gitignore
     ├── .prettierrc
+    ├── package-lock.json
     ├── package.json
     ├── README.md
     └── tsconfig.json
