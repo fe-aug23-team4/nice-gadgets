@@ -1,0 +1,78 @@
+@import '../../../styles/blocks/grid';
+@import '../../../styles/utils/variables/colors';
+@import '../../../styles/utils/mixins/mixin-media';
+
+
+.shopByCategory {
+  margin-block: 57px;
+  padding-inline: 16px;
+  @include onTablet {
+    margin-block: 64px;
+    padding-inline: 24px;
+  }
+
+    &__title {
+       margin-bottom: 24px;
+       font-size: 22px;
+       font-weight: 800;
+       line-height: 140%;
+
+       @include onTablet {
+          font-size: 32px;
+          font-style: normal;
+          line-height: 128%;
+          letter-spacing: -0.32px;
+       }
+     }
+
+  &__container {
+    @extend .grid;
+  }
+
+  &__article {
+    margin-bottom: 32px;
+    grid-column: span 4;
+    color: $color__primary;
+    text-decoration: none;
+    @include onTablet {
+        margin-bottom: 0;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &__content {
+    color: $color__secondary;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  }
+
+  &__img {
+    display: flex;
+    width: 100%;
+    height: 288px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    background-color: $color__primary;
+
+    @include onTablet {
+      height: 177px;
+    }
+
+    @include onDesktop {
+      height: 368px;
+    }
+  }
+}
+
