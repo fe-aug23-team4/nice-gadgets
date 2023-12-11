@@ -1,0 +1,124 @@
+@import '../../../../styles/utils/variables/colors';
+@import '../../../../styles/utils/mixins/mixin-media';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $color__elements;
+
+  &__left {
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+  }
+
+  &__burger {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-left: 1px solid $color__elements;
+  }
+
+  &__nav {
+    display: none;
+    align-items: center;
+    gap: 32px;
+
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: $color__secondary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      display: block;
+      height: 3px;
+      right: 50%;
+      left: 50%;
+      background-color: $color__primary;
+    }
+
+    &__ISACTIVE::after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      display: block;
+      height: 3px;
+      right: 0;
+      left: 0;
+      background-color: $color__primary;
+      transition: all 0.3s;
+    }
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    border-left: 1px solid $color__elements;
+  }
+
+
+  @include onTablet {
+    &__burger {
+      display: none;
+    }
+
+    &__nav {
+      display: flex;
+    }
+
+    &__icon {
+      display: flex;
+    }
+  }
+
+  @include onDesktop {
+    &__logo {
+      width: 80px;
+      height: 28px;
+    }
+
+    &__left {
+      padding: 0 24px;
+      gap: 48px;
+    }
+
+    &__icon {
+      width: 64px;
+      height: 64px;
+    }
+
+    &__link::after {
+      top: 38px;
+    }
+  }
+}
+
