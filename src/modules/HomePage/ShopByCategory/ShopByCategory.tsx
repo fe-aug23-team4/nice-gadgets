@@ -114,5 +114,5 @@ export const ShopByCategory: React.FC = () => {
         </Link>
       </div>
     </section>
-  );
-};
+  )
+}
