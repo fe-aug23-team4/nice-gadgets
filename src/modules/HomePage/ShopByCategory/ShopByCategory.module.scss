@@ -2,7 +2,6 @@
 @import '../../../styles/utils/variables/colors';
 @import '../../../styles/utils/mixins/mixin-media';
 
-
 .shopByCategory {
   margin-block: 57px;
   padding-inline: 16px;
@@ -11,19 +10,19 @@
     padding-inline: 24px;
   }
 
-    &__title {
-       margin-bottom: 24px;
-       font-size: 22px;
-       font-weight: 800;
-       line-height: 140%;
+  &__title {
+    margin-bottom: 24px;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
 
-       @include onTablet {
-          font-size: 32px;
-          font-style: normal;
-          line-height: 128%;
-          letter-spacing: -0.32px;
-       }
-     }
+    @include onTablet {
+      font-size: 32px;
+      font-style: normal;
+      line-height: 128%;
+      letter-spacing: -0.32px;
+    }
+  }
 
   &__container {
     @extend .grid;
@@ -35,12 +34,12 @@
     color: $color__primary;
     text-decoration: none;
     @include onTablet {
-        margin-bottom: 0;
-      }
+      margin-bottom: 0;
+    }
 
-      @include onDesktop {
-        grid-column: span 8;
-      }
+    @include onDesktop {
+      grid-column: span 8;
+    }
   }
 
   &__subtitle {
@@ -75,4 +74,3 @@
     }
   }
 }
-
