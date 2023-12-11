@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../../../fonts/Mont-Regular.ttf');
+}
+
+.footer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  padding: 32px 0;
+  width: 100%;
+  background: #FFF;
+  box-shadow: 0px -1px 0px 0px #E2E6E9;
+}
+
+.container {
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 32px;
+  justify-content: space-between;
+  height: 32px;
+}
+
+.return_button {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+}
+
+.nav_center {
+  display: flex;
+  width: 33%;
+  justify-content: space-between;
+}
+
+.nav_text {
+  text-decoration: none;
+  display: flex;
+  color: #89939A;
+  font-family: 'Mont', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  justify-content: space-between;
+}
+
+.nav_logo {
+  min-width: 33%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button_top {
+  display: flex;
+  color: #89939A;
+  font-family: 'Mont', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.button_logo {
+  height: 32px;
+  width: 32px;
+  display: flex;
+}
+
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+  .footer {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .nav {
+    margin: 0 16px;
+    gap: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer {
+    align-items: flex-start;
+    padding: 32px 0;
+    margin: 0;
+    flex-direction: column;
+    height: 175px;
+  }
+  .nav_center {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .return_button {
+    align-self: center;
+    justify-content: center;
+  }
+}
