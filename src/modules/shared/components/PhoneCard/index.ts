@@ -1,1 +1,1 @@
-export * from 'PhoneCard.tsx';
+export * from './PhoneCard';

@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import cn from 'classnames';
+import style from './PhoneCard.module.scss';
 
-type PhoneItem = {
-  id: number;
+export type PhoneItem = {
+  id: string;
   name: string;
   image: string;
   price: number;
@@ -11,70 +14,105 @@ type PhoneItem = {
   capacity?: string;
   ram?: string;
   color?: string;
+  description: {
+    title: string;
+    text: string[];
+  }[];
 };
 
-export const PhoneCard = (phoneItem: PhoneItem) => {
+export const PhoneCard = (phoneItem: any) => {
   const isThemeDark = false;
+  const isItemSelected = false;
 
   const characteristicsArray = [
-    { label: 'Screen', state: phoneItem.screen },
+    { label: 'Screen', state: '128GB' },
     { label: 'Capacity', state: phoneItem.capacity },
     { label: 'RAM', state: phoneItem.ram },
   ];
 
   return (
-    <div className={cn('productCard', { 'productCard--dark': isThemeDark })}>
+    <div
+      className={cn(style.productCard, {
+        [style.productCard__DARK]: isThemeDark,
+      })}
+    >
       <img
         src={phoneItem.image}
         alt={phoneItem.name}
-        className="productCard__image"
+        className={style.productCard__image}
       />
 
       <h2
-        className={cn('productCard__name', {
-          'productCard__name--dark': isThemeDark,
+        className={cn(style.productCard__name, {
+          [style.productCard__name__DARK]: isThemeDark,
         })}
       >
-        {phoneItem.name}
+        {/* {phoneItem.name} */}
+        Apple iPhone 11 128GB Green
       </h2>
 
-      <div className="productCard__price">
+      <div className={style.productCard__price}>
         <p
-          className={cn('productCard__realPrice', {
-            'productCard__realPrice--dark': isThemeDark,
+          className={cn(style.productCard__realPrice, {
+            [style.productCard__realPrice__DARK]: isThemeDark,
           })}
         >
-          {phoneItem.price}
+          {/* {`$${phoneItem.price}`} */}
+          1100
         </p>
 
         <p
-          className={cn('productCard__fullPrice', {
-            'productCard__fullPrice--dark': isThemeDark,
+          className={cn(style.productCard__fullPrice, {
+            [style.productCard__fullPrice__DARK]: isThemeDark,
           })}
         >
-          {phoneItem.price}
+          {/* `$${phoneItem.fullPrice}` */}
+          1050
         </p>
       </div>
 
-      <div className="productCard__characteristics">
+      <div className={style.productCard__characteristics}>
         {characteristicsArray.map((characteristic) => (
-          <>
+          <div className={style.productCard__characteristics__item}>
             <p
-              className={cn('productCard__characteristic-label', {
-                'productCard__characteristic-label--dark': isThemeDark,
+              className={cn(style.productCard__characteristics__label, {
+                [style.productCard__characteristics__label__DARK]: isThemeDark,
               })}
             >
               {characteristic.label}
             </p>
+
             <p
-              className={cn('productCard__characteristic-state', {
-                'productCard__characteristic-state--dark': isThemeDark,
+              className={cn(style.productCard__characteristics__state, {
+                [style.productCard__characteristics__state__DARK]: isThemeDark,
               })}
             >
               {characteristic.state}
             </p>
-          </>
+          </div>
         ))}
+      </div>
+
+      <div className={style.productCard__buttons}>
+        <button
+          className={cn(
+            style.productCard__addToCart,
+            { [style.productCard__addToCart__DARK]: isThemeDark },
+            { [style.productCard__addToCart__SELECTED]: isItemSelected },
+          )}
+          type="button"
+        >
+          Add to cart
+        </button>
+
+        <a
+          href=".."
+          className={cn(
+            style.productCard__addToFavourite,
+            { [style.productCard__addToFavourite__DARK]: isThemeDark },
+            { [style.productCard__addToFavourited__SELECTED]: isItemSelected },
+          )}
+        />
       </div>
     </div>
   );
