@@ -20,6 +20,7 @@
 
     @include onTablet {
       font-size: 32px;
+      font-style: normal;
       line-height: 128%;
       letter-spacing: -0.32px;
     }
@@ -129,5 +130,3 @@
 .shopByCategoryDark {
   background-color: #0F1121;
 }
-
-
