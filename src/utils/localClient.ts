@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 function read(key: string) {
   const data = window.localStorage.getItem(key);
 
