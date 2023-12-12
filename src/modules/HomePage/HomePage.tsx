@@ -1,5 +1,3 @@
-import './HomePage.module.scss';
-
 import React from 'react';
 import { ShopByCategory } from './ShopByCategory';
 
