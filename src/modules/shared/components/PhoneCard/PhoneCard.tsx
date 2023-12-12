@@ -23,7 +23,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
   } = phoneItem;
 
   const { isDarkTheme } = useAppSelector((state) => state.theme);
-  const isItemSelected = true;
+  const isItemSelected = false;
 
   const showDiscountPrice = () => {
     if (price !== fullPrice) {
@@ -113,15 +113,12 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
 
       <div className={style.productCard__buttons}>
         <button
-          className={cn(
-            style.productCard__addToCart,
-            { [style.productCard__addToCart__DARK]: isDarkTheme },
-            { [style.productCard__addToCart__SELECTED]: isItemSelected },
-            {
-              [style.productCard__addToCart__DARK__SELECTED]:
-                isItemSelected && isDarkTheme,
-            },
-          )}
+          className={cn(style.productCard__addToCart, {
+            [style.productCard__addToCart__DARK]: isDarkTheme,
+            [style.productCard__addToCart__SELECTED]: isItemSelected,
+            [style.productCard__addToCart__DARK__SELECTED]:
+              isItemSelected && isDarkTheme,
+          })}
           type="button"
         >
           {isItemSelected ? 'Added' : 'Add to cart'}
@@ -129,21 +126,27 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
 
         <button
           type="button"
-          className={cn(
-            style.productCard__addToFavourite,
-            {
-              [style.productCard__addToFavourite__SELECTED]:
-                isItemSelected && !isDarkTheme,
-            },
-            {
-              [style.productCard__addToFavourite__DARK]:
-                isDarkTheme && !isItemSelected,
-            },
-            {
-              [style.productCard__addToFavourite__DARK__SELECTED]:
-                isItemSelected && isDarkTheme,
-            },
-          )}
+          className={cn(style.productCard__addToFavourite, {
+            [style.productCard__addToFavourite__DARK]: isDarkTheme,
+            [style.productCard__addToFavourite__SELECTED]: isItemSelected,
+            [style.productCard__addToFavourite__DARK__SELECTED]:
+              isItemSelected && isDarkTheme,
+          })}
+          // className={cn(
+          //   style.productCard__addToFavourite,
+          //   {
+          //     [style.productCard__addToFavourite__SELECTED]:
+          //       isItemSelected && !isDarkTheme,
+          //   },
+          //   {
+          //     [style.productCard__addToFavourite__DARK]:
+          //       isDarkTheme && !isItemSelected,
+          //   },
+          //   {
+          //     [style.productCard__addToFavourite__DARK__SELECTED]:
+          //       isItemSelected && isDarkTheme,
+          //   },
+          // )}
         />
         {/* </button> */}
       </div>
