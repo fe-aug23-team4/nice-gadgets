@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = 'https://mate.academy/students-api';
+const BASE_URL = 'https://fe-aug23-team4-nice-gadgets-api.onrender.com';
 
 function wait(delay: number) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve, delay);
   });
 }
@@ -25,10 +25,10 @@ function request<T>(
 
   return wait(500)
     .then(() => fetch(BASE_URL + url, options))
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
-export const client = {
+export const fetchClient = {
   get: <T>(url: string) => request<T>(url),
   post: <T>(url: string, data: any) => request<T>(url, 'POST', data),
   patch: <T>(url: string, data: any) => request<T>(url, 'PATCH', data),
