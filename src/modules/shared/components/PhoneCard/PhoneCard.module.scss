@@ -1,3 +1,5 @@
+@import '../../../../styles/utils/variables/colors';
+
 .productCard {
   display: flex;
   width: 272px;
@@ -10,7 +12,7 @@
   box-sizing: border-box;
 
   border-radius: 8px;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $color__elements;
 
   &__DARK {
     background: #161827;
@@ -32,7 +34,7 @@
   &__name {
     margin-top: 8px;
     padding-top: 16px;
-    color: #0f0f11;
+    color: $color__primary;
 
     font-size: 14px;
     font-style: normal;
@@ -40,7 +42,7 @@
     line-height: 21px;
 
     &__DARK {
-      color: #f1f2f9;
+      color: $color__dark-theme-white;
     }
   }
 
@@ -57,18 +59,18 @@
       display: block;
       width: 208px;
       height: 1px;
-      background: #e2e6e9;
+      background: $color__elements;
     }
 
     &__DARK {
       &::after {
-        background: #3b3e4a;
+        background: $color__dark-theme-elements;
       }
     }
   }
 
   &__realPrice {
-    color: #0f0f11;
+    color: $color__primary;
 
     font-size: 22px;
     font-style: normal;
@@ -76,13 +78,13 @@
     line-height: 140%;
 
     &__DARK {
-      color: #f1f2f9;
+      color: $color__dark-theme-white;
     }
   }
 
   &__fullPrice {
     margin-left: 8px;
-    color: #89939a;
+    color: $color__secondary;
 
     font-size: 22px;
     font-style: normal;
@@ -112,7 +114,7 @@
 
     &__label {
       display: block;
-      color: #89939a;
+      color: $color__secondary;
 
       font-size: 12px;
       font-style: normal;
@@ -126,7 +128,7 @@
 
     &__state {
       display: block;
-      color: #0f0f11;
+      color: $color__primary;
 
       text-align: right;
       font-size: 12px;
@@ -135,7 +137,7 @@
       line-height: normal;
 
       &__DARK {
-        color: #f1f2f9;
+        color: $color__dark-theme-white;
       }
     }
   }
@@ -159,9 +161,9 @@
 
     border-radius: 8px;
     border: none;
-    background: #f86800;
+    background: $color__accent;
 
-    color: #fff;
+    color: $color__white;
     text-align: center;
     font-size: 14px;
     font-style: normal;
@@ -174,15 +176,15 @@
 
     &__SELECTED {
       border-radius: 8px;
-      border: 1px solid #e2e6e9;
-      background: #fff;
-      color: #f86800;
+      border: 1px solid $color__elements;
+      background: $color__white;
+      color: $color__accent;
     }
 
     &__DARK {
       background: #905bff;
       border-radius: 0px;
-      color: #f1f2f9;
+      color: $color__dark-theme-white;
       border: none;
 
       &:hover {
@@ -190,8 +192,8 @@
       }
 
       &__SELECTED {
-        background: #323542;
-        color: #f1f2f9;
+        background: $color__dark-theme-secondary;
+        color: $color__dark-theme-white;
       }
     }
   }
@@ -207,25 +209,25 @@
     background-position: center;
 
     border-radius: 48px;
-    border: 1px solid #b4bdc3;
+    border: 1px solid $color__icons;
 
     &:hover {
-      border: 1px solid #0f0f11;
+      border: 1px solid $color__primary;
     }
 
     &__SELECTED {
       background-image: url('../../Images/Icons/Favourites-icon_Selected.svg');
 
-      border: 1px solid #e2e6e9;
+      border: 1px solid $color__elements;
     }
 
     &__DARK {
       background-image: url('../../Images/Icons/Favourites-icon_darkDefault.svg');
 
-      background-color: #323542;
+      background-color: $color__dark-theme-secondary;
       border-radius: 0px;
       border: none;
-      color: #f1f2f9;
+      color: $color__dark-theme-white;
 
       &:hover {
         background-color: #4a4d58;
@@ -234,7 +236,7 @@
       &__SELECTED {
         background-image: url('../../Images/Icons/Favourites-icon_darkSelected.svg');
 
-        border: 1px solid #3b3e4a;
+        border: 1px solid $color__dark-theme-elements;
         border-radius: 0px;
       }
     }

@@ -22,7 +22,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
   } = phoneItem;
 
   const isThemeDark = false;
-  const isItemSelected = true;
+  const isItemSelected = false;
 
   const showDiscountPrice = () => {
     if (price !== fullPrice) {
