@@ -21,7 +21,7 @@
     display: flex;
     width: 208px;
     height: 196px;
-    justify-content: center
+    justify-content: center;
   }
 
   &__image {
@@ -57,12 +57,12 @@
       display: block;
       width: 208px;
       height: 1px;
-      background: #E2E6E9;
+      background: #e2e6e9;
     }
 
     &__DARK {
       &::after {
-        background: #3B3E4A;
+        background: #3b3e4a;
       }
     }
   }
@@ -176,13 +176,13 @@
       border-radius: 8px;
       border: 1px solid #e2e6e9;
       background: #fff;
-      color: #F86800
+      color: #f86800;
     }
 
     &__DARK {
       background: #905bff;
       border-radius: 0px;
-      color: #F1F2F9;
+      color: #f1f2f9;
       border: none;
 
       &:hover {
@@ -191,13 +191,14 @@
 
       &__SELECTED {
         background: #323542;
-        color: #F1F2F9;
+        color: #f1f2f9;
       }
     }
   }
 
   &__addToFavourite {
-    background-image: url('../../components/Images/Icons/Favourites-icon_Default.svg');
+    background-image: url('../../Images/Icons/Favourites-icon_Default.svg');
+    
     margin-left: 8px;
     width: 40px;
     height: 40px;
@@ -213,27 +214,28 @@
     }
 
     &__SELECTED {
-      background-image: url('../../components/Images/Icons/Favourites-icon_Selected.svg');
+      background-image: url('../../Images/Icons/Favourites-icon_Selected.svg');
 
       border: 1px solid #e2e6e9;
     }
 
     &__DARK {
-      background-image: url('../../components/Images/Icons/Favourites-icon_darkDefault.svg');
+      background-image: url('../../Images/Icons/Favourites-icon_darkDefault.svg');
 
-      background: #323542;
+      background-color: #323542;
       border-radius: 0px;
       border: none;
-      color: #F1F2F9;
+      color: #f1f2f9;
 
       &:hover {
-        background: #4a4d58;
+        background-color: #4a4d58;
       }
 
       &__SELECTED {
-        background-image: url('../../components/Images/Icons/Favourites-icon_darkSelected.svg');
+        background-image: url('../../Images/Icons/Favourites-icon_darkSelected.svg');
 
         border: 1px solid #3b3e4a;
+        border-radius: 0px;
       }
     }
   }

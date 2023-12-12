@@ -22,7 +22,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
   } = phoneItem;
 
   const isThemeDark = false;
-  const isItemSelected = false;
+  const isItemSelected = true;
 
   const showDiscountPrice = () => {
     if (price !== fullPrice) {
@@ -131,12 +131,12 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
           className={cn(
             style.productCard__addToFavourite,
             {
-              [style.productCard__addToFavourite__DARK]:
-                isThemeDark && !isItemSelected,
+              [style.productCard__addToFavourite__SELECTED]:
+                isItemSelected && !isThemeDark,
             },
             {
-              [style.productCard__addToFavourited__SELECTED]:
-                isItemSelected && !isThemeDark,
+              [style.productCard__addToFavourite__DARK]:
+                isThemeDark && !isItemSelected,
             },
             {
               [style.productCard__addToFavourite__DARK__SELECTED]:
