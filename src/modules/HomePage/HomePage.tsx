@@ -1,11 +1,7 @@
-/* eslint-disable max-len */
-import React from 'react';
 import './HomePage.module.scss';
 
+import React from 'react';
+
 export const HomePage: React.FC = () => {
-  return (
-    <>
-      <h1>Home Page</h1>
-    </>
-  );
+  return <h1>Home Page</h1>;
 };

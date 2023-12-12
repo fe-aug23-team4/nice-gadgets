@@ -5,6 +5,7 @@ import style from './PhoneCard.module.scss';
 import { PhoneItem } from '../../../../types/PhoneItem';
 // eslint-disable-next-line max-len
 import phoneImage from '../../../../static/img/phones/apple-iphone-7/black/00.jpg';
+import { useAppSelector } from '../../../../store/hooks';
 
 type Props = {
   phoneItem: PhoneItem;
@@ -21,15 +22,15 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
     // image,
   } = phoneItem;
 
-  const isThemeDark = false;
-  const isItemSelected = false;
+  const { isDarkTheme } = useAppSelector((state) => state.theme);
+  const isItemSelected = true;
 
   const showDiscountPrice = () => {
     if (price !== fullPrice) {
       return (
         <p
           className={cn(style.productCard__fullPrice, {
-            [style.productCard__fullPrice__DARK]: isThemeDark,
+            [style.productCard__fullPrice__DARK]: isDarkTheme,
           })}
         >
           {`$${fullPrice}`}
@@ -49,7 +50,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
   return (
     <div
       className={cn(style.productCard, {
-        [style.productCard__DARK]: isThemeDark,
+        [style.productCard__DARK]: isDarkTheme,
       })}
     >
       <div className={style.productCard__image__container}>
@@ -63,7 +64,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
 
       <h2
         className={cn(style.productCard__name, {
-          [style.productCard__name__DARK]: isThemeDark,
+          [style.productCard__name__DARK]: isDarkTheme,
         })}
       >
         {name}
@@ -71,12 +72,12 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
 
       <div
         className={cn(style.productCard__price, {
-          [style.productCard__price__DARK]: isThemeDark,
+          [style.productCard__price__DARK]: isDarkTheme,
         })}
       >
         <p
           className={cn(style.productCard__realPrice, {
-            [style.productCard__realPrice__DARK]: isThemeDark,
+            [style.productCard__realPrice__DARK]: isDarkTheme,
           })}
         >
           {`$${price}`}
@@ -93,7 +94,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
           >
             <p
               className={cn(style.productCard__characteristics__label, {
-                [style.productCard__characteristics__label__DARK]: isThemeDark,
+                [style.productCard__characteristics__label__DARK]: isDarkTheme,
               })}
             >
               {characteristic.label}
@@ -101,7 +102,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
 
             <p
               className={cn(style.productCard__characteristics__state, {
-                [style.productCard__characteristics__state__DARK]: isThemeDark,
+                [style.productCard__characteristics__state__DARK]: isDarkTheme,
               })}
             >
               {characteristic.state}
@@ -114,11 +115,11 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
         <button
           className={cn(
             style.productCard__addToCart,
-            { [style.productCard__addToCart__DARK]: isThemeDark },
+            { [style.productCard__addToCart__DARK]: isDarkTheme },
             { [style.productCard__addToCart__SELECTED]: isItemSelected },
             {
               [style.productCard__addToCart__DARK__SELECTED]:
-                isItemSelected && isThemeDark,
+                isItemSelected && isDarkTheme,
             },
           )}
           type="button"
@@ -126,24 +127,25 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
           {isItemSelected ? 'Added' : 'Add to cart'}
         </button>
 
-        <a
-          href=".."
+        <button
+          type="button"
           className={cn(
             style.productCard__addToFavourite,
             {
               [style.productCard__addToFavourite__SELECTED]:
-                isItemSelected && !isThemeDark,
+                isItemSelected && !isDarkTheme,
             },
             {
               [style.productCard__addToFavourite__DARK]:
-                isThemeDark && !isItemSelected,
+                isDarkTheme && !isItemSelected,
             },
             {
               [style.productCard__addToFavourite__DARK__SELECTED]:
-                isItemSelected && isThemeDark,
+                isItemSelected && isDarkTheme,
             },
           )}
         />
+        {/* </button> */}
       </div>
     </div>
   );

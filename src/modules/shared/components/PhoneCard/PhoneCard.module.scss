@@ -207,6 +207,7 @@
     flex-shrink: 0;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: $color__white;
 
     border-radius: 48px;
     border: 1px solid $color__icons;
@@ -238,6 +239,7 @@
 
         border: 1px solid $color__dark-theme-elements;
         border-radius: 0px;
+        background-color: $color__dark-theme-secondary;
       }
     }
   }
