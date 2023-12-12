@@ -1,14 +1,23 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import cn from 'classnames';
+// import { actions } from '../../../../store/reducers/themeSlice';
 
 import styles from './Header.module.scss';
 import logo from '../../../../static/img/Logo.png';
 import burger from './static/icons/Burger.png';
 import favourites from './static/icons/Favourites.png';
 import cart from './static/icons/cart.png';
+// import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 
 export const Header: React.FC = () => {
+  // const { isDarkTheme } = useAppSelector(state => state.theme);
+  // const dispatch = useAppDispatch();
+
+  // function ThemeHandler() {
+  //   dispatch(actions.change());
+  // }
+
   const getLinkClass = (
     { isActive }: { isActive: boolean },
   ) => cn([styles.header__link], {
@@ -60,13 +69,13 @@ export const Header: React.FC = () => {
 
       <div className={styles.header__right}>
         <div className={styles.header__icon}>
-          <NavLink to="/favorites">
+          <NavLink to="/favorites" className={getLinkClass}>
             <img src={favourites} alt="favourites" />
           </NavLink>
         </div>
 
         <div className={styles.header__icon}>
-          <NavLink to="/cart">
+          <NavLink to="/cart" className={getLinkClass}>
             <img src={cart} alt="cart" />
           </NavLink>
         </div>
