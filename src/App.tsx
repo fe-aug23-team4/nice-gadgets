@@ -11,7 +11,9 @@ export const App: React.FC = () => {
     <>
       <Header />
       ----------
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       ----------
       <Footer />
     </>
