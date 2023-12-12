@@ -3,7 +3,5 @@ import './CartPage.module.scss';
 import React from 'react';
 
 export const CartPage: React.FC = () => {
-  return (
-    <h1>Cart Page</h1>
-  );
+  return <h1>Cart Page</h1>;
 };
