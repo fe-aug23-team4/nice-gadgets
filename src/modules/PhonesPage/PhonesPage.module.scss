@@ -18,7 +18,7 @@
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -0.32px;
-  
+
     &__DARK {
       color: $color__dark-theme-white;
     }
@@ -26,11 +26,11 @@
 
   &__counter {
     margin-bottom: 32px;
-    color: #89939A;
+    color: #89939a;
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
-    line-height: 21px; 
+    line-height: 21px;
 
     &__DARK {
       color: $color__dark-theme-primary;
@@ -78,7 +78,7 @@
       border: none;
 
       &:hover {
-        border: 1px solid #4A4D58;
+        border: 1px solid #4a4d58;
       }
     }
   }
@@ -108,7 +108,7 @@
       }
 
       &:focus {
-        order: 1px solid #905BFF;
+        order: 1px solid #905bff;
       }
     }
   }
