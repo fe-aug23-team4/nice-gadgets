@@ -25,22 +25,6 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const isItemSelected = false;
 
-  const showDiscountPrice = () => {
-    if (price !== fullPrice) {
-      return (
-        <p
-          className={cn(style.productCard__fullPrice, {
-            [style.productCard__fullPrice__DARK]: isDarkTheme,
-          })}
-        >
-          {`$${fullPrice}`}
-        </p>
-      );
-    }
-
-    return false;
-  };
-
   const characteristicsArray = [
     { label: 'Screen', state: screen },
     { label: 'Capacity', state: capacity },
@@ -83,7 +67,15 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
           {`$${price}`}
         </p>
 
-        {showDiscountPrice()}
+        {price !== fullPrice && (
+          <p
+            className={cn(style.productCard__fullPrice, {
+              [style.productCard__fullPrice__DARK]: isDarkTheme,
+            })}
+          >
+            {`$${fullPrice}`}
+          </p>
+        )}
       </div>
 
       <div className={style.productCard__characteristics}>
@@ -132,23 +124,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
             [style.productCard__addToFavourite__DARK__SELECTED]:
               isItemSelected && isDarkTheme,
           })}
-          // className={cn(
-          //   style.productCard__addToFavourite,
-          //   {
-          //     [style.productCard__addToFavourite__SELECTED]:
-          //       isItemSelected && !isDarkTheme,
-          //   },
-          //   {
-          //     [style.productCard__addToFavourite__DARK]:
-          //       isDarkTheme && !isItemSelected,
-          //   },
-          //   {
-          //     [style.productCard__addToFavourite__DARK__SELECTED]:
-          //       isItemSelected && isDarkTheme,
-          //   },
-          // )}
         />
-        {/* </button> */}
       </div>
     </div>
   );
