@@ -1,19 +1,21 @@
-function read(key: string) {
-  const data = window.localStorage.getItem(key);
+export const localClient = {
+  read: (key: string) => {
+    const data = window.localStorage.getItem(key);
 
-  try {
-    return data && JSON.parse(data);
-  } catch (error) {
-    return null;
-  }
-}
+    try {
+      return data && JSON.parse(data);
+    } catch (error) {
+      return null;
+    }
+  },
 
-function write(key: string, data: any) {
-  window.localStorage.setItem(key, JSON.stringify(data));
-}
+  write: (key: string, data: any) => {
+    window.localStorage.setItem(key, JSON.stringify(data));
+  },
 
-export function init(key: string, initialData: any) {
-  if (!read(key)) {
-    write(key, initialData);
-  }
-}
+  init: (key: string, initialData: any) => {
+    if (!localClient.read(key)) {
+      localClient.write(key, initialData);
+    }
+  },
+};
