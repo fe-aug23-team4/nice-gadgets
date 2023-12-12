@@ -1,0 +1,122 @@
+@import '../../styles/utils/variables/colors';
+
+.phonesPage {
+  &__DARK {
+    background-color: $color__dark-theme-background;
+  }
+
+  &__navHistory {
+    margin-bottom: 24px;
+    margin-top: 25px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    color: $color__primary;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+  
+    &__DARK {
+      color: $color__dark-theme-white;
+    }
+  }
+
+  &__counter {
+    margin-bottom: 32px;
+    color: #89939A;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px; 
+
+    &__DARK {
+      color: $color__dark-theme-primary;
+    }
+  }
+
+  &__filter {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  &__label {
+    color: $color__secondary;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &__dropdown {
+    color: $color__primary;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px;
+
+    width: 176px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid $color__icons;
+
+    &:before {
+      content: icon;
+      background-image: url('../shared/Images/Icons/Icons_defaultArrowDown.svg');
+    }
+
+    &:hover {
+      border: 1px solid $color__secondary;
+    }
+
+    &__DARK {
+      background-color: $color__dark-theme-secondary;
+      border-radius: 0px;
+      border: none;
+
+      &:hover {
+        border: 1px solid #4A4D58;
+      }
+    }
+  }
+
+  &__option {
+    color: $color__secondary;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    background-color: $color__white;
+
+    &:hover {
+      color: $color__primary;
+      background: $color__white;
+    }
+
+    &:focus {
+      border: 1px solid $color__primary;
+    }
+
+    &__DARK {
+      color: $color__dark-theme-primary;
+
+      &:hover {
+        background-color: $color__dark-theme-secondary;
+      }
+
+      &:focus {
+        order: 1px solid #905BFF;
+      }
+    }
+  }
+
+  &__phonesList {
+  }
+
+  &__phoneItem {
+    margin-bottom: 40px;
+  }
+}

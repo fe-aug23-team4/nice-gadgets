@@ -1,7 +1,9 @@
+import React from 'react';
+import { PhonesPage } from '../PhonesPage';
 import './HomePage.module.scss';
 
-import React from 'react';
+import phones from '../../static/api/phones.json';
 
 export const HomePage: React.FC = () => {
-  return <h1>Home Page</h1>;
+  return <PhonesPage visiblePhones={phones} />;
 };
