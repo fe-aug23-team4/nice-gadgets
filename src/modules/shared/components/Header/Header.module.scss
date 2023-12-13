@@ -24,7 +24,7 @@
     height: 22px;
   }
 
-  &__burger {
+  &__burger_icon {
     width: 48px;
     height: 48px;
 
@@ -32,23 +32,50 @@
     align-items: center;
     justify-content: center;
 
+    border: none;
     border-left: 1px solid $color__elements;
+    background-color: #fff;
+  }
+
+  &__burger {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    margin-top: 50px;
+    padding-top: 32px;
+
+    background-color: #fff;
+    opacity: 0;
+    transition: 0.3s all;
+
+    &__IsOpen {
+      opacity: 1;
+    }
+  }
+
+  &__burger_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
   }
 
   &__nav {
     display: none;
     align-items: center;
     gap: 32px;
-
-    text-transform: uppercase;
-    font-weight: 800;
-    font-size: 12px;
   }
 
   &__link {
     position: relative;
     text-decoration: none;
     color: $color__secondary;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
 
     &::after {
       content: '';
@@ -56,8 +83,8 @@
       top: 30px;
       display: block;
       height: 3px;
-      right: 50%;
-      left: 50%;
+      right: 100%;
+      left: 100%;
       background-color: $color__primary;
     }
 
@@ -66,14 +93,8 @@
     }
 
     &__ISACTIVE::after {
-      content: '';
-      position: absolute;
-      top: 30px;
-      display: block;
-      height: 3px;
       right: 0;
       left: 0;
-      background-color: $color__primary;
       transition: all 0.3s;
     }
   }
@@ -92,6 +113,10 @@
 
   @include onTablet {
     &__burger {
+      display: none;
+    }
+
+    &__burger_icon {
       display: none;
     }
 
@@ -131,7 +156,7 @@
     }
 
     &__link::after {
-      top: 39px;
+      top: 38px;
     }
   }
 }
