@@ -49,13 +49,13 @@ type Props = {
 
 export const SliderWithPhones: React.FC<Props> = ({ phones, title }) => {
   const settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
+    // autoplay: true,
+    // autoplaySpeed: 5000,
     pauseOnHover: true,
     swipeToSlide: true,
     nextArrow: <SampleNextArrow />,

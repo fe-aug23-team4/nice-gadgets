@@ -1,11 +1,16 @@
 @import '../utils/mixins/mixin-media';
 
+$columns--phone: 4;
 $columns--tablet: 12;
 $columns--desktop: 24;
 
 .grid {
   display: grid;
   column-gap: 16px;
+
+  @include onMobile {
+    grid-template-columns: repeat($columns--phone, 1fr);
+  }
 
   @include onTablet {
     grid-template-columns: repeat($columns--tablet, 1fr);

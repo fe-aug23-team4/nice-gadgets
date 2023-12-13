@@ -1,0 +1,68 @@
+@import '../../../../styles/blocks/grid';
+@import './slick-theme';
+
+.container {
+  @extend .grid;
+}
+
+.header {
+    margin-top: 56px;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    text-align: left;
+
+
+    &__dark {
+      color: #f1f2f9;
+    }
+
+    @include onTablet {
+      grid-column: 1 / -1;
+
+    }
+
+    @include onDesktop {
+      grid-column: 1 / -1;
+
+    }
+};
+
+.slider {
+  margin-top: 56px;
+  position: relative;
+  width: 100%;
+  height: 506px;
+  border: none;
+  box-sizing: border-box;
+
+  @include onMobile {
+    grid-column: 1 / -1;
+  }
+
+  @include onTablet {
+    grid-column: 2 / 12;
+  }
+
+  @include onDesktop {
+    grid-column: 2 / 24;
+  }
+}
+
+.sliderPhoto {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 506px;
+
+  object-fit: cover;
+  object-position: center center;
+
+  @include onTablet {
+    height: 400px;
+  }
+
+  @include onDesktop {
+    height: 400px;
+  }
+}
