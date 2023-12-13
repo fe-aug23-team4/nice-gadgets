@@ -1,0 +1,96 @@
+@import '../../styles/utils/variables/colors';
+@import '../../styles/utils/mixins/mixin-media';
+@import '../../styles/blocks/grid';
+
+.favouritesPage {
+  padding-inline: 16px;
+  padding-top: 25px;
+  padding-bottom: 56px;
+  background-color: #FAFBFC;
+
+  @include onTablet {
+      padding-inline: 24px;
+      padding-bottom: 64px;
+    }
+
+    @include onDesktop {
+      padding-inline: 32px;
+      padding-bottom: 80px;
+    }
+
+  &__top {
+    display: flex;
+    gap: 8px;
+
+    &__content {
+      color: $color__secondary;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+
+  &__title {
+    margin-top: 24px;
+    color: $color__primary;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 128%;
+    letter-spacing: -0.32px;
+
+   @include onTablet {
+      font-size: 48px;
+      font-style: normal;
+      line-height: 116%;
+      letter-spacing: -0.48px;
+   }
+
+   &__dark {
+    color: #F1F2F9;
+   }
+  }
+
+  &__content {
+    margin-top: 8px;
+    max-width: 1200px;
+    color: $color__secondary;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  }
+
+  &__gridContainer {
+    margin-top: 32px;
+    @extend .grid;
+    grid-row-gap: 40px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__card {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    height: 80vh;
+    border: 1px solid black;
+    background-color: #fff;
+    grid-column: span 4;
+
+    @include onTablet {
+        grid-column: span 6;
+        max-width: 400px;
+        height: 100vh;
+      }
+  }
+}
+
+.favouritesPageDark {
+  background-color: #0F1121;
+}
+
+

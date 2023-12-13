@@ -24,7 +24,11 @@ export const ShopByCategory: React.FC = () => {
       </h2>
 
       <div className={styles.shopByCategory__container}>
-        <Link to="/phones" className={styles.shopByCategory__article}>
+
+        <Link
+          to="/phones"
+          className={styles.shopByCategory__article}
+        >
           <article>
             <div
               className={cn(styles.shopByCategory__imgContainer,
@@ -65,8 +69,6 @@ export const ShopByCategory: React.FC = () => {
                 alt="tablets"
                 className={`${styles.shopByCategory__picture}
               ${styles.shopByCategory__pictureTablet}`}
-                // className={styles.shopByCategory__picture}
-              />
             </div>
             <h3
               className={cn(styles.shopByCategory__subtitle,
@@ -93,7 +95,6 @@ export const ShopByCategory: React.FC = () => {
               <img
                 src={categoryAccessories}
                 alt="accessories"
-                // className={styles.shopByCategory__picture}
                 className={`${styles.shopByCategory__picture}
                 ${styles.shopByCategory__pictureAccessories}`}
               />
