@@ -72,8 +72,8 @@ export const ShopByCategory: React.FC = () => {
               <img
                 src={categoryTablet}
                 alt="tablets"
-                className={`${styles.shopByCategory__picture}
-              ${styles.shopByCategory__pictureTablet}`}
+                className={cn(styles.shopByCategory__picture,
+                  styles.shopByCategory__pictureTablet)}
               />
             </div>
             <h3
@@ -84,9 +84,10 @@ export const ShopByCategory: React.FC = () => {
               Tablets
             </h3>
             <p
-              className={cn(styles.shopByCategory__content, {
-                [styles.shopByCategory__contentDark]: isThemeDark,
-              })}
+              className={cn(
+                styles.shopByCategory__content,
+                { [styles.shopByCategory__contentDark]: isThemeDark },
+              )}
             >
               24 models
             </p>
