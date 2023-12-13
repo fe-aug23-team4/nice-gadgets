@@ -43,7 +43,6 @@ export const FavoritesPage: React.FC = () => {
           Favourites
         </p>
       </div>
-
       <h2
         className={cn(styles.favouritesPage__title,
           { [styles.favouritesPage__title__dark]: isThemeDark })}
