@@ -6,7 +6,7 @@ import cn from 'classnames';
 import styles from './Header.module.scss';
 import logo from '../../../../static/img/Logo.png';
 import burger from './static/icons/Burger.png';
-import close from './static/icons/Close.png';
+import close from '../../../../static/icons/Close.png';
 import favourites from './static/icons/Favourites.png';
 import cart from './static/icons/cart.png';
 // import { useAppDispatch, useAppSelector } from '../../../../store/hooks';

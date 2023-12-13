@@ -66,10 +66,11 @@
   &__nav {
     display: none;
     align-items: center;
-    gap: 32px;
+    gap: 12px;
   }
 
   &__link {
+    padding: 10px 10px;
     position: relative;
     text-decoration: none;
     color: $color__secondary;
@@ -93,9 +94,9 @@
     }
 
     &__ISACTIVE::after {
-      right: 0;
-      left: 0;
-      transition: all 0.3s;
+      right: 10px;
+      left: 10px;
+      transition: right 0.3s, left 0.3s;
     }
   }
 
@@ -124,12 +125,17 @@
       display: flex;
     }
 
+    &__link::after {
+      top: 38px;
+    }
+
     &__icon {
       display: flex;
 
       & .header__link__ISACTIVE::after {
-        left: -16px;
-        right: -16px;
+        top: 40px;
+        left: -6px;
+        right: -6px;
       }
     }
   }
@@ -150,13 +156,18 @@
       height: 64px;
 
       & .header__link__ISACTIVE::after {
-        left: -24px;
-        right: -24px;
+        top: 58px;
+        left: -14px;
+        right: -14px;
       }
     }
 
-    &__link::after {
-      top: 38px;
+    &__link {
+      padding: 20px 10px;
+
+      &::after {
+        top: 56px;
+      }
     }
   }
 }
