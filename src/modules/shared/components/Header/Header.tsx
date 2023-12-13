@@ -36,12 +36,6 @@ export const Header: React.FC = () => {
         >
           <img src={logo} alt="logo" className={styles.header__logo} />
         </Link>
-        <Link
-          to="/"
-          onClick={() => setIsBurgerActive(false)}
-        >
-          <img src={logo} alt="logo" className={styles.header__logo} />
-        </Link>
 
         <ul className={styles.header__nav}>
           <li>
