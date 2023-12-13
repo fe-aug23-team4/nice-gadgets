@@ -36,16 +36,16 @@
     line-height: 128%;
     letter-spacing: -0.32px;
 
-   @include onTablet {
-      font-size: 48px;
-      line-height: 116%;
-      letter-spacing: -0.48px;
-   }
-
-   &__dark {
-    color: $color__dark-theme-white;
-   }
+  @include onTablet {
+    font-size: 48px;
+    line-height: 116%;
+    letter-spacing: -0.48px;
   }
+
+  &__dark {
+  color: $color__dark-theme-white;
+  }
+}
 
   &__content {
     margin-top: 0.5rem;
@@ -65,4 +65,3 @@
 .favouritesPageDark {
   background-color: #0F1121;
 }
-

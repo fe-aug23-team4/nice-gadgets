@@ -10,11 +10,9 @@ export const App: React.FC = () => {
   return (
     <>
       <Header />
-
       <main>
         <Outlet />
       </main>
-
       <Footer />
     </>
   );
