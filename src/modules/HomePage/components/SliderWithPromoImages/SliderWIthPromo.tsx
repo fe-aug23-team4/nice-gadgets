@@ -47,12 +47,6 @@ export const SliderWithPromo: React.FC = () => {
 
   return (
     <div className={style.container}>
-      <h1 className={cn(style.header, {
-        [style.header__dark]: isDarkTheme,
-      })}
-      >
-        Welcome to Nice Gadgets store!
-      </h1>
       <Slider
         {...settings}
         className={cn(style.slider, {
