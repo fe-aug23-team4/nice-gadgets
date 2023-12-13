@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { ShopByCategory } from './ShopByCategory';
 
 export const HomePage: React.FC = () => {
@@ -8,5 +7,4 @@ export const HomePage: React.FC = () => {
       <ShopByCategory />
     </>
   );
-
 };

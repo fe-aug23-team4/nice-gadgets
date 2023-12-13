@@ -13,12 +13,15 @@ export const ShopByCategory: React.FC = () => {
   const isThemeDark = false;
 
   return (
-    <section className={cn(styles.shopByCategory,
-      { [styles.shopByCategoryDark]: isThemeDark })}
+    <section
+      className={cn(styles.shopByCategory, {
+        [styles.shopByCategoryDark]: isThemeDark,
+      })}
     >
       <h2
-        className={cn(styles.shopByCategory__title,
-          { [styles.shopByCategory__titleDark]: isThemeDark })}
+        className={cn(styles.shopByCategory__title, {
+          [styles.shopByCategory__titleDark]: isThemeDark,
+        })}
       >
         Shop by category
       </h2>
@@ -27,9 +30,11 @@ export const ShopByCategory: React.FC = () => {
         <Link to="/phones" className={styles.shopByCategory__article}>
           <article>
             <div
-              className={cn(styles.shopByCategory__imgContainer,
+              className={cn(
+                styles.shopByCategory__imgContainer,
                 styles.shopByCategory__imgPhones,
-                { [styles.shopByCategory__imgDark]: isThemeDark })}
+                { [styles.shopByCategory__imgDark]: isThemeDark },
+              )}
             >
               <img
                 src={categoryPhone}
@@ -38,15 +43,17 @@ export const ShopByCategory: React.FC = () => {
               />
             </div>
             <h3
-              className={cn(styles.shopByCategory__subtitle,
-                { [styles.shopByCategory__titleDark]: isThemeDark })}
+              className={cn(styles.shopByCategory__subtitle, {
+                [styles.shopByCategory__titleDark]: isThemeDark,
+              })}
             >
               Mobile phones
             </h3>
 
             <p
-              className={cn(styles.shopByCategory__content,
-                { [styles.shopByCategory__contentDark]: isThemeDark })}
+              className={cn(styles.shopByCategory__content, {
+                [styles.shopByCategory__contentDark]: isThemeDark,
+              })}
             >
               95 models
             </p>
@@ -56,27 +63,30 @@ export const ShopByCategory: React.FC = () => {
         <Link to="/tablets" className={styles.shopByCategory__article}>
           <article>
             <div
-              className={cn(styles.shopByCategory__imgContainer,
+              className={cn(
+                styles.shopByCategory__imgContainer,
                 styles.shopByCategory__imgTablets,
-                { [styles.shopByCategory__imgDark]: isThemeDark })}
+                { [styles.shopByCategory__imgDark]: isThemeDark },
+              )}
             >
               <img
                 src={categoryTablet}
                 alt="tablets"
                 className={`${styles.shopByCategory__picture}
               ${styles.shopByCategory__pictureTablet}`}
-                // className={styles.shopByCategory__picture}
               />
             </div>
             <h3
-              className={cn(styles.shopByCategory__subtitle,
-                { [styles.shopByCategory__titleDark]: isThemeDark })}
+              className={cn(styles.shopByCategory__subtitle, {
+                [styles.shopByCategory__titleDark]: isThemeDark,
+              })}
             >
               Tablets
             </h3>
             <p
-              className={cn(styles.shopByCategory__content,
-                { [styles.shopByCategory__contentDark]: isThemeDark })}
+              className={cn(styles.shopByCategory__content, {
+                [styles.shopByCategory__contentDark]: isThemeDark,
+              })}
             >
               24 models
             </p>
@@ -86,27 +96,30 @@ export const ShopByCategory: React.FC = () => {
         <Link to="/accessories" className={styles.shopByCategory__article}>
           <article>
             <div
-              className={cn(styles.shopByCategory__imgContainer,
+              className={cn(
+                styles.shopByCategory__imgContainer,
                 styles.shopByCategory__imgAccessories,
-                { [styles.shopByCategory__imgDark]: isThemeDark })}
+                { [styles.shopByCategory__imgDark]: isThemeDark },
+              )}
             >
               <img
                 src={categoryAccessories}
                 alt="accessories"
-                // className={styles.shopByCategory__picture}
                 className={`${styles.shopByCategory__picture}
                 ${styles.shopByCategory__pictureAccessories}`}
               />
             </div>
             <h3
-              className={cn(styles.shopByCategory__subtitle,
-                { [styles.shopByCategory__titleDark]: isThemeDark })}
+              className={cn(styles.shopByCategory__subtitle, {
+                [styles.shopByCategory__titleDark]: isThemeDark,
+              })}
             >
               Accessories
             </h3>
             <p
-              className={cn(styles.shopByCategory__content,
-                { [styles.shopByCategory__contentDark]: isThemeDark })}
+              className={cn(styles.shopByCategory__content, {
+                [styles.shopByCategory__contentDark]: isThemeDark,
+              })}
             >
               100 models
             </p>
