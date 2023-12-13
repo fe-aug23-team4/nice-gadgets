@@ -17,6 +17,10 @@
       color: #f1f2f9;
     }
 
+    @include onMobile {
+      grid-column: 1 / -1;
+    }
+
     @include onTablet {
       grid-column: 1 / -1;
 
