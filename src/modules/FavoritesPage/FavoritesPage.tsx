@@ -8,7 +8,7 @@ import arrowIcon from './icons/Chevron (Arrow Right).svg';
 
 export const FavoritesPage: React.FC = () => {
   const favourites: number[] = [1, 2, 3, 4, 5];
-  const isThemeDark = true;
+  const isThemeDark = false;
 
   return (
     <section
@@ -36,7 +36,7 @@ export const FavoritesPage: React.FC = () => {
 
         <img
           src={arrowIcon}
-          alt="home-icon"
+          alt="arrow-icon"
         />
 
         <p className={styles.favouritesPage__top__content}>
