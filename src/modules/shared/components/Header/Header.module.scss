@@ -89,7 +89,6 @@
     border-left: 1px solid $color__elements;
   }
 
-
   @include onTablet {
     &__burger {
       display: none;
@@ -135,4 +134,3 @@
     }
   }
 }
-

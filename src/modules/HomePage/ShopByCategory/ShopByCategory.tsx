@@ -24,6 +24,7 @@ export const ShopByCategory: React.FC = () => {
       </h2>
 
       <div className={styles.shopByCategory__container}>
+
         <Link
           to="/phones"
           className={styles.shopByCategory__article}
@@ -68,7 +69,6 @@ export const ShopByCategory: React.FC = () => {
                 alt="tablets"
                 className={`${styles.shopByCategory__picture}
               ${styles.shopByCategory__pictureTablet}`}
-              />
             </div>
             <h3
               className={cn(styles.shopByCategory__subtitle,
