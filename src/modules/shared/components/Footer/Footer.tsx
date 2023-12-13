@@ -45,5 +45,4 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-  return <h1>Footer</h1>;
 };
