@@ -1,5 +1,6 @@
 @import '../../../../styles/utils/variables/colors';
-@import '../../../../styles/utils/mixins/mixin-typography';
+@import '../../../../styles/utils/typography';
+@import '../../../../styles/utils/mixins/mixin-media';
 
 .productCard {
   display: flex;
@@ -11,9 +12,15 @@
   flex-wrap: wrap;
   align-content: flex-start;
   box-sizing: border-box;
+  margin: 0 auto;
+  grid-column: span 4;
 
   border-radius: 8px;
   border: 1px solid $color__elements;
+
+  @include onTablet {
+    grid-column: span 6;
+  }
 
   &__DARK {
     background: #161827;
