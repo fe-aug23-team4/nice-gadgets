@@ -2,14 +2,12 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import cn from 'classnames';
 // import { actions } from '../../../../store/reducers/themeSlice';
-
 import styles from './Header.module.scss';
 import logo from '../../../../static/img/Logo.png';
 import burger from './static/icons/Burger.png';
 import favourites from './static/icons/Favourites.png';
 import cart from './static/icons/cart.png';
 // import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-
 export const Header: React.FC = () => {
   // const { isDarkTheme } = useAppSelector(state => state.theme);
   // const dispatch = useAppDispatch();
@@ -28,7 +26,11 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.header__left}>
         <Link to="/">
-          <img src={logo} alt="logo" className={styles.header__logo} />
+          <img
+            src={logo}
+            alt="logo"
+            className={styles.header__logo}
+          />
         </Link>
 
         <ul className={styles.header__nav}>

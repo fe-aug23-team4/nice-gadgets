@@ -1,6 +1,12 @@
 import React from 'react';
-// import styles from './HomePage.module.scss';
+
+import { ShopByCategory } from './ShopByCategory';
 
 export const HomePage: React.FC = () => {
-  return <h1>Home Page</h1>;
+  return (
+    <>
+      <ShopByCategory />
+    </>
+  );
+
 };
