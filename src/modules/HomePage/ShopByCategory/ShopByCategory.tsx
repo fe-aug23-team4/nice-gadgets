@@ -24,10 +24,7 @@ export const ShopByCategory: React.FC = () => {
       </h2>
 
       <div className={styles.shopByCategory__container}>
-        <Link
-          to="/phones"
-          className={styles.shopByCategory__article}
-        >
+        <Link to="/phones" className={styles.shopByCategory__article}>
           <article>
             <div
               className={cn(styles.shopByCategory__imgContainer,
