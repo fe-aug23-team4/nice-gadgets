@@ -11,6 +11,8 @@ import { PhoneDetailsPage } from './modules/PhoneDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { TabletsPage } from './modules/TabletsPage';
+import { AccessoriesPage } from './modules/AccessoriesPage';
 
 export const Root = () => (
   <Router>
@@ -23,6 +25,8 @@ export const Root = () => (
             <Route index element={<PhonesPage />} />
             <Route path=":phoneId?" element={<PhoneDetailsPage />} />
           </Route>
+          <Route path="tablets" element={<TabletsPage />} />
+          <Route path="accessories" element={<AccessoriesPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="*" element={<NotFoundPage />} />
