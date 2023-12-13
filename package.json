@@ -58,6 +58,6 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": "npm run fix-style"
+    "src/**/*.{ts,tsx}": "npm run lint"
   }
 }
