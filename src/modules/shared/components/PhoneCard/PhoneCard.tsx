@@ -1,17 +1,13 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import cn from 'classnames';
 import style from './PhoneCard.module.scss';
-import { PhoneItem } from '../../../../types/PhoneItem';
-// eslint-disable-next-line max-len
-import phoneImage from '../../../../static/img/phones/apple-iphone-7/black/00.jpg';
 import { useAppSelector } from '../../../../store/hooks';
+import { Phone } from '../../../../types/Phone';
 
 type Props = {
-  phoneItem: PhoneItem;
+  phone: Phone;
 };
 
-export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
+export const PhoneCard: React.FC<Props> = ({ phone }) => {
   const {
     name,
     fullPrice,
@@ -19,8 +15,8 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
     screen,
     capacity,
     ram,
-    // image,
-  } = phoneItem;
+    image,
+  } = phone;
 
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const isItemSelected = false;
@@ -38,21 +34,16 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
       })}
     >
       <div className={style.productCard__image__container}>
-        <img
-          src={phoneImage}
-          // src={image}
-          alt={name}
-          className={style.productCard__image}
-        />
+        <img src={image} alt={name} className={style.productCard__image} />
       </div>
 
-      <h2
+      <p
         className={cn(style.productCard__name, {
           [style.productCard__name__DARK]: isDarkTheme,
         })}
       >
         {name}
-      </h2>
+      </p>
 
       <div
         className={cn(style.productCard__price, {
@@ -118,6 +109,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
 
         <button
           type="button"
+          aria-label="Add to favourite"
           className={cn(style.productCard__addToFavourite, {
             [style.productCard__addToFavourite__DARK]: isDarkTheme,
             [style.productCard__addToFavourite__SELECTED]: isItemSelected,
