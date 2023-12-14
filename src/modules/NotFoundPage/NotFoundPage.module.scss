@@ -1,0 +1,58 @@
+@import '../../styles/utils/variables/colors';
+
+.container {
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.not_found_logo {
+  height: 160px;
+}
+
+.error_message {
+  color: $color__primary;
+
+  &_dark {
+    color: $color__dark-theme__white;
+  }
+}
+
+.subtitle {
+  color: $color__primary;
+
+  &_dark {
+    color: $color__dark-theme__white;
+  }
+}
+
+.headline {
+  font-size: 28px;
+  &_dark {
+    color: $color__dark-theme__white;
+  }
+}
+
+.button {
+  margin-top: 12px;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid #3B3E4A;
+  transition: scale 0.05s ease;
+  border-radius: 12px;
+  font-size: 18px;
+  text-decoration: none;
+  color: $color__primary;
+
+  &:hover {
+    scale: 1.1;
+  }
+
+  &_dark {
+    color: $color__dark-theme__white;
+  }
+}

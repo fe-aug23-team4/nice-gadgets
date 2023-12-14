@@ -22,13 +22,17 @@ export const Footer: React.FC = () => {
           />
         </Link>
         <div className={styles.nav_center}>
-          <Link to="/github" className={`${isDarkTheme ? styles.nav_text__dark : styles.nav_text}`}>
+          <Link
+            to="https://github.com/fe-aug23-team4"
+            className={`${isDarkTheme ? styles.nav_text__dark : styles.nav_text}`}
+            target="_blank"
+          >
             Github
           </Link>
-          <Link to="/contacts" className={`${isDarkTheme ? styles.nav_text__dark : styles.nav_text}`}>
+          <Link to="/" className={`${isDarkTheme ? styles.nav_text__dark : styles.nav_text}`}>
             Contacts
           </Link>
-          <Link to="/rights" className={`${isDarkTheme ? styles.nav_text__dark : styles.nav_text}`}>
+          <Link to="/" className={`${isDarkTheme ? styles.nav_text__dark : styles.nav_text}`}>
             Rights
           </Link>
         </div>
@@ -36,7 +40,7 @@ export const Footer: React.FC = () => {
           <Link to="#top" className={styles.button_top}>
             Back to Top
           </Link>
-          <Link to="/">
+          <Link to="#top">
             <img
               src={isDarkTheme ? top_button_dark : top_button}
               alt="nice_gadgets_logo"
