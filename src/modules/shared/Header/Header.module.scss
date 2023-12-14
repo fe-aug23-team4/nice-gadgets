@@ -1,5 +1,5 @@
-@import '../../../../styles/utils/variables/colors';
-@import '../../../../styles/utils/mixins/mixin-media';
+@import '../../../styles/utils/variables/colors';
+@import '../../../styles/utils/mixins/mixin-media';
 
 .header {
   display: flex;
@@ -24,7 +24,7 @@
     height: 22px;
   }
 
-  &__burger {
+  &__burger_icon {
     width: 48px;
     height: 48px;
 
@@ -32,23 +32,24 @@
     align-items: center;
     justify-content: center;
 
+    border: none;
     border-left: 1px solid $color__elements;
+    background-color: #fff;
   }
 
   &__nav {
     display: none;
     align-items: center;
     gap: 32px;
-
-    text-transform: uppercase;
-    font-weight: 800;
-    font-size: 12px;
   }
 
   &__link {
     position: relative;
     text-decoration: none;
     color: $color__secondary;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
 
     &::after {
       content: '';
@@ -56,8 +57,8 @@
       top: 30px;
       display: block;
       height: 3px;
-      right: 50%;
-      left: 50%;
+      right: 100%;
+      left: 100%;
       background-color: $color__primary;
     }
 
@@ -66,14 +67,8 @@
     }
 
     &__ISACTIVE::after {
-      content: '';
-      position: absolute;
-      top: 30px;
-      display: block;
-      height: 3px;
       right: 0;
       left: 0;
-      background-color: $color__primary;
       transition: all 0.3s;
     }
   }
@@ -89,8 +84,9 @@
     border-left: 1px solid $color__elements;
   }
 
+
   @include onTablet {
-    &__burger {
+    &__burger_icon {
       display: none;
     }
 
@@ -130,7 +126,11 @@
     }
 
     &__link::after {
-      top: 39px;
+      top: 38px;
     }
   }
+}
+
+.headerDark {
+  background-color: #0f1121;
 }
