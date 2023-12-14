@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import style from './PhoneCard.module.scss';
-import { useAppSelector } from '../../../../store/hooks';
-import { Phone } from '../../../../types/Phone';
+import { useAppSelector } from '../../../store/hooks';
+import { Phone } from '../../../types/Phone';
 
 type Props = {
   phone: Phone;

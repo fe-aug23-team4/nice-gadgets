@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import logo from '../../static/Logo/logo.svg';
-import logo_dark from '../../static/Logo/logo_dark.png';
-import top_button from '../../static/top_button/top_button.png';
-import top_button_dark from '../../static/top_button/top_button_dark.png';
+import logo from '../../../static/logo/logo_bright.png';
+import logo_dark from '../../../static/logo/logo_dark.png';
+import top_button
+  from '../../../static/buttons/slider-up-button-default_button.svg';
+import top_button_dark
+  from '../../../static/buttons/slider-up-button-default_button_dark.svg';
 
 export const Footer: React.FC = () => {
   const isDarkTheme = false;

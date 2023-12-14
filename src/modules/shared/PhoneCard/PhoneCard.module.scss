@@ -1,6 +1,6 @@
-@import '../../../../styles/utils/variables/colors';
-@import '../../../../styles/utils/typography';
-@import '../../../../styles/utils/mixins/mixin-media';
+@import '../../../styles/utils/variables/colors';
+@import '../../../styles/utils/typography';
+@import '../../../styles/utils/mixins/mixin-media';
 
 .productCard {
   display: flex;
@@ -50,7 +50,7 @@
     line-height: 21px;
 
     &__DARK {
-      color: $color__dark-theme-white;
+      color: $color__dark-theme__white;
     }
   }
 
@@ -72,7 +72,7 @@
 
     &__DARK {
       &::after {
-        background: $color__dark-theme-elements;
+        background: $color__dark-theme__elements;
       }
     }
   }
@@ -86,7 +86,7 @@
     line-height: 140%;
 
     &__DARK {
-      color: $color__dark-theme-white;
+      color: $color__dark-theme__white;
     }
   }
 
@@ -145,7 +145,7 @@
       line-height: normal;
 
       &__DARK {
-        color: $color__dark-theme-white;
+        color: $color__dark-theme__white;
       }
     }
   }
@@ -192,7 +192,7 @@
     &__DARK {
       background: #905bff;
       border-radius: 0px;
-      color: $color__dark-theme-white;
+      color: $color__dark-theme__white;
       border: none;
 
       &:hover {
@@ -200,14 +200,14 @@
       }
 
       &__SELECTED {
-        background: $color__dark-theme-secondary;
-        color: $color__dark-theme-white;
+        background: $color__dark-theme__secondary;
+        color: $color__dark-theme__white;
       }
     }
   }
 
   &__addToFavourite {
-    background-image: url('../../Images/Icons/Favourites-icon_Default.svg');
+    background-image: url('../../../static/buttons/fovourites-default_button.svg');
 
     margin-left: 8px;
     width: 40px;
@@ -225,29 +225,29 @@
     }
 
     &__SELECTED {
-      background-image: url('../../Images/Icons/Favourites-icon_Selected.svg');
+      background-image: url('../../../static/buttons/fovourites-selected_button.svg');
 
       border: 1px solid $color__elements;
     }
 
     &__DARK {
-      background-image: url('../../Images/Icons/Favourites-icon_darkDefault.svg');
+      background-image: url('../../../static/buttons/fovourites-default_button_dark.svg');
 
-      background-color: $color__dark-theme-secondary;
+      background-color: $color__dark-theme__secondary;
       border-radius: 0px;
       border: none;
-      color: $color__dark-theme-white;
+      color: $color__dark-theme__white;
 
       &:hover {
         background-color: #4a4d58;
       }
 
       &__SELECTED {
-        background-image: url('../../Images/Icons/Favourites-icon_darkSelected.svg');
+        background-image: url('../../../static/buttons/fovourites-selected_button_dark.svg');
 
-        border: 1px solid $color__dark-theme-elements;
+        border: 1px solid $color__dark-theme__elements;
         border-radius: 0px;
-        background-color: $color__dark-theme-secondary;
+        background-color: $color__dark-theme__secondary;
       }
     }
   }

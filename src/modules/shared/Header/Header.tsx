@@ -4,11 +4,11 @@ import cn from 'classnames';
 // import { actions } from '../../../../store/reducers/themeSlice';
 
 import styles from './Header.module.scss';
-import logo from '../../../../static/img/Logo.png';
-import burger from './static/icons/Burger.png';
-import close from '../../../../static/icons/Close.png';
-import favourites from './static/icons/Favourites.png';
-import cart from './static/icons/cart.png';
+import logo from '../../../static/logo/logo_bright.png';
+import burger from '../../../static/icons/menu_icon.svg';
+import close from '../../../static/icons/close_icon.svg';
+import favourites from '../../../static/icons/favourites_icon.svg';
+import cart from '../../../static/icons/cart_icon.svg';
 // import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 
 const getLinkClass = (
