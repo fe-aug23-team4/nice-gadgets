@@ -1,10 +1,14 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
 import themeReducer from './reducers/themeSlice';
+import favoritesReducer from './reducers/favoritesSlice';
+import cartReducer from './reducers/cartSlice';
 
 export const store = configureStore({
   reducer: {
     theme: themeReducer,
+    favorites: favoritesReducer,
+    cart: cartReducer,
   },
 });
 
