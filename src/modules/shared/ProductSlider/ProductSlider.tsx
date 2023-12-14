@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import cn from 'classnames';
 import styles from './ProductSlider.module.scss';
@@ -19,46 +19,63 @@ type Props = {
 
 export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
+  const ref = createRef<Slider>();
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 2,
+    // slidesToShow: 4,
+    // slidesToScroll: 2,
     autoplay: false,
     // pauseOnHover: true,
     swipeToSlide: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow
+      handleClick={() => {
+        setCurrentSlide((current) => current + 1);
+      }}
+      currentSlide={currentSlide}
+      maxSlides={phones.length - 4}
+    />,
+    prevArrow: <SamplePrevArrow
+      handleClick={() => {
+        setCurrentSlide((current) => current - 1);
+      }}
+      currentSlide={currentSlide}
+    />,
     // adaptiveHeight: true,
-    // centerMode: false,
-    // centerPadding: '10px',
-    // responsive: [
-    //   {
-    //     breakpoint: 320,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 640,
-    //     settings: {
-    //       slidesToShow: 2,
-    //       slidesToScroll: 2,
-    //       initialSlide: 2,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 1200,
-    //     settings: {
-    //       slidesToShow: 4,
-    //       slidesToScroll: 4,
-    //     },
-    //   },
-    // ],
+    centerMode: true,
+    centerPadding: '40px',
+    responsive: [
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+    ],
   };
+
+  useEffect(() => {
+    console.log(ref);
+  }, [ref]);
 
   return (
     <div className={styles.container}>
@@ -68,6 +85,7 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
         className={cn(styles['slider-card'], styles['slick-list-card'], {
           [styles.slider__dark]: isDarkTheme,
         })}
+        ref={ref}
       >
         {phones.map(phone => (
           <PhoneCard key={phone.id} phone={phone} />

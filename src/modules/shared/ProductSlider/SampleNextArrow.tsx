@@ -14,7 +14,9 @@ import { useAppSelector } from '../../../store/hooks';
 export const SampleNextArrow: React.FC = (props: any) => {
   const [isHover, setIsHover] = useState(false);
 
-  const { style, onClick } = props;
+  const {
+    style, onClick, handleClick, currentSlide, maxSlides,
+  } = props;
   const { isDarkTheme } = useAppSelector((state) => state.theme);
 
   return (
@@ -31,8 +33,14 @@ export const SampleNextArrow: React.FC = (props: any) => {
           : { ...style }}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
-        onClick={onClick}
+        onClick={() => {
+          if (currentSlide < maxSlides) {
+            onClick();
+            handleClick();
+          }
+        }}
         aria-label="sampleNextArrow"
+        disabled={currentSlide > 6}
       >
         <NextIcon
           className={styles.icon}

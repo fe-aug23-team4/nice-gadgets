@@ -14,7 +14,9 @@ import { useAppSelector } from '../../../store/hooks';
 export const SamplePrevArrow: React.FC = (props: any) => {
   const [isHover, setIsHover] = useState(false);
 
-  const { style, onClick } = props;
+  const {
+    style, onClick, handleClick, currentSlide,
+  } = props;
   const { isDarkTheme } = useAppSelector((state) => state.theme);
 
   return (
@@ -31,7 +33,12 @@ export const SamplePrevArrow: React.FC = (props: any) => {
           : { ...style }}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
-        onClick={onClick}
+        onClick={() => {
+          if (currentSlide > 0) {
+            onClick();
+            handleClick();
+          }
+        }}
         aria-label="samplePrevArrow"
       >
         <PrevIcon
