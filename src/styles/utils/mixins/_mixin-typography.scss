@@ -1,0 +1,81 @@
+@import '../variables/colors';
+@import './mixin-media';
+
+@mixin typography-dark {
+  color: $color__dark-theme-white;
+}
+
+@mixin h1-typography {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+  color: $color__primary;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@mixin h2-typography {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+  color: $color__primary;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@mixin h3-typography {
+  font-size: 20px;
+  font-weight: 700;
+  color: $color__primary;
+
+  @include onTablet {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+}
+
+@mixin h4-typography {
+  font-size: 16px;
+  font-weight: 700;
+  color: $color__primary;
+
+  @include onTablet {
+    font-size: 20px;
+  }
+}
+
+@mixin upperCase-typography {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+@mixin buttons-typography {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+@mixin bodyText-typography {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+@mixin smallText-typography {
+  font-size: 12px;
+  font-weight: 700;
+}
