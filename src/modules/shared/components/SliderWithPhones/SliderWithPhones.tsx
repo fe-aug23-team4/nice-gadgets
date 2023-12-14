@@ -12,7 +12,7 @@ import './slick-theme.scss';
 import style from './SliderWithPhones.module.scss';
 import { useAppSelector } from '../../../../store/hooks';
 import { Phone } from '../../../../types/Phone';
-import { PhoneCard } from '../PhoneCard/PhoneCard';
+import { PhoneCard } from '../../PhoneCard/PhoneCard';
 
 function SampleNextArrow(props: any) {
   const { className, onClick } = props;

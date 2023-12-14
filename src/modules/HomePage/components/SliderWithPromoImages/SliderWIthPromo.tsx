@@ -11,7 +11,7 @@ import { useAppSelector } from '../../../../store/hooks';
 import { SampleNextArrow } from './SampleNextArrow';
 import { SamplePrevArrow } from './SamplePrevArrow';
 
-export const SliderWithPromo: React.FC = () => {
+export const MainSlider: React.FC = () => {
   const ref = createRef<HTMLDivElement>();
 
   const { isDarkTheme } = useAppSelector((state) => state.theme);
