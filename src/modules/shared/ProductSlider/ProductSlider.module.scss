@@ -3,7 +3,7 @@
 @import './slick-theme';
 
 .container {
-  @extend .grid;
+  // @extend .grid;
   padding-inline: 24px;
   max-width: 1200px;
   margin: 0 auto;
@@ -34,7 +34,7 @@
   border: 1px solid $color__secondary;
   border-radius: 48px;
   background-color: $color__white;
-  top: -14.1% ;
+  top: -13% ;
   -webkit-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
@@ -87,17 +87,17 @@
   box-sizing: border-box;
   // margin-left: 16px;
 
-  @include onMobile {
-    grid-column: span 4;
-  }
+  // @include onMobile {
+  //   grid-column: span 4;
+  // }
 
-  @include onTablet {
-    grid-column: span 12;
-  }
+  // @include onTablet {
+  //   grid-column: span 12;
+  // }
 
-  @include onDesktop {
-    grid-column: span 24;
-  }
+  // @include onDesktop {
+  //   grid-column: span 24;
+  // }
 }
 
 // .sliderPhoto {

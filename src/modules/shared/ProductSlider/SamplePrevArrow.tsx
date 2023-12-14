@@ -18,6 +18,25 @@ export const SamplePrevArrow: React.FC = (props: any) => {
     style, onClick, handleClick, currentSlide,
   } = props;
   const { isDarkTheme } = useAppSelector((state) => state.theme);
+  const isNotDisabled = currentSlide > 0;
+  let iconColor;
+
+  switch (true) {
+    case isDarkTheme:
+      iconColor = '#f1f2f9';
+      break;
+
+    case isDarkTheme && !isNotDisabled:
+      iconColor = '#4a4d58';
+      break;
+
+    case !isNotDisabled:
+      iconColor = '#b4bdc3';
+      break;
+
+    default:
+      iconColor = '#0f0f11';
+  }
 
   return (
     <>
@@ -43,7 +62,7 @@ export const SamplePrevArrow: React.FC = (props: any) => {
       >
         <PrevIcon
           className={styles.icon}
-          color={isDarkTheme ? '#f1f2f9' : '#0f0f11'}
+          color={iconColor}
         />
       </button>
     </>
