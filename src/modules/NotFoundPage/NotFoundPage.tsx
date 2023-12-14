@@ -4,7 +4,7 @@ import not_found_logo_dark from '../../static/images/not_found_logo_dark.jpg';
 import not_found_logo from '../../static/images/not_found_logo_bright.png';
 
 export const NotFoundPage: React.FC = () => {
-  const isDarkTheme = true;
+  const isDarkTheme = false;
 
   return (
     <div className={styles.container}>

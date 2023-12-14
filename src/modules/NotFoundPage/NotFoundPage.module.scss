@@ -1,12 +1,37 @@
 @import '../../styles/utils/variables/colors';
 
+@mixin onTablet {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+$footerAndHeaderHeight: 144px;
+$footerAndHeaderHeightTablet: 305px;
+$footerAndHeaderHeightDesktop: 160px;
+
 .container {
-  height: 55vh;
+  height: calc(100vh - #{$footerAndHeaderHeight});
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 10px;
+
+  @include onTablet {
+    height: calc(100vh - #{$footerAndHeaderHeightTablet});
+  }
+
+  @include onDesktop {
+    height: calc(100vh - #{$footerAndHeaderHeightDesktop});
+  }
+
 }
 
 .not_found_logo {
@@ -53,6 +78,20 @@
   }
 
   &_dark {
-    color: $color__dark-theme__white;
+  margin-top: 12px;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid $color__dark-theme__white;
+  transition: scale 0.05s ease;
+  border-radius: 12px;
+  font-size: 18px;
+  text-decoration: none;
+  color: $color__dark-theme__white;
+  background-color: #3B3E4A;
+
+    &:hover {
+      scale: 1.1;
+    }
   }
 }
