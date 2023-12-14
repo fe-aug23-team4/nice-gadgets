@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 import styles from './Footer.module.scss';
 import logo from '../../../static/logo/logo_bright.png';
 import logo_dark from '../../../static/logo/logo_dark.png';
@@ -7,12 +8,16 @@ import top_button
   from '../../../static/buttons/slider-up-button-default_button.svg';
 import top_button_dark
   from '../../../static/buttons/slider-up-button-default_button_dark.svg';
+import { useAppSelector } from '../../../store/hooks';
 
 export const Footer: React.FC = () => {
-  const isDarkTheme = true;
+  const { isDarkTheme } = useAppSelector(state => state.theme);
 
   return (
-    <footer className={`${isDarkTheme ? styles.footer__dark : styles.footer}`}>
+    <footer className={cn([styles.footer], {
+      [styles.footer__dark]: isDarkTheme,
+    })}
+    >
       <div className={styles.container}>
         <Link to="/">
           <img
@@ -24,15 +29,26 @@ export const Footer: React.FC = () => {
         <div className={styles.nav_center}>
           <Link
             to="https://github.com/fe-aug23-team4"
-            className={`${isDarkTheme ? styles.nav_text__dark : styles.nav_text}`}
-            target="_blank"
+            className={cn([styles.nav_text], {
+              [styles.nav_text__dark]: isDarkTheme,
+            })}
           >
             Github
           </Link>
-          <Link to="/" className={`${isDarkTheme ? styles.nav_text__dark : styles.nav_text}`}>
+          <Link
+            to="/"
+            className={cn([styles.nav_text], {
+              [styles.nav_text__dark]: isDarkTheme,
+            })}
+          >
             Contacts
           </Link>
-          <Link to="/" className={`${isDarkTheme ? styles.nav_text__dark : styles.nav_text}`}>
+          <Link
+            to="/"
+            className={cn([styles.nav_text], {
+              [styles.nav_text__dark]: isDarkTheme,
+            })}
+          >
             Rights
           </Link>
         </div>

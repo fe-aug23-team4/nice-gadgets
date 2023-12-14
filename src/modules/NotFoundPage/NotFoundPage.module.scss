@@ -1,16 +1,6 @@
 @import '../../styles/utils/variables/colors';
-
-@mixin onTablet {
-  @media (max-width: 640px) {
-    @content;
-  }
-}
-
-@mixin onDesktop {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
+@import '../../styles/utils/mixins/mixin-media';
+@import '../../styles/utils/mixins/mixin-typography';
 
 $footerAndHeaderHeight: 144px;
 $footerAndHeaderHeightTablet: 305px;
@@ -24,7 +14,7 @@ $footerAndHeaderHeightDesktop: 160px;
   align-items: center;
   gap: 10px;
 
-  @include onTablet {
+  @include onMobile {
     height: calc(100vh - #{$footerAndHeaderHeightTablet});
   }
 
@@ -40,23 +30,29 @@ $footerAndHeaderHeightDesktop: 160px;
 
 .error_message {
   color: $color__primary;
+  @include bodyText-typography;
 
   &_dark {
+    @include bodyText-typography;
     color: $color__dark-theme__white;
   }
 }
 
 .subtitle {
   color: $color__primary;
+  @include bodyText-typography;
 
   &_dark {
+    @include bodyText-typography;
     color: $color__dark-theme__white;
   }
 }
 
 .headline {
-  font-size: 28px;
+  @include h2-typography;
+
   &_dark {
+    @include h2-typography;
     color: $color__dark-theme__white;
   }
 }
@@ -69,7 +65,7 @@ $footerAndHeaderHeightDesktop: 160px;
   border: 2px solid #3B3E4A;
   transition: scale 0.05s ease;
   border-radius: 12px;
-  font-size: 18px;
+  @include buttons-typography;
   text-decoration: none;
   color: $color__primary;
 
@@ -85,7 +81,7 @@ $footerAndHeaderHeightDesktop: 160px;
   border: 2px solid $color__dark-theme__white;
   transition: scale 0.05s ease;
   border-radius: 12px;
-  font-size: 18px;
+  @include buttons-typography;
   text-decoration: none;
   color: $color__dark-theme__white;
   background-color: #3B3E4A;

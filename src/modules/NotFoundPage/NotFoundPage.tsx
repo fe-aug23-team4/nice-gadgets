@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import styles from './NotFoundPage.module.scss';
 import not_found_logo_dark from '../../static/images/not_found_logo_dark.jpg';
 import not_found_logo from '../../static/images/not_found_logo_bright.png';
+import { useAppSelector } from '../../store/hooks';
 
 export const NotFoundPage: React.FC = () => {
-  const isDarkTheme = false;
+  const { isDarkTheme } = useAppSelector(state => state.theme);
 
   return (
     <div className={styles.container}>

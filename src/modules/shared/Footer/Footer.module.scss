@@ -1,16 +1,6 @@
 @import '../../../../src/styles/utils/variables/colors';
-
-@mixin onTablet {
-  @media (max-width: 640px) {
-    @content;
-  }
-}
-
-@mixin onDesktop {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
+@import '../../../styles/utils/mixins/mixin-media';
+@import '../../../styles/utils/mixins/mixin-typography';
 
 .footer {
   justify-content: center;
@@ -22,7 +12,6 @@
   box-shadow: 0px -1px 0px 0px $color__elements;
 
   &__dark {
-    position: fixed;
     bottom: 0;
     padding: 32px 0;
     width: 100%;
@@ -31,18 +20,27 @@
     justify-content: center;
     display: flex;
 
-    @include onDesktop {
-      justify-content: center;
-      display: flex;
-    }
-
-    @include onTablet {
+    @include onMobile {
       justify-content: flex-start;
       padding: 32px 0;
       margin: 0;
       flex-direction: column;
       height: 175px;
     }
+
+    @include onDesktop {
+      justify-content: center;
+      display: flex;
+    }
+
+  }
+
+  @include onMobile {
+    justify-content: flex-start;
+    padding: 32px 0;
+    margin: 0;
+    flex-direction: column;
+    height: 175px;
   }
 
   @include onDesktop {
@@ -50,13 +48,6 @@
     display: flex;
   }
 
-  @include onTablet {
-    justify-content: flex-start;
-    padding: 32px 0;
-    margin: 0;
-    flex-direction: column;
-    height: 175px;
-  }
 }
 
 .container {
@@ -67,17 +58,17 @@
   height: 32px;
   align-items: center;
 
-
-  @include onDesktop {
-    max-width: 1200px;
-  }
-
-  @include onTablet {
+  @include onMobile {
     margin: 0 16px;
     gap: 32px;
     flex-direction: column;
     align-items: flex-start;
   }
+
+  @include onDesktop {
+    max-width: 1200px;
+  }
+
 }
 
 .return_button,
@@ -87,7 +78,7 @@
   justify-content: space-between;
   gap: 16px;
 
-  @include onTablet {
+  @include onMobile {
     align-self: center;
     justify-content: center;
   }
@@ -98,7 +89,7 @@
   width: 33%;
   justify-content: space-between;
 
-  @include onTablet {
+  @include onMobile {
     flex-direction: column;
     gap: 16px;
   }
@@ -109,10 +100,8 @@
   display: flex;
   color: $color__secondary;
   font-family: 'Mont', sans-serif;
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
   justify-content: space-between;
+  @include upperCase-typography;
   padding: 18px 12px;
 
   &__dark {
@@ -120,18 +109,16 @@
     display: flex;
     color: $color__dark-theme__white;
     font-family: 'Mont', sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
     justify-content: space-between;
+    @include upperCase-typography;
     padding: 18px 12px;
 
-    @include onTablet {
+    @include onMobile {
       padding: 0;
     }
   }
 
-  @include onTablet {
+  @include onMobile {
     padding: 0;
   }
 }
@@ -152,9 +139,8 @@
   display: flex;
   color: $color__secondary;
   font-family: 'Mont', sans-serif;
-  font-size: 12px;
-  font-weight: 800;
   text-decoration: none;
+  @include smallText-typography;
 }
 
 .button_logo {
