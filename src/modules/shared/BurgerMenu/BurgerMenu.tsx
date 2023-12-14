@@ -5,7 +5,9 @@ import cn from 'classnames';
 import styles from './BurgerMenu.module.scss';
 
 import favourites from '../../../static/icons/favourites_icon.svg';
+import favouritesDark from '../../../static/icons/favourites_icon_dark.svg';
 import cart from '../../../static/icons/cart_icon.svg';
+import cartDark from '../../../static/icons/cart_icon_dark.svg';
 
 interface Burger {
   active: boolean,
@@ -13,17 +15,17 @@ interface Burger {
   isThemeDark: boolean,
 }
 
+const getLinkClass = (
+  { isActive }: { isActive: boolean },
+) => cn([styles.burger__link], {
+  [styles.burger__link__ISACTIVE]: isActive,
+});
+
 export const BurgerMenu: React.FC<Burger> = ({
   active,
   setActive,
   isThemeDark,
 }) => {
-  const getLinkClass = (
-    { isActive }: { isActive: boolean },
-  ) => cn([styles.burger__link], {
-    [styles.burger__link__ISACTIVE]: isActive,
-  });
-
   return (
     <aside className={cn([styles.burger], {
       [styles.burger__IsOpen]: active,
@@ -77,7 +79,10 @@ export const BurgerMenu: React.FC<Burger> = ({
             className={getLinkClass}
             onClick={() => setActive(false)}
           >
-            <img src={favourites} alt="favourites" />
+            <img
+              src={!isThemeDark ? favourites : favouritesDark}
+              alt="favourites"
+            />
           </NavLink>
         </div>
 
@@ -87,7 +92,10 @@ export const BurgerMenu: React.FC<Burger> = ({
             className={getLinkClass}
             onClick={() => setActive(false)}
           >
-            <img src={cart} alt="cart" />
+            <img
+              src={!isThemeDark ? cart : cartDark}
+              alt="cart"
+            />
           </NavLink>
         </div>
       </div>

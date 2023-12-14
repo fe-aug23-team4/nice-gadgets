@@ -7,8 +7,9 @@
   align-items: center;
   justify-content: space-between;
   position: fixed;
-  height: calc(100vh - 50px);
-  top: 50px;
+  z-index: 100;
+  height: calc(100vh - 49px);
+  top: 49px;
   left: 0;
   right: 0;
 
@@ -84,12 +85,28 @@
       width: 100%;
 
       &::after {
-        top: 60px;
+        top: 61px;
       }
     }
   }
 
   @include onTablet {
     display: none;
+  }
+}
+
+.burgerDark {
+  background-color: $color__dark-theme__black;
+
+  & .burger__link {
+    color: $color__dark-theme__secondary;
+
+    &__ISACTIVE {
+      color: $color__dark-theme__white;
+    }
+
+    &::after {
+      background-color: $color__dark-theme__white;
+    }
   }
 }
