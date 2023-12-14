@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './ShopByCategory.module.scss';
 
-import categoryPhone from '../../../static/banners/category-phones.png';
-import categoryTablet from '../../../static/banners/category-tablets.png';
+import categoryPhone from '../../../../static/banners/category-phones.png';
+import categoryTablet from '../../../../static/banners/category-tablets.png';
 import categoryAccessories
-  from '../../../static/banners/category-accessories.png';
+  from '../../../../static/banners/category-accessories.png';
 
 export const ShopByCategory: React.FC = () => {
   const isThemeDark = false;

@@ -5,7 +5,7 @@ import styles from './FavoritesPage.module.scss';
 import arrowIcon from '../../static/icons/arrow-right_icon.svg';
 import { Loader } from '../shared/Loader';
 import { Phone } from '../../types/Phone';
-import { List } from '../shared/List';
+import { ProductList } from '../shared/ProductList';
 import { HomeIcon } from './HomeIcon';
 import { getNewestPhones } from '../../api/service';
 
@@ -65,7 +65,7 @@ export const FavoritesPage: React.FC = () => {
             {`${favourites.length || 0} items`}
           </p>
 
-          <List phones={favourites} />
+          <ProductList phones={favourites} />
         </>
       )}
     </section>

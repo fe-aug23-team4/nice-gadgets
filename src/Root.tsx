@@ -7,7 +7,7 @@ import {
 import { App } from './App';
 import { HomePage } from './modules/HomePage';
 import { PhonesPage } from './modules/PhonesPage';
-import { PhoneDetailsPage } from './modules/PhoneDetailsPage';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
@@ -23,7 +23,7 @@ export const Root = () => (
           <Route path="home" element={<Navigate to="/" replace />} />
           <Route path="phones">
             <Route index element={<PhonesPage />} />
-            <Route path=":phoneId?" element={<PhoneDetailsPage />} />
+            <Route path=":phoneId?" element={<ProductDetailsPage />} />
           </Route>
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
