@@ -9,7 +9,7 @@ import top_button_dark
   from '../../../static/buttons/slider-up-button-default_button_dark.svg';
 
 export const Footer: React.FC = () => {
-  const isDarkTheme = false;
+  const isDarkTheme = true;
 
   return (
     <footer className={`${isDarkTheme ? styles.footer__dark : styles.footer}`}>
