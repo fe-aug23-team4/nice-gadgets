@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import cn from 'classnames';
 // import { actions } from '../../../../store/reducers/themeSlice';
 
 import styles from './Header.module.scss';
 import logo from '../../../static/logo/logo_bright.png';
-import burger from '../../../static/icons/menu_icon.svg';
-import close from '../../../static/icons/close_icon.svg';
+import logoDark from '../../../static/logo/logo_dark.png';
+import { ReactComponent as Burger } from '../../../static/icons/menu_icon.svg';
+import { ReactComponent as Close } from '../../../static/icons/close_icon.svg';
 import favourites from '../../../static/icons/favourites_icon.svg';
+import favouritesDark from '../../../static/icons/favourites_icon_dark.svg';
 import cart from '../../../static/icons/cart_icon.svg';
+import cartDark from '../../../static/icons/cart_icon_dark.svg';
+
+import { BurgerMenu } from '../BurgerMenu';
 // import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 
 const getLinkClass = (
@@ -25,16 +30,29 @@ export const Header: React.FC = () => {
   //   dispatch(actions.change());
   // }
 
-  const [IsBurgerActive, setIsBurgerActive] = useState(false);
+  const [isBurgerActive, setIsBurgerActive] = useState(false);
+
+  const isThemeDark = true;
+
+  useEffect(() => {
+    document.body.style.overflow = isBurgerActive ? 'hidden' : 'visible';
+  }, [isBurgerActive]);
 
   return (
-    <header className={styles.header}>
+    <header className={cn(styles.header, {
+      [styles.headerDark]: isThemeDark,
+    })}
+    >
       <div className={styles.header__left}>
         <Link
           to="/"
           onClick={() => setIsBurgerActive(false)}
         >
-          <img src={logo} alt="logo" className={styles.header__logo} />
+          <img
+            src={!isThemeDark ? logo : logoDark}
+            alt="logo"
+            className={styles.header__logo}
+          />
         </Link>
 
         <ul className={styles.header__nav}>
@@ -76,133 +94,40 @@ export const Header: React.FC = () => {
       <div className={styles.header__right}>
         <div className={styles.header__icon}>
           <NavLink to="/favorites" className={getLinkClass}>
-            <img src={favourites} alt="favourites" />
+            <img
+              src={!isThemeDark ? favourites : favouritesDark}
+              alt="favourites"
+            />
           </NavLink>
         </div>
 
         <div className={styles.header__icon}>
           <NavLink to="/cart" className={getLinkClass}>
-            <img src={cart} alt="cart" />
+            <img
+              src={!isThemeDark ? cart : cartDark}
+              alt="cart"
+            />
           </NavLink>
         </div>
 
         <button
           type="button"
-          className={cn([styles.header__burger_icon], {
-            [styles.header__burger__IsOpen]: IsBurgerActive,
-          })}
-          onClick={() => setIsBurgerActive(!IsBurgerActive)}
+          className={styles.header__burger_icon}
+          onClick={() => setIsBurgerActive(!isBurgerActive)}
         >
-          {IsBurgerActive
-            ? (<img src={close} alt="burger-menu" />)
-            : (<img src={burger} alt="burger-menu" />)}
-
+          {isBurgerActive ? (
+            <Close color={isThemeDark ? '#fff' : '#000'} />
+          ) : (
+            <Burger color={isThemeDark ? '#fff' : '#000'} />
+          )}
         </button>
-
-        <aside className={cn([styles.header__burger], {
-          [styles.header__burger__IsOpen]: IsBurgerActive,
-        })}
-        >
-          <nav>
-            <ul className={styles.header__burger_menu}>
-              <li>
-                <NavLink
-                  to="/"
-                  className={getLinkClass}
-                  onClick={() => setIsBurgerActive(false)}
-                >
-                  home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/phones"
-                  className={getLinkClass}
-                  onClick={() => setIsBurgerActive(false)}
-                >
-                  phones
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/tablets"
-                  className={getLinkClass}
-                  onClick={() => setIsBurgerActive(false)}
-                >
-                  tablets
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/accessories"
-                  className={getLinkClass}
-                  onClick={() => setIsBurgerActive(false)}
-                >
-                  accessories
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
-        </aside>
-        <button
-          type="button"
-          className={cn([styles.header__burger_icon], {
-            [styles.header__burger__IsOpen]: IsBurgerActive,
-          })}
-          onClick={() => setIsBurgerActive(!IsBurgerActive)}
-        >
-          {IsBurgerActive
-            ? (<img src={close} alt="burger-menu" />)
-            : (<img src={burger} alt="burger-menu" />)}
-
-        </button>
-
-        <aside className={cn([styles.header__burger], {
-          [styles.header__burger__IsOpen]: IsBurgerActive,
-        })}
-        >
-          <nav>
-            <ul className={styles.header__burger_menu}>
-              <li>
-                <NavLink
-                  to="/"
-                  className={getLinkClass}
-                  onClick={() => setIsBurgerActive(false)}
-                >
-                  home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/phones"
-                  className={getLinkClass}
-                  onClick={() => setIsBurgerActive(false)}
-                >
-                  phones
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/tablets"
-                  className={getLinkClass}
-                  onClick={() => setIsBurgerActive(false)}
-                >
-                  tablets
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/accessories"
-                  className={getLinkClass}
-                  onClick={() => setIsBurgerActive(false)}
-                >
-                  accessories
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
-        </aside>
       </div>
+
+      <BurgerMenu
+        active={isBurgerActive}
+        setActive={setIsBurgerActive}
+        isThemeDark={isThemeDark}
+      />
     </header>
   );
 };
