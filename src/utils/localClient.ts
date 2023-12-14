@@ -10,7 +10,7 @@ export const localClient = {
   },
 
   write: (key: string, data: any) => {
-    window.localStorage.setItem(key, JSON.stringify(data));
+    window.localStorage.setItem(key, JSON.stringify(data, null, 2));
   },
 
   init: (key: string, initialData: any) => {
