@@ -1,0 +1,67 @@
+@import '../../styles/utils/variables/colors';
+@import '../../styles/utils/mixins/mixin-media';
+@import '../../styles/blocks/grid';
+
+.favouritesPage {
+  padding: 1rem 1.5625rem 3.5rem;
+  background-color: $color__hover-and-bg;
+
+  @include onTablet {
+      padding-inline: 1.5rem;
+      padding-bottom: 4rem;
+    }
+
+    @include onDesktop {
+      padding-inline: 2rem;
+      padding-bottom: 5rem;
+    }
+
+  &__top {
+    display: flex;
+    gap: 8px;
+
+    &__content {
+      color: $color__secondary;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+
+  &__title {
+    margin-top: 1.5rem;
+    color: $color__primary;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 128%;
+    letter-spacing: -0.32px;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 116%;
+    letter-spacing: -0.48px;
+  }
+
+  &__dark {
+  color: $color__dark-theme__white;
+  }
+}
+
+  &__content {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    max-width: 1200px;
+    color: $color__secondary;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 150%;
+
+    @include onTablet {
+      margin-bottom: 2.5rem;
+    }
+  }
+}
+
+.favouritesPageDark {
+  background-color: #0F1121;
+}

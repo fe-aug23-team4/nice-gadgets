@@ -15,7 +15,9 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  rules: {},
+  rules: {
+    'linebreak-style': 'off',
+  },
   settings: {
     react: {
       version: 'detect',
