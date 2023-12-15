@@ -115,7 +115,7 @@
   background-color: $color__accent;
 
   &__DARK {
-    border-radius: none;
+    border-radius: 0;
     color: $color__dark-theme__white;
     background-color: $color__dark-theme__accent;
   }
