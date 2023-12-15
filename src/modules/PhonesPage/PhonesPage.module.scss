@@ -1,11 +1,14 @@
 @import '../../styles/utils/variables/colors';
+@import '../../styles/blocks/grid';
 
-.phonesPage {
+.prosuctsPage {
+  // @include grid
+
   &__DARK {
     background-color: $color__dark-theme-background;
   }
 
-  &__navHistory {
+  &__breadCrumbs {
     margin-bottom: 24px;
     margin-top: 25px;
   }
@@ -21,6 +24,40 @@
 
     &__DARK {
       color: $color__dark-theme-white;
+    }
+  }
+
+  &__errorButton {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+
+    border-radius: 8px;
+    border: none;
+    background: $color__accent;
+
+    color: $color__white;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+    }
+
+    &__DARK {
+      background: #905bff;
+      border-radius: 0px;
+      color: $color__dark-theme__white;
+      border: none;
+
+      &:hover {
+        background: #a378ff;
+      }
     }
   }
 
@@ -63,9 +100,9 @@
     border-radius: 8px;
     border: 1px solid $color__icons;
 
-    &:before {
+    &::before {
       content: icon;
-      background-image: url('../shared/Images/Icons/Icons_defaultArrowDown.svg');
+      background-image: url('../../static/buttons/Icons_ArrowDown.svg');
     }
 
     &:hover {
@@ -79,6 +116,11 @@
 
       &:hover {
         border: 1px solid #4a4d58;
+      }
+
+      &::before {
+        content: icon;
+        background-image: url('../../static/buttons/Icons_DarkArrowDown.svg');
       }
     }
   }

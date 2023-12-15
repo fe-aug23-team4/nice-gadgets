@@ -2,13 +2,11 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import cn from 'classnames';
 import style from './PhoneCard.module.scss';
-import { PhoneItem } from '../../../../types/PhoneItem';
-// eslint-disable-next-line max-len
-import phoneImage from '../../../../static/img/phones/apple-iphone-7/black/00.jpg';
 import { useAppSelector } from '../../../../store/hooks';
+import { Phone } from '../../../../types/Phone';
 
 type Props = {
-  phoneItem: PhoneItem;
+  phoneItem: Phone;
 };
 
 export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
@@ -19,7 +17,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
     screen,
     capacity,
     ram,
-    // image,
+    image,
   } = phoneItem;
 
   const { isDarkTheme } = useAppSelector((state) => state.theme);
@@ -55,8 +53,7 @@ export const PhoneCard: React.FC<Props> = ({ phoneItem }) => {
     >
       <div className={style.productCard__image__container}>
         <img
-          src={phoneImage}
-          // src={image}
+          src={image}
           alt={name}
           className={style.productCard__image}
         />
