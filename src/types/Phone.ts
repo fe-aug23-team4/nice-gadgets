@@ -13,3 +13,7 @@ export interface Phone {
   year: number;
   image: string;
 }
+
+export interface PhoneWithAmount extends Phone {
+  amount: number;
+}
