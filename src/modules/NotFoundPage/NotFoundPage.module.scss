@@ -1,0 +1,93 @@
+@import '../../styles/utils/variables/colors';
+@import '../../styles/utils/mixins/mixin-media';
+@import '../../styles/utils/mixins/mixin-typography';
+
+$footerAndHeaderHeight: 144px;
+$footerAndHeaderHeightTablet: 305px;
+$footerAndHeaderHeightDesktop: 160px;
+
+.container {
+  height: calc(100vh - #{$footerAndHeaderHeight});
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  @include onMobile {
+    height: calc(100vh - #{$footerAndHeaderHeightTablet});
+  }
+
+  @include onDesktop {
+    height: calc(100vh - #{$footerAndHeaderHeightDesktop});
+  }
+
+}
+
+.not_found_logo {
+  height: 160px;
+}
+
+.error_message {
+  color: $color__primary;
+  @include bodyText-typography;
+
+  &_dark {
+    @include bodyText-typography;
+    color: $color__dark-theme__white;
+  }
+}
+
+.subtitle {
+  color: $color__primary;
+  @include bodyText-typography;
+
+  &_dark {
+    @include bodyText-typography;
+    color: $color__dark-theme__white;
+  }
+}
+
+.headline {
+  @include h2-typography;
+
+  &_dark {
+    @include h2-typography;
+    color: $color__dark-theme__white;
+  }
+}
+
+.button {
+  margin-top: 12px;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid #3B3E4A;
+  transition: scale 0.05s ease;
+  border-radius: 12px;
+  @include buttons-typography;
+  text-decoration: none;
+  color: $color__primary;
+
+  &:hover {
+    scale: 1.1;
+  }
+
+  &_dark {
+  margin-top: 12px;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid $color__dark-theme__white;
+  transition: scale 0.05s ease;
+  border-radius: 12px;
+  @include buttons-typography;
+  text-decoration: none;
+  color: $color__dark-theme__white;
+  background-color: #3B3E4A;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}
