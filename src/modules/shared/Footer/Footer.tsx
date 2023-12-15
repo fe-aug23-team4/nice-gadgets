@@ -39,6 +39,7 @@ export const Footer: React.FC = () => {
             className={cn([styles.nav_text], {
               [styles.nav_text__dark]: isDarkTheme,
             })}
+            target="_blank"
           >
             Github
           </Link>
