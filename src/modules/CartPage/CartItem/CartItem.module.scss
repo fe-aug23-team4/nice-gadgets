@@ -4,25 +4,17 @@
 
 .cartItem {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  max-width: 350px;
-  margin: 0 auto;
-  border-radius: 1rem;
-  border: 1px solid $color__elements;
-
-  @include onTablet {
-    flex-direction: row;
-    max-width: 1200px;
-    padding: 1.5rem;
-    gap: 1.5rem;
-  }
-
-  @include onDesktop {
-    margin-right: 360px;
-    // I will remove this when I have grid
-  }
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid $color__elements;
+  
+    @include onTablet {
+      flex-direction: row;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
 }
 
 .top {
