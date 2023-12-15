@@ -10,7 +10,7 @@ export const App: React.FC = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="container">
         <Outlet />
       </main>
       <Footer />

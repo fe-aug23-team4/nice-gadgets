@@ -4,7 +4,9 @@
 @import './styles/utils/typography';
 
 // Blocks
+@import './styles/blocks/page';
 @import './styles/blocks/grid';
+@import './styles/blocks/container';
 
 :root {
   font-family: 'Mont', sans-serif;
