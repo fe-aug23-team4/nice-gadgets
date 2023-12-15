@@ -1,7 +1,7 @@
 import React from 'react';
 
 import cn from 'classnames';
-// import { useAppSelector } from '../../../store/hooks';
+import { useAppSelector } from '../../../store/hooks';
 import { Phone } from '../../../types/Phone';
 import styles from './CartItem.module.scss';
 import { ReactComponent as CloseIcon }
@@ -16,8 +16,7 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ phone }) => {
-  // const isThemeDark = useAppSelector((state) => state.theme);
-  const isThemeDark = true;
+  const { isDarkTheme } = useAppSelector((state) => state.theme);
   const isMinusDisabled = true;
 
   const getIconColor = (isTheme: boolean, isDisabled: boolean) => {
@@ -28,7 +27,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
     return isDisabled ? '#B4BDC3' : '#0F0F11';
   };
 
-  const getClass = (isTheme:boolean, isDisabled: boolean) => {
+  const getClass = (isTheme: boolean, isDisabled: boolean) => {
     if (isTheme) {
       return isDisabled
         ? styles.changeAmountButton__dark
@@ -40,13 +39,13 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
       : styles.changeAmountButton__active;
   };
 
-  const minusIconColor = getIconColor(isThemeDark, isMinusDisabled);
-  const minusClass = getClass(isThemeDark, isMinusDisabled);
+  const minusIconColor = getIconColor(isDarkTheme, isMinusDisabled);
+  const minusClass = getClass(isDarkTheme, isMinusDisabled);
 
   return (
     <article
       className={cn(styles.cartItem, {
-        [styles.dark]: isThemeDark,
+        [styles.dark]: isDarkTheme,
       })}
     >
       <div className={styles.top}>
@@ -56,7 +55,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
           className={styles.closeButton}
         >
           <CloseIcon
-            color={isThemeDark ? '#4A4D58' : '#B4BDC3'}
+            color={isDarkTheme ? '#4A4D58' : '#B4BDC3'}
           />
         </button>
 
@@ -68,14 +67,14 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
             alt={phone?.name}
             // className={styles.img}
             className={cn(styles.img, {
-              [styles.img__dark]: isThemeDark,
+              [styles.img__dark]: isDarkTheme,
             })}
           />
         </div>
 
         <p
           className={cn(styles.content, {
-            [styles.darkContent]: isThemeDark,
+            [styles.darkContent]: isDarkTheme,
           })}
         >
           {phone?.name}
@@ -97,7 +96,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
           </button>
           <p
             className={cn(styles.content, {
-              [styles.darkContent]: isThemeDark,
+              [styles.darkContent]: isDarkTheme,
             })}
           >
             1
@@ -107,18 +106,18 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
             type="button"
             // className={cn(styles.changeAmountButton)}
             className={cn(styles.changeAmountButton, {
-              [styles.changeAmountButton__activeDark]: isThemeDark,
+              [styles.changeAmountButton__activeDark]: isDarkTheme,
             })}
           >
             <PlusIcon
-              color={isThemeDark ? '#F1F2F9' : '#0F0F11'}
+              color={isDarkTheme ? '#F1F2F9' : '#0F0F11'}
             />
           </button>
         </div>
 
         <p
           className={cn(styles.content, {
-            [styles.darkContent]: isThemeDark,
+            [styles.darkContent]: isDarkTheme,
           })}
         >
           {`$ ${phone?.price}`}
