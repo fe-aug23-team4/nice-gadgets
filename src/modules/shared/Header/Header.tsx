@@ -6,12 +6,14 @@ import { actions } from '../../../store/reducers/themeSlice';
 import styles from './Header.module.scss';
 import logo from '../../../static/logo/logo_bright.png';
 import logoDark from '../../../static/logo/logo_dark.png';
-import { ReactComponent as Burger } from '../../../static/icons/menu_icon.svg';
-import { ReactComponent as Close } from '../../../static/icons/close_icon.svg';
-import favourites from '../../../static/icons/favourites_icon.svg';
-import favouritesDark from '../../../static/icons/favourites_icon_dark.svg';
-import cart from '../../../static/icons/cart_icon.svg';
-import cartDark from '../../../static/icons/cart_icon_dark.svg';
+import { ReactComponent as Burger }
+  from '../../../static/icons/menu_icon.svg';
+import { ReactComponent as Close }
+  from '../../../static/icons/close_icon.svg';
+import { ReactComponent as Favourites }
+  from '../../../static/icons/favourites_icon.svg';
+import { ReactComponent as Cart }
+  from '../../../static/icons/cart_icon.svg';
 
 import { BurgerMenu } from '../BurgerMenu';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
@@ -26,9 +28,13 @@ export const Header: React.FC = () => {
   const { isDarkTheme } = useAppSelector(state => state.theme);
   const dispatch = useAppDispatch();
 
-  function ThemeHandler() {
+  function themeHandler() {
     dispatch(actions.change());
   }
+
+  const getButtonColor = () => {
+    return isDarkTheme ? '#F1F2F9' : '#0F0F11';
+  };
 
   const [isBurgerActive, setIsBurgerActive] = useState(false);
 
@@ -95,7 +101,7 @@ export const Header: React.FC = () => {
             type="checkbox"
             className={styles.header__themeSwitch_input}
             id="themeSwitch"
-            onChange={() => ThemeHandler()}
+            onChange={themeHandler}
           />
           <label
             htmlFor="themeSwitch"
@@ -107,19 +113,13 @@ export const Header: React.FC = () => {
 
         <div className={styles.header__icon}>
           <NavLink to="/favorites" className={getLinkClass}>
-            <img
-              src={!isDarkTheme ? favourites : favouritesDark}
-              alt="favourites"
-            />
+            <Favourites color={getButtonColor()} />
           </NavLink>
         </div>
 
         <div className={styles.header__icon}>
           <NavLink to="/cart" className={getLinkClass}>
-            <img
-              src={!isDarkTheme ? cart : cartDark}
-              alt="cart"
-            />
+            <Cart color={getButtonColor()} />
           </NavLink>
         </div>
 
@@ -129,9 +129,9 @@ export const Header: React.FC = () => {
           onClick={() => setIsBurgerActive(!isBurgerActive)}
         >
           {isBurgerActive ? (
-            <Close color={isDarkTheme ? '#fff' : '#000'} />
+            <Close color={getButtonColor()} />
           ) : (
-            <Burger color={isDarkTheme ? '#fff' : '#000'} />
+            <Burger color={getButtonColor()} />
           )}
         </button>
       </div>
