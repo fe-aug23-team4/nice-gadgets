@@ -1,0 +1,16 @@
+@import '../utils/mixins/mixin-media';
+
+.container {
+  max-width: 1200px;
+  padding: 0 16px;
+
+  @include onTablet {
+    padding: 0 24px;
+  }
+
+  @include onDesktop {
+    width: 100%;
+    padding: 0 32px;
+    margin-inline: auto;
+  }
+}

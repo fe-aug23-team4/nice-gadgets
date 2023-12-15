@@ -1,20 +1,7 @@
 @import '../../../../styles/utils/mixins/mixin-media';
 
 .mainTitle {
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0px;
+  width: 0px;
+  height: 0px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-
-  @include onTablet {
-    padding-bottom: 7px;
-  }
-
-  @include onDesktop {
-    padding-bottom: 31px;
-  }
 }

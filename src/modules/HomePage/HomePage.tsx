@@ -12,7 +12,7 @@ export const HomePage: React.FC = () => {
     <>
       <MainTitle />
 
-      <h2>Welcome to Nice Gadgets store!</h2>
+      <h2 className="page__title">Welcome to Nice Gadgets store!</h2>
 
       <MainSlider />
 

@@ -1,0 +1,28 @@
+@import '../utils/variables/colors';
+@import '../utils/mixins/mixin-media';
+@import '../utils/mixins/mixin-typography';
+
+.page {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    @include h1-typography;
+
+    @include onTablet {
+      margin-bottom: 32px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 56px;
+    }
+
+    &__DARK {
+      @include typography-dark;
+    }
+  }
+}
