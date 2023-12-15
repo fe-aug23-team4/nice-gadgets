@@ -23,13 +23,11 @@ export const CartPage: React.FC = () => {
 
   return (
     <section
-      // className={styles.cart}
       className={cn(styles.cart, {
         [styles.cart__DARK]: isDarkTheme,
       })}
     >
       <div
-        // className={styles.breadcrums}
         className={cn(styles.breadcrums, {
           [styles.contentDark]: isDarkTheme,
         })}
@@ -38,7 +36,6 @@ export const CartPage: React.FC = () => {
       </div>
 
       <h2
-        // className={styles.title}
         className={cn(styles.title, {
           [styles.contentDark]: isDarkTheme,
         })}
@@ -53,9 +50,12 @@ export const CartPage: React.FC = () => {
           ))}
         </div>
 
-        <div className={styles.amountContainer}>
+        <div
+          className={cn(styles.amountContainer, {
+            [styles.amountContainer__DARK]: isDarkTheme,
+          })}
+        >
           <p
-            // className={styles.totalAmount}
             className={cn(styles.totalAmount, {
               [styles.contentDark]: isDarkTheme,
             })}
@@ -64,7 +64,6 @@ export const CartPage: React.FC = () => {
           </p>
 
           <p
-            // className={styles.amountContent}
             className={cn(styles.amountContent, {
               [styles.amountContent__DARK]: isDarkTheme,
             })}
@@ -72,9 +71,19 @@ export const CartPage: React.FC = () => {
             {`Total for ${phones.length} items`}
           </p>
 
-          <p className={styles.line} />
+          <p
+            className={cn(styles.line, {
+              [styles.line__DARK]: isDarkTheme,
+            })}
+          />
 
-          <button type="button">
+          <button
+            type="button"
+            // className={styles.button}
+            className={cn(styles.button, {
+              [styles.button__DARK]: isDarkTheme,
+            })}
+          >
             Checkout
           </button>
         </div>

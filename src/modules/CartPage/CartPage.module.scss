@@ -74,6 +74,7 @@
 
   &__DARK {
     border-radius: 0;
+    border-color: $color__dark-theme__elements;
   }
 }
 
@@ -97,6 +98,27 @@
   width: 100%;
   height: 1px;
   background-color: $color__elements;
+
+  &__DARK {
+    background-color: $color__dark-theme__secondary;
+  }
+}
+
+.button {
+  width: 100%;
+  height: 48px;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  color: $color__white;
+  @include buttons-typography;
+  background-color: $color__accent;
+
+  &__DARK {
+    border-radius: none;
+    color: $color__dark-theme__white;
+    background-color: $color__dark-theme__accent;
+  }
 }
 
 .contentDark {

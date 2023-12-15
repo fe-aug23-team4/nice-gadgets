@@ -15,6 +15,11 @@
       padding: 1.5rem;
       gap: 1.5rem;
     }
+
+    &__DARK {
+      background-color: $color__dark-theme__surface-1;
+      border: none;
+    }
 }
 
 .top {
@@ -74,7 +79,7 @@
   height: 100%;
   object-fit: fill;
 
-  &__dark {
+  &__DARK {
     border-radius: 8px;
   }
 }
@@ -91,16 +96,16 @@
   border-radius: 50px;
   background-color: transparent;
 
-  &__active {
+  &__ACTIVE {
     border-color: $color__icons;
   }
 
-  &__dark {
+  &__DARK {
     border-color: $color__dark-theme__icons;
     border-radius: 0;
   }
 
-  &__activeDark {
+  &__activeDARK {
     border: none;
     background-color: $color__dark-theme__surface-2;
     border-radius: 0;
@@ -112,9 +117,7 @@
   align-self: flex-end;
 }
 
-.dark {
-  background-color: $color__dark-theme__surface-1;
-}
+
 
 .darkContent {
   color: $color__dark-theme__white

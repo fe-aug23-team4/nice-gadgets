@@ -30,13 +30,11 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
   const getClass = (isTheme: boolean, isDisabled: boolean) => {
     if (isTheme) {
       return isDisabled
-        ? styles.changeAmountButton__dark
-        : styles.changeAmountButton__activeDark;
+        ? styles.changeAmountButton__DARK
+        : styles.changeAmountButton__activeDARK;
     }
 
-    return isDisabled
-      ? {}
-      : styles.changeAmountButton__active;
+    return isDisabled && styles.changeAmountButton__ACTIVE;
   };
 
   const minusIconColor = getIconColor(isDarkTheme, isMinusDisabled);
@@ -45,7 +43,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
   return (
     <article
       className={cn(styles.cartItem, {
-        [styles.dark]: isDarkTheme,
+        [styles.cartItem__DARK]: isDarkTheme,
       })}
     >
       <div className={styles.top}>
@@ -65,9 +63,8 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
           <img
             src={phone?.image}
             alt={phone?.name}
-            // className={styles.img}
             className={cn(styles.img, {
-              [styles.img__dark]: isDarkTheme,
+              [styles.img__DARK]: isDarkTheme,
             })}
           />
         </div>
@@ -104,9 +101,8 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
             type="button"
-            // className={cn(styles.changeAmountButton)}
             className={cn(styles.changeAmountButton, {
-              [styles.changeAmountButton__activeDark]: isDarkTheme,
+              [styles.changeAmountButton__activeDARK]: isDarkTheme,
             })}
           >
             <PlusIcon
