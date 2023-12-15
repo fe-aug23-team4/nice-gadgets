@@ -4,52 +4,42 @@ import {
   ReactComponent as NextIcon,
 } from '../../../static/icons/arrow-right_icon.svg';
 import styles from './ProductSlider.module.scss';
+import {
+  chooseArrowColor, chooseBackgroundColor, chooseIconColor,
+} from './colorHandlers';
 import { useAppSelector } from '../../../store/hooks';
 
-// type Props = {
-//   onClick: () => void;
-//   style?: Record<string, string>
-// };
+type Props = {
+  handleClick: () => void;
+  style?: Record<string, string>
+  currentSlide: number;
+  maxSlides: number;
+};
 
-export const SampleNextArrow: React.FC = (props: any) => {
+export const SampleNextArrow: React.FC<Props> = (props: any) => {
   const [isHover, setIsHover] = useState(false);
 
   const {
     style, onClick, handleClick, currentSlide, maxSlides,
   } = props;
   const { isDarkTheme } = useAppSelector((state) => state.theme);
+  // const isDarkTheme = true;
   const isNotDisabled = currentSlide < maxSlides;
-  let iconColor;
-
-  switch (true) {
-    case isDarkTheme:
-      iconColor = '#f1f2f9';
-      break;
-
-    case isDarkTheme && !isNotDisabled:
-      iconColor = '#4a4d58';
-      break;
-
-    case !isNotDisabled:
-      iconColor = '#b4bdc3';
-      break;
-
-    default:
-      iconColor = '#0f0f11';
-  }
 
   return (
     <>
       <button
         type="button"
         className={styles['slick-next-small']}
-        style={isDarkTheme
-          ? {
-            ...style,
-            background: isHover ? '#4a4d58' : '#323542',
-            border: 'none',
-          }
-          : { ...style }}
+        style={{
+          ...style,
+          background: chooseBackgroundColor(
+            isHover, isNotDisabled, isDarkTheme,
+          ),
+          borderColor: chooseArrowColor(
+            isHover, isNotDisabled, isDarkTheme,
+          ),
+        }}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
         onClick={() => {
@@ -63,7 +53,7 @@ export const SampleNextArrow: React.FC = (props: any) => {
       >
         <NextIcon
           className={styles.icon}
-          color={iconColor}
+          color={chooseIconColor(isDarkTheme, isNotDisabled)}
         />
       </button>
     </>

@@ -16,6 +16,7 @@ export const MainSlider: React.FC = () => {
   const ref = createRef<HTMLDivElement>();
 
   const { isDarkTheme } = useAppSelector((state) => state.theme);
+  // const isDarkTheme = true;
   const settings = {
     dots: true,
     infinite: true,

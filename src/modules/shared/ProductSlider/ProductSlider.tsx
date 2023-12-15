@@ -1,16 +1,14 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { createRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import cn from 'classnames';
 import styles from './ProductSlider.module.scss';
 import './slick.scss';
-import './slick-theme.scss';
 import { SampleNextArrow } from './SampleNextArrow';
 import { SamplePrevArrow } from './SamplePrevArrow';
 import { Phone } from '../../../types/Phone';
 import { useAppSelector } from '../../../store/hooks';
-import { PhoneCard } from '../PhoneCard';
+import { SlideCard } from './SlideCard';
 
 type Props = {
   title: string,
@@ -19,17 +17,15 @@ type Props = {
 
 export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
-  const ref = createRef<Slider>();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    // slidesToShow: 4,
-    // slidesToScroll: 2,
+    slidesToShow: 4,
+    slidesToScroll: 1,
     autoplay: false,
-    // pauseOnHover: true,
     swipeToSlide: true,
     nextArrow: <SampleNextArrow
       handleClick={() => {
@@ -44,15 +40,15 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
       }}
       currentSlide={currentSlide}
     />,
-    // adaptiveHeight: true,
-    centerMode: true,
-    centerPadding: '40px',
+    centerMode: false,
     responsive: [
       {
         breakpoint: 320,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: '0px',
         },
       },
       {
@@ -60,7 +56,8 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          initialSlide: 1,
+          centerMode: true,
+          centerPadding: '0px',
         },
       },
       {
@@ -68,27 +65,41 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
+          centerMode: false,
         },
       },
     ],
+    appendDots: (dots: any) => (
+      <div>
+        <ul
+          className={styles['slick-dots-product']}
+        >
+          {dots}
+        </ul>
+      </div>
+    ),
   };
 
-  useEffect(() => {
-    console.log(ref);
-  }, [ref]);
-
   return (
-    <div className={styles.container}>
+    <div id="phonesSlider" className={styles.container}>
       <h3 className={styles.header}>{title}</h3>
       <Slider
+        className={cn(
+          styles['slider-card'],
+          styles['slick-list-card'],
+          styles['slick-track-product'],
+          styles['slick-list-product'],
+          {
+            [styles.slider__dark]: isDarkTheme,
+          },
+        )}
         {...settings}
-        className={cn(styles['slider-card'], styles['slick-list-card'], {
-          [styles.slider__dark]: isDarkTheme,
-        })}
-        ref={ref}
       >
         {phones.map(phone => (
-          <PhoneCard key={phone.id} phone={phone} />
+          <SlideCard
+            key={phone.id}
+            phone={phone}
+          />
         ))}
       </Slider>
     </div>
