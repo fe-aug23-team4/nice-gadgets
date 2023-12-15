@@ -1,0 +1,98 @@
+@import '../utils/mixins/mixin-media';
+
+.page {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  &__header {
+    position: sticky;
+    top: 0;
+
+    z-index: 2;
+  }
+
+  &__cart {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__main {
+    flex-grow: 1;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+
+  &__alone-back-button {
+    margin-bottom: 24px;
+    padding-top: 0px;
+
+    @include onTablet {
+      margin-bottom: 16px;
+      padding-top: 15px;
+    }
+  }
+
+  &__favorites {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__product-sidebar {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__product-slider {
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__catalog {
+    margin-bottom: 24px;
+
+    onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__pagination {
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+}
