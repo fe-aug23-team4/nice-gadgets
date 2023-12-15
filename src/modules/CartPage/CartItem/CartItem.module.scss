@@ -81,7 +81,10 @@
   width: 80%;
   height: 100%;
   object-fit: fill;
-  background-color: $color__dark-theme__surface-1;
+
+  &__dark {
+    border-radius: 8px;
+  }
 }
 
 .closeButton {
