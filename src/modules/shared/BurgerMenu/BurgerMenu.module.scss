@@ -9,9 +9,9 @@
   position: absolute;
   z-index: 100;
   height: calc(100vh - 49px);
-  top: 49px;
+  top: -100vh;
   left: 0;
-  right: 100%;
+  right: 0;
 
   background-color: #fff;
   opacity: 0;
@@ -19,7 +19,7 @@
 
   &__IsOpen {
     opacity: 1;
-    right: 0;
+    top: 49px;
   }
 
   &__menu {
