@@ -11,14 +11,15 @@
   height: calc(100vh - 49px);
   top: 49px;
   left: 0;
-  right: 0;
+  right: 100%;
 
   background-color: #fff;
   opacity: 0;
-  transition: 0.3s all;
+  transition: all 0.3s;
 
   &__IsOpen {
     opacity: 1;
+    right: 0;
   }
 
   &__menu {
