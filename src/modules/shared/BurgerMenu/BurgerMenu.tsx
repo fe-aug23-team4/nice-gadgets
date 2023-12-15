@@ -13,6 +13,7 @@ interface Burger {
   active: boolean,
   setActive: (state: boolean) => void,
   isThemeDark: boolean,
+  favorites: string[]
 }
 
 const getLinkClass = (
@@ -25,6 +26,7 @@ export const BurgerMenu: React.FC<Burger> = ({
   active,
   setActive,
   isThemeDark,
+  favorites,
 }) => {
   const getButtonColor = () => {
     return isThemeDark ? '#F1F2F9' : '#0F0F11';
@@ -83,7 +85,14 @@ export const BurgerMenu: React.FC<Burger> = ({
             className={getLinkClass}
             onClick={() => setActive(false)}
           >
-            <Favourites color={getButtonColor()} />
+            <div className={styles.burger__favorites}>
+              <Favourites color={getButtonColor()} />
+              {favorites.length !== 0 && (
+                <span className={styles.burger__favorites_count}>
+                  {favorites.length}
+                </span>
+              )}
+            </div>
           </NavLink>
         </div>
 

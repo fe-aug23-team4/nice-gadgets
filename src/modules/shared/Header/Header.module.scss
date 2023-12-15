@@ -152,6 +152,23 @@
     }
   }
 
+  &__favorites {
+    height: 13px;
+    width: 13px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 9px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    line-height: 12px;
+
+    background-color: $color__secondary-accent;
+    border-radius: 50%;
+    border: 1px solid #fff;
+  }
+
 
   @include onTablet {
     &__burger_icon {
@@ -216,6 +233,11 @@
         top: 56px;
       }
     }
+
+    &__favorites {
+      top: 13px;
+      right: 13px;
+    }
   }
 }
 
@@ -243,5 +265,10 @@
   & .header__burger_icon {
     background-color: $color__dark-theme__black;
     border-left: 1px solid $color__dark-theme__surface-2;
+  }
+
+  & .header__favorites {
+    background-color: $color__red;
+    border-color: $color__dark-theme__black;
   }
 }

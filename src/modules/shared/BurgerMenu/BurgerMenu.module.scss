@@ -90,6 +90,27 @@
     }
   }
 
+  &__favorites {
+    position: relative;
+
+    &_count {
+      position: absolute;
+      height: 13px;
+      width: 13px;
+      top: -7px;
+      right: -7px;
+      font-size: 9px;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      line-height: 12px;
+
+      background-color: $color__secondary-accent;
+      border-radius: 50%;
+      border: 1px solid #fff;
+    }
+  }
+
   @include onTablet {
     display: none;
   }

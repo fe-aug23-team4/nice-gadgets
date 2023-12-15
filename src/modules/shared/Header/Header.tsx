@@ -28,6 +28,9 @@ export const Header: React.FC = () => {
   const { isDarkTheme } = useAppSelector(state => state.theme);
   const dispatch = useAppDispatch();
 
+  // const { favorites } = useAppSelector(state => state.favorites);
+  const favorites = ['1'];
+
   function themeHandler() {
     dispatch(actions.change());
   }
@@ -114,6 +117,11 @@ export const Header: React.FC = () => {
         <div className={styles.header__icon}>
           <NavLink to="/favorites" className={getLinkClass}>
             <Favourites color={getButtonColor()} />
+            {favorites.length !== 0 && (
+              <div className={styles.header__favorites}>
+                {favorites.length}
+              </div>
+            )}
           </NavLink>
         </div>
 
@@ -140,6 +148,7 @@ export const Header: React.FC = () => {
         active={isBurgerActive}
         setActive={setIsBurgerActive}
         isThemeDark={isDarkTheme}
+        favorites={favorites}
       />
     </header>
   );
