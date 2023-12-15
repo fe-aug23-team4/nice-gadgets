@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './BurgerMenu.module.scss';
 
-import favourites from '../../../static/icons/favourites_icon.svg';
-import favouritesDark from '../../../static/icons/favourites_icon_dark.svg';
-import cart from '../../../static/icons/cart_icon.svg';
-import cartDark from '../../../static/icons/cart_icon_dark.svg';
+import { ReactComponent as Favourites }
+  from '../../../static/icons/favourites_icon.svg';
+import { ReactComponent as Cart }
+  from '../../../static/icons/cart_icon.svg';
 
 interface Burger {
   active: boolean,
@@ -26,6 +26,10 @@ export const BurgerMenu: React.FC<Burger> = ({
   setActive,
   isThemeDark,
 }) => {
+  const getButtonColor = () => {
+    return isThemeDark ? '#F1F2F9' : '#0F0F11';
+  };
+
   return (
     <aside className={cn([styles.burger], {
       [styles.burger__IsOpen]: active,
@@ -79,10 +83,7 @@ export const BurgerMenu: React.FC<Burger> = ({
             className={getLinkClass}
             onClick={() => setActive(false)}
           >
-            <img
-              src={!isThemeDark ? favourites : favouritesDark}
-              alt="favourites"
-            />
+            <Favourites color={getButtonColor()} />
           </NavLink>
         </div>
 
@@ -92,10 +93,7 @@ export const BurgerMenu: React.FC<Burger> = ({
             className={getLinkClass}
             onClick={() => setActive(false)}
           >
-            <img
-              src={!isThemeDark ? cart : cartDark}
-              alt="cart"
-            />
+            <Cart color={getButtonColor()} />
           </NavLink>
         </div>
       </div>
