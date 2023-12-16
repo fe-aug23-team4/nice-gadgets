@@ -1,6 +1,6 @@
 import './App.scss';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 import { Outlet } from 'react-router-dom';
 
@@ -10,6 +10,10 @@ import { useAppSelector } from './store/hooks';
 
 export const App: React.FC = () => {
   const { isDarkTheme } = useAppSelector(state => state.theme);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = isDarkTheme ? '#0f1121' : '#fafbfc';
+  }, [isDarkTheme]);
 
   return (
     <>
