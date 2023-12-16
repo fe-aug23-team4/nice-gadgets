@@ -8,6 +8,10 @@ export const getPhones = () => {
   return axiosClient.get<Phone[]>('/phones');
 };
 
+export const getPhonesAmount = () => {
+  return axiosClient.get<number>('/phones/amount');
+};
+
 export const getPhonesWithSearchParams = (
   sortBy: SortBy,
   perPage: number,

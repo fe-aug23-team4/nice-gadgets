@@ -4,22 +4,13 @@
 @import '../../../../styles/utils/mixins/mixin-typography';
 
 .shopByCategory {
-  padding-block: 3.6rem;
-  padding-inline: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  @include onTablet {
-    margin-block: 4rem;
-    padding-inline: 1.5rem;
-  }
-
   &__title {
     margin-bottom: 1.5rem;
     @include h2-typography;
   }
 
   &__titleDark {
-    color: $color__dark-theme__white;
+    @include typography-dark;
   }
 
   &__container {
@@ -30,7 +21,6 @@
     margin-bottom: 32px;
     grid-column: span 4;
     color: $color__primary;
-    text-decoration: none;
     @include onTablet {
       margin-bottom: 0;
     }
@@ -41,7 +31,11 @@
   }
 
   &__subtitle {
-   @include h4-typography;
+    @include h4-typography;
+  }
+
+  &__subtitleDark {
+    @include typography-dark;
   }
 
   &__content {
@@ -84,7 +78,7 @@
   }
 
   &__imgTablets {
-   background-color: #D3D3D3;
+    background-color: #D3D3D3;
   }
 
   &__imgAccessories {
