@@ -54,7 +54,7 @@
     "husky": "^8.0.3",
     "lint-staged": "12.4.0",
     "prettier": "^3.1.0",
-    "typescript": "5.1.6"
+    "typescript": "^5.1.6"
   },
   "homepage": "https://fe-aug23-team4.github.io/nice-gadgets",
   "postcss": {
