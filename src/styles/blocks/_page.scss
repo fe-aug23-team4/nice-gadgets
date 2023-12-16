@@ -9,6 +9,10 @@
     min-height: 100vh;
   }
 
+  &__main {
+    flex-grow: 1;
+  }
+
   &__main-title {
     margin-bottom: 24px;
     @include h1-typography;
