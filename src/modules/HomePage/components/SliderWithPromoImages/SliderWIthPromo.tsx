@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { createRef, useEffect } from 'react';
 import Slider from 'react-slick';
 import cn from 'classnames';
