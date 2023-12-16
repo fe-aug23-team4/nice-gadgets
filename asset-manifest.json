@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/nice-gadgets/static/css/main.7b6343ea.css",
-    "main.js": "/nice-gadgets/static/js/main.ad0f1cee.js",
+    "main.css": "/nice-gadgets/static/css/main.d2eec897.css",
+    "main.js": "/nice-gadgets/static/js/main.a7cb20a0.js",
     "static/media/Mont-Regular.ttf": "/nice-gadgets/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
     "static/media/Mont-SemiBold.ttf": "/nice-gadgets/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
     "static/media/Mont-Bold.ttf": "/nice-gadgets/static/media/Mont-Bold.3675b597d3ffb2b75168.ttf",
@@ -9,25 +9,25 @@
     "static/media/category-tablets.png": "/nice-gadgets/static/media/category-tablets.ab269482f54393432fe6.png",
     "static/media/category-phones.png": "/nice-gadgets/static/media/category-phones.86adecc8baf6f6ff4adb.png",
     "static/media/not_found_logo_dark.jpg": "/nice-gadgets/static/media/not_found_logo_dark.9acd585a8d28920c0661.jpg",
-    "static/media/cart_icon.svg": "/nice-gadgets/static/media/cart_icon.ed2ad8730bd1becf17884a4cf59d6082.svg",
-    "static/media/favourites_icon.svg": "/nice-gadgets/static/media/favourites_icon.3b15d506fe032d566a75545183764c87.svg",
-    "static/media/fovourites-default_button.svg": "/nice-gadgets/static/media/fovourites-default_button.5607a15840ea2015031e.svg",
-    "static/media/fovourites-default_button_dark.svg": "/nice-gadgets/static/media/fovourites-default_button_dark.8afd478d829ef51d0415.svg",
-    "static/media/fovourites-selected_button.svg": "/nice-gadgets/static/media/fovourites-selected_button.07cb3a0028e670b572d9.svg",
-    "static/media/fovourites-selected_button_dark.svg": "/nice-gadgets/static/media/fovourites-selected_button_dark.53dafeb6659e46cdf21c.svg",
+    "static/media/cart_icon.svg": "/nice-gadgets/static/media/cart_icon.701543ede3899552a560dfa13de16033.svg",
+    "static/media/favourites_icon.svg": "/nice-gadgets/static/media/favourites_icon.23d3a2e23926cb5772bb60abed0059b2.svg",
+    "static/media/fovourites-default_button.svg": "/nice-gadgets/static/media/fovourites-default_button.0413054780b220861762.svg",
+    "static/media/fovourites-default_button_dark.svg": "/nice-gadgets/static/media/fovourites-default_button_dark.fc625e00e7c89410f28d.svg",
+    "static/media/fovourites-selected_button.svg": "/nice-gadgets/static/media/fovourites-selected_button.267c5f154324c7c7ab70.svg",
+    "static/media/fovourites-selected_button_dark.svg": "/nice-gadgets/static/media/fovourites-selected_button_dark.d1bdfe0892e988a5ff96.svg",
     "index.html": "/nice-gadgets/index.html",
-    "static/media/close_icon.svg": "/nice-gadgets/static/media/close_icon.c656c827aaa0160907280a7c1abf6553.svg",
-    "static/media/menu_icon.svg": "/nice-gadgets/static/media/menu_icon.3c2aa9224bed9781875660d4c6d589fd.svg",
-    "static/media/plus_icon.svg": "/nice-gadgets/static/media/plus_icon.34bd9dc6574f3771494c47f40d44b140.svg",
-    "static/media/slider-up-button-default_button.svg": "/nice-gadgets/static/media/slider-up-button-default_button.7b10019f9dc49bcaa300c82259d9fc43.svg",
-    "static/media/slider-up-button-default_button_dark.svg": "/nice-gadgets/static/media/slider-up-button-default_button_dark.3862bd2693eeced5b120a0679c5f2194.svg",
-    "static/media/arrow-right_icon.svg": "/nice-gadgets/static/media/arrow-right_icon.83991c7d33b8e1cfe7339b9fb890e48e.svg",
-    "static/media/minus_icon.svg": "/nice-gadgets/static/media/minus_icon.d985886c132ce54472b3761ce0f28e2c.svg",
-    "main.7b6343ea.css.map": "/nice-gadgets/static/css/main.7b6343ea.css.map",
-    "main.ad0f1cee.js.map": "/nice-gadgets/static/js/main.ad0f1cee.js.map"
+    "static/media/close_icon.svg": "/nice-gadgets/static/media/close_icon.a68105e830a34beb5ead92814b102620.svg",
+    "static/media/menu_icon.svg": "/nice-gadgets/static/media/menu_icon.611bab7e0993405a8b6156b633644ef4.svg",
+    "static/media/plus_icon.svg": "/nice-gadgets/static/media/plus_icon.f45863a14a5afcb5d3e7b6d7ff12a649.svg",
+    "static/media/slider-up-button-default_button.svg": "/nice-gadgets/static/media/slider-up-button-default_button.63f7694b63fe546e42e6bb102a0ec7b0.svg",
+    "static/media/slider-up-button-default_button_dark.svg": "/nice-gadgets/static/media/slider-up-button-default_button_dark.0aadf74a723e0d8cc00ef4ba153e8849.svg",
+    "static/media/arrow-right_icon.svg": "/nice-gadgets/static/media/arrow-right_icon.a374b573155c92815583d44daaae0b60.svg",
+    "static/media/minus_icon.svg": "/nice-gadgets/static/media/minus_icon.41beeb2668fd1e6ac9c306b7c6757f7a.svg",
+    "main.d2eec897.css.map": "/nice-gadgets/static/css/main.d2eec897.css.map",
+    "main.a7cb20a0.js.map": "/nice-gadgets/static/js/main.a7cb20a0.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b6343ea.css",
-    "static/js/main.ad0f1cee.js"
+    "static/css/main.d2eec897.css",
+    "static/js/main.a7cb20a0.js"
   ]
 }
