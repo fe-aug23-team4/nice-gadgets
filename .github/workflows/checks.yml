@@ -35,9 +35,6 @@ jobs:
     - name: Run the lint 🧪
       run: npm run lint
 
-    - name: Build 🔧
-      run: npm run build
-
       env:
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
