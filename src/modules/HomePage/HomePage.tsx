@@ -14,6 +14,7 @@ import { getNewestPhones, getPhonesWithDiscount } from '../../api/service';
 export const HomePage: React.FC = () => {
   const [newPhones, setNewPhones] = useState<Phone[]>([]);
   const [phonesWithDiscount, setPhonesWithDiscount] = useState<Phone[]>([]);
+  const { isDarkTheme } = useAppSelector((state) => state.theme);
 
   useEffect(() => {
     getNewestPhones()
@@ -22,9 +23,6 @@ export const HomePage: React.FC = () => {
     getPhonesWithDiscount()
       .then(setPhonesWithDiscount);
   }, []);
-
-export const HomePage: React.FC = () => {
-  const { isDarkTheme } = useAppSelector((state) => state.theme);
 
   return (
     <>
