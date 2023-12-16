@@ -26,10 +26,8 @@ const getLinkClass = (
 
 export const Header: React.FC = () => {
   const { isDarkTheme } = useAppSelector(state => state.theme);
+  const { favorites } = useAppSelector(state => state.favorites);
   const dispatch = useAppDispatch();
-
-  // const { favorites } = useAppSelector(state => state.favorites);
-  const favorites = ['1'];
 
   function themeHandler() {
     dispatch(actions.change());
@@ -104,6 +102,7 @@ export const Header: React.FC = () => {
             type="checkbox"
             className={styles.header__themeSwitch_input}
             id="themeSwitch"
+            checked={isDarkTheme}
             onChange={themeHandler}
           />
           <label
@@ -117,7 +116,7 @@ export const Header: React.FC = () => {
         <div className={styles.header__icon}>
           <NavLink to="/favorites" className={getLinkClass}>
             <Favourites color={getButtonColor()} />
-            {favorites.length !== 0 && (
+            {!!favorites.length && (
               <div className={styles.header__favorites}>
                 {favorites.length}
               </div>
@@ -148,7 +147,7 @@ export const Header: React.FC = () => {
         active={isBurgerActive}
         setActive={setIsBurgerActive}
         isThemeDark={isDarkTheme}
-        favorites={favorites}
+        favoritesAmount={favorites.length}
       />
     </header>
   );

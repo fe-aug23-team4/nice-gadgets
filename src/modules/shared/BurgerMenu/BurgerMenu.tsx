@@ -10,10 +10,10 @@ import { ReactComponent as Cart }
   from '../../../static/icons/cart_icon.svg';
 
 interface Burger {
-  active: boolean,
-  setActive: (state: boolean) => void,
-  isThemeDark: boolean,
-  favorites: string[]
+  active: boolean;
+  setActive: (state: boolean) => void;
+  isThemeDark: boolean;
+  favoritesAmount: number;
 }
 
 const getLinkClass = (
@@ -26,17 +26,18 @@ export const BurgerMenu: React.FC<Burger> = ({
   active,
   setActive,
   isThemeDark,
-  favorites,
+  favoritesAmount,
 }) => {
   const getButtonColor = () => {
     return isThemeDark ? '#F1F2F9' : '#0F0F11';
   };
 
   return (
-    <aside className={cn([styles.burger], {
-      [styles.burger__IsOpen]: active,
-      [styles.burgerDark]: isThemeDark,
-    })}
+    <aside
+      className={cn([styles.burger], {
+        [styles.burger__IsOpen]: active,
+        [styles.burgerDark]: isThemeDark,
+      })}
     >
       <nav>
         <ul className={styles.burger__menu}>
@@ -87,9 +88,9 @@ export const BurgerMenu: React.FC<Burger> = ({
           >
             <div className={styles.burger__favorites}>
               <Favourites color={getButtonColor()} />
-              {favorites.length !== 0 && (
+              {favoritesAmount && (
                 <span className={styles.burger__favorites_count}>
-                  {favorites.length}
+                  {favoritesAmount}
                 </span>
               )}
             </div>
