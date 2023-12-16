@@ -13,7 +13,7 @@
   left: 0;
   right: 0;
 
-  background-color: #fff;
+  background-color: $color__white;
   opacity: 0;
   transition: all 0.3s;
 
@@ -88,6 +88,27 @@
       &::after {
         top: 61px;
       }
+    }
+  }
+
+  &__favorites {
+    position: relative;
+
+    &_count {
+      position: absolute;
+      height: 13px;
+      width: 13px;
+      top: -7px;
+      right: -7px;
+      font-size: 9px;
+      font-weight: 600;
+      color: $color__white;
+      text-align: center;
+      line-height: 12px;
+
+      background-color: $color__secondary-accent;
+      border-radius: 50%;
+      border: 1px solid $color__white;
     }
   }
 
