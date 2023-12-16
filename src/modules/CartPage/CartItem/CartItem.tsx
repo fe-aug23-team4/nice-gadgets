@@ -34,7 +34,9 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
         : styles.changeAmountButton__activeDARK;
     }
 
-    return isDisabled && styles.changeAmountButton__ACTIVE;
+    return isDisabled
+      ? {}
+      : styles.changeAmountButton__ACTIVE;
   };
 
   const minusIconColor = getIconColor(isDarkTheme, isMinusDisabled);
@@ -101,9 +103,11 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
             type="button"
-            className={cn(styles.changeAmountButton, {
-              [styles.changeAmountButton__activeDARK]: isDarkTheme,
-            })}
+            className={cn(styles.changeAmountButton,
+              styles.changeAmountButton__ACTIVE,
+              {
+                [styles.changeAmountButton__activeDARK]: isDarkTheme,
+              })}
           >
             <PlusIcon
               color={isDarkTheme ? '#F1F2F9' : '#0F0F11'}
