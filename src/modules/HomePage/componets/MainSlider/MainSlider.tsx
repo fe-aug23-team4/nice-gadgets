@@ -52,7 +52,7 @@ export const MainSlider: React.FC = () => {
   }, [ref, isDarkTheme]);
 
   return (
-    <div className={style.container}>
+    <div className={`page__main-slider ${style.container}`}>
       <Slider
         {...settings}
         className={cn(style.slider, {

@@ -11,8 +11,8 @@ import { useAppSelector } from '../../../store/hooks';
 import { SlideCard } from './SlideCard';
 
 type Props = {
-  title: string,
-  phones: Phone[],
+  title: string;
+  phones: Phone[];
 };
 
 export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
@@ -27,19 +27,23 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
     slidesToScroll: 1,
     autoplay: false,
     swipeToSlide: true,
-    nextArrow: <SampleNextArrow
-      handleClick={() => {
-        setCurrentSlide((current) => current + 1);
-      }}
-      currentSlide={currentSlide}
-      maxSlides={phones.length - 4}
-    />,
-    prevArrow: <SamplePrevArrow
-      handleClick={() => {
-        setCurrentSlide((current) => current - 1);
-      }}
-      currentSlide={currentSlide}
-    />,
+    nextArrow: (
+      <SampleNextArrow
+        handleClick={() => {
+          setCurrentSlide((current) => current + 1);
+        }}
+        currentSlide={currentSlide}
+        maxSlides={phones.length - 4}
+      />
+    ),
+    prevArrow: (
+      <SamplePrevArrow
+        handleClick={() => {
+          setCurrentSlide((current) => current - 1);
+        }}
+        currentSlide={currentSlide}
+      />
+    ),
     centerMode: false,
     responsive: [
       {
@@ -71,18 +75,23 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
     ],
     appendDots: (dots: any) => (
       <div>
-        <ul
-          className={styles['slick-dots-product']}
-        >
-          {dots}
-        </ul>
+        <ul className={styles['slick-dots-product']}>{dots}</ul>
       </div>
     ),
   };
 
   return (
-    <div id="phonesSlider" className={styles.container}>
-      <h3 className={styles.header}>{title}</h3>
+    <div
+      id="phonesSlider"
+      className={`page__product-slider ${styles.container}`}
+    >
+      <h3
+        className={cn(styles.header, {
+          [styles.header__DARK]: isDarkTheme,
+        })}
+      >
+        {title}
+      </h3>
       <Slider
         className={cn(
           styles['slider-card'],
@@ -95,11 +104,8 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
         )}
         {...settings}
       >
-        {phones.map(phone => (
-          <SlideCard
-            key={phone.id}
-            phone={phone}
-          />
+        {phones.map((phone) => (
+          <SlideCard key={phone.id} phone={phone} />
         ))}
       </Slider>
     </div>

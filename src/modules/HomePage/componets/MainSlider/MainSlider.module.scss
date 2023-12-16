@@ -1,15 +1,11 @@
 @import '../../../../styles/blocks/grid';
-@import './slick-theme';
+@import './slick.scss';
 
 .container {
   @extend .grid;
-  padding-inline: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .slider {
-  margin-top: 56px;
   position: relative;
   width: 100%;
   height: 432px;

@@ -1,31 +1,15 @@
 @import '../../../styles/blocks/_grid';
 @import '../../../styles/utils/mixins/mixin-typography';
 
-.container {
-  margin: 0 auto;
-
-  @include onMobile {
-    min-width: 288px;
-    padding-top: 57px;
-    padding-inline: 16px;
-  }
-
-  @include onTablet {
-    min-width: 590px;
-    margin-block: 64px;
-    padding-inline: 24px;
-  }
-
-  @include onDesktop {
-    max-width: 1200px;
-  }
-}
-
 .header {
   @include h2-typography;
 
   @include onMobile {
     width: 215px;
+  }
+
+  &__DARK {
+    @include typography-dark;
   }
 }
 
@@ -33,7 +17,6 @@
 .slick-clone-card,
 .slide-card {
   width: 272px !important;
-
 }
 
 .slick-next-small,

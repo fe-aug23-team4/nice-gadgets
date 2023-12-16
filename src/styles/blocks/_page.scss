@@ -2,6 +2,18 @@
 @import '../utils/mixins/mixin-media';
 @import '../utils/mixins/mixin-typography';
 
+@mixin defaultMarginButton {
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+}
+
 .page {
   &__content {
     display: flex;
@@ -28,5 +40,17 @@
     &__DARK {
       @include typography-dark;
     }
+  }
+
+  &__categories {
+    @include defaultMarginButton;
+  }
+
+  &__main-slider {
+    @include defaultMarginButton;
+  }
+
+  &__product-slider {
+    @include defaultMarginButton;
   }
 }
