@@ -11,7 +11,7 @@ export const localClient = {
     }
   },
 
-  write: (key: string, data: Phone) => {
+  write: (key: string, data: any) => {
     window.localStorage.setItem(key, JSON.stringify(data, null, 2));
   },
 

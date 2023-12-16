@@ -1,32 +1,16 @@
 @import '../../../../styles/blocks/grid';
 @import '../../../../styles/utils/variables/colors';
 @import '../../../../styles/utils/mixins/mixin-media';
+@import '../../../../styles/utils/mixins/mixin-typography';
 
 .shopByCategory {
-  padding-block: 57px;
-  padding-inline: 16px;
-  max-width: 1200px;
-  margin: 0 auto;
-  @include onTablet {
-    margin-block: 64px;
-    padding-inline: 24px;
-  }
-
   &__title {
-    margin-bottom: 24px;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 140%;
-
-    @include onTablet {
-      font-size: 32px;
-      line-height: 128%;
-      letter-spacing: -0.32px;
-    }
+    margin-bottom: 1.5rem;
+    @include h2-typography;
   }
 
   &__titleDark {
-    color: #F1F2F9;
+    @include typography-dark;
   }
 
   &__container {
@@ -37,7 +21,6 @@
     margin-bottom: 32px;
     grid-column: span 4;
     color: $color__primary;
-    text-decoration: none;
     @include onTablet {
       margin-bottom: 0;
     }
@@ -48,40 +31,41 @@
   }
 
   &__subtitle {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: normal;
+    @include h4-typography;
+  }
+
+  &__subtitleDark {
+    @include typography-dark;
   }
 
   &__content {
     color: $color__secondary;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 150%;
+    @include bodyText-typography;
   }
 
   &__contentDark {
-    color: #75767F;
+    color: $color__dark-theme__secondary;
   }
 
   &__imgContainer {
     position: relative;
     width: 100%;
-    height: calc(100vw * 0.85);
+    max-width: 300px;
+    margin: 0 auto;
+    height: calc(100vw * 0.5);
     min-height: 288px;
     border-radius: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
     overflow: hidden;
 
     @include onTablet {
+      max-width: 400px;
       min-height: 177px;
       height: calc(100vw * 0.3);
     }
 
     @include onDesktop {
       max-height: 368px;
-
     }
   }
 
@@ -94,7 +78,7 @@
   }
 
   &__imgTablets {
-   background-color: #D3D3D3;
+    background-color: #D3D3D3;
   }
 
   &__imgAccessories {
@@ -108,7 +92,7 @@
     height: 100%;
     left: 10%;
     top: 10%;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
   }
 
   &__pictureTablet {
@@ -127,7 +111,7 @@
 }
 
 .shopByCategoryDark {
-  background-color: #0F1121;
+  background-color: $color__dark-theme__black;
 }
 
 
