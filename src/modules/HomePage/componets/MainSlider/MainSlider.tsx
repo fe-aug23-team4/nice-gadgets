@@ -45,6 +45,10 @@ export const MainSlider: React.FC = () => {
     if (ref.current && isDarkTheme) {
       ref.current.className = 'slick-dots slick-dots__dark';
     }
+
+    if (ref.current && !isDarkTheme) {
+      ref.current.className = 'slick-dots';
+    }
   }, [ref, isDarkTheme]);
 
   return (
