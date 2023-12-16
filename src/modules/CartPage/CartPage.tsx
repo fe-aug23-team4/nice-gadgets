@@ -1,15 +1,15 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import cn from 'classnames';
-import { CartItem } from './CartItem';
+import { CartItem } from './components/CartItem';
 import { Phone } from '../../types/Phone';
 import { getNewestPhones } from '../../api/service';
 import styles from './CartPage.module.scss';
 import { useAppSelector } from '../../store/hooks';
-import { Breadcrumbs } from '../shared/Breadcrumbs';
+import { BackButton } from '../shared/BackButton';
 
 export const CartPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[] | []>([]);
-  const { isDarkTheme } = useAppSelector(state => state.theme);
+  const { isDarkTheme } = useAppSelector((state) => state.theme);
 
   const total = useMemo(() => {
     return phones.reduce((accumulator, phone) => accumulator + phone.price, 0);
@@ -19,7 +19,7 @@ export const CartPage: React.FC = () => {
     getNewestPhones()
       .then(setPhones)
       // eslint-disable-next-line
-      .catch((error) => console.error('Error fetching data:', error))
+      .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
   return (
@@ -28,8 +28,7 @@ export const CartPage: React.FC = () => {
         [styles.cart__DARK]: isDarkTheme,
       })}
     >
-      <Breadcrumbs />
-      {/* if I undestood your comment in a right way */}
+      <BackButton />
 
       <h2
         className={cn(styles.title, {
@@ -85,6 +84,5 @@ export const CartPage: React.FC = () => {
         </div>
       </div>
     </section>
-
   );
 };

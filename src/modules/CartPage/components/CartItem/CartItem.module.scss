@@ -1,6 +1,6 @@
-@import '../../../styles/utils/variables/colors';
-@import '../../../styles/utils/mixins/mixin-typography';
-@import '../../../styles/utils/mixins/mixin-media';
+@import '../../../../styles/utils/variables/colors';
+@import '../../../../styles/utils/mixins/mixin-typography';
+@import '../../../../styles/utils/mixins/mixin-media';
 
 .cartItem {
   display: flex;
@@ -9,7 +9,7 @@
     padding: 1rem;
     border-radius: 1rem;
     border: 1px solid $color__elements;
-  
+
     @include onTablet {
       flex-direction: row;
       padding: 1.5rem;

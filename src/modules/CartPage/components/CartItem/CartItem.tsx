@@ -1,18 +1,18 @@
 import React from 'react';
 
 import cn from 'classnames';
-import { useAppSelector } from '../../../store/hooks';
-import { Phone } from '../../../types/Phone';
+import { useAppSelector } from '../../../../store/hooks';
+import { Phone } from '../../../../types/Phone';
 import styles from './CartItem.module.scss';
 import { ReactComponent as CloseIcon }
-  from '../../../static/icons/close_icon.svg';
+  from '../../../../static/icons/close_icon.svg';
 import { ReactComponent as MinusIcon }
-  from '../../../static/icons/minus_icon.svg';
+  from '../../../../static/icons/minus_icon.svg';
 import { ReactComponent as PlusIcon }
-  from '../../../static/icons/plus_icon.svg';
+  from '../../../../static/icons/plus_icon.svg';
 
 type Props = {
-  phone: Phone | null,
+  phone: Phone | null;
 };
 
 export const CartItem: React.FC<Props> = ({ phone }) => {
@@ -34,9 +34,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
         : styles.changeAmountButton__activeDARK;
     }
 
-    return isDisabled
-      ? {}
-      : styles.changeAmountButton__ACTIVE;
+    return isDisabled ? {} : styles.changeAmountButton__ACTIVE;
   };
 
   const minusIconColor = getIconColor(isDarkTheme, isMinusDisabled);
@@ -50,18 +48,11 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
     >
       <div className={styles.top}>
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <button
-          type="button"
-          className={styles.closeButton}
-        >
-          <CloseIcon
-            color={isDarkTheme ? '#4A4D58' : '#B4BDC3'}
-          />
+        <button type="button" className={styles.closeButton}>
+          <CloseIcon color={isDarkTheme ? '#4A4D58' : '#B4BDC3'} />
         </button>
 
-        <div
-          className={styles.imgContainer}
-        >
+        <div className={styles.imgContainer}>
           <img
             src={phone?.image}
             alt={phone?.name}
@@ -85,13 +76,10 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
             type="button"
-            className={cn(styles.changeAmountButton,
-              minusClass)}
+            className={cn(styles.changeAmountButton, minusClass)}
             disabled={isMinusDisabled}
           >
-            <MinusIcon
-              color={minusIconColor}
-            />
+            <MinusIcon color={minusIconColor} />
           </button>
           <p
             className={cn(styles.content, {
@@ -103,15 +91,15 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
             type="button"
-            className={cn(styles.changeAmountButton,
+            className={cn(
+              styles.changeAmountButton,
               styles.changeAmountButton__ACTIVE,
               {
                 [styles.changeAmountButton__activeDARK]: isDarkTheme,
-              })}
+              },
+            )}
           >
-            <PlusIcon
-              color={isDarkTheme ? '#F1F2F9' : '#0F0F11'}
-            />
+            <PlusIcon color={isDarkTheme ? '#F1F2F9' : '#0F0F11'} />
           </button>
         </div>
 
