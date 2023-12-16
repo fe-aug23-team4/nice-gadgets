@@ -1,30 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import cn from 'classnames';
+import { useAppSelector } from '../../../../store/hooks';
 import styles from './ShopByCategory.module.scss';
-
 import categoryPhone from '../../../../static/banners/category-phones.png';
 import categoryTablet from '../../../../static/banners/category-tablets.png';
 import categoryAccessories
   from '../../../../static/banners/category-accessories.png';
 
 export const ShopByCategory: React.FC = () => {
-  const isThemeDark = false;
+  const { isDarkTheme } = useAppSelector((state) => state.theme);
 
   return (
     <section
       className={cn(styles.shopByCategory, {
-        [styles.shopByCategoryDark]: isThemeDark,
+        [styles.shopByCategoryDark]: isDarkTheme,
       })}
     >
-      <h2
+      <h3
         className={cn(styles.shopByCategory__title, {
-          [styles.shopByCategory__titleDark]: isThemeDark,
+          [styles.shopByCategory__titleDark]: isDarkTheme,
         })}
       >
         Shop by category
-      </h2>
+      </h3>
 
       <div className={styles.shopByCategory__container}>
         <Link to="/phones" className={styles.shopByCategory__article}>
@@ -33,7 +32,7 @@ export const ShopByCategory: React.FC = () => {
               className={cn(
                 styles.shopByCategory__imgContainer,
                 styles.shopByCategory__imgPhones,
-                { [styles.shopByCategory__imgDark]: isThemeDark },
+                { [styles.shopByCategory__imgDark]: isDarkTheme },
               )}
             >
               <img
@@ -42,17 +41,17 @@ export const ShopByCategory: React.FC = () => {
                 className={styles.shopByCategory__picture}
               />
             </div>
-            <h3
+            <h4
               className={cn(styles.shopByCategory__subtitle, {
-                [styles.shopByCategory__titleDark]: isThemeDark,
+                [styles.shopByCategory__titleDark]: isDarkTheme,
               })}
             >
               Mobile phones
-            </h3>
+            </h4>
 
             <p
               className={cn(styles.shopByCategory__content, {
-                [styles.shopByCategory__contentDark]: isThemeDark,
+                [styles.shopByCategory__contentDark]: isDarkTheme,
               })}
             >
               95 models
@@ -66,7 +65,7 @@ export const ShopByCategory: React.FC = () => {
               className={cn(
                 styles.shopByCategory__imgContainer,
                 styles.shopByCategory__imgTablets,
-                { [styles.shopByCategory__imgDark]: isThemeDark },
+                { [styles.shopByCategory__imgDark]: isDarkTheme },
               )}
             >
               <img
@@ -76,17 +75,17 @@ export const ShopByCategory: React.FC = () => {
                   styles.shopByCategory__pictureTablet)}
               />
             </div>
-            <h3
+            <h4
               className={cn(styles.shopByCategory__subtitle, {
-                [styles.shopByCategory__titleDark]: isThemeDark,
+                [styles.shopByCategory__titleDark]: isDarkTheme,
               })}
             >
               Tablets
-            </h3>
+            </h4>
             <p
               className={cn(
                 styles.shopByCategory__content,
-                { [styles.shopByCategory__contentDark]: isThemeDark },
+                { [styles.shopByCategory__contentDark]: isDarkTheme },
               )}
             >
               24 models
@@ -100,7 +99,7 @@ export const ShopByCategory: React.FC = () => {
               className={cn(
                 styles.shopByCategory__imgContainer,
                 styles.shopByCategory__imgAccessories,
-                { [styles.shopByCategory__imgDark]: isThemeDark },
+                { [styles.shopByCategory__imgDark]: isDarkTheme },
               )}
             >
               <img
@@ -110,16 +109,16 @@ export const ShopByCategory: React.FC = () => {
                 ${styles.shopByCategory__pictureAccessories}`}
               />
             </div>
-            <h3
+            <h4
               className={cn(styles.shopByCategory__subtitle, {
-                [styles.shopByCategory__titleDark]: isThemeDark,
+                [styles.shopByCategory__titleDark]: isDarkTheme,
               })}
             >
               Accessories
-            </h3>
+            </h4>
             <p
               className={cn(styles.shopByCategory__content, {
-                [styles.shopByCategory__contentDark]: isThemeDark,
+                [styles.shopByCategory__contentDark]: isDarkTheme,
               })}
             >
               100 models

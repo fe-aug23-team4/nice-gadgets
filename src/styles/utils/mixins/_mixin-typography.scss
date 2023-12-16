@@ -2,7 +2,7 @@
 @import './mixin-media';
 
 @mixin typography-dark {
-  color: $color__dark-theme-white;
+  color: $color__dark-theme__white;
 }
 
 @mixin h1-typography {
