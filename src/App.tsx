@@ -19,7 +19,7 @@ export const App: React.FC = () => {
     <>
       <Header />
       <main
-        className={cn('container', {
+        className={cn('page__main container', {
           container__DARK: isDarkTheme,
         })}
       >
