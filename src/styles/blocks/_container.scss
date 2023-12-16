@@ -4,10 +4,10 @@
 .container {
   max-width: 1200px;
   padding: 0 16px;
-  background-color: $color__hover-and-bg;
+  background-color: red;
 
   &__DARK {
-    background-color: $color__dark-theme__black;
+    background-color: green;
   }
 
   @include onTablet {
