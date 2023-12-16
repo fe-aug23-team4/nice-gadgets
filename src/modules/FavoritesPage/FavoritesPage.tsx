@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './FavoritesPage.module.scss';
-import arrowIcon from '../../static/icons/arrow-right_icon.svg';
 import { Loader } from '../shared/Loader';
 import { Phone } from '../../types/Phone';
 import { ProductList } from '../shared/ProductList';
-import { HomeIcon } from './HomeIcon';
 import { getNewestPhones } from '../../api/service';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 
 export const FavoritesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[] | []>([]);
@@ -41,19 +39,7 @@ export const FavoritesPage: React.FC = () => {
         <Loader />
       ) : (
         <>
-          <div className={styles.favouritesPage__top}>
-            <Link to="/">
-              <HomeIcon
-                color={isThemeDark ? '#fff' : '#000'}
-                width="16"
-                height="16"
-              />
-            </Link>
-
-            <img src={arrowIcon} alt="arrow-icon" />
-            {/* I will leave icon coz we will make a component later */}
-            <p className={styles.favouritesPage__top__content}>Favourites</p>
-          </div>
+          <Breadcrumbs />
           <h2
             className={cn(styles.favouritesPage__title, {
               [styles.favouritesPage__title__dark]: isThemeDark,
