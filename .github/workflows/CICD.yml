@@ -18,7 +18,7 @@ jobs:
     steps:
     - name: Checkout repository 📂
       uses: actions/checkout@v3
-      
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -27,11 +27,8 @@ jobs:
     - name: Install dependencies 📚
       run: npm install
 
-    - name: Run the lint🧪 and generate coverage report 📋
-      run: npm run lint -- --coverage
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+    - name: Run the lint 🧪
+      run: npm run lint
 
     - name: Build 🔧
       run: npm run build
