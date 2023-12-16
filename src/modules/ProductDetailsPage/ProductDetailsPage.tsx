@@ -5,7 +5,7 @@ import React from 'react';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { BackButton } from '../shared/BackButton';
 import { ProductDetailsSlider } from './components/ProductDetailsSlider';
-import { ProductSlider } from '../shared/ProductSlider';
+// import { ProductSlider } from '../shared/ProductSlider';
 
 export const ProductDetailsPage: React.FC = () => {
   return (
@@ -20,7 +20,7 @@ export const ProductDetailsPage: React.FC = () => {
         <ProductDetailsSlider />
       </article>
 
-      <ProductSlider />
+      {/* <ProductSlider  /> */}
     </>
   );
 };

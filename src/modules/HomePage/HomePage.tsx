@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import styles from './HomePage.module.scss';
@@ -8,9 +8,21 @@ import { MainTitle } from './componets/MainTitle';
 import { MainSlider } from './componets/MainSlider';
 import { ProductSlider } from '../shared/ProductSlider';
 import { useAppSelector } from '../../store/hooks';
+import { Phone } from '../../types/Phone';
+import { getNewestPhones, getPhonesWithDiscount } from '../../api/service';
 
 export const HomePage: React.FC = () => {
+  const [newPhones, setNewPhones] = useState<Phone[]>([]);
+  const [phonesWithDiscount, setPhonesWithDiscount] = useState<Phone[]>([]);
   const { isDarkTheme } = useAppSelector((state) => state.theme);
+
+  useEffect(() => {
+    getNewestPhones()
+      .then(setNewPhones);
+
+    getPhonesWithDiscount()
+      .then(setPhonesWithDiscount);
+  }, []);
 
   return (
     <>
@@ -26,11 +38,17 @@ export const HomePage: React.FC = () => {
 
       <MainSlider />
 
-      <ProductSlider />
+      <ProductSlider
+        title="Brand new models"
+        phones={newPhones}
+      />
 
       <ShopByCategory />
 
-      <ProductSlider />
+      <ProductSlider
+        title="Hot prices"
+        phones={phonesWithDiscount}
+      />
     </>
   );
 };

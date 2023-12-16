@@ -33,7 +33,7 @@ export const ShopByCategory: React.FC = () => {
 
   return (
     <section
-      className={cn({
+      className={cn('page__categories', {
         [styles.shopByCategoryDark]: isDarkTheme,
       })}
     >
