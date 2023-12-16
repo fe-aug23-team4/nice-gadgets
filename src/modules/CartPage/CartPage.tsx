@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { CartItem } from './components/CartItem';
 import { Phone } from '../../types/Phone';
@@ -11,12 +11,10 @@ export const CartPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[] | []>([]);
   const { isDarkTheme } = useAppSelector((state) => state.theme);
 
-  const total = useMemo(() => {
-    return phones.reduce(
-      (accumulator: number, phone: Phone) => accumulator + phone.price,
-      0,
-    );
-  }, [phones]);
+  const total = phones.reduce(
+    (accumulator: number, phone: Phone) => accumulator + phone.price,
+    0,
+  );
 
   useEffect(() => {
     getNewestPhones()
