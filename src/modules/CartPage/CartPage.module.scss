@@ -1,31 +1,20 @@
 @import '../../styles/utils/variables/colors';
 @import '../../styles/utils/mixins/mixin-typography';
 @import '../../styles/blocks/grid';
+@import '../../styles/blocks/container';
 
 .cart {
-  padding: 1rem 1.5rem 3.4rem;
-  background-color: $color__hover-and-bg;
+  padding-top: 1.5rem;
+  padding-bottom: 3.4rem;
 
   @include onTablet {
-    padding: 1.5rem 2.5rem 4rem;
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
   }
 
   @include onDesktop {
-    padding: 2rem 2.5rem 5rem;
-  }
-
-  &__DARK {
-    background-color: $color__primary;
-  }
-}
-
-.breadcrums {
-  margin-bottom: 1.5rem;
-  color: $color__secondary;
-  @include smallText-typography;
-
-  @include onTablet {
-    margin-bottom: 1rem;
+    padding-top: 2.5rem;
+    padding-bottom: 5rem;
   }
 }
 

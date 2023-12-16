@@ -5,6 +5,7 @@ import { Phone } from '../../types/Phone';
 import { getNewestPhones } from '../../api/service';
 import styles from './CartPage.module.scss';
 import { useAppSelector } from '../../store/hooks';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 
 export const CartPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[] | []>([]);
@@ -27,13 +28,8 @@ export const CartPage: React.FC = () => {
         [styles.cart__DARK]: isDarkTheme,
       })}
     >
-      <div
-        className={cn(styles.breadcrums, {
-          [styles.contentDark]: isDarkTheme,
-        })}
-      >
-        Breadcrums
-      </div>
+      <Breadcrumbs />
+      {/* if I undestood your comment in a right way */}
 
       <h2
         className={cn(styles.title, {
