@@ -23,7 +23,7 @@
   "scripts": {
     "prepare": "husky install",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier . --ignore-path .gitignore --write",
@@ -40,6 +40,7 @@
     "not IE 11"
   ],
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@mate-academy/eslint-config-react-typescript": "^1.0.13",
     "@types/jest": "^29.5.11",
     "@types/node": "^20.10.4",
