@@ -19,7 +19,7 @@ export function getSearchWith(
           newParams.append(key, part);
         });
       } else {
-        newParams.set(key, value);
+        newParams.set(key, value.toString());
       }
     });
 

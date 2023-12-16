@@ -7,7 +7,7 @@ import { getSearchWith } from '../../../../utils/getSearchWith';
 
 type Props = {
   totalPages: number;
-  currentPage: string | null;
+  currentPage: number;
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -16,36 +16,32 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const [searchParams] = useSearchParams();
-  const isFirstPage = currentPage === '1';
-  const isLastPage = Number(currentPage) === totalPages;
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === totalPages;
 
-  const pages = getPages(1, totalPages, parseInt(currentPage || '1', 10));
+  const pages = getPages(1, totalPages, currentPage);
 
-  const onPageChange = (newPage: string) => {
-    if (newPage === '1') {
-      getSearchWith(searchParams, { perPage: null });
-    }
-
+  const onPageChange = (newPage: number) => {
     getSearchWith(searchParams, { page: newPage });
   };
 
-  const setPage = (newPage: string) => {
+  const setPage = (newPage: number) => {
     onPageChange(newPage);
   };
 
   const setPreviousPage = () => {
     if (!isFirstPage) {
-      const previosPage = parseInt(currentPage || '1', 10) - 1;
+      const previosPage = currentPage - 1;
 
-      onPageChange(previosPage.toString());
+      onPageChange(previosPage);
     }
   };
 
   const setNextPage = () => {
     if (!isLastPage) {
-      const nextPage = parseInt(currentPage || '1', 10) + 1;
+      const nextPage = currentPage + 1;
 
-      onPageChange(nextPage.toString());
+      onPageChange(nextPage);
     }
   };
 
@@ -74,11 +70,11 @@ export const Pagination: React.FC<Props> = ({
             <button
               className={classNames(styles.pagination__item, {
                 [styles.pagination__item__SELECTED]:
-                  currentPage === page.toString(),
+                  currentPage === page,
                 [styles.pagination__item__DARK]: isDarkTheme,
               })}
               type="button"
-              onClick={() => setPage(page.toString())}
+              onClick={() => setPage(page)}
             >
               {page}
             </button>

@@ -1,0 +1,77 @@
+.filtration {
+  &__label {
+    color: $color__secondary;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &__dropdown {
+    color: $color__primary;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px;
+
+    width: 176px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid $color__icons;
+
+    &::before {
+      content: icon;
+      background-image: url('../../static/buttons/Icons_ArrowDown.svg');
+    }
+
+    &:hover {
+      border: 1px solid $color__secondary;
+    }
+
+    &__DARK {
+      background-color: $color__dark-theme-secondary;
+      border-radius: 0px;
+      border: none;
+
+      &:hover {
+        border: 1px solid #4a4d58;
+      }
+
+      &::before {
+        content: icon;
+        background-image: url('../../static/buttons/Icons_DarkArrowDown.svg');
+      }
+    }
+  }
+
+  &__option {
+    color: $color__secondary;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    background-color: $color__white;
+
+    &:hover {
+      color: $color__primary;
+      background: $color__white;
+    }
+
+    &:focus {
+      border: 1px solid $color__primary;
+    }
+
+    &__DARK {
+      color: $color__dark-theme-primary;
+
+      &:hover {
+        background-color: $color__dark-theme-secondary;
+      }
+
+      &:focus {
+        order: 1px solid #905bff;
+      }
+    }
+  }
+}

@@ -5,9 +5,9 @@ import { SortBy } from '../types/SortBy';
 import { PhoneDetail } from '../types/PhoneDetail';
 
 export const getPhonesWithSearchParams = (
-  sortBy: SortBy | null,
-  perPage: string | null,
-  page: string | null,
+  perPage: string,
+  page: number,
+  sortBy?: SortBy,
 ) => {
   return axiosClient.get<Phone[]>(
     `/phones?sortBy=${sortBy}&perPage=${perPage}&page=${page}`,

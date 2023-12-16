@@ -11,6 +11,7 @@ import { PhoneDetailsPage } from './modules/PhoneDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { getPhonesWithSearchParams as loadData } from './api/service';
 
 export const Root = () => (
   <Router>
@@ -25,12 +26,7 @@ export const Root = () => (
               element={(
                 <ProductsPage
                   title="Mobiles phones"
-                  sort={null}
-                  perPage="All"
-                  page="1"
-                  getProductsWithSearchParams={() => {
-                    return Promise.resolve([]);
-                  }}
+                  loadData={loadData}
                 />
               )}
             />
