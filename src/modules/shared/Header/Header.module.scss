@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid $color__elements;
-  background-color: #fff;
+  background-color: $color__white;
 
   &__left {
     padding: 0 16px;
@@ -38,7 +38,7 @@
 
     border: none;
     border-left: 1px solid $color__elements;
-    background-color: #fff;
+    background-color: $color__white;
   }
 
   &__nav {
@@ -86,6 +86,87 @@
     justify-content: center;
 
     border-left: 1px solid $color__elements;
+  }
+
+  &__themeSwitch {
+    position: relative;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_input {
+      position: absolute;
+      opacity: 0;
+      z-index: 1;
+      cursor: pointer;
+
+      &:checked ~ .header__themeSwitch_label {
+        background-color: $color__secondary;
+
+        & span::after {
+          transform: translate3d(22px, 0, 0);
+          background-color: $color__white;
+        }
+      }
+    }
+
+    &_label {
+      position: relative;
+      transition: background-color 200ms ease-in-out;
+      width: 38px;
+      height: 16px;
+      border-radius: 50px;
+      text-align: center;
+      background-color: $color__white;
+      box-shadow: -1px 1px 5px inset rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+
+      &::before,
+      &::after {
+        font-size: 2rem;
+        position: absolute;
+        transform: translate3d(0, -50%, 0);
+        top: 50%;
+      }
+
+      & span {
+        position: absolute;
+        bottom: calc(100% + 10px);
+        left: 0;
+        width: 100%;
+
+        &::after {
+          position: absolute;
+          top: calc(100% + 12px);
+          left: 2px;
+          width: 12px;
+          height: 12px;
+          content: '';
+          border-radius: 50%;
+          background-color: $color__secondary;
+          transition: transform 200ms, background-color 200ms;
+          box-shadow: -3px 3px 8px rgba(0, 0, 0, 0.4);
+        }
+      }
+    }
+  }
+
+  &__favorites {
+    height: 13px;
+    width: 13px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 9px;
+    font-weight: 600;
+    color: $color__white;
+    text-align: center;
+    line-height: 12px;
+
+    background-color: $color__secondary-accent;
+    border-radius: 50%;
+    border: 1px solid $color__white;
   }
 
 
@@ -152,6 +233,11 @@
         top: 56px;
       }
     }
+
+    &__favorites {
+      top: 13px;
+      right: 13px;
+    }
   }
 }
 
@@ -179,5 +265,10 @@
   & .header__burger_icon {
     background-color: $color__dark-theme__black;
     border-left: 1px solid $color__dark-theme__surface-2;
+  }
+
+  & .header__favorites {
+    background-color: $color__red;
+    border-color: $color__dark-theme__black;
   }
 }

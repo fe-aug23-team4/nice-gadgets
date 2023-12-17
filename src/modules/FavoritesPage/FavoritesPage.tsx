@@ -1,40 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
+import { useAppSelector } from '../../store/hooks';
 import styles from './FavoritesPage.module.scss';
 import arrowIcon from '../../static/icons/arrow-right_icon.svg';
 import { Loader } from '../shared/Loader';
-import { Phone } from '../../types/Phone';
+// import { Phone } from '../../types/Phone';
 import { ProductList } from '../shared/ProductList';
 import { HomeIcon } from './HomeIcon';
-import { getNewestPhones } from '../../api/service';
+// import { getNewestPhones } from '../../api/service';
 
 export const FavoritesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[] | []>([]);
+  // const [phones, setPhones] = useState<Phone[] | []>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const newPhones = await getNewestPhones();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const newPhones = await getNewestPhones();
 
-        setPhones(newPhones);
-      } catch (error) {
-        // eslint-disable-next-line
-        console.error('Error fetching data:', error);
-      }
-    };
+  //       setPhones(newPhones);
+  //     } catch (error) {
+  //       // eslint-disable-next-line
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  const favourites: Phone[] = phones;
-  const isThemeDark = false;
-  const isLoading = favourites.length === 0;
+  // const favourites: Phone[] = phones;
+  // const isThemeDark = false;
+  const { isDarkTheme } = useAppSelector((state) => state.theme);
+  const { favorites } = useAppSelector(state => state.favorites);
+  const isLoading = false;
 
   return (
     <section
       className={cn(styles.favouritesPage, {
-        [styles.favouritesPageDark]: isThemeDark,
+        [styles.favouritesPageDark]: isDarkTheme,
       })}
     >
       {isLoading ? (
@@ -44,7 +47,7 @@ export const FavoritesPage: React.FC = () => {
           <div className={styles.favouritesPage__top}>
             <Link to="/">
               <HomeIcon
-                color={isThemeDark ? '#fff' : '#000'}
+                color={isDarkTheme ? '#fff' : '#000'}
                 width="16"
                 height="16"
               />
@@ -56,16 +59,16 @@ export const FavoritesPage: React.FC = () => {
           </div>
           <h2
             className={cn(styles.favouritesPage__title, {
-              [styles.favouritesPage__title__dark]: isThemeDark,
+              [styles.favouritesPage__title__dark]: isDarkTheme,
             })}
           >
             Favourites
           </h2>
           <p className={styles.favouritesPage__content}>
-            {`${favourites.length || 0} items`}
+            {`${favorites.length || 0} items`}
           </p>
 
-          <ProductList phones={favourites} />
+          <ProductList phones={favorites} />
         </>
       )}
     </section>
