@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/nice-gadgets/static/css/main.230079d1.css",
-    "main.js": "/nice-gadgets/static/js/main.91b796a1.js",
+    "main.css": "/nice-gadgets/static/css/main.c25e88eb.css",
+    "main.js": "/nice-gadgets/static/js/main.8bbcbce4.js",
     "static/media/Mont-Regular.ttf": "/nice-gadgets/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
     "static/media/Mont-SemiBold.ttf": "/nice-gadgets/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
     "static/media/Mont-Bold.ttf": "/nice-gadgets/static/media/Mont-Bold.3675b597d3ffb2b75168.ttf",
@@ -23,11 +23,11 @@
     "static/media/arrow-right_icon.svg": "/nice-gadgets/static/media/arrow-right_icon.b4dbd66ffd9eba39520adf4bc05dc300.svg",
     "static/media/arrow-left_icon.svg": "/nice-gadgets/static/media/arrow-left_icon.837e2957378258c8ddb071859e53301f.svg",
     "static/media/minus_icon.svg": "/nice-gadgets/static/media/minus_icon.41beeb2668fd1e6ac9c306b7c6757f7a.svg",
-    "main.230079d1.css.map": "/nice-gadgets/static/css/main.230079d1.css.map",
-    "main.91b796a1.js.map": "/nice-gadgets/static/js/main.91b796a1.js.map"
+    "main.c25e88eb.css.map": "/nice-gadgets/static/css/main.c25e88eb.css.map",
+    "main.8bbcbce4.js.map": "/nice-gadgets/static/js/main.8bbcbce4.js.map"
   },
   "entrypoints": [
-    "static/css/main.230079d1.css",
-    "static/js/main.91b796a1.js"
+    "static/css/main.c25e88eb.css",
+    "static/js/main.8bbcbce4.js"
   ]
 }
