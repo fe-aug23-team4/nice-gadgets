@@ -8,11 +8,10 @@ import top_button
   from '../../../static/buttons/slider-up-button-default_button.svg';
 import top_button_dark
   from '../../../static/buttons/slider-up-button-default_button_dark.svg';
-// import { useAppSelector } from '../../../store/hooks';
+import { useAppSelector } from '../../../store/hooks';
 
 export const Footer: React.FC = () => {
-  // const { isDarkTheme } = useAppSelector(state => state.theme);
-  const isDarkTheme = false;
+  const { isDarkTheme } = useAppSelector(state => state.theme);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -22,9 +21,10 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className={cn([styles.footer], {
-      [styles.footer__dark]: isDarkTheme,
-    })}
+    <footer
+      className={cn(styles.footer, {
+        [styles.footer__dark]: isDarkTheme,
+      })}
     >
       <div className={styles.container}>
         <Link to="/">
@@ -61,11 +61,7 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
         <div className={styles.return_button}>
-          <Link
-            to="#Top"
-            className={styles.button_top}
-            onClick={scrollToTop}
-          >
+          <Link to="#Top" className={styles.button_top} onClick={scrollToTop}>
             Back to Top
           </Link>
           <Link to="#Top" onClick={scrollToTop}>
