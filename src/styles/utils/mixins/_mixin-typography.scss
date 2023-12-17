@@ -2,7 +2,7 @@
 @import './mixin-media';
 
 @mixin typography-dark {
-  color: $color__dark-theme-white;
+  color: $color__dark-theme__white;
 }
 
 @mixin h1-typography {
@@ -20,15 +20,15 @@
 }
 
 @mixin h2-typography {
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 800;
-  line-height: 41px;
+  line-height: 31px;
   letter-spacing: -0.32px;
   color: $color__primary;
 
   @include onTablet {
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 32px;
+    line-height: 41px;
     letter-spacing: -0.48px;
   }
 }

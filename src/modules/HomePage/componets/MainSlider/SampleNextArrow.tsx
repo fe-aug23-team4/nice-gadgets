@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import {
   ReactComponent as NextIcon,
-} from './icons/Buttons/Icons/ArrowRight.svg';
+} from '../../../../static/icons/arrow-right_icon.svg';
 import { useAppSelector } from '../../../../store/hooks';
 
 export const SampleNextArrow: React.FC = (props: any) => {

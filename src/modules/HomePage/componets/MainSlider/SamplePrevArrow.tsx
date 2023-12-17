@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import {
   ReactComponent as PrevIcon,
-} from './icons/Buttons/Icons/ArrowLeft.svg';
+} from '../../../../static/icons/arrow-left_icon.svg';
 import { useAppSelector } from '../../../../store/hooks';
 
 export const SamplePrevArrow: React.FC = (props: any) => {
