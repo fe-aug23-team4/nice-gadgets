@@ -72,6 +72,10 @@ $footerAndHeaderHeightDesktop: 160px;
   @include onMobile {
     display: none;
   }
+
+  @include onMobile {
+    display: none;
+  }
 }
 
 .error_message {
@@ -81,6 +85,10 @@ $footerAndHeaderHeightDesktop: 160px;
   &_dark {
     @include bodyText-typography;
     color: $color__dark-theme__white;
+  }
+
+  @include onMobile {
+    font-size: 24px;
   }
 }
 
@@ -144,5 +152,11 @@ $footerAndHeaderHeightDesktop: 160px;
       scale: 0.9;
     }
     margin-top: 5px;
+  }
+
+  @include onMobile {
+    margin-top: 5px;
+    padding: 8px;
+    font-size: 12px;
   }
 }
