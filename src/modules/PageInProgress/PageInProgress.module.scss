@@ -1,8 +1,7 @@
-@import '../../styles/utils/variables/colors';
 @import '../../styles/utils/mixins/mixin-media';
 @import '../../styles/utils/mixins/mixin-typography';
 
-$footerAndHeaderHeighTablet: 144px;
+$footerAndHeaderHeightTablet: 144px;
 $footerAndHeaderHeightMobile: 257px;
 $footerAndHeaderHeightDesktop: 160px;
 
@@ -12,73 +11,36 @@ $footerAndHeaderHeightDesktop: 160px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 0 20px;
 
   @include onMobile {
     height: calc(100vh - #{$footerAndHeaderHeightMobile});
-    gap: 5px;
   }
 
   @include onTablet {
-    height: calc(100vh - #{$footerAndHeaderHeighTablet});
+    height: calc(100vh - #{$footerAndHeaderHeightTablet});
   }
-
 
   @include onDesktop {
     height: calc(100vh - #{$footerAndHeaderHeightDesktop});
   }
-
-}
-
-.not_found_logo {
-  height: 160px;
-
-  @include onMobile {
-    height: 90px;
-  }
 }
 
 .headline {
-  @include h2-typography;
+  @include h1-typography;
 
   &_dark {
-    @include h2-typography;
+    @include h1-typography;
     color: $color__dark-theme__white;
-
-    @include onMobile {
-      font-size: 24px;
-    }
   }
 
   @include onMobile {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 
 .subtitle {
-  color: $color__secondary;
-  @include bodyText-typography;
-
-  &_dark {
-    @include bodyText-typography;
-    color: $color__dark-theme__white;
-
-    @include onMobile {
-      display: none;
-    }
-  }
-
-  @include onMobile {
-    display: none;
-  }
-
-  @include onMobile {
-    display: none;
-  }
-}
-
-.error_message {
   text-align: center;
   color: $color__secondary;
   @include bodyText-typography;
@@ -89,11 +51,42 @@ $footerAndHeaderHeightDesktop: 160px;
   }
 }
 
-.button {
+.page_in_progress_icon {
+  height: 170px;
+
+  &_dark {
+    height: 170px;
+    filter: invert(89%);
+
+    @include onMobile {
+      height: 90px;
+    }
+  }
+
+  @include onMobile {
+    height: 90px;
+  }
+}
+
+.button_container {
+  display: flex;
+  margin-top: 20px;
+  gap: 30px;
+
+  @include onMobile {
+    margin-top: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.button_git {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px;
+  min-width: 130px;
 
   border-radius: 8px;
   border: none;
@@ -149,5 +142,70 @@ $footerAndHeaderHeightDesktop: 160px;
       scale: 0.9;
     }
     margin-top: 5px;
+  }
+}
+
+.button_back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  min-width: 130px;
+
+  border-radius: 8px;
+  border: none;
+  background: $color__dark-theme__accent;
+  margin-top: 12px;
+
+  color: $color__dark-theme__white;
+  @include buttons-typography;
+  text-decoration: none;
+
+  transition: scale 0.05s ease;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+    scale: 1.1;
+    background: #a378ff;
+  }
+
+  @include onMobile {
+    scale: 0.8;
+    &:hover {
+      scale: 0.9;
+    }
+    margin-top: 5px;
+  }
+
+    &_dark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+    border-radius: 0px;
+    border: none;
+    background: $color__accent;
+    margin-top: 12px;
+
+    color: $color__white;
+    @include buttons-typography;
+    text-decoration: none;
+
+    transition: scale 0.05s ease;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+      scale: 1.1;
+      background: $color__accent;
+    }
+
+    @include onMobile {
+      scale: 0.8;
+      &:hover {
+        scale: 0.9;
+      }
+      margin-top: 5px;
+    }
   }
 }

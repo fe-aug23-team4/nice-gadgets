@@ -8,11 +8,12 @@ import { App } from './App';
 import { HomePage } from './modules/HomePage';
 import { PhonesPage } from './modules/PhonesPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
-import { FavoritesPage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { TabletsPage } from './modules/TabletsPage';
+import { PageInProgress } from './modules/PageInProgress';
 import { AccessoriesPage } from './modules/AccessoriesPage';
+import { FavoritesPage } from './modules/FavoritesPage';
 
 export const Root = () => (
   <Router>
@@ -29,6 +30,7 @@ export const Root = () => (
           <Route path="accessories" element={<AccessoriesPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="pageInProgress" element={<PageInProgress />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Route>
