@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
-import style from './PhoneCard.module.scss';
+import style from './ProductCard.module.scss';
 import { useAppSelector } from '../../../store/hooks';
 import { Phone } from '../../../types/Phone';
 import { AddToCart } from '../AddToCart';
@@ -10,7 +10,7 @@ type Props = {
   phone: Phone;
 };
 
-export const PhoneCard: React.FC<Props> = ({ phone }) => {
+export const ProductCard: React.FC<Props> = ({ phone }) => {
   const {
     name,
     fullPrice,
