@@ -13,10 +13,18 @@ import { useAppSelector } from '../../../store/hooks';
 export const Footer: React.FC = () => {
   const { isDarkTheme } = useAppSelector(state => state.theme);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <footer className={cn([styles.footer], {
-      [styles.footer__dark]: isDarkTheme,
-    })}
+    <footer
+      className={cn(styles.footer, {
+        [styles.footer__dark]: isDarkTheme,
+      })}
     >
       <div className={styles.container}>
         <Link to="/">
@@ -53,14 +61,13 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
         <div className={styles.return_button}>
-          <Link to="#top" className={styles.button_top}>
+          <Link to="#Top" className={styles.button_top} onClick={scrollToTop}>
             Back to Top
           </Link>
-          <Link to="#top">
+          <Link to="#Top" onClick={scrollToTop}>
             <img
               src={isDarkTheme ? top_button_dark : top_button}
               alt="nice_gadgets_logo"
-              className={styles.button_logo}
             />
           </Link>
         </div>

@@ -3,15 +3,29 @@
 .breadcrumbContainer {
   display: flex;
   gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .link {
   display: flex;
   gap: 8px;
   align-items: flex-end;
+}
+
+.content {
   color: $color__secondary;
   font-size: 12px;
   font-weight: 600;
+
+  &__prev {
+    color: $color__primary;
+  }
+
+  &__prev__DARK {
+    color: $color__dark-theme__white;
+  }
 
   &__DARK {
     color: $color__dark-theme__secondary;

@@ -11,7 +11,7 @@ export const localClient = {
     }
   },
 
-  write: (key: string, data: any) => {
+  write: (key: string, data: unknown) => {
     window.localStorage.setItem(key, JSON.stringify(data, null, 2));
   },
 
@@ -25,9 +25,7 @@ export const localClient = {
   update: (key: string, data: Phone) => {
     const existingData = localClient.read(key);
     const newData = existingData.map((item: Phone) => {
-      return item.id === data.id
-        ? data
-        : item;
+      return item.id === data.id ? data : item;
     });
 
     window.localStorage.setItem(key, JSON.stringify(newData, null, 2));
@@ -46,9 +44,12 @@ export const localClient = {
     return !!existingData.find((item: Phone) => item.id === id);
   },
 
-  init: (key: string, initialData: any) => {
+  // eslint-disable-next-line consistent-return
+  init: (key: string, initialData: unknown) => {
     if (!localClient.read(key)) {
       localClient.write(key, initialData);
+
+      return localClient.read(key);
     }
   },
 };
