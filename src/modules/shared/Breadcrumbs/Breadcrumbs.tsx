@@ -13,6 +13,7 @@ export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
   const { pathname } = location;
   const segments = pathname.split('/');
+  const currentPage = (segments[segments.length - 1]);
   const { isDarkTheme } = useAppSelector((state) => state.theme);
 
   let url = '';
@@ -29,15 +30,21 @@ export const Breadcrumbs: React.FC = () => {
               />
             )
             : (
-              <div
-                className={cn(styles.link, {
-                  [styles.link__DARK]: isDarkTheme,
-                })}
-              >
+              <div className={styles.link}>
                 <ArrowRightIcon
                   color={isDarkTheme ? '##4a4d58' : '#b4bdc3'}
                 />
-                {segment.charAt(0).toUpperCase() + segment.slice(1)}
+                <p
+                  className={cn(styles.content, {
+                    [styles.content__DARK]: (isDarkTheme
+                      && currentPage === segment),
+                    [styles.content__prev]: currentPage !== segment,
+                    [styles.content__prev__DARK]: (currentPage !== segment
+                    && isDarkTheme),
+                  })}
+                >
+                  {segment.charAt(0).toUpperCase() + segment.slice(1)}
+                </p>
               </div>
             )}
         </Link>
