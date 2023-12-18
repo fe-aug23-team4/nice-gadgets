@@ -19,9 +19,14 @@
 }
 
 .title {
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
   color: $color__primary;
   @include h1-typography;
+
+  @include onTablet {
+    margin-top: 1rem;
+  }
 }
 
 .gridContainer {
