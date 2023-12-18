@@ -49,6 +49,11 @@ const cartSlice = createSlice({
         }
       });
     },
+
+    clear: (state) => {
+      state.cart = [];
+      localClient.write('cart', []);
+    },
   },
 });
 
