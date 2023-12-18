@@ -1,0 +1,19 @@
+@import '../../styles/utils/mixins/mixin-media';
+@import '../../styles/utils/mixins/mixin-typography';
+
+.title {
+  margin-bottom: 24px;
+  @include h1-typography;
+
+  @include onTablet {
+    margin-bottom: 32px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 56px;
+  }
+
+  &__DARK {
+    @include typography-dark;
+  }
+}

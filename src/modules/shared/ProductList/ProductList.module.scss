@@ -1,0 +1,7 @@
+@import '../../../styles/blocks/grid';
+
+  .gridContainer {
+    @extend .grid;
+    grid-row-gap: 40px;
+  }
+

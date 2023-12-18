@@ -1,0 +1,133 @@
+@import '../../../../src/styles/utils/variables/colors';
+@import '../../../styles/utils/mixins/mixin-media';
+@import '../../../styles/utils/mixins/mixin-typography';
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0;
+  width: 100%;
+  background: $color__white;
+  box-shadow: 0px -1px 0px 0px $color__elements;
+
+  &__dark {
+    display: flex;
+    justify-content: center;
+    padding: 32px 0;
+    width: 100%;
+    box-shadow: 0px -1px 0px 0px $color__dark-theme__elements;
+    background: $color__dark-theme__black;
+
+    @include onMobile {
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @include onMobile {
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+}
+
+.container {
+  display: flex;
+
+  @include onMobile {
+    width: auto;
+    margin: 0 16px;
+    gap: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @include onTablet {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 32px;
+    align-items: center;
+    height: 32px;
+  }
+
+  @include onDesktop {
+    max-width: 1200px;
+  }
+}
+
+.return_button,
+.return_button__dark {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include onMobile {
+    align-self: center;
+    justify-content: center;
+  }
+}
+
+.nav_center {
+  display: flex;
+  width: 33%;
+  justify-content: space-between;
+
+  @include onMobile {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.nav_text {
+  text-decoration: none;
+  display: flex;
+  color: $color__secondary;
+  font-family: 'Mont', sans-serif;
+  justify-content: space-between;
+  @include upperCase-typography;
+  padding: 18px 12px;
+
+  &__dark {
+    text-decoration: none;
+    display: flex;
+    color: $color__dark-theme__white;
+    font-family: 'Mont', sans-serif;
+    justify-content: space-between;
+    @include upperCase-typography;
+    padding: 18px 12px;
+
+    @include onMobile {
+      padding: 0;
+    }
+  }
+
+  @include onMobile {
+    padding: 0;
+  }
+}
+
+.nav_logo {
+  height: 32px;
+  display: flex;
+  justify-content: flex-start;
+
+  &__dark {
+    height: 32px;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+.button_top {
+  display: flex;
+  color: $color__secondary;
+  font-family: 'Mont', sans-serif;
+  text-decoration: none;
+  @include smallText-typography;
+}
+
+.button_logo {
+  height: 32px;
+  width: 32px;
+  display: flex;
+}

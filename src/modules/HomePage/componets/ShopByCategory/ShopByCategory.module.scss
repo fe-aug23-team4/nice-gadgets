@@ -1,0 +1,104 @@
+@import '../../../../styles/blocks/grid';
+@import '../../../../styles/utils/variables/colors';
+@import '../../../../styles/utils/mixins/mixin-media';
+@import '../../../../styles/utils/mixins/mixin-typography';
+
+.shopByCategory {
+  &__title {
+    margin-bottom: 1.5rem;
+    @include h2-typography;
+  }
+
+  &__titleDark {
+    @include typography-dark;
+  }
+
+  &__container {
+    @extend .grid;
+  }
+
+  &__article {
+    margin-bottom: 32px;
+    grid-column: span 4;
+    color: $color__primary;
+    @include onTablet {
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__subtitle {
+    @include h4-typography;
+  }
+
+  &__subtitleDark {
+    @include typography-dark;
+  }
+
+  &__content {
+    color: $color__secondary;
+    @include bodyText-typography;
+  }
+
+  &__contentDark {
+    color: $color__dark-theme__secondary;
+  }
+
+  &__imgContainer {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+
+  &__imgPhones {
+    background-color: #6D6474;
+  }
+
+  &__imgDark {
+    border-radius: 0px;
+  }
+
+  &__imgTablets {
+    background-color: #D3D3D3;
+  }
+
+  &__imgAccessories {
+    background-color: #D53C51;
+  }
+
+  &__picture {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 10%;
+    top: 10%;
+    transition: transform 0.3s ease;
+  }
+
+  &__pictureTablet {
+    left: 7%;
+    top: 5%;
+  }
+
+  &__pictureAccessories {
+    left: 3%;
+    top: 0%;
+  }
+
+  &__imgContainer:hover &__picture {
+    transform: scale(1.2);
+  }
+}
+
+.shopByCategoryDark {
+  background-color: $color__dark-theme__black;
+}
+
+

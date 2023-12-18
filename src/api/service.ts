@@ -4,6 +4,14 @@ import { Phone } from '../types/Phone';
 import { SortBy } from '../types/SortBy';
 import { PhoneDetail } from '../types/PhoneDetail';
 
+export const getPhones = () => {
+  return axiosClient.get<Phone[]>('/phones');
+};
+
+export const getPhonesAmount = () => {
+  return axiosClient.get<number>('/phones/amount');
+};
+
 export const getPhonesWithSearchParams = (
   perPage: string,
   page: number,

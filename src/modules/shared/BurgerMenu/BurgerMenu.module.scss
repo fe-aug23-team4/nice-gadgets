@@ -1,0 +1,134 @@
+@import '../../../styles/utils/variables/colors';
+@import '../../../styles/utils/mixins/mixin-media';
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 100;
+  height: calc(100vh - 49px);
+  top: -100vh;
+  left: 0;
+  right: 0;
+
+  background-color: $color__white;
+  opacity: 0;
+  transition: all 0.3s;
+
+  &__IsOpen {
+    opacity: 1;
+    top: 49px;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding-top: 32px;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: $color__secondary;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      display: block;
+      height: 3px;
+      right: 100%;
+      left: 100%;
+      background-color: $color__primary;
+    }
+
+    &__ISACTIVE {
+      color: $color__primary;
+    }
+
+    &__ISACTIVE::after {
+      right: 0;
+      left: 0;
+      transition: all 0.3s;
+    }
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    width: 50vw;
+
+    border-top: 1px solid $color__elements;
+
+    &:first-child {
+      border-right: 0.5px solid $color__elements;
+    }
+
+    & .burger__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 100%;
+      width: 100%;
+
+      &::after {
+        top: 61px;
+      }
+    }
+  }
+
+  &__favorites {
+    position: relative;
+
+    &_count {
+      position: absolute;
+      height: 13px;
+      width: 13px;
+      top: -7px;
+      right: -7px;
+      font-size: 9px;
+      font-weight: 600;
+      color: $color__white;
+      text-align: center;
+      line-height: 12px;
+
+      background-color: $color__secondary-accent;
+      border-radius: 50%;
+      border: 1px solid $color__white;
+    }
+  }
+
+  @include onTablet {
+    display: none;
+  }
+}
+
+.burgerDark {
+  background-color: $color__dark-theme__black;
+
+  & .burger__link {
+    color: $color__dark-theme__secondary;
+
+    &__ISACTIVE {
+      color: $color__dark-theme__white;
+    }
+
+    &::after {
+      background-color: $color__dark-theme__white;
+    }
+  }
+}

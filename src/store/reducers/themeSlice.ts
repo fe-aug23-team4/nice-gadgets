@@ -1,12 +1,14 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+import { localClient } from '../../utils/localClient';
 
 export interface ThemeState {
   isDarkTheme: boolean;
 }
 
 const initialState: ThemeState = {
-  isDarkTheme: false,
+  isDarkTheme:
+    localClient.read('isDarkTheme') || localClient.init('isDarkTheme', false),
 };
 
 const themeSlice = createSlice({
@@ -15,6 +17,7 @@ const themeSlice = createSlice({
   reducers: {
     change: (state) => {
       state.isDarkTheme = !state.isDarkTheme;
+      localClient.write('isDarkTheme', state.isDarkTheme);
     },
   },
 });
