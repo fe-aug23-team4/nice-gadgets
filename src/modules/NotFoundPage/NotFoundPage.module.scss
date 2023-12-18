@@ -72,6 +72,10 @@ $footerAndHeaderHeightDesktop: 160px;
   @include onMobile {
     display: none;
   }
+
+  @include onMobile {
+    display: none;
+  }
 }
 
 .error_message {

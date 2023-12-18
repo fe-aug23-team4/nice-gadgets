@@ -62,11 +62,8 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
         <div className={styles.return_button}>
-          <Link
-            to="#Top"
-            className={styles.button_top}
-            onClick={scrollToTop}
-          >
+
+          <Link to="#Top" className={styles.button_top} onClick={scrollToTop}>
             Back to Top
           </Link>
           <Link to="#Top" onClick={scrollToTop}>
