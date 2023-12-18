@@ -15,6 +15,7 @@
   border: 1px solid $color__icons;
 
   &:hover {
+    transition: border 0.3s ease;
     border: 1px solid $color__primary;
   }
 
@@ -27,13 +28,13 @@
   &__DARK {
     background-image: url('../../../static/buttons/fovourites-default_button_dark.svg');
 
-    background-color: $color__dark-theme__secondary;
+    background-color: $color__dark-theme__surface-2;
     border-radius: 0px;
     border: none;
-    color: $color__dark-theme__white;
+    transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #4a4d58;
+      background-color: $color__dark-theme__icons;
     }
 
     &__SELECTED {
@@ -41,7 +42,7 @@
 
       border: 1px solid $color__dark-theme__elements;
       border-radius: 0px;
-      background-color: $color__dark-theme__secondary;
+      background-color: $color__dark-theme__black;
     }
   }
 }

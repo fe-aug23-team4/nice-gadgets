@@ -8,7 +8,7 @@ import { useAppSelector } from '../../store/hooks';
 import { BackButton } from '../shared/BackButton';
 
 export const CartPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[] | []>([]);
+  const [phones, setPhones] = useState<Phone[]>([]);
   const { isDarkTheme } = useAppSelector((state) => state.theme);
 
   const total = useMemo(() => {

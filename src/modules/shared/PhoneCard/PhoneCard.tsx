@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import style from './PhoneCard.module.scss';
 import { useAppSelector } from '../../../store/hooks';
@@ -34,9 +35,12 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
         [style.productCard__DARK]: isDarkTheme,
       })}
     >
-      <div className={style.productCard__image__container}>
+      <Link
+        to={phone.phoneId}
+        className={style.productCard__image__container}
+      >
         <img src={image} alt={name} className={style.productCard__image} />
-      </div>
+      </Link>
 
       <p
         className={cn(style.productCard__name, {

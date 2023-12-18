@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import styles from './AddToFavourites.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
@@ -15,14 +15,17 @@ export const AddToFavourites: React.FC<Props> = ({ productItem }) => {
   const { favorites } = useAppSelector((state) => state.favorites);
   const dispatch = useAppDispatch();
 
-  const isItemSelected = favorites
-    .findIndex(favorite => favorite.id === productItem.id);
+  const [isSelected, setIsSelected] = useState<boolean>(
+    !!favorites.find(favorite => favorite.id === productItem.id),
+  );
 
   const handleFavouritiesButton = (product: Phone) => {
-    if (isItemSelected > 0) {
+    if (isSelected) {
       dispatch(favouritiesActions.remove(product.id));
+      setIsSelected(false);
     } else {
       dispatch(favouritiesActions.add(product));
+      setIsSelected(true);
     }
   };
 
@@ -32,9 +35,9 @@ export const AddToFavourites: React.FC<Props> = ({ productItem }) => {
       aria-label="Add to favourite"
       className={cn(styles.addToFavourite, {
         [styles.addToFavourite__DARK]: isDarkTheme,
-        [styles.addToFavourite__SELECTED]: isItemSelected > 0,
+        [styles.addToFavourite__SELECTED]: isSelected,
         [styles.addToFavourite__DARK__SELECTED]:
-          isItemSelected > 0 && isDarkTheme,
+        isSelected && isDarkTheme,
       })}
       onClick={() => handleFavouritiesButton(productItem)}
     />
