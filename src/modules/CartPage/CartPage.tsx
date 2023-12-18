@@ -1,26 +1,21 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import cn from 'classnames';
 import { CartItem } from './components/CartItem';
-import { Phone } from '../../types/Phone';
-import { getNewestPhones } from '../../api/service';
 import styles from './CartPage.module.scss';
 import { useAppSelector } from '../../store/hooks';
 import { BackButton } from '../shared/BackButton';
 
 export const CartPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
   const { isDarkTheme } = useAppSelector((state) => state.theme);
+  const { cart } = useAppSelector(state => state.cart);
 
-  const total = useMemo(() => {
-    return phones.reduce((accumulator, phone) => accumulator + phone.price, 0);
-  }, [phones]);
+  const totalPrice = useMemo(() => {
+    return cart.reduce((acc, phone) => acc + phone.price * phone.amount, 0);
+  }, [cart]);
 
-  useEffect(() => {
-    getNewestPhones()
-      .then(setPhones)
-      // eslint-disable-next-line
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+  const totalItems = useMemo(() => {
+    return cart.reduce((acc, phone) => acc + phone.amount, 0);
+  }, [cart]);
 
   return (
     <section
@@ -40,8 +35,11 @@ export const CartPage: React.FC = () => {
 
       <div className={styles.gridContainer}>
         <div className={styles.cardsContainer}>
-          {phones.map((phone) => (
-            <CartItem key={phone.id} phone={phone} />
+          {cart.map((phone) => (
+            <CartItem
+              key={phone.id}
+              phone={phone}
+            />
           ))}
         </div>
 
@@ -55,7 +53,7 @@ export const CartPage: React.FC = () => {
               [styles.contentDark]: isDarkTheme,
             })}
           >
-            {`$ ${total}`}
+            {`$ ${totalPrice}`}
           </p>
 
           <p
@@ -63,7 +61,7 @@ export const CartPage: React.FC = () => {
               [styles.amountContent__DARK]: isDarkTheme,
             })}
           >
-            {`Total for ${phones.length} items`}
+            {`Total for ${totalItems} items`}
           </p>
 
           <p
@@ -74,7 +72,6 @@ export const CartPage: React.FC = () => {
 
           <button
             type="button"
-            // className={styles.button}
             className={cn(styles.button, {
               [styles.button__DARK]: isDarkTheme,
             })}
