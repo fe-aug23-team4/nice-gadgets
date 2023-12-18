@@ -12,7 +12,7 @@ import { ReactComponent as PlusIcon }
   from '../../../../static/icons/plus_icon.svg';
 
 type Props = {
-  phone: PhoneWithAmount | null;
+  phone: PhoneWithAmount;
 };
 
 export const CartItem: React.FC<Props> = ({ phone }) => {
@@ -44,19 +44,19 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
       })}
     >
       <div className={styles.top}>
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <button
           type="button"
+          aria-label="Delete Item"
           className={styles.deleteButton}
-          onClick={() => dispatch(cartActions.remove(phone?.id || 0))}
+          onClick={() => dispatch(cartActions.remove(phone.id))}
         >
           <CloseIcon color={isDarkTheme ? '#4A4D58' : '#B4BDC3'} />
         </button>
 
         <div className={styles.imgContainer}>
           <img
-            src={phone?.image}
-            alt={phone?.name}
+            src={phone.image}
+            alt={phone.name}
             className={cn(styles.img, {
               [styles.img__DARK]: isDarkTheme,
             })}
@@ -74,15 +74,17 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
 
       <div className={styles.bottom}>
         <div className={styles.changeAmount}>
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
             type="button"
-            className={cn(styles.changeAmountButton,
-              getClass(isDarkTheme, phone?.amount === 1))}
-            disabled={phone?.amount === 1}
-            onClick={() => dispatch(cartActions.decrease(phone?.id || 0))}
+            aria-label="Decrease Amount"
+            className={cn(
+              styles.changeAmountButton,
+              getClass(isDarkTheme, phone.amount === 1),
+            )}
+            disabled={phone.amount === 1}
+            onClick={() => dispatch(cartActions.decrease(phone.id || 0))}
           >
-            <MinusIcon color={getIconColor(isDarkTheme, phone?.amount === 1)} />
+            <MinusIcon color={getIconColor(isDarkTheme, phone.amount === 1)} />
           </button>
           <p
             className={cn(styles.content, {
@@ -91,9 +93,9 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
           >
             {phone?.amount}
           </p>
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
             type="button"
+            aria-label="Increase Amount"
             className={cn(
               styles.changeAmountButton,
               styles.changeAmountButton__ACTIVE,
@@ -101,7 +103,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
                 [styles.changeAmountButton__activeDARK]: isDarkTheme,
               },
             )}
-            onClick={() => dispatch(cartActions.increase(phone?.id || 0))}
+            onClick={() => dispatch(cartActions.increase(phone.id))}
           >
             <PlusIcon color={isDarkTheme ? '#F1F2F9' : '#0F0F11'} />
           </button>

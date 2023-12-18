@@ -92,7 +92,6 @@ export const CartPage: React.FC = () => {
           <Modal
             isOpen={isModalOpen}
             onClose={closeModal}
-            cart={cart}
           />
         </div>
       </div>
