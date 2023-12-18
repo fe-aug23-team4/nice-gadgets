@@ -44,9 +44,12 @@ export const localClient = {
     return !!existingData.find((item: Phone) => item.id === id);
   },
 
+  // eslint-disable-next-line consistent-return
   init: (key: string, initialData: unknown) => {
     if (!localClient.read(key)) {
       localClient.write(key, initialData);
+
+      return localClient.read(key);
     }
   },
 };
