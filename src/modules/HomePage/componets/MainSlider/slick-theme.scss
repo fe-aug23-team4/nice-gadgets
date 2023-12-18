@@ -4,10 +4,11 @@
 
 /* Arrows */
 @include onMobile {
-  .slick-arrow,
+  .slick-prev,
   .slick-next,
-  .slick-prev {
+  .slick-arrow {
     display: none;
+    visibility: hidden;
   }
 }
 

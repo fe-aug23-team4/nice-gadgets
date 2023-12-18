@@ -1,3 +1,5 @@
+@import '../../../styles/utils/mixins/mixin-media';
+
 /* Slider */
 
 .slick-slider {
@@ -14,12 +16,23 @@
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
 }
-.slick-list {
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-list-product {
   position: relative;
   overflow: hidden;
   display: block;
+  height: 505px !important;
   margin: 0;
-  padding: 0;
+  padding:0 !important;
 
   &:focus {
       outline: none;
@@ -30,23 +43,16 @@
       cursor: hand;
   }
 }
-.slick-slider .slick-track,
-.slick-slider .slick-list {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
 
-.slick-track {
+.slick-track-product {
   position: relative;
   left: 0;
   top: 0;
-  display: block;
+  display: flex !important;
   margin-left: auto;
   margin-right: auto;
-  height: 400px;
+  height: 505px !important;
+  justify-content: space-between;
 
   &:before,
   &:after {
@@ -62,6 +68,7 @@
       visibility: hidden;
   }
 }
+
 .slick-slide {
   float: left;
   height: 100%;
@@ -98,4 +105,14 @@
 }
 .slick-arrow.slick-hidden {
   display: none;
+}
+
+#phonesSlider {
+  .slick-track {
+    display: flex;
+  }
+  .slick-slide {
+    width: 272px !important;
+    margin: 0px auto 0px 0px;
+  }
 }
