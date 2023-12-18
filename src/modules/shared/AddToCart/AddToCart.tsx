@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './AddToCart.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
@@ -11,6 +12,7 @@ type Props = {
 
 export const AddToCart: React.FC<Props> = ({ productItem }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
+  const navigate = useNavigate();
   const { cart } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
@@ -22,6 +24,8 @@ export const AddToCart: React.FC<Props> = ({ productItem }) => {
     if (!isSelected) {
       dispatch(cartActions.add(product));
       setIsSelected(true);
+    } else {
+      navigate('../cart');
     }
   };
 

@@ -14,7 +14,6 @@
   color: $color__white;
   text-align: center;
   font-size: 14px;
-  font-style: normal;
   font-weight: 700;
   line-height: 21px;
   transition: box-shadow 0.3s ease;
@@ -28,5 +27,22 @@
     border: 1px solid $color__elements;
     background: $color__white;
     color: $color__accent;
+  }
+
+  &__DARK {
+    background: #905bff;
+    border-radius: 0px;
+    color: $color__dark-theme__white;
+    border: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #a378ff;
+    }
+
+    &__SELECTED {
+      background: $color__dark-theme__secondary;
+      color: $color__dark-theme__white;
+    }
   }
 }
