@@ -26,7 +26,11 @@ const getLinkClass = (
 
 export const Header: React.FC = () => {
   const { isDarkTheme } = useAppSelector(state => state.theme);
+  const { favorites } = useAppSelector(state => state.favorites);
+  const { cart } = useAppSelector(state => state.cart);
   const dispatch = useAppDispatch();
+
+  const cartCount = cart.reduce((acc, item) => acc + item.amount, 0);
 
   function themeHandler() {
     dispatch(actions.change());
@@ -101,6 +105,7 @@ export const Header: React.FC = () => {
             type="checkbox"
             className={styles.header__themeSwitch_input}
             id="themeSwitch"
+            checked={isDarkTheme}
             onChange={themeHandler}
           />
           <label
@@ -114,12 +119,22 @@ export const Header: React.FC = () => {
         <div className={styles.header__icon}>
           <NavLink to="/favorites" className={getLinkClass}>
             <Favourites color={getButtonColor()} />
+            {!!favorites.length && (
+              <div className={styles.header__iconsCounter}>
+                {favorites.length}
+              </div>
+            )}
           </NavLink>
         </div>
 
         <div className={styles.header__icon}>
           <NavLink to="/cart" className={getLinkClass}>
             <Cart color={getButtonColor()} />
+            {cartCount > 0 && (
+              <div className={styles.header__iconsCounter}>
+                {cartCount}
+              </div>
+            )}
           </NavLink>
         </div>
 
@@ -140,6 +155,8 @@ export const Header: React.FC = () => {
         active={isBurgerActive}
         setActive={setIsBurgerActive}
         isThemeDark={isDarkTheme}
+        favoritesAmount={favorites.length}
+        cartAmount={cartCount}
       />
     </header>
   );

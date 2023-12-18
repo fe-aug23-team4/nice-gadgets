@@ -3,79 +3,62 @@
 @import '../../../styles/utils/mixins/mixin-typography';
 
 .footer {
-  justify-content: center;
   display: flex;
-  bottom: 0;
+  justify-content: center;
   padding: 32px 0;
   width: 100%;
   background: $color__white;
   box-shadow: 0px -1px 0px 0px $color__elements;
 
   &__dark {
-    bottom: 0;
+    display: flex;
+    justify-content: center;
     padding: 32px 0;
     width: 100%;
     box-shadow: 0px -1px 0px 0px $color__dark-theme__elements;
     background: $color__dark-theme__black;
-    justify-content: center;
-    display: flex;
 
     @include onMobile {
       justify-content: flex-start;
-      padding: 32px 0;
-      margin: 0;
       flex-direction: column;
-      height: 175px;
     }
-
-    @include onDesktop {
-      justify-content: center;
-      display: flex;
-    }
-
   }
 
   @include onMobile {
     justify-content: flex-start;
-    padding: 32px 0;
-    margin: 0;
     flex-direction: column;
-    height: 175px;
   }
-
-  @include onDesktop {
-    justify-content: center;
-    display: flex;
-  }
-
 }
 
 .container {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
-  margin: 0 32px;
-  height: 32px;
-  align-items: center;
 
   @include onMobile {
+    width: auto;
     margin: 0 16px;
     gap: 32px;
     flex-direction: column;
     align-items: flex-start;
   }
 
+  @include onTablet {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 32px;
+    align-items: center;
+    height: 32px;
+  }
+
   @include onDesktop {
     max-width: 1200px;
   }
-
 }
 
 .return_button,
 .return_button__dark {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
 
   @include onMobile {

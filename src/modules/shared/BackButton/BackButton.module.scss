@@ -1,0 +1,20 @@
+@import '../../../styles/utils/mixins/mixin-typography';
+
+.backButtonContainer {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.backButtonText {
+  color: $color__secondary;
+  @include smallText-typography;
+  padding-right: 15px;
+
+  &__DARK {
+    color: $color__dark-theme__white;
+  }
+}

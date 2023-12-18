@@ -4,7 +4,7 @@
 
 .productCard {
   display: flex;
-  width: 272px;
+  width: 287px;
   padding: 32px;
   flex-direction: column;
   align-items: flex-start;
@@ -12,7 +12,7 @@
   flex-wrap: wrap;
   align-content: flex-start;
   box-sizing: border-box;
-  margin: 0 auto;
+  // margin: 0 auto;
   grid-column: span 4;
 
   border-radius: 8px;
@@ -20,16 +20,37 @@
 
   @include onTablet {
     grid-column: span 6;
+    width: 288px;
+  }
+
+  @media (min-width: 768px) {
+    grid-column: span 4;
+  }
+
+  @include onDesktop {
+    grid-column: span 6;
+    width: 272px;
+
+  }
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+  &:hover {
+    overflow: hidden;
+    transform: scale(1.01);
+    box-shadow: 0px 3px 13px 0px $color__secondary;
   }
 
   &__DARK {
     background: #161827;
     border-radius: 0px;
+    border: none;
   }
 
   &__image__container {
     display: flex;
-    width: 208px;
+    width: 100%;
     height: 196px;
     justify-content: center;
   }
@@ -40,12 +61,12 @@
   }
 
   &__name {
+    height: 58px;
     margin-top: 8px;
     padding-top: 16px;
     color: $color__primary;
 
     font-size: 14px;
-    font-style: normal;
     font-weight: 600;
     line-height: 21px;
 
@@ -81,7 +102,6 @@
     color: $color__primary;
 
     font-size: 22px;
-    font-style: normal;
     font-weight: 800;
     line-height: 140%;
 
@@ -95,7 +115,6 @@
     color: $color__secondary;
 
     font-size: 22px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-decoration-line: line-through;
@@ -125,7 +144,6 @@
       color: $color__secondary;
 
       font-size: 12px;
-      font-style: normal;
       font-weight: 600;
       line-height: normal;
 
@@ -140,7 +158,6 @@
 
       text-align: right;
       font-size: 12px;
-      font-style: normal;
       font-weight: 700;
       line-height: normal;
 
@@ -158,97 +175,5 @@
     align-self: stretch;
     padding-bottom: 0px;
     margin-bottom: 0px;
-  }
-
-  &__addToCart {
-    display: flex;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    flex: 1 0 0;
-
-    border-radius: 8px;
-    border: none;
-    background: $color__accent;
-
-    color: $color__white;
-    text-align: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 21px;
-
-    &:hover {
-      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
-    }
-
-    &__SELECTED {
-      border-radius: 8px;
-      border: 1px solid $color__elements;
-      background: $color__white;
-      color: $color__accent;
-    }
-
-    &__DARK {
-      background: #905bff;
-      border-radius: 0px;
-      color: $color__dark-theme__white;
-      border: none;
-
-      &:hover {
-        background: #a378ff;
-      }
-
-      &__SELECTED {
-        background: $color__dark-theme__secondary;
-        color: $color__dark-theme__white;
-      }
-    }
-  }
-
-  &__addToFavourite {
-    background-image: url('../../../static/buttons/fovourites-default_button.svg');
-
-    margin-left: 8px;
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: $color__white;
-
-    border-radius: 48px;
-    border: 1px solid $color__icons;
-
-    &:hover {
-      border: 1px solid $color__primary;
-    }
-
-    &__SELECTED {
-      background-image: url('../../../static/buttons/fovourites-selected_button.svg');
-
-      border: 1px solid $color__elements;
-    }
-
-    &__DARK {
-      background-image: url('../../../static/buttons/fovourites-default_button_dark.svg');
-
-      background-color: $color__dark-theme__secondary;
-      border-radius: 0px;
-      border: none;
-      color: $color__dark-theme__white;
-
-      &:hover {
-        background-color: #4a4d58;
-      }
-
-      &__SELECTED {
-        background-image: url('../../../static/buttons/fovourites-selected_button_dark.svg');
-
-        border: 1px solid $color__dark-theme__elements;
-        border-radius: 0px;
-        background-color: $color__dark-theme__secondary;
-      }
-    }
   }
 }

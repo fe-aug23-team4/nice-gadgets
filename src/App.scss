@@ -3,11 +3,10 @@
 @import './styles/utils/normalize';
 @import './styles/utils/typography';
 
-// Mixins
-@import './styles/utils/mixins/mixin-media';
-
-// Variables
-@import './styles/utils/variables/colors';
+// Blocks
+@import './styles/blocks/page';
+@import './styles/blocks/grid';
+@import './styles/blocks/container';
 
 :root {
   font-family: 'Mont', sans-serif;

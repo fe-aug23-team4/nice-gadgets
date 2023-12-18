@@ -10,9 +10,11 @@ import { ReactComponent as Cart }
   from '../../../static/icons/cart_icon.svg';
 
 interface Burger {
-  active: boolean,
-  setActive: (state: boolean) => void,
-  isThemeDark: boolean,
+  active: boolean;
+  setActive: (state: boolean) => void;
+  isThemeDark: boolean;
+  favoritesAmount: number;
+  cartAmount: number;
 }
 
 const getLinkClass = (
@@ -25,16 +27,19 @@ export const BurgerMenu: React.FC<Burger> = ({
   active,
   setActive,
   isThemeDark,
+  favoritesAmount,
+  cartAmount,
 }) => {
   const getButtonColor = () => {
     return isThemeDark ? '#F1F2F9' : '#0F0F11';
   };
 
   return (
-    <aside className={cn([styles.burger], {
-      [styles.burger__IsOpen]: active,
-      [styles.burgerDark]: isThemeDark,
-    })}
+    <aside
+      className={cn([styles.burger], {
+        [styles.burger__IsOpen]: active,
+        [styles.burgerDark]: isThemeDark,
+      })}
     >
       <nav>
         <ul className={styles.burger__menu}>
@@ -83,7 +88,14 @@ export const BurgerMenu: React.FC<Burger> = ({
             className={getLinkClass}
             onClick={() => setActive(false)}
           >
-            <Favourites color={getButtonColor()} />
+            <div className={styles.burger__iconWithConter}>
+              <Favourites color={getButtonColor()} />
+              {!!favoritesAmount && (
+                <span className={styles.burger__iconsCounter}>
+                  {favoritesAmount}
+                </span>
+              )}
+            </div>
           </NavLink>
         </div>
 
@@ -93,7 +105,14 @@ export const BurgerMenu: React.FC<Burger> = ({
             className={getLinkClass}
             onClick={() => setActive(false)}
           >
-            <Cart color={getButtonColor()} />
+            <div className={styles.burger__iconWithConter}>
+              <Cart color={getButtonColor()} />
+              {cartAmount > 0 && (
+                <span className={styles.burger__iconsCounter}>
+                  {cartAmount}
+                </span>
+              )}
+            </div>
           </NavLink>
         </div>
       </div>

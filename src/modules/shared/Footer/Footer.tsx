@@ -21,9 +21,10 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className={cn([styles.footer], {
-      [styles.footer__dark]: isDarkTheme,
-    })}
+    <footer
+      className={cn(styles.footer, {
+        [styles.footer__dark]: isDarkTheme,
+      })}
     >
       <div className={styles.container}>
         <Link to="/">

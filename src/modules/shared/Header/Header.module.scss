@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid $color__elements;
-  background-color: #fff;
+  background-color: $color__white;
 
   &__left {
     padding: 0 16px;
@@ -38,7 +38,7 @@
 
     border: none;
     border-left: 1px solid $color__elements;
-    background-color: #fff;
+    background-color: $color__white;
   }
 
   &__nav {
@@ -106,7 +106,7 @@
 
         & span::after {
           transform: translate3d(22px, 0, 0);
-          background-color: #fff;
+          background-color: $color__white;
         }
       }
     }
@@ -118,7 +118,7 @@
       height: 16px;
       border-radius: 50px;
       text-align: center;
-      background-color: #fff;
+      background-color: $color__white;
       box-shadow: -1px 1px 5px inset rgba(0, 0, 0, 0.4);
       cursor: pointer;
 
@@ -152,6 +152,22 @@
     }
   }
 
+  &__iconsCounter {
+    height: 13px;
+    width: 13px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 9px;
+    font-weight: 600;
+    color: $color__white;
+    text-align: center;
+    line-height: 12px;
+
+    background-color: $color__secondary-accent;
+    border-radius: 50%;
+    border: 1px solid $color__white;
+  }
 
   @include onTablet {
     &__burger_icon {
@@ -216,6 +232,11 @@
         top: 56px;
       }
     }
+
+    &__iconsCounter {
+      top: 13px;
+      right: 13px;
+    }
   }
 }
 
@@ -243,5 +264,10 @@
   & .header__burger_icon {
     background-color: $color__dark-theme__black;
     border-left: 1px solid $color__dark-theme__surface-2;
+  }
+
+  & .header__iconsCounter {
+    background-color: $color__red;
+    border-color: $color__dark-theme__black;
   }
 }
