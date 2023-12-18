@@ -28,7 +28,7 @@ export const PageInProgress: React.FC = () => {
         [styles.subtitle_dark]: isDarkTheme,
       })}
       >
-        This section is currently in development. Please return later or follow us on github to get notified of updates.
+        This section is currently in development. Please return later or follow us on Github to get notified of updates.
       </h2>
       {/* eslint-enable */}
       <div className={styles.button_container}>

@@ -41,6 +41,7 @@ $footerAndHeaderHeightDesktop: 160px;
 }
 
 .subtitle {
+  text-align: center;
   color: $color__secondary;
   @include bodyText-typography;
 
@@ -109,7 +110,7 @@ $footerAndHeaderHeightDesktop: 160px;
     align-items: center;
     padding: 15px;
 
-    border-radius: 8px;
+    border-radius: 0px;
     border: none;
     background: $color__dark-theme__accent;
     margin-top: 12px;
@@ -182,7 +183,7 @@ $footerAndHeaderHeightDesktop: 160px;
     align-items: center;
     padding: 15px;
 
-    border-radius: 8px;
+    border-radius: 0px;
     border: none;
     background: $color__accent;
     margin-top: 12px;
