@@ -91,25 +91,25 @@
     }
   }
 
-  &__favorites {
+  &__iconWithConter {
     position: relative;
+  }
 
-    &_count {
-      position: absolute;
-      height: 13px;
-      width: 13px;
-      top: -7px;
-      right: -7px;
-      font-size: 9px;
-      font-weight: 600;
-      color: $color__white;
-      text-align: center;
-      line-height: 12px;
+  &__iconsCounter {
+    position: absolute;
+    height: 13px;
+    width: 13px;
+    top: -7px;
+    right: -7px;
+    font-size: 9px;
+    font-weight: 600;
+    color: $color__white;
+    text-align: center;
+    line-height: 12px;
 
-      background-color: $color__secondary-accent;
-      border-radius: 50%;
-      border: 1px solid $color__white;
-    }
+    background-color: $color__secondary-accent;
+    border-radius: 50%;
+    border: 1px solid $color__white;
   }
 
   @include onTablet {
@@ -130,5 +130,10 @@
     &::after {
       background-color: $color__dark-theme__white;
     }
+  }
+
+  & .burger__iconsCounter {
+    background-color: $color__red;
+    border-color: $color__dark-theme__black;
   }
 }
