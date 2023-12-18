@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
-import { CartItem } from './components/CartItem';
+// import { CartItem } from './components/CartItem';
 import { Phone } from '../../types/Phone';
 import { getNewestPhones } from '../../api/service';
 import styles from './CartPage.module.scss';
 import { useAppSelector } from '../../store/hooks';
 import { BackButton } from '../shared/BackButton';
+import { EmptyCart } from '../shared/EmptyCart';
 
 export const CartPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -37,7 +38,7 @@ export const CartPage: React.FC = () => {
       >
         Cart
       </h2>
-
+      {/*
       <div className={styles.gridContainer}>
         <div className={styles.cardsContainer}>
           {phones.map((phone) => (
@@ -83,6 +84,8 @@ export const CartPage: React.FC = () => {
           </button>
         </div>
       </div>
+       */}
+      {total ? (<EmptyCart />) : null}
     </section>
   );
 };

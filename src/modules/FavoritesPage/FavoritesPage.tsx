@@ -8,6 +8,7 @@ import { Loader } from '../shared/Loader';
 // import { Phone } from '../../types/Phone';
 import { ProductList } from '../shared/ProductList';
 import { HomeIcon } from './HomeIcon';
+import { EmptyFavourites } from '../shared/EmptyFavourites';
 // import { getNewestPhones } from '../../api/service';
 
 export const FavoritesPage: React.FC = () => {
@@ -67,7 +68,7 @@ export const FavoritesPage: React.FC = () => {
           <p className={styles.favouritesPage__content}>
             {`${favorites.length || 0} items`}
           </p>
-
+          {favorites.length === 0 ? (<EmptyFavourites />) : null}
           <ProductList phones={favorites} />
         </>
       )}
