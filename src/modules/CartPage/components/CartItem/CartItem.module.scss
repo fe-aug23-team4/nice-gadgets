@@ -56,7 +56,6 @@
   display: flex;
   gap: 13px;
   align-items: center;
-  cursor: pointer;
 }
 
 .content {
@@ -90,6 +89,10 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+
+  &:hover {
+    animation: rotateAnimation 0.3s ease-in-out forwards;
+  }
 }
 
 .changeAmountButton {
@@ -98,6 +101,8 @@
   border: 1px solid $color__elements;
   border-radius: 50px;
   background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 
   &__ACTIVE {
     border-color: $color__icons;
@@ -113,6 +118,10 @@
     background-color: $color__dark-theme__surface-2;
     border-radius: 0;
   }
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .price {
@@ -120,9 +129,12 @@
   align-self: flex-end;
 }
 
-
-
 .darkContent {
   color: $color__dark-theme__white
 }
 
+@keyframes rotateAnimation {
+  to {
+    transform: rotate(360deg);
+  }
+}
