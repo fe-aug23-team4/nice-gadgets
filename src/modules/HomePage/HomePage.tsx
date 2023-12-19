@@ -6,7 +6,7 @@ import styles from './HomePage.module.scss';
 import { ShopByCategory } from './componets/ShopByCategory';
 import { MainTitle } from './componets/MainTitle';
 import { MainSlider } from './componets/MainSlider';
-import { ProductSlider } from '../shared/ProductSlider';
+import { ProductSlider } from '../shared/ProductSlider/ProductSlider';
 import { useAppSelector } from '../../store/hooks';
 import { getNewestProducts, getProductsWithDiscount } from '../../api/service';
 import { Product } from '../../types/Product';

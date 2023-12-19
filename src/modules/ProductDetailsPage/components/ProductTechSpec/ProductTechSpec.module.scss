@@ -1,0 +1,79 @@
+@import '../../../../styles/utils/mixins/mixin-typography';
+
+.techSpec {
+  grid-column: span 4;
+  margin-top: 56px;
+
+  &__title {
+    position: relative;
+    margin-bottom: 48px;
+    @include h3-typography;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 38px;
+      height: 1px;
+      background-color: $color__elements;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: $color__secondary;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+  }
+
+  @include onTablet {
+    grid-column: span 12;
+    margin-top: 64px;
+  }
+
+  @include onDesktop {
+    grid-column: 14 / 25;
+    margin-top: 0;
+  }
+}
+
+.techSpecDark {
+  & .techSpec__title {
+    color: $color__dark-theme__white;
+
+    &::after {
+      background-color: $color__dark-theme__elements;
+    }
+  }
+
+  & .techSpec__subtitle {
+    color: $color__dark-theme__secondary;
+  }
+
+  & .techSpec__text {
+    color: $color__dark-theme__white;
+  }
+}

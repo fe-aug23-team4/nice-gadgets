@@ -5,11 +5,13 @@ import styles from './CartPage.module.scss';
 import { useAppSelector } from '../../store/hooks';
 import { BackButton } from '../shared/BackButton';
 import { Modal } from './components/Modal';
+import { EmptyCart } from '../shared/EmptyCart';
 
 export const CartPage: React.FC = () => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const { cart } = useAppSelector(state => state.cart);
   const [isModalOpen, setModalOpen] = useState(false);
+  const isEmptyCart = cart.length === 0;
 
   const openModal = () => {
     setModalOpen(true);
@@ -27,74 +29,76 @@ export const CartPage: React.FC = () => {
     return cart.reduce((acc, phone) => acc + phone.amount, 0);
   }, [cart]);
 
-  return (
-
-    <section
-      className={cn(styles.cart, {
-        [styles.cart__DARK]: isDarkTheme,
-      })}
-    >
-      <BackButton />
-      <h2
-        className={cn(styles.title, {
-          [styles.contentDark]: isDarkTheme,
+  return (isEmptyCart
+    ? <EmptyCart />
+    : (
+      <section
+        className={cn(styles.cart, {
+          [styles.cart__DARK]: isDarkTheme,
         })}
       >
-        Cart
-      </h2>
-
-      <div className={styles.gridContainer}>
-        <div className={styles.cardsContainer}>
-          {cart.map((phone) => (
-            <CartItem
-              key={phone.id}
-              phone={phone}
-            />
-          ))}
-        </div>
-
-        <div
-          className={cn(styles.amountContainer, {
-            [styles.amountContainer__DARK]: isDarkTheme,
+        <BackButton />
+        <h2
+          className={cn(styles.title, {
+            [styles.contentDark]: isDarkTheme,
           })}
         >
-          <p
-            className={cn(styles.totalAmount, {
-              [styles.contentDark]: isDarkTheme,
+          Cart
+        </h2>
+
+        <div className={styles.gridContainer}>
+          <div className={styles.cardsContainer}>
+            {cart.map((phone) => (
+              <CartItem
+                key={phone.id}
+                phone={phone}
+              />
+            ))}
+          </div>
+
+          <div
+            className={cn(styles.amountContainer, {
+              [styles.amountContainer__DARK]: isDarkTheme,
             })}
           >
-            {`$ ${totalPrice}`}
-          </p>
+            <p
+              className={cn(styles.totalAmount, {
+                [styles.contentDark]: isDarkTheme,
+              })}
+            >
+              {`$ ${totalPrice}`}
+            </p>
 
-          <p
-            className={cn(styles.amountContent, {
-              [styles.amountContent__DARK]: isDarkTheme,
-            })}
-          >
-            {`Total for ${totalItems} items`}
-          </p>
+            <p
+              className={cn(styles.amountContent, {
+                [styles.amountContent__DARK]: isDarkTheme,
+              })}
+            >
+              {`Total for ${totalItems} items`}
+            </p>
 
-          <p
-            className={cn(styles.line, {
-              [styles.line__DARK]: isDarkTheme,
-            })}
-          />
+            <p
+              className={cn(styles.line, {
+                [styles.line__DARK]: isDarkTheme,
+              })}
+            />
 
-          <button
-            type="button"
-            className={cn(styles.button, {
-              [styles.button__DARK]: isDarkTheme,
-            })}
-            onClick={openModal}
-          >
-            Checkout
-          </button>
-          <Modal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-          />
+            <button
+              type="button"
+              className={cn(styles.button, {
+                [styles.button__DARK]: isDarkTheme,
+              })}
+              onClick={openModal}
+            >
+              Checkout
+            </button>
+            <Modal
+              isOpen={isModalOpen}
+              onClose={closeModal}
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )
   );
 };

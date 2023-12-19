@@ -3,7 +3,6 @@ import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useAppSelector } from '../../../store/hooks';
 import styles from './Filtration.module.scss';
-import { SortBy } from '../../../types/SortBy';
 import { getSearchWith } from '../../../utils/getSearchWith';
 import {
   ReactComponent as ArrowDown,
@@ -11,20 +10,38 @@ import {
 
 const PER_PAGE = ['All', '4', '8', '16'];
 
+const SORT_OPTIONS = [
+  { label: 'Newest', value: 'date', order: 'desc' },
+  { label: 'Oldest', value: 'date', order: 'asc' },
+  { label: 'Alphabetically Asc', value: 'title', order: 'asc' },
+  { label: 'Alphabetically Desc', value: 'title', order: 'desc' },
+  { label: 'Cheapest', value: 'price', order: 'asc' },
+  { label: 'Most Expensive', value: 'price', order: 'desc' },
+];
+
 type Props = {
-  sort: SortBy;
+  totalPhones: number;
+  sort: string;
+  order: string;
   perPage: string;
 };
 
-export const Filtration: React.FC<Props> = ({ sort, perPage }) => {
+export const Filtration: React.FC<Props> = ({
+  totalPhones,
+  sort,
+  order,
+  perPage,
+}) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
   const [searchParams] = useSearchParams();
 
   const getPerPageParams = (newPerPage: string) => {
-    if (perPage === 'All') {
-      const search = getSearchWith(searchParams, { perPage: 'all' });
+    if (newPerPage === 'All') {
+      const search = getSearchWith(
+        searchParams, { perPage: totalPhones.toString() },
+      );
 
       return search;
     }
@@ -32,6 +49,21 @@ export const Filtration: React.FC<Props> = ({ sort, perPage }) => {
     const search = getSearchWith(searchParams, { perPage: newPerPage });
 
     return search;
+  };
+
+  const setSortName = () => {
+    const name = SORT_OPTIONS
+      .find(option => option.value === sort && option.order === order);
+
+    return name?.label || 'Not chosen';
+  };
+
+  const handleSortOptionClick = () => {
+    setIsSortOpen(false);
+  };
+
+  const handlePerPageOptionClick = () => {
+    setIsPerPageOpen(false);
   };
 
   return (
@@ -55,7 +87,7 @@ export const Filtration: React.FC<Props> = ({ sort, perPage }) => {
             })}
             onClick={() => setIsSortOpen(!isSortOpen)}
           >
-            {sort}
+            {setSortName()}
 
             <ArrowDown
               color={isDarkTheme ? '#75767f' : '#b4bdc3'}
@@ -69,15 +101,21 @@ export const Filtration: React.FC<Props> = ({ sort, perPage }) => {
                 [styles.filtration__list__DARK]: isDarkTheme,
               })}
             >
-              {Object.entries(SortBy).map(([key, value]) => (
+              {SORT_OPTIONS.map((option) => (
                 <Link
-                  to={getSearchWith(searchParams, { sort: value })}
-                  key={key}
+                  to={{
+                    search: getSearchWith(searchParams, {
+                      sort: option.value,
+                      order: option.order,
+                    }),
+                  }}
+                  key={option.label}
                   className={classNames(styles.filtration__option, {
                     [styles.filtration__option__DARK]: isDarkTheme,
                   })}
+                  onClick={handleSortOptionClick}
                 >
-                  {key}
+                  {option.label}
                 </Link>
               ))}
             </div>
@@ -103,7 +141,9 @@ export const Filtration: React.FC<Props> = ({ sort, perPage }) => {
             })}
             onClick={() => setIsPerPageOpen(!isPerPageOpen)}
           >
-            {perPage}
+            {perPage === totalPhones.toString()
+              ? 'All'
+              : perPage}
 
             <ArrowDown
               color={isDarkTheme ? '#75767f' : '#b4bdc3'}
@@ -123,11 +163,12 @@ export const Filtration: React.FC<Props> = ({ sort, perPage }) => {
             >
               {PER_PAGE.map(amount => (
                 <Link
-                  to={getPerPageParams(amount)}
+                  to={{ search: getPerPageParams(amount) }}
                   key={amount}
                   className={classNames(styles.filtration__option, {
                     [styles.filtration__option__DARK]: isDarkTheme,
                   })}
+                  onClick={handlePerPageOptionClick}
                 >
                   {amount}
                 </Link>
