@@ -10,9 +10,8 @@ import { getProductsWithSearchParams } from '../../api/service';
 import { Loader } from '../shared/Loader';
 import { Pagination } from '../shared/Pagination';
 import { Filtration } from '../shared/Filtration';
-import { EndPoints, ProductsAmount } from '../../types/Enums';
+import { EndPoints } from '../../types/Enums';
 import { Product, QueryParams } from '../../types/Product';
-import { SortBy } from '../../types/SortBy';
 import { useAppSelector } from '../../store/hooks';
 import { getSearchWith } from '../../utils/getSearchWith';
 
@@ -22,13 +21,15 @@ type Props = {
     EndPoint: EndPoints,
     params?: QueryParams
   ) => Promise<Product[]>;
-  loadAmount: () => Promise<ProductsAmount>;
+  productAmount?: number;
+  endpoint: EndPoints;
 };
 
 export const ProductsPage: React.FC<Props> = ({
   title,
   loadData,
-  loadAmount,
+  productAmount,
+  endpoint,
 }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const [products, setProducts] = useState<Product[]>([]);
@@ -37,43 +38,49 @@ export const ProductsPage: React.FC<Props> = ({
   const [totalAmount, setTotalAmount] = useState(0);
   const [searchParams] = useSearchParams();
 
-  const defaultPerPage = 'all';
-  const defaultSortBy = SortBy.Newest;
-  const defaultPage = 1;
-
   const sort = searchParams.get('sort');
   const page = searchParams.get('page');
   const perPage = searchParams.get('perPage');
+  const order = searchParams.get('order');
 
   useEffect(() => {
     if (searchParams.toString() === '') {
-      getSearchWith(searchParams,
-        { sort: defaultSortBy, page: defaultPage, perPage: defaultPerPage });
+      getSearchWith(searchParams, {
+        page: '1',
+        perPage: '16',
+        sort: 'price',
+        order: 'asc',
+      });
     }
-  });
-
-  const perPageString: string = perPage || defaultPerPage;
-  const currentPageNumber: number = page !== null
-    ? parseInt(page, 10)
-    : defaultPage;
-  const sortByEnum: SortBy = sort ? (sort as SortBy) : defaultSortBy;
+  }, [searchParams]);
 
   useEffect(() => {
-    loadAmount().then((amount) => setTotalAmount(amount.phones));
-  }, [loadAmount]);
+    setIsLoading(true);
 
-  const getTotalPages = () => {
-    if (perPageString === 'All') {
-      return 1;
+    const params: QueryParams = {
+      page: page || '1',
+      perPage: perPage || '16',
+      sort: sort || 'price',
+      order: 'asc',
+    };
+
+    getProductsWithSearchParams(endpoint, params)
+      .then(setProducts)
+      .finally(() => setIsLoading(false));
+  }, [page, perPage, sort, order, loadData, searchParams, endpoint]);
+
+  useEffect(() => {
+    if (productAmount !== undefined) {
+      setTotalAmount(productAmount);
     }
+  }, [productAmount]);
 
-    return totalAmount / Number(perPage);
-  };
-
-  const totalPages = getTotalPages();
+  const totalPages = perPage
+    ? Math.ceil(totalAmount / Number(perPage))
+    : Math.ceil(totalAmount / 16);
 
   const showPagination = () => {
-    if (perPage === 'All') {
+    if (Number(perPage) === totalAmount) {
       return false;
     }
 
@@ -84,29 +91,10 @@ export const ProductsPage: React.FC<Props> = ({
     return (
       <Pagination
         totalPages={totalPages}
-        currentPage={currentPageNumber}
+        currentPage={page || '1'}
       />
     );
   };
-
-  useEffect(() => {
-    setIsLoading(true);
-    getProductsWithSearchParams(EndPoints.Phones)
-      .then(setProducts)
-      .finally(() => setIsLoading(false));
-  }, [sortByEnum, perPageString, currentPageNumber, error, loadData]);
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   loadData(
-  //     perPageString,
-  //     currentPageNumber,
-  //     sortByEnum,
-  //   )
-  //     .then(setProducts)
-  //     .catch(setError)
-  //     .finally(() => setIsLoading(false));
-  // }, [sortByEnum, perPageString, currentPageNumber, error, loadData]);
 
   return (
     <div
@@ -125,10 +113,6 @@ export const ProductsPage: React.FC<Props> = ({
       >
         {title}
       </h1>
-
-      {isLoading && (
-        <Loader />
-      )}
 
       {!isLoading && error && (
         <>
@@ -152,32 +136,40 @@ export const ProductsPage: React.FC<Props> = ({
         </>
       )}
 
-      {!isLoading && !error && (
+      {!error && (
         <>
-          {totalAmount
-            ? (
-              <p
-                className={classNames([styles.productsPage__counter], {
-                  [styles.productsPage__counter__DARK]: isDarkTheme,
-                })}
-              >
-                {`${totalAmount} modeles`}
-              </p>
-            ) : (
-              <p>
-                {`There are no ${title.toLowerCase()} yet`}
-              </p>
-            )}
+          <p
+            className={classNames([styles.productsPage__counter], {
+              [styles.productsPage__counter__DARK]: isDarkTheme,
+            })}
+          >
+            {totalAmount
+              ? `${totalAmount} modeles`
+              : `There are no ${title.toLowerCase()} yet`}
+          </p>
 
           <div className={styles.productsPage__filter}>
-            <Filtration sort={sortByEnum} perPage={perPageString} />
+            <Filtration
+              totalPhones={totalAmount}
+              sort={sort || ''}
+              order={order || 'asc'}
+              perPage={perPage || '16'}
+            />
           </div>
 
-          <div className={styles.productsPage__phonesList}>
-            <ProductList phones={products} />
-          </div>
+          {isLoading && (
+            <Loader />
+          )}
 
-          {showPagination()}
+          {!isLoading && !error && (
+            <div className={styles.productsPage__phonesList}>
+              <ProductList phones={products} />
+            </div>
+          )}
+
+          <div className={styles.productsPage__pagination}>
+            {showPagination()}
+          </div>
         </>
       )}
     </div>
