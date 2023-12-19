@@ -1,11 +1,11 @@
 @import '../../styles/utils/variables/colors';
 @import '../../styles/blocks/grid';
 
-.prosuctsPage {
-  // @include grid
+.productsPage {
+  // @include grid;
 
   &__DARK {
-    background-color: $color__dark-theme-background;
+    background-color: $color__dark-theme__black;
   }
 
   &__breadCrumbs {
@@ -23,7 +23,7 @@
     letter-spacing: -0.32px;
 
     &__DARK {
-      color: $color__dark-theme-white;
+      color: $color__dark-theme__white;
     }
   }
 
@@ -70,7 +70,7 @@
     line-height: 21px;
 
     &__DARK {
-      color: $color__dark-theme-primary;
+      color: $color__dark-theme__secondary;
     }
   }
 
@@ -79,8 +79,8 @@
     margin-bottom: 24px;
   }
 
-  &__phonesList {
-  }
+  // &__phonesList {
+  // }
 
   &__phoneItem {
     margin-bottom: 40px;

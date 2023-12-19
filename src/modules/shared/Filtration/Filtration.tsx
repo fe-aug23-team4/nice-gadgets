@@ -1,9 +1,13 @@
-import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useAppSelector } from '../../../store/hooks';
 import styles from './Filtration.module.scss';
 import { SortBy } from '../../../types/SortBy';
 import { getSearchWith } from '../../../utils/getSearchWith';
+import {
+  ReactComponent as ArrowDown,
+} from '../../../static/buttons/Icons_ArrowDown.svg';
 
 const PER_PAGE = ['All', '4', '8', '16'];
 
@@ -14,78 +18,124 @@ type Props = {
 
 export const Filtration: React.FC<Props> = ({ sort, perPage }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
+  const [isSortOpen, setIsSortOpen] = useState(false);
+  const [isPerPageOpen, setIsPerPageOpen] = useState(false);
   const [searchParams] = useSearchParams();
 
-  const onSortChange = (newSort: SortBy) => {
-    return getSearchWith(searchParams, { sort: newSort });
-  };
-
-  const onPerPageChange = (newPerPage: string) => {
+  const getPerPageParams = (newPerPage: string) => {
     if (perPage === 'All') {
-      return getSearchWith(searchParams, { perPage: 'all' });
+      const search = getSearchWith(searchParams, { perPage: 'all' });
+
+      return search;
     }
 
-    return getSearchWith(searchParams, { perPage: newPerPage });
+    const search = getSearchWith(searchParams, { perPage: newPerPage });
+
+    return search;
   };
 
   return (
     <div className={styles.filtration}>
-      <label
-        htmlFor="sort-by"
-        className={classNames(styles.productsPage__label, {
-          [styles.productsPage__label__DARK]: isDarkTheme,
-        })}
-      >
-        Sort by
-      </label>
-      <select
-        name="sort-by"
-        id="sort-by"
-        className={classNames(styles.productsPage__dropdown, {
-          [styles.productsPage__dropdown__DARK]: isDarkTheme,
-        })}
-        onChange={(event) => onSortChange(event
-          .target.value as SortBy)}
-      >
-        {Object.entries(SortBy).map(([key, value]) => (
-          <option
-            key={key}
-            value={value}
-            className={classNames(styles.productsPage__option, {
-              [styles.productsPage__option__DARK]: isDarkTheme,
+      <div className={styles.filtration__block}>
+        <label
+          htmlFor="sort-by"
+          className={classNames(styles.filtration__label, {
+            [styles.filtration__label__DARK]: isDarkTheme,
+          })}
+        >
+          Sort by
+        </label>
+        <div
+          className={styles.filtration__wrapper}
+        >
+          <button
+            type="button"
+            className={classNames(styles.filtration__dropdown, {
+              [styles.filtration__dropdown__DARK]: isDarkTheme,
             })}
-            selected={value === sort}
+            onClick={() => setIsSortOpen(!isSortOpen)}
           >
-            {key}
-          </option>
-        ))}
-      </select>
+            {sort}
 
-      <label
-        htmlFor="per-page"
-        className={styles.productsPage__label}
-      >
-        Items on page
-      </label>
-      <select
-        name="per-page"
-        id="per-page"
-        className={styles.productsPage__dropdown}
-        onChange={(event) => onPerPageChange(event.target.value)}
-      >
-        {PER_PAGE.map(amount => (
-          <option
-            value={amount}
-            className={classNames(styles.productsPage__option, {
-              [styles.productsPage__option__DARK]: isDarkTheme,
+            <ArrowDown
+              color={isDarkTheme ? '#75767f' : '#b4bdc3'}
+              style={{ transform: isSortOpen ? 'rotate(180deg)' : 'rotate(0)' }}
+            />
+          </button>
+
+          {isSortOpen && (
+            <div
+              className={classNames(styles.filtration__list, {
+                [styles.filtration__list__DARK]: isDarkTheme,
+              })}
+            >
+              {Object.entries(SortBy).map(([key, value]) => (
+                <Link
+                  to={getSearchWith(searchParams, { sort: value })}
+                  key={key}
+                  className={classNames(styles.filtration__option, {
+                    [styles.filtration__option__DARK]: isDarkTheme,
+                  })}
+                >
+                  {key}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className={styles.filtration__block}>
+        <label
+          htmlFor="per-page"
+          className={styles.filtration__label}
+        >
+          Items on page
+        </label>
+
+        <div
+          className={styles.filtration__wrapper}
+        >
+          <button
+            type="button"
+            className={classNames(styles.filtration__dropdown, {
+              [styles.filtration__dropdown__DARK]: isDarkTheme,
             })}
-            selected={amount === perPage}
+            onClick={() => setIsPerPageOpen(!isPerPageOpen)}
           >
-            {amount}
-          </option>
-        ))}
-      </select>
+            {perPage}
+
+            <ArrowDown
+              color={isDarkTheme ? '#75767f' : '#b4bdc3'}
+              style={{
+                transform: isPerPageOpen
+                  ? 'rotate(180deg)'
+                  : 'rotate(0)',
+              }}
+            />
+          </button>
+
+          {isPerPageOpen && (
+            <div
+              className={classNames(styles.filtration__list, {
+                [styles.filtration__list__DARK]: isDarkTheme,
+              })}
+            >
+              {PER_PAGE.map(amount => (
+                <Link
+                  to={getPerPageParams(amount)}
+                  key={amount}
+                  className={classNames(styles.filtration__option, {
+                    [styles.filtration__option__DARK]: isDarkTheme,
+                  })}
+                >
+                  {amount}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
-
   );
 };

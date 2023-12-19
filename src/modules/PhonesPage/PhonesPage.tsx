@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
+
 import styles from './PhonesPage.module.scss';
-import { useAppSelector } from '../../store/hooks';
-import { PhoneCard } from '../shared/components/PhoneCard';
-import { Pagination } from '../shared/components/Pagination';
-import { getSortedProducts } from '../../utils/getSortedProducts';
+
 import { Phone } from '../../types/Phone';
+
+import { Breadcrumbs } from '../shared/Breadcrumbs';
+import { ProductList } from '../shared/ProductList';
+import { Loader } from '../shared/Loader';
+import { Pagination } from '../shared/Pagination';
+import { Filtration } from '../shared/Filtration';
 import { SortBy } from '../../types/SortBy';
-import { Filtration } from '../shared/Filtration/Filtration';
-// import { getPhonesWithSearchParams } from '../../api/service';
+import { useAppSelector } from '../../store/hooks';
+import { getSearchWith } from '../../utils/getSearchWith';
 
 type Props = {
   title: string
@@ -18,64 +22,65 @@ type Props = {
     page: number,
     sort?: SortBy,
   ) => Promise<Phone[]>,
+  loadAmount: () => Promise<number>
 };
 
 export const ProductsPage: React.FC<Props> = ({
   title,
   loadData,
+  loadAmount,
 }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const [products, setProducts] = useState<Phone[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [searchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>('');
-  const sort = searchParams.get('sort');
-  const perPage = searchParams.get('perPage');
-  const page = searchParams.get('page');
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [searchParams] = useSearchParams();
 
-  const perPageString: string = perPage || 'All';
-  const currentPageNumber: number = page !== null
-    ? parseInt(page, 10) || 1
-    : 1;
-  const sortByEnum: SortBy = sort ? (sort as SortBy) : SortBy.Newest;
+  const defaultPerPage = 'all';
+  const defaultSortBy = SortBy.Newest;
+  const defaultPage = 1;
+
+  const sort = searchParams.get('sort');
+  const page = searchParams.get('page');
+  const perPage = searchParams.get('perPage');
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const availibleProducts = await loadData(
-          perPageString,
-          currentPageNumber,
-          sortByEnum,
-        );
+    if (searchParams.toString() === '') {
+      getSearchWith(searchParams,
+        { sort: defaultSortBy, page: defaultPage, perPage: defaultPerPage });
+    }
+  }, []);
 
-        setProducts(availibleProducts);
-      } catch {
-        setError('Something went wrong. Try reloading the page');
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const perPageString: string = perPage || defaultPerPage;
+  const currentPageNumber: number = page !== null
+    ? parseInt(page, 10)
+    : defaultPage;
+  const sortByEnum: SortBy = sort ? (sort as SortBy) : defaultSortBy;
 
-    fetchData();
-  // eslint-disable-next-line max-len
-  }, [sortByEnum, perPageString, currentPageNumber, error, loadData]);
+  useEffect(() => {
+    loadAmount()
+      .then(setTotalAmount);
+  }, [loadAmount]);
 
-  const sortedProducts = getSortedProducts(products, searchParams);
-  const productsCounter = sortedProducts.length;
-  const totalPages = Math.floor(productsCounter / Number(perPage));
+  const getTotalPages = () => {
+    if (perPageString === 'All') {
+      return 1;
+    }
+
+    return totalAmount / Number(perPage);
+  };
+
+  const totalPages = getTotalPages();
 
   const showPagination = () => {
     if (perPage === 'All') {
       return false;
     }
 
-    if (productsCounter < Number(perPage)) {
+    if (totalAmount < Number(perPage)) {
       return false;
     }
-
-    // return (
-    //   <h1>Home page</h1>
-    // );
 
     return (
       <Pagination
@@ -85,6 +90,18 @@ export const ProductsPage: React.FC<Props> = ({
     );
   };
 
+  useEffect(() => {
+    setIsLoading(true);
+    loadData(
+      perPageString,
+      currentPageNumber,
+      sortByEnum,
+    )
+      .then(setProducts)
+      .catch(setError)
+      .finally(() => setIsLoading(false));
+  }, [sortByEnum, perPageString, currentPageNumber, error, loadData]);
+
   return (
     <div
       className={classNames(styles.productsPage, {
@@ -92,7 +109,7 @@ export const ProductsPage: React.FC<Props> = ({
       })}
     >
       <p className={styles.productsPage__breadCrumbs}>
-        Bread crumbs
+        <Breadcrumbs />
       </p>
 
       <h1
@@ -104,7 +121,7 @@ export const ProductsPage: React.FC<Props> = ({
       </h1>
 
       {isLoading && (
-        <div className="Loader">Loader</div>
+        <Loader />
       )}
 
       {!isLoading && error && (
@@ -131,14 +148,14 @@ export const ProductsPage: React.FC<Props> = ({
 
       {!isLoading && !error && (
         <>
-          {productsCounter
+          {totalAmount
             ? (
               <p
                 className={classNames([styles.productsPage__counter], {
                   [styles.productsPage__counter__DARK]: isDarkTheme,
                 })}
               >
-                {`${productsCounter} modeles`}
+                {`${totalAmount} modeles`}
               </p>
             ) : (
               <p>
@@ -151,11 +168,7 @@ export const ProductsPage: React.FC<Props> = ({
           </div>
 
           <div className={styles.productsPage__phonesList}>
-            {sortedProducts.map((phone) => (
-              <div className={styles.productsPage__phoneItem}>
-                <PhoneCard phoneItem={phone} key={phone.id} />
-              </div>
-            ))}
+            <ProductList phones={products} />
           </div>
 
           {showPagination()}
