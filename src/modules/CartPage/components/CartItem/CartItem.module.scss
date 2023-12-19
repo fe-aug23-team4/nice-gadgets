@@ -89,11 +89,9 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  transition: transform 0.3s ease;
 
   &:hover {
     animation: rotateAnimation 0.3s ease-in-out forwards;
-    // transform: scale(1.2);
   }
 }
 
@@ -104,7 +102,7 @@
   border-radius: 50px;
   background-color: transparent;
   cursor: pointer;
-  // transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 
   &__ACTIVE {
     border-color: $color__icons;
@@ -122,8 +120,7 @@
   }
 
   &:hover {
-    animation: rotateAnimation 0.3s ease-in-out forwards;
-    // transform: scale(1.1);
+    transform: scale(1.1);
   }
 }
 

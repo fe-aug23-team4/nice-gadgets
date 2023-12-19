@@ -35,6 +35,5 @@ export const FavoritesPage: React.FC = () => {
         <ProductList phones={favorites} />
       </section>
     )
-
   );
 };
