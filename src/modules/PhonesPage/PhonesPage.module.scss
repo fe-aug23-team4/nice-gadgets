@@ -1,0 +1,88 @@
+@import '../../styles/utils/variables/colors';
+@import '../../styles/blocks/grid';
+
+.productsPage {
+  // @include grid;
+
+  &__DARK {
+    background-color: $color__dark-theme__black;
+  }
+
+  &__breadCrumbs {
+    margin-bottom: 24px;
+    margin-top: 25px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    color: $color__primary;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+
+    &__DARK {
+      color: $color__dark-theme__white;
+    }
+  }
+
+  &__errorButton {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+
+    border-radius: 8px;
+    border: none;
+    background: $color__accent;
+
+    color: $color__white;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+    }
+
+    &__DARK {
+      background: #905bff;
+      border-radius: 0px;
+      color: $color__dark-theme__white;
+      border: none;
+
+      &:hover {
+        background: #a378ff;
+      }
+    }
+  }
+
+  &__counter {
+    margin-bottom: 32px;
+    color: #89939a;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+
+    &__DARK {
+      color: $color__dark-theme__secondary;
+    }
+  }
+
+  &__filter {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  // &__phonesList {
+  // }
+
+  &__phoneItem {
+    margin-bottom: 40px;
+  }
+}

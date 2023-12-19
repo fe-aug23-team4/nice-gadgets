@@ -2,11 +2,11 @@ import React from 'react';
 import cn from 'classnames';
 
 import { ProductCard } from '../ProductCard';
-import { Phone } from '../../../types/Phone';
+import { Product } from '../../../types/Product';
 import styles from './ProductSlider.module.scss';
 
 type Props = {
-  phone: Phone,
+  phone: Product;
 };
 
 export const SlideCard: React.FC<Props> = ({ phone, ...prop }) => {

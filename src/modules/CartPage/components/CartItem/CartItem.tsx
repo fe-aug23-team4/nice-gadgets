@@ -1,8 +1,7 @@
 import React from 'react';
-
 import cn from 'classnames';
-import { useAppSelector } from '../../../../store/hooks';
-import { Phone } from '../../../../types/Phone';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { actions as cartActions } from '../../../../store/reducers/cartSlice';
 import styles from './CartItem.module.scss';
 import { ReactComponent as CloseIcon }
   from '../../../../static/icons/close_icon.svg';
@@ -10,14 +9,15 @@ import { ReactComponent as MinusIcon }
   from '../../../../static/icons/minus_icon.svg';
 import { ReactComponent as PlusIcon }
   from '../../../../static/icons/plus_icon.svg';
+import { ProductWithAmount } from '../../../../types/Product';
 
 type Props = {
-  phone: Phone | null;
+  phone: ProductWithAmount;
 };
 
 export const CartItem: React.FC<Props> = ({ phone }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
-  const isMinusDisabled = true;
+  const dispatch = useAppDispatch();
 
   const getIconColor = (isTheme: boolean, isDisabled: boolean) => {
     if (isTheme) {
@@ -37,9 +37,6 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
     return isDisabled ? {} : styles.changeAmountButton__ACTIVE;
   };
 
-  const minusIconColor = getIconColor(isDarkTheme, isMinusDisabled);
-  const minusClass = getClass(isDarkTheme, isMinusDisabled);
-
   return (
     <article
       className={cn(styles.cartItem, {
@@ -47,15 +44,19 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
       })}
     >
       <div className={styles.top}>
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <button type="button" className={styles.closeButton}>
+        <button
+          type="button"
+          aria-label="Delete Item"
+          className={styles.deleteButton}
+          onClick={() => dispatch(cartActions.remove(phone.id))}
+        >
           <CloseIcon color={isDarkTheme ? '#4A4D58' : '#B4BDC3'} />
         </button>
 
         <div className={styles.imgContainer}>
           <img
-            src={phone?.image}
-            alt={phone?.name}
+            src={phone.image}
+            alt={phone.name}
             className={cn(styles.img, {
               [styles.img__DARK]: isDarkTheme,
             })}
@@ -73,24 +74,28 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
 
       <div className={styles.bottom}>
         <div className={styles.changeAmount}>
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
             type="button"
-            className={cn(styles.changeAmountButton, minusClass)}
-            disabled={isMinusDisabled}
+            aria-label="Decrease Amount"
+            className={cn(
+              styles.changeAmountButton,
+              getClass(isDarkTheme, phone.amount === 1),
+            )}
+            disabled={phone.amount === 1}
+            onClick={() => dispatch(cartActions.decrease(phone.id || 0))}
           >
-            <MinusIcon color={minusIconColor} />
+            <MinusIcon color={getIconColor(isDarkTheme, phone.amount === 1)} />
           </button>
           <p
             className={cn(styles.content, {
               [styles.darkContent]: isDarkTheme,
             })}
           >
-            1
+            {phone?.amount}
           </p>
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
             type="button"
+            aria-label="Increase Amount"
             className={cn(
               styles.changeAmountButton,
               styles.changeAmountButton__ACTIVE,
@@ -98,6 +103,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
                 [styles.changeAmountButton__activeDARK]: isDarkTheme,
               },
             )}
+            onClick={() => dispatch(cartActions.increase(phone.id))}
           >
             <PlusIcon color={isDarkTheme ? '#F1F2F9' : '#0F0F11'} />
           </button>
@@ -108,7 +114,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
             [styles.darkContent]: isDarkTheme,
           })}
         >
-          {`$ ${phone?.price}`}
+          {phone ? `$ ${phone.price * phone.amount}` : ''}
         </p>
       </div>
     </article>
