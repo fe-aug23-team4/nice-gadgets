@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/nice-gadgets/static/css/main.1d8fcf05.css",
-    "main.js": "/nice-gadgets/static/js/main.3078129a.js",
+    "main.css": "/nice-gadgets/static/css/main.d76d5374.css",
+    "main.js": "/nice-gadgets/static/js/main.3b713b30.js",
     "static/media/thinking-smile.png": "/nice-gadgets/static/media/thinking-smile.315f6cfd33d1a3b9b32d.png",
     "static/media/Mont-Regular.ttf": "/nice-gadgets/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
     "static/media/Mont-SemiBold.ttf": "/nice-gadgets/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
@@ -17,7 +17,7 @@
     "static/media/home_icon.svg": "/nice-gadgets/static/media/home_icon.266073e9e8707fa559f073f7b1d20229.svg",
     "static/media/fovourites-selected_button.svg": "/nice-gadgets/static/media/fovourites-selected_button.07cb3a0028e670b572d9.svg",
     "static/media/fovourites-selected_button_dark.svg": "/nice-gadgets/static/media/fovourites-selected_button_dark.53dafeb6659e46cdf21c.svg",
-    "static/media/cog-icon.svg": "/nice-gadgets/static/media/cog-icon.d0cf55d3544d5fd8ee2bd7c84a2ea4b4.svg",
+    "static/media/cog-icon.svg": "/nice-gadgets/static/media/cog-icon.83676c7cd056edad430b781cd7fd5207.svg",
     "index.html": "/nice-gadgets/index.html",
     "static/media/close_icon.svg": "/nice-gadgets/static/media/close_icon.c656c827aaa0160907280a7c1abf6553.svg",
     "static/media/menu_icon.svg": "/nice-gadgets/static/media/menu_icon.3c2aa9224bed9781875660d4c6d589fd.svg",
@@ -30,11 +30,11 @@
     "static/media/Button_DefaultArrowRight.svg": "/nice-gadgets/static/media/Button_DefaultArrowRight.a7ca16f8282ce2ef21d6ae4f6212fe06.svg",
     "static/media/Icons_ArrowDown.svg": "/nice-gadgets/static/media/Icons_ArrowDown.6a1c94bb9d6a68d1a09890be840d3269.svg",
     "static/media/minus_icon.svg": "/nice-gadgets/static/media/minus_icon.d985886c132ce54472b3761ce0f28e2c.svg",
-    "main.1d8fcf05.css.map": "/nice-gadgets/static/css/main.1d8fcf05.css.map",
-    "main.3078129a.js.map": "/nice-gadgets/static/js/main.3078129a.js.map"
+    "main.d76d5374.css.map": "/nice-gadgets/static/css/main.d76d5374.css.map",
+    "main.3b713b30.js.map": "/nice-gadgets/static/js/main.3b713b30.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d8fcf05.css",
-    "static/js/main.3078129a.js"
+    "static/css/main.d76d5374.css",
+    "static/js/main.3b713b30.js"
   ]
 }
