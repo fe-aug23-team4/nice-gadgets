@@ -1,0 +1,191 @@
+@import '../../../../styles/utils/mixins/mixin-media';
+
+.slick-prev-phone,
+.slick-next-phone {
+  display: none;
+  visibility: hidden;
+}
+
+#phoneImagesSlider {
+  .slick-track {
+    display: flex;
+    height: 464px !important;
+  }
+}
+
+.phonePhoto {
+  @include onMobile {
+    width: 288px;
+    height: 288px;
+    object-fit: contain;
+    margin-inline: auto;
+  }
+
+  @include onTablet {
+    width: 288px;
+    height: 288px;
+    object-fit: contain;
+  }
+
+  @include onDesktop {
+    width: 464px;
+    height: 464px;
+    object-fit: contain;
+  }
+};
+
+.slick-dots,
+.slick-thumb {
+  cursor: pointer;
+  width: auto !important;
+
+  @include onMobile {
+    height: 40px;
+    width: 51px;
+    object-fit: contain;
+    padding-block: 4px;
+  }
+
+  @include onTablet {
+    height: 28px;
+    width: 28px;
+    object-fit: contain;
+    padding-block: 4px;
+  }
+
+  @include onDesktop {
+    height: 67px;
+    width: 67px;
+    object-fit: contain;
+    padding: 4px;
+  }
+}
+
+#phone-photo {
+  width: auto !important;
+  height: 464px !important;
+  img {
+    width: auto !important;
+  }
+}
+
+.vertical-dots {
+  ul {
+    display: flex !important;
+    flex-direction: column;
+    margin-right: 16px;
+    width: auto !important;
+    margin-top: 0 !important;
+
+    @include onMobile {
+      flex-direction: row;
+      margin-right: 0px;
+      justify-content: center;
+      margin-top: 16px !important;
+    }
+
+    @include onTablet {
+      :last-child {
+        margin-bottom: 0px;
+      }
+    }
+
+    @include onDesktop {
+      :last-child {
+        margin-bottom: 0px;
+      }
+    }
+
+    li {
+      width: 79px;
+      height: 79px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include onTablet {
+        width: 34px;
+        height: 34px;
+      }
+
+      @include onDesktop {
+        width: 79px;
+        height: 79px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @include onMobile {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  li {
+
+    @include onMobile {
+      width: 51px !important;
+      margin-right: 8px;
+    }
+
+    @include onTablet {
+      margin-bottom: 8px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 16px;
+    }
+  }
+
+  @include onTablet {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 16px;
+    cursor: pointer;
+  }
+
+  @include onDesktop {
+    display: flex;
+    flex-direction: row-reverse;
+    cursor: pointer;
+    margin-right: 16px;
+  }
+}
+
+.dots-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dots-border-light-cur {
+    border: 1px solid #0F0F11;
+    border-radius: 4px;
+}
+
+.dots-border-light {
+    border: 1px solid #E2E6E9;
+    border-radius: 4px;
+}
+
+.dots-border-dark {
+    border: 1px solid #3b3e4a;
+    border-radius: 4px;
+}
+
+.dots-border-dark-cur {
+    border: 1px solid #f1f2f9;
+    border-radius: 4px;
+}

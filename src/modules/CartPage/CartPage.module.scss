@@ -107,11 +107,21 @@
   color: $color__white;
   @include buttons-typography;
   background-color: $color__accent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.40);
+    }
 
   &__DARK {
     border-radius: 0;
     color: $color__dark-theme__white;
     background-color: $color__dark-theme__accent;
+
+    &:hover {
+      background-color: $color__dark-theme__accent__hover;
+    }
   }
 }
 

@@ -10,6 +10,7 @@ import { ProductSlider } from '../shared/ProductSlider';
 import { useAppSelector } from '../../store/hooks';
 import { getNewestProducts, getProductsWithDiscount } from '../../api/service';
 import { Product } from '../../types/Product';
+import { Loader } from '../shared/Loader';
 
 export const HomePage: React.FC = () => {
   const [newPhones, setNewPhones] = useState<Product[]>([]);
@@ -36,17 +37,27 @@ export const HomePage: React.FC = () => {
 
       <MainSlider />
 
-      <ProductSlider
-        title="Brand new models"
-        phones={newPhones}
-      />
+      {!newPhones.length
+        ? (
+          <Loader />
+        ) : (
+          <ProductSlider
+            title="Brand new models"
+            phones={newPhones}
+          />
+        )}
 
       <ShopByCategory />
 
-      <ProductSlider
-        title="Hot prices"
-        phones={phonesWithDiscount}
-      />
+      {!phonesWithDiscount.length ? (
+        <Loader />
+      ) : (
+        <ProductSlider
+          title="Hot prices"
+          phones={phonesWithDiscount}
+        />
+      )}
+
     </>
   );
 };
