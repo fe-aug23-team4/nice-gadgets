@@ -9,7 +9,7 @@ import { MainSlider } from './componets/MainSlider';
 import { ProductSlider } from '../shared/ProductSlider';
 import { useAppSelector } from '../../store/hooks';
 import { Phone } from '../../types/Phone';
-import { getNewestPhones, getPhonesWithDiscount } from '../../api/service';
+import { getNewestProducts, getProductsWithDiscount } from '../../api/service';
 
 export const HomePage: React.FC = () => {
   const [newPhones, setNewPhones] = useState<Phone[]>([]);
@@ -17,11 +17,9 @@ export const HomePage: React.FC = () => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
 
   useEffect(() => {
-    getNewestPhones()
-      .then(setNewPhones);
+    getNewestProducts().then(setNewPhones);
 
-    getPhonesWithDiscount()
-      .then(setPhonesWithDiscount);
+    getProductsWithDiscount().then(setPhonesWithDiscount);
   }, []);
 
   return (
