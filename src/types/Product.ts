@@ -43,7 +43,8 @@ export interface QueryParams {
   page: string;
   perPage: string;
   sort: string;
-  order: 'asc' | 'desc';
+  // order: 'asc' | 'desc';
+  order: string;
 }
 
 export interface ProductWithAmount extends Product {

@@ -15,7 +15,7 @@ import {
 
 type Props = {
   totalPages: number;
-  currentPage: number;
+  currentPage: string;
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -24,10 +24,13 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const [searchParams] = useSearchParams();
-  const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage === totalPages;
+  const currentPageNumber = Number(currentPage);
+  const prevPage = (currentPageNumber - 1).toString();
+  const nextPage = (currentPageNumber + 1).toString();
+  const isFirstPage = currentPageNumber === 1;
+  const isLastPage = currentPageNumber === totalPages;
 
-  const pages = getPages(totalPages, currentPage);
+  const pages = getPages(totalPages, currentPageNumber);
 
   const findColorForArrow = (isDisabled: boolean) => {
     if (isDarkTheme && isDisabled) {
@@ -48,13 +51,15 @@ export const Pagination: React.FC<Props> = ({
   return (
     <ul className={styles.pagination}>
       <li
-        className={cn(styles.pagination__item, {
-          [styles.pagination__item__DARK]: isDarkTheme,
-        })}
+        className={cn(styles.pagination__item,
+          styles.pagination__item__first, {
+            [styles.pagination__item__DARK]: isDarkTheme,
+          })}
+        key="arrow"
       >
         <Link
           to={{
-            search: getSearchWith(searchParams, { page: currentPage - 1 }),
+            search: getSearchWith(searchParams, { page: prevPage }),
           }}
           className={cn(styles.pagination__arrow, {
             [styles.pagination__arrow__DARK]: isDarkTheme,
@@ -71,29 +76,29 @@ export const Pagination: React.FC<Props> = ({
       </li>
 
       <div className={styles.pagination__numbers}>
-        {pages.map(page => (
+        {pages.map(pageNumber => (
           <li
             className={cn(styles.pagination__item, {
               [styles.pagination__item__DARK]: isDarkTheme,
-              [styles.pagination__item__active]: currentPage === page,
+              [styles.pagination__item__active]: currentPage === pageNumber,
               [styles.pagination__item__DARK__active]:
-                currentPage === page && isDarkTheme,
+                currentPage === pageNumber && isDarkTheme,
             })}
-            key={page}
+            key={pageNumber}
           >
             <Link
               to={{
-                // eslint-disable-next-line object-shorthand
-                search: getSearchWith(searchParams, { page: page }),
+                search: getSearchWith(searchParams, { page: pageNumber }),
               }}
               className={cn(styles.pagination__number, {
                 [styles.pagination__number__DARK]: isDarkTheme,
-                [styles.pagination__number__SELECTED]: currentPage === page,
+                [styles.pagination__number__SELECTED]:
+                  currentPage === pageNumber,
                 [styles.pagination__number__DARK__SELECTED]:
-                  currentPage === page && isDarkTheme,
+                  currentPage === pageNumber && isDarkTheme,
               })}
             >
-              {page}
+              {pageNumber}
             </Link>
           </li>
         ))}
@@ -106,7 +111,7 @@ export const Pagination: React.FC<Props> = ({
       >
         <Link
           to={{
-            search: getSearchWith(searchParams, { page: currentPage + 1 }),
+            search: getSearchWith(searchParams, { page: nextPage }),
           }}
           className={cn(styles.pagination__arrow, {
             [styles.pagination__arrow__DARK]: isDarkTheme,

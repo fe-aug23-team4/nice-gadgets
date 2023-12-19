@@ -14,7 +14,7 @@ export const getProductsWithSearchParams = (
   params?: QueryParams,
 ) => {
   const {
-    page = 1, perPage = 8, sort = 'discount', order = 'asc',
+    page = 1, perPage = 16, sort = 'discount', order = 'asc',
   } = params || {};
 
   return axiosClient.get<Product[]>(
