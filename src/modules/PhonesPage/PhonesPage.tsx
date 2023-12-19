@@ -50,7 +50,7 @@ export const ProductsPage: React.FC<Props> = ({
       getSearchWith(searchParams,
         { sort: defaultSortBy, page: defaultPage, perPage: defaultPerPage });
     }
-  }, []);
+  });
 
   const perPageString: string = perPage || defaultPerPage;
   const currentPageNumber: number = page !== null
