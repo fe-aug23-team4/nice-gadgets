@@ -14,6 +14,7 @@ import { TabletsPage } from './modules/TabletsPage';
 import { PageInProgress } from './modules/PageInProgress';
 import { AccessoriesPage } from './modules/AccessoriesPage';
 import { FavoritesPage } from './modules/FavoritesPage';
+import { getProductDetail } from './api/service';
 
 export const Root = () => (
   <Router>
@@ -24,7 +25,10 @@ export const Root = () => (
           <Route path="home" element={<Navigate to="/" replace />} />
           <Route path="phones">
             <Route index element={<PhonesPage />} />
-            <Route path=":phoneId?" element={<ProductDetailsPage />} />
+            <Route
+              path=":itemId?"
+              element={<ProductDetailsPage loadData={getProductDetail} />}
+            />
           </Route>
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />

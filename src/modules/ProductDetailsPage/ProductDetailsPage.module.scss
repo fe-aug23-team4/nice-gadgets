@@ -18,3 +18,10 @@
     }
   }
 }
+
+
+.productDetailsDark {
+  & .productDetails__title {
+    color: $color__dark-theme__white;
+  }
+}

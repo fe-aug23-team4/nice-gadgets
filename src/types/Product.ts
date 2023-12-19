@@ -13,7 +13,7 @@ export interface Product {
   image: string;
 }
 
-interface Description {
+export interface Description {
   title: string;
   text: string[];
 }
@@ -48,4 +48,9 @@ export interface QueryParams {
 
 export interface ProductWithAmount extends Product {
   amount: number;
+}
+
+export interface Detail {
+  current: ProductDetail;
+  additional: ProductDetail[];
 }

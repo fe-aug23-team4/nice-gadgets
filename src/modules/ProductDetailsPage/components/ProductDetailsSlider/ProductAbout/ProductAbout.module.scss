@@ -36,9 +36,33 @@
     font-size: 14px;
     line-height: 21px;
     color: $color__secondary;
+
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   @include onTablet {
     grid-column: span 12;
+  }
+}
+
+.aboutDark {
+  & .about__title {
+    color: $color__dark-theme__white;
+
+    &::after {
+      background-color: $color__dark-theme__elements;
+    }
+  }
+
+  & .about__subtitle {
+    color: $color__dark-theme__white;
+  }
+
+  & .about__text {
+    color: $color__dark-theme__secondary;
   }
 }
