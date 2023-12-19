@@ -2,7 +2,6 @@ import React from 'react';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { actions as cartActions } from '../../../../store/reducers/cartSlice';
-import { PhoneWithAmount } from '../../../../types/Phone';
 import styles from './CartItem.module.scss';
 import { ReactComponent as CloseIcon }
   from '../../../../static/icons/close_icon.svg';
@@ -10,9 +9,10 @@ import { ReactComponent as MinusIcon }
   from '../../../../static/icons/minus_icon.svg';
 import { ReactComponent as PlusIcon }
   from '../../../../static/icons/plus_icon.svg';
+import { ProductWithAmount } from '../../../../types/Product';
 
 type Props = {
-  phone: PhoneWithAmount;
+  phone: ProductWithAmount;
 };
 
 export const CartItem: React.FC<Props> = ({ phone }) => {

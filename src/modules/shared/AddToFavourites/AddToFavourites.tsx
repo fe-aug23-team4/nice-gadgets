@@ -4,10 +4,10 @@ import styles from './AddToFavourites.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { actions as favouritiesActions }
   from '../../../store/reducers/favoritesSlice';
-import { Phone } from '../../../types/Phone';
+import { Product } from '../../../types/Product';
 
 type Props = {
-  productItem: Phone;
+  productItem: Product;
 };
 
 export const AddToFavourites: React.FC<Props> = ({ productItem }) => {
@@ -19,7 +19,7 @@ export const AddToFavourites: React.FC<Props> = ({ productItem }) => {
     !!favorites.find(favorite => favorite.id === productItem.id),
   );
 
-  const handleFavouritiesButton = (product: Phone) => {
+  const handleFavouritiesButton = (product: Product) => {
     if (isSelected) {
       dispatch(favouritiesActions.remove(product.id));
       setIsSelected(false);

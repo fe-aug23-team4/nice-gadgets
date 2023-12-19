@@ -2,22 +2,22 @@ import React, { useEffect, useState } from 'react';
 
 // import styles from './PhonesPage.module.scss';
 
-import { Phone } from '../../types/Phone';
-
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { ProductList } from '../shared/ProductList';
-import { getPhones } from '../../api/service';
+import { getProductsWithSearchParams } from '../../api/service';
 import { Loader } from '../shared/Loader';
 import { Pagination } from '../shared/Pagination';
 import { Filtration } from '../shared/Filtration';
+import { EndPoints } from '../../types/Enums';
+import { Product } from '../../types/Product';
 
 export const PhonesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    getPhones()
+    getProductsWithSearchParams(EndPoints.Phones)
       .then(setPhones)
       .finally(() => setIsLoading(false));
   }, []);

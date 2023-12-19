@@ -6,13 +6,13 @@ import styles from './ProductSlider.module.scss';
 import './slick.scss';
 import { SampleNextArrow } from './SampleNextArrow';
 import { SamplePrevArrow } from './SamplePrevArrow';
-import { Phone } from '../../../types/Phone';
 import { useAppSelector } from '../../../store/hooks';
+import { Product } from '../../../types/Product';
 import { SlideCard } from './SlideCard';
 
 type Props = {
   title: string;
-  phones: Phone[];
+  phones: Product[];
 };
 
 export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
