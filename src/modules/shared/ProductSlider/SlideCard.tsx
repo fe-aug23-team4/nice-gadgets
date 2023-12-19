@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import { PhoneCard } from '../PhoneCard';
+import { ProductCard } from '../ProductCard';
 import { Phone } from '../../../types/Phone';
 import styles from './ProductSlider.module.scss';
 
@@ -19,7 +19,7 @@ export const SlideCard: React.FC<Props> = ({ phone, ...prop }) => {
         styles['slick-clone-card'],
       )}
     >
-      <PhoneCard phone={phone} />
+      <ProductCard phone={phone} />
     </div>
   );
 };

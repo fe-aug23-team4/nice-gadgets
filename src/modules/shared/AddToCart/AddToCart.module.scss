@@ -1,0 +1,48 @@
+@import '../../../styles/utils/variables/colors';
+
+.addToCart {
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+
+  border-radius: 8px;
+  border: none;
+  background: $color__accent;
+
+  color: $color__white;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+  }
+
+  &__SELECTED {
+    border-radius: 8px;
+    border: 1px solid $color__elements;
+    background: $color__white;
+    color: $color__accent;
+  }
+
+  &__DARK {
+    background: #905bff;
+    border-radius: 0px;
+    color: $color__dark-theme__white;
+    border: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #a378ff;
+    }
+
+    &__SELECTED {
+      background: $color__dark-theme__secondary;
+      color: $color__dark-theme__white;
+    }
+  }
+}

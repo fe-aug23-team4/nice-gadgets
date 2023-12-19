@@ -1,13 +1,16 @@
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
-import style from './PhoneCard.module.scss';
+import style from './ProductCard.module.scss';
 import { useAppSelector } from '../../../store/hooks';
 import { Phone } from '../../../types/Phone';
+import { AddToCart } from '../AddToCart';
+import { AddToFavourites } from '../AddToFavourites';
 
 type Props = {
   phone: Phone;
 };
 
-export const PhoneCard: React.FC<Props> = ({ phone }) => {
+export const ProductCard: React.FC<Props> = ({ phone }) => {
   const {
     name,
     fullPrice,
@@ -19,7 +22,6 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
   } = phone;
 
   const { isDarkTheme } = useAppSelector((state) => state.theme);
-  const isItemSelected = false;
 
   const characteristicsArray = [
     { label: 'Screen', state: screen },
@@ -33,9 +35,12 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
         [style.productCard__DARK]: isDarkTheme,
       })}
     >
-      <div className={style.productCard__image__container}>
+      <Link
+        to={phone.phoneId}
+        className={style.productCard__image__container}
+      >
         <img src={image} alt={name} className={style.productCard__image} />
-      </div>
+      </Link>
 
       <p
         className={cn(style.productCard__name, {
@@ -95,28 +100,9 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
       </div>
 
       <div className={style.productCard__buttons}>
-        <button
-          className={cn(style.productCard__addToCart, {
-            [style.productCard__addToCart__DARK]: isDarkTheme,
-            [style.productCard__addToCart__SELECTED]: isItemSelected,
-            [style.productCard__addToCart__DARK__SELECTED]:
-              isItemSelected && isDarkTheme,
-          })}
-          type="button"
-        >
-          {isItemSelected ? 'Added' : 'Add to cart'}
-        </button>
+        <AddToCart productItem={phone} />
 
-        <button
-          type="button"
-          aria-label="Add to favourite"
-          className={cn(style.productCard__addToFavourite, {
-            [style.productCard__addToFavourite__DARK]: isDarkTheme,
-            [style.productCard__addToFavourite__SELECTED]: isItemSelected,
-            [style.productCard__addToFavourite__DARK__SELECTED]:
-              isItemSelected && isDarkTheme,
-          })}
-        />
+        <AddToFavourites productItem={phone} />
       </div>
     </div>
   );

@@ -152,7 +152,7 @@
     }
   }
 
-  &__favorites {
+  &__iconsCounter {
     height: 13px;
     width: 13px;
     position: absolute;
@@ -168,7 +168,6 @@
     border-radius: 50%;
     border: 1px solid $color__white;
   }
-
 
   @include onTablet {
     &__burger_icon {
@@ -234,7 +233,7 @@
       }
     }
 
-    &__favorites {
+    &__iconsCounter {
       top: 13px;
       right: 13px;
     }
@@ -267,7 +266,7 @@
     border-left: 1px solid $color__dark-theme__surface-2;
   }
 
-  & .header__favorites {
+  & .header__iconsCounter {
     background-color: $color__red;
     border-color: $color__dark-theme__black;
   }

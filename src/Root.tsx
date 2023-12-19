@@ -8,9 +8,10 @@ import { App } from './App';
 import { HomePage } from './modules/HomePage';
 import { ProductsPage } from './modules/PhonesPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
-import { FavoritesPage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { PageInProgress } from './modules/PageInProgress';
+import { FavoritesPage } from './modules/FavoritesPage';
 import {
   getPhonesWithSearchParams as loadPhones,
   getPhonesAmount as loadPhonesAmount,
@@ -60,6 +61,7 @@ export const Root = () => (
               /> */}
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="pageInProgress" element={<PageInProgress />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Route>
