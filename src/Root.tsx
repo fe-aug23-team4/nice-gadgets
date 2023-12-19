@@ -73,7 +73,7 @@ export const Root = () => {
                 )}
               />
               <Route
-                path=":tabletId?"
+                path=":itemId?"
                 element={(
                   <ProductDetailsPage
                     loadData={getProductDetail}
@@ -95,7 +95,7 @@ export const Root = () => {
                 )}
               />
               <Route
-                path=":accessoryId?"
+                path=":itemId?"
                 element={(
                   <ProductDetailsPage
                     loadData={getProductDetail}

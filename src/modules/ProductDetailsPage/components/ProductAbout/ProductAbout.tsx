@@ -17,7 +17,7 @@ export const ProductAbout: React.FC<Props> = ({ isDarkTheme, description }) => {
     >
       <h4 className={styles.about__title}>About</h4>
       {description.map((item) => (
-        <div className={styles.about__item}>
+        <div key={item.title} className={styles.about__item}>
           <h5 className={styles.about__subtitle}>{item.title}</h5>
           {item.text.map((p) => (
             <p className={styles.about__text}>{p}</p>
