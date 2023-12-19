@@ -3,30 +3,16 @@
 @import '../../styles/blocks/grid';
 
 .favouritesPage {
-  padding: 1rem 1.5625rem 3.5rem;
-  background-color: $color__hover-and-bg;
+  padding-top: 1.5rem;
+  padding-bottom: 3.5rem;
 
   @include onTablet {
-      padding-inline: 1.5rem;
       padding-bottom: 4rem;
     }
 
     @include onDesktop {
-      padding-inline: 2rem;
       padding-bottom: 5rem;
     }
-
-  &__top {
-    display: flex;
-    gap: 8px;
-
-    &__content {
-      color: $color__secondary;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: normal;
-    }
-  }
 
   &__title {
     margin-top: 1.5rem;

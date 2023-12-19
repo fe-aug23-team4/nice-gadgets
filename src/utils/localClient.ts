@@ -1,4 +1,4 @@
-import { Phone } from '../types/Phone';
+import { Product } from '../types/Product';
 
 export const localClient = {
   read: (key: string) => {
@@ -15,16 +15,16 @@ export const localClient = {
     window.localStorage.setItem(key, JSON.stringify(data, null, 2));
   },
 
-  add: (key: string, data: Phone) => {
+  add: (key: string, data: unknown) => {
     const existingData = localClient.read(key);
 
     existingData.push(data);
     window.localStorage.setItem(key, JSON.stringify(existingData, null, 2));
   },
 
-  update: (key: string, data: Phone) => {
+  update: (key: string, data: Product) => {
     const existingData = localClient.read(key);
-    const newData = existingData.map((item: Phone) => {
+    const newData = existingData.map((item: Product) => {
       return item.id === data.id ? data : item;
     });
 
@@ -33,15 +33,15 @@ export const localClient = {
 
   delete: (key: string, id: number) => {
     const existingData = localClient.read(key);
-    const newData = existingData.filter((item: Phone) => item.id !== id);
+    const newData = existingData.filter((item: Product) => item.id !== id);
 
     window.localStorage.setItem(key, JSON.stringify(newData, null, 2));
   },
 
   find: (key: string, id: number) => {
-    const existingData: Phone[] = localClient.read(key);
+    const existingData: Product[] = localClient.read(key);
 
-    return !!existingData.find((item: Phone) => item.id === id);
+    return !!existingData.find((item: Product) => item.id === id);
   },
 
   // eslint-disable-next-line consistent-return

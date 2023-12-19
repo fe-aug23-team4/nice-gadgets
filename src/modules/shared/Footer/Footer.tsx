@@ -40,11 +40,12 @@ export const Footer: React.FC = () => {
             className={cn([styles.nav_text], {
               [styles.nav_text__dark]: isDarkTheme,
             })}
+            target="_blank"
           >
             Github
           </Link>
           <Link
-            to="/"
+            to="/pageInProgress"
             className={cn([styles.nav_text], {
               [styles.nav_text__dark]: isDarkTheme,
             })}
@@ -52,7 +53,7 @@ export const Footer: React.FC = () => {
             Contacts
           </Link>
           <Link
-            to="/"
+            to="/pageInProgress"
             className={cn([styles.nav_text], {
               [styles.nav_text__dark]: isDarkTheme,
             })}
@@ -61,6 +62,7 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
         <div className={styles.return_button}>
+
           <Link to="#Top" className={styles.button_top} onClick={scrollToTop}>
             Back to Top
           </Link>

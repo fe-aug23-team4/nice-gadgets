@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { Phone } from '../../types/Phone';
 import { localClient } from '../../utils/localClient';
+import { Product } from '../../types/Product';
 
 export interface FavoritesState {
-  favorites: Phone[];
+  favorites: Product[];
 }
 
 const initialState: FavoritesState = {
@@ -16,7 +16,7 @@ const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<Phone>) => {
+    add: (state, action: PayloadAction<Product>) => {
       state.favorites.push(action.payload);
       localClient.add('favorites', action.payload);
     },
