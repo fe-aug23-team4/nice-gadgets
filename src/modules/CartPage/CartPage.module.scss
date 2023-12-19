@@ -118,10 +118,10 @@
     border-radius: 0;
     color: $color__dark-theme__white;
     background-color: $color__dark-theme__accent;
-  }
 
-  &__DARK:hover {
-    background-color: $color__dark-theme__accent__hover;
+    &:hover {
+      background-color: $color__dark-theme__accent__hover;
+    }
   }
 }
 
