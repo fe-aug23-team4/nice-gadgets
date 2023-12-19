@@ -1,13 +1,7 @@
 import { axiosClient } from '../utils/axiosClient';
 
-import { Phone } from '../types/Phone';
-import { PhoneDetail } from '../types/PhoneDetail';
 import { Categories, EndPoints, ProductsAmount } from '../types/Enums';
-import { Product, QueryParams } from '../types/Product';
-
-export const getPhones = () => {
-  return axiosClient.get<Phone[]>('/phones');
-};
+import { Product, ProductDetail, QueryParams } from '../types/Product';
 
 export const getProductAmount = (category?: Categories) => {
   return axiosClient.get<ProductsAmount>(
@@ -29,20 +23,20 @@ export const getProductsWithSearchParams = (
 };
 
 export const getNewestProducts = () => {
-  return axiosClient.get<Phone[]>(`/${EndPoints.Product}/new`);
+  return axiosClient.get<Product[]>(`/${EndPoints.Product}/new`);
 };
 
 export const getProductsWithDiscount = () => {
-  return axiosClient.get<Phone[]>(`/${EndPoints.Product}/discount`);
+  return axiosClient.get<Product[]>(`/${EndPoints.Product}/discount`);
 };
 
 export const getProductDetail = (endPoint: EndPoints, itemId: string) => {
-  return axiosClient.get<PhoneDetail>(`/${endPoint}/${itemId}`);
+  return axiosClient.get<ProductDetail>(`/${endPoint}/${itemId}`);
 };
 
 export const getRecommendedProducts = (
   endPoint: EndPoints,
   phoneId: string,
 ) => {
-  return axiosClient.get<Phone[]>(`/${endPoint}/${phoneId}/recommended`);
+  return axiosClient.get<Product[]>(`/${endPoint}/${phoneId}/recommended`);
 };
