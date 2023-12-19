@@ -15,7 +15,6 @@ export const FavoritesPage: React.FC = () => {
         [styles.favouritesPageDark]: isDarkTheme,
       })}
     >
-
       <Breadcrumbs />
       <h2
         className={cn(styles.favouritesPage__title, {

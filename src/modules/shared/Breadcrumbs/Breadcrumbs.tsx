@@ -15,6 +15,7 @@ export const Breadcrumbs: React.FC = () => {
   const segments = pathname.split('/');
   const currentPage = (segments[segments.length - 1]);
   const { isDarkTheme } = useAppSelector((state) => state.theme);
+  const { origin } = window.location;
 
   let url = '';
   const breadcrumbLinks = segments.map((segment) => {
@@ -22,7 +23,7 @@ export const Breadcrumbs: React.FC = () => {
 
     return (
       <React.Fragment key={segment}>
-        <Link to={`http://localhost:3000/${url}`}>
+        <Link to={`${origin}/${url}`}>
           {segment === ''
             ? (
               <HomeIcon
