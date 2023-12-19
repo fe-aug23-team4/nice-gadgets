@@ -4,10 +4,10 @@ import cn from 'classnames';
 import styles from './AddToCart.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { actions as cartActions } from '../../../store/reducers/cartSlice';
-import { Phone } from '../../../types/Phone';
+import { Product } from '../../../types/Product';
 
 type Props = {
-  productItem: Phone;
+  productItem: Product;
 };
 
 export const AddToCart: React.FC<Props> = ({ productItem }) => {
@@ -20,7 +20,7 @@ export const AddToCart: React.FC<Props> = ({ productItem }) => {
     !!cart.find(cartItem => cartItem.id === productItem.id),
   );
 
-  const handleAddToCart = (product: Phone) => {
+  const handleAddToCart = (product: Product) => {
     if (!isSelected) {
       dispatch(cartActions.add(product));
       setIsSelected(true);

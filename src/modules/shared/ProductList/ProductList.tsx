@@ -2,11 +2,11 @@ import React from 'react';
 
 import styles from './ProductList.module.scss';
 
-import { Phone } from '../../../types/Phone';
 import { ProductCard } from '../ProductCard';
+import { Product } from '../../../types/Product';
 
 type Props = {
-  phones: Phone[];
+  phones: Product[];
 };
 
 export const ProductList: React.FC<Props> = ({ phones }) => {

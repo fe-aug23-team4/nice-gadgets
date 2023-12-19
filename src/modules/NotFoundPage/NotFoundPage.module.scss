@@ -2,22 +2,28 @@
 @import '../../styles/utils/mixins/mixin-media';
 @import '../../styles/utils/mixins/mixin-typography';
 
-$footerAndHeaderHeight: 144px;
-$footerAndHeaderHeightTablet: 305px;
+$footerAndHeaderHeighTablet: 144px;
+$footerAndHeaderHeightMobile: 257px;
 $footerAndHeaderHeightDesktop: 160px;
 
 .container {
-  height: calc(100vh - #{$footerAndHeaderHeight});
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  padding: 0 20px;
 
   @include onMobile {
-    height: calc(100vh - #{$footerAndHeaderHeightTablet});
+    height: calc(100vh - #{$footerAndHeaderHeightMobile});
     gap: 5px;
   }
+
+  @include onTablet {
+    height: calc(100vh - #{$footerAndHeaderHeighTablet});
+  }
+
 
   @include onDesktop {
     height: calc(100vh - #{$footerAndHeaderHeightDesktop});
@@ -33,13 +39,20 @@ $footerAndHeaderHeightDesktop: 160px;
   }
 }
 
-.error_message {
-  color: $color__secondary;
-  @include bodyText-typography;
+.headline {
+  @include h2-typography;
 
   &_dark {
-    @include bodyText-typography;
+    @include h2-typography;
     color: $color__dark-theme__white;
+
+    @include onMobile {
+      font-size: 24px;
+    }
+  }
+
+  @include onMobile {
+    font-size: 24px;
   }
 }
 
@@ -50,6 +63,14 @@ $footerAndHeaderHeightDesktop: 160px;
   &_dark {
     @include bodyText-typography;
     color: $color__dark-theme__white;
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  @include onMobile {
+    display: none;
   }
 
   @include onMobile {
@@ -57,56 +78,76 @@ $footerAndHeaderHeightDesktop: 160px;
   }
 }
 
-.headline {
-  @include h2-typography;
+.error_message {
+  text-align: center;
+  color: $color__secondary;
+  @include bodyText-typography;
 
   &_dark {
-    @include h2-typography;
+    @include bodyText-typography;
     color: $color__dark-theme__white;
-  }
-
-  @include onMobile {
-    font-size: 24px;
   }
 }
 
 .button {
-  margin-top: 12px;
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 15px;
-  border-radius: 15px;
-  border: 2px solid #3B3E4A;
-  transition: scale 0.05s ease;
-  border-radius: 12px;
+
+  border-radius: 8px;
+  border: none;
+  background: $color__accent;
+  margin-top: 12px;
+
+  color: $color__white;
   @include buttons-typography;
   text-decoration: none;
-  color: $color__primary;
+
+  transition: scale 0.05s ease;
 
   &:hover {
+    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
     scale: 1.1;
   }
 
   &_dark {
-  margin-top: 12px;
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 15px;
-  border: 2px solid $color__dark-theme__white;
-  transition: scale 0.05s ease;
-  border-radius: 12px;
-  @include buttons-typography;
-  text-decoration: none;
-  color: $color__dark-theme__white;
-  background-color: #3B3E4A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+    border-radius: 0px;
+    border: none;
+    background: $color__dark-theme__accent;
+    margin-top: 12px;
+
+    color: $color__dark-theme__white;
+    @include buttons-typography;
+    text-decoration: none;
+
+    transition: scale 0.05s ease;
 
     &:hover {
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
       scale: 1.1;
+      background: #a378ff;
+    }
+
+    @include onMobile {
+      scale: 0.8;
+      &:hover {
+        scale: 0.9;
+      }
+      margin-top: 5px;
     }
   }
 
   @include onMobile {
+    scale: 0.8;
+    &:hover {
+      scale: 0.9;
+    }
     margin-top: 5px;
-    padding: 8px;
-    font-size: 12px;
   }
 }
