@@ -4,28 +4,25 @@ import classNames from 'classnames';
 
 import styles from './PhonesPage.module.scss';
 
-import { Phone } from '../../types/Phone';
-
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { ProductList } from '../shared/ProductList';
 import { getProductsWithSearchParams } from '../../api/service';
 import { Loader } from '../shared/Loader';
 import { Pagination } from '../shared/Pagination';
 import { Filtration } from '../shared/Filtration';
-import { EndPoints } from '../../types/Enums';
-import { Product } from '../../types/Product';
+import { EndPoints, ProductsAmount } from '../../types/Enums';
+import { Product, QueryParams } from '../../types/Product';
 import { SortBy } from '../../types/SortBy';
 import { useAppSelector } from '../../store/hooks';
 import { getSearchWith } from '../../utils/getSearchWith';
 
 type Props = {
-  title: string
+  title: string;
   loadData: (
-    perPage: string,
-    page: number,
-    sort?: SortBy,
-  ) => Promise<Phone[]>,
-  loadAmount: () => Promise<number>
+    EndPoint: EndPoints,
+    params?: QueryParams
+  ) => Promise<Product[]>;
+  loadAmount: () => Promise<ProductsAmount>;
 };
 
 export const ProductsPage: React.FC<Props> = ({
@@ -62,8 +59,7 @@ export const ProductsPage: React.FC<Props> = ({
   const sortByEnum: SortBy = sort ? (sort as SortBy) : defaultSortBy;
 
   useEffect(() => {
-    loadAmount()
-      .then(setTotalAmount);
+    loadAmount().then((amount) => setTotalAmount(amount.phones));
   }, [loadAmount]);
 
   const getTotalPages = () => {
@@ -96,21 +92,21 @@ export const ProductsPage: React.FC<Props> = ({
   useEffect(() => {
     setIsLoading(true);
     getProductsWithSearchParams(EndPoints.Phones)
-      .then(setPhones)
+      .then(setProducts)
       .finally(() => setIsLoading(false));
   }, [sortByEnum, perPageString, currentPageNumber, error, loadData]);
 
-  useEffect(() => {
-    setIsLoading(true);
-    loadData(
-      perPageString,
-      currentPageNumber,
-      sortByEnum,
-    )
-      .then(setProducts)
-      .catch(setError)
-      .finally(() => setIsLoading(false));
-  }, [sortByEnum, perPageString, currentPageNumber, error, loadData]);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   loadData(
+  //     perPageString,
+  //     currentPageNumber,
+  //     sortByEnum,
+  //   )
+  //     .then(setProducts)
+  //     .catch(setError)
+  //     .finally(() => setIsLoading(false));
+  // }, [sortByEnum, perPageString, currentPageNumber, error, loadData]);
 
   return (
     <div

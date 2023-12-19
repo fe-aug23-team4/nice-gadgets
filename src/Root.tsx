@@ -13,8 +13,8 @@ import { NotFoundPage } from './modules/NotFoundPage';
 import { PageInProgress } from './modules/PageInProgress';
 import { FavoritesPage } from './modules/FavoritesPage';
 import {
-  getPhonesWithSearchParams as loadPhones,
-  getPhonesAmount as loadPhonesAmount,
+  getProductsWithSearchParams as loadPhones,
+  getProductAmount as loadPhonesAmount,
 } from './api/service';
 
 const MOBILE_TITLE = 'Mobile phones';
