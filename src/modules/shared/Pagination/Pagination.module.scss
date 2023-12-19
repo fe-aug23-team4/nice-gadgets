@@ -14,15 +14,24 @@
   }
 
   &__item {
+    margin-right: 8px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
-    color: #000;
     border-radius: 48px;
     border: 1px solid $color__elements;
     transition: border 0.3s ease, background-color 0.3s ease;
+
+    &__first {
+      margin: 0px;
+    }
+
+    &:last-child {
+      margin: 0px;
+    }
 
     &:hover {
       border: 1px solid $color__primary;
@@ -48,17 +57,34 @@
   }
 
   &__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
     color: #000;
 
+    &:hover {
+      border: 1px solid $color__primary;
+    }
+
     &__SELECTED {
+      border: none;
+      background-color: $color__dark-theme__surface-1;
       color: $color__white;
     }
 
     &__DARK {
       color: $color__dark-theme__white;
 
+      &:hover {
+        background-color: $color__dark-theme__elements;
+      }
+
       &__SELECTED {
         color: $color__dark-theme__white;
+        background-color: $color__dark-theme__accent;
       }
     }
   }
