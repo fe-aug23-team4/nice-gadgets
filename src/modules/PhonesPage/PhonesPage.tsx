@@ -8,9 +8,12 @@ import { Phone } from '../../types/Phone';
 
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { ProductList } from '../shared/ProductList';
+import { getProductsWithSearchParams } from '../../api/service';
 import { Loader } from '../shared/Loader';
 import { Pagination } from '../shared/Pagination';
 import { Filtration } from '../shared/Filtration';
+import { EndPoints } from '../../types/Enums';
+import { Product } from '../../types/Product';
 import { SortBy } from '../../types/SortBy';
 import { useAppSelector } from '../../store/hooks';
 import { getSearchWith } from '../../utils/getSearchWith';
@@ -31,7 +34,7 @@ export const ProductsPage: React.FC<Props> = ({
   loadAmount,
 }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
-  const [products, setProducts] = useState<Phone[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>('');
   const [totalAmount, setTotalAmount] = useState(0);
@@ -89,6 +92,13 @@ export const ProductsPage: React.FC<Props> = ({
       />
     );
   };
+
+  useEffect(() => {
+    setIsLoading(true);
+    getProductsWithSearchParams(EndPoints.Phones)
+      .then(setPhones)
+      .finally(() => setIsLoading(false));
+  }, [sortByEnum, perPageString, currentPageNumber, error, loadData]);
 
   useEffect(() => {
     setIsLoading(true);
