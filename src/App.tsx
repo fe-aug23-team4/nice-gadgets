@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { Outlet } from 'react-router-dom';
 
 import { Header } from './modules/shared/Header';
-// import { Footer } from './modules/shared/Footer';
+import { Footer } from './modules/shared/Footer';
 import { useAppSelector } from './store/hooks';
 
 export const App: React.FC = () => {
@@ -25,7 +25,7 @@ export const App: React.FC = () => {
       >
         <Outlet />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
