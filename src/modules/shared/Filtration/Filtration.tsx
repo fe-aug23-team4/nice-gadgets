@@ -20,14 +20,14 @@ const SORT_OPTIONS = [
 ];
 
 type Props = {
-  totalPages: number;
+  totalPhones: number;
   sort: string;
   order: string;
   perPage: string;
 };
 
 export const Filtration: React.FC<Props> = ({
-  totalPages,
+  totalPhones,
   sort,
   order,
   perPage,
@@ -38,9 +38,9 @@ export const Filtration: React.FC<Props> = ({
   const [searchParams] = useSearchParams();
 
   const getPerPageParams = (newPerPage: string) => {
-    if (perPage === 'All') {
+    if (newPerPage === 'All') {
       const search = getSearchWith(
-        searchParams, { perPage: totalPages.toString() },
+        searchParams, { perPage: totalPhones.toString() },
       );
 
       return search;
@@ -141,7 +141,9 @@ export const Filtration: React.FC<Props> = ({
             })}
             onClick={() => setIsPerPageOpen(!isPerPageOpen)}
           >
-            {perPage}
+            {perPage === totalPhones.toString()
+              ? 'All'
+              : perPage}
 
             <ArrowDown
               color={isDarkTheme ? '#75767f' : '#b4bdc3'}

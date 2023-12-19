@@ -75,7 +75,9 @@ export const ProductsPage: React.FC<Props> = ({
     }
   }, [productAmount]);
 
-  const totalPages = totalAmount / Number(perPage);
+  const totalPages = perPage
+    ? Math.ceil(totalAmount / Number(perPage))
+    : Math.ceil(totalAmount / 16);
 
   const showPagination = () => {
     if (Number(perPage) === totalAmount) {
@@ -148,7 +150,7 @@ export const ProductsPage: React.FC<Props> = ({
 
           <div className={styles.productsPage__filter}>
             <Filtration
-              totalPages={totalPages}
+              totalPhones={totalAmount}
               sort={sort || ''}
               order={order || 'asc'}
               perPage={perPage || '16'}
