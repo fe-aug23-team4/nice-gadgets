@@ -1,0 +1,38 @@
+@import '../../../../../styles/utils/mixins/mixin-typography';
+
+.about {
+  &__title {
+    position: relative;
+    margin-bottom: 48px;
+    @include h3-typography;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 38px;
+      height: 1px;
+      background-color: $color__elements;
+    }
+  }
+
+  &__item {
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+    @include h4-typography;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color__secondary;
+  }
+}
