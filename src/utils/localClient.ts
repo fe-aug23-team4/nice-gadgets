@@ -44,8 +44,8 @@ export const localClient = {
     return !!existingData.find((item: Product) => item.id === id);
   },
 
-  // eslint-disable-next-line consistent-return
-  init: (key: string, initialData: unknown) => {
+  // eslint-disable-next-line consistent-return, @typescript-eslint/no-explicit-any
+  init: (key: string, initialData: any) => {
     if (!localClient.read(key)) {
       localClient.write(key, initialData);
 
