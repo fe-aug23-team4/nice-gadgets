@@ -64,6 +64,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
               resolution: productDetail.current.resolution,
               processor: productDetail.current.processor,
               ram: productDetail.current.ram,
+              'built in memory': productDetail.current.capacity,
               camera: productDetail.current.camera,
               zoom: productDetail.current.zoom,
               cell: productDetail.current.cell,
