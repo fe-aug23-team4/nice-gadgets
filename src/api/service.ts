@@ -1,7 +1,7 @@
 import { axiosClient } from '../utils/axiosClient';
 
 import { Categories, EndPoints, ProductsAmount } from '../types/Enums';
-import { Product, ProductDetail, QueryParams } from '../types/Product';
+import { Product, Detail, QueryParams } from '../types/Product';
 
 export const getProductAmount = (category?: Categories) => {
   return axiosClient.get<ProductsAmount>(
@@ -31,12 +31,12 @@ export const getProductsWithDiscount = () => {
 };
 
 export const getProductDetail = (endPoint: EndPoints, itemId: string) => {
-  return axiosClient.get<ProductDetail>(`/${endPoint}/${itemId}`);
+  return axiosClient.get<Detail>(`/${endPoint}/${itemId}`);
 };
 
 export const getRecommendedProducts = (
   endPoint: EndPoints,
-  phoneId: string,
+  itemId: string,
 ) => {
-  return axiosClient.get<Product[]>(`/${endPoint}/${phoneId}/recommended`);
+  return axiosClient.get<Product[]>(`/${endPoint}/${itemId}/recommended`);
 };

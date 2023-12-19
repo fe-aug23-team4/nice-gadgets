@@ -1,5 +1,13 @@
-@import '../../styles/blocks/container';
+@import '../../styles/utils/mixins/mixin-typography';
 
-.container {
-  @extend .container;
+.productDetails {
+  &__title {
+    @include h2-typography;
+  }
+}
+
+.productDetailsDark {
+  .productDetails__title {
+    @include typography-dark;
+  }
 }

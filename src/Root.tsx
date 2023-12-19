@@ -6,7 +6,7 @@ import {
   Routes,
 } from 'react-router-dom';
 import { App } from './App';
-import { HomePage } from './modules/HomePage';
+import { HomePage } from './modules/HomePage/HomePage';
 import { ProductsPage } from './modules/PhonesPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { CartPage } from './modules/CartPage';
@@ -14,6 +14,7 @@ import { NotFoundPage } from './modules/NotFoundPage';
 import { PageInProgress } from './modules/PageInProgress';
 import { FavoritesPage } from './modules/FavoritesPage';
 import {
+  getProductDetail,
   getProductAmount,
   getProductsWithSearchParams,
 } from './api/service';
@@ -21,7 +22,7 @@ import { Categories, EndPoints, ProductsAmount } from './types/Enums';
 
 const MOBILE_TITLE = 'Mobile phones';
 const TABLETS_TITLE = 'Tablet';
-const ACCESSOTIES_TITLE = 'Accessories';
+const ACCESSORIES_TITLE = 'Accessories';
 
 export const Root = () => {
   const [amounts, setAmounts] = useState<ProductsAmount>();
@@ -49,7 +50,15 @@ export const Root = () => {
                   />
                 )}
               />
-              <Route path=":phoneId?" element={<ProductDetailsPage />} />
+              <Route
+                path=":itemId?"
+                element={(
+                  <ProductDetailsPage
+                    loadData={getProductDetail}
+                    endPoint={EndPoints.Phones}
+                  />
+                )}
+              />
             </Route>
             <Route path={Categories.Tablets}>
               <Route
@@ -63,22 +72,37 @@ export const Root = () => {
                   />
                 )}
               />
-              <Route path=":tabletId?" element={<ProductDetailsPage />} />
+              <Route
+                path=":itemId?"
+                element={(
+                  <ProductDetailsPage
+                    loadData={getProductDetail}
+                    endPoint={EndPoints.Tablets}
+                  />
+                )}
+              />
             </Route>
             <Route path={Categories.Accessories}>
               <Route
                 index
                 element={(
                   <ProductsPage
-                    title={ACCESSOTIES_TITLE}
+                    title={ACCESSORIES_TITLE}
                     loadData={getProductsWithSearchParams}
-                    // loadAmount={() => loadPhonesAmount(Categories.Phones)}
                     productAmount={amounts?.accessories}
                     endpoint={EndPoints.Accessories}
                   />
                 )}
               />
-              <Route path=":accessoryId?" element={<ProductDetailsPage />} />
+              <Route
+                path=":itemId?"
+                element={(
+                  <ProductDetailsPage
+                    loadData={getProductDetail}
+                    endPoint={EndPoints.Accessories}
+                  />
+                )}
+              />
             </Route>
             <Route path="favorites" element={<FavoritesPage />} />
             <Route path="cart" element={<CartPage />} />
