@@ -1,8 +1,7 @@
-@import '../../../../../styles/utils/mixins/mixin-typography';
+@import '../../../../styles/utils/mixins/mixin-typography';
 
-.techspec {
+.about {
   grid-column: span 4;
-  margin-top: 56px;
 
   &__title {
     position: relative;
@@ -20,16 +19,8 @@
     }
   }
 
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-
   &__item {
-    display: flex;
-    justify-content: space-between;
-
-    margin-bottom: 8px;
+    margin-bottom: 32px;
 
     &:last-child {
       margin-bottom: 0;
@@ -37,30 +28,29 @@
   }
 
   &__subtitle {
-    font-size: 14px;
-    line-height: 21px;
-    color: $color__secondary;
+    margin-bottom: 16px;
+    @include h4-typography;
   }
 
   &__text {
     font-size: 14px;
     line-height: 21px;
-    font-weight: 600;
+    color: $color__secondary;
+
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   @include onTablet {
     grid-column: span 12;
-    margin-top: 64px;
-  }
-
-  @include onDesktop {
-    grid-column: 14 / 25;
-    margin-top: 0;
   }
 }
 
-.techspecDark {
-  & .techspec__title {
+.aboutDark {
+  & .about__title {
     color: $color__dark-theme__white;
 
     &::after {
@@ -68,11 +58,11 @@
     }
   }
 
-  & .techspec__subtitle {
-    color: $color__dark-theme__secondary;
+  & .about__subtitle {
+    color: $color__dark-theme__white;
   }
 
-  & .techspec__text {
-    color: $color__dark-theme__white;
+  & .about__text {
+    color: $color__dark-theme__secondary;
   }
 }

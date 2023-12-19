@@ -36,7 +36,7 @@ export const getProductDetail = (endPoint: EndPoints, itemId: string) => {
 
 export const getRecommendedProducts = (
   endPoint: EndPoints,
-  phoneId: string,
+  itemId: string,
 ) => {
-  return axiosClient.get<Product[]>(`/${endPoint}/${phoneId}/recommended`);
+  return axiosClient.get<Product[]>(`/${endPoint}/${itemId}/recommended`);
 };

@@ -1,7 +1,8 @@
-@import '../../../../../styles/utils/mixins/mixin-typography';
+@import '../../../../styles/utils/mixins/mixin-typography';
 
-.about {
+.techSpec {
   grid-column: span 4;
+  margin-top: 56px;
 
   &__title {
     position: relative;
@@ -19,8 +20,16 @@
     }
   }
 
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__item {
-    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
 
     &:last-child {
       margin-bottom: 0;
@@ -28,29 +37,31 @@
   }
 
   &__subtitle {
-    margin-bottom: 16px;
-    @include h4-typography;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: $color__secondary;
   }
 
   &__text {
     font-size: 14px;
     line-height: 21px;
-    color: $color__secondary;
-
-    margin-bottom: 32px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+    font-weight: 600;
   }
 
   @include onTablet {
     grid-column: span 12;
+    margin-top: 64px;
+  }
+
+  @include onDesktop {
+    grid-column: 14 / 25;
+    margin-top: 0;
   }
 }
 
-.aboutDark {
-  & .about__title {
+.techSpecDark {
+  & .techSpec__title {
     color: $color__dark-theme__white;
 
     &::after {
@@ -58,11 +69,11 @@
     }
   }
 
-  & .about__subtitle {
-    color: $color__dark-theme__white;
+  & .techSpec__subtitle {
+    color: $color__dark-theme__secondary;
   }
 
-  & .about__text {
-    color: $color__dark-theme__secondary;
+  & .techSpec__text {
+    color: $color__dark-theme__white;
   }
 }
