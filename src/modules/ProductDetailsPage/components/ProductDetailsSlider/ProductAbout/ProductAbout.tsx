@@ -3,7 +3,7 @@ import styles from './ProductAbout.module.scss';
 
 export const ProductAbout: React.FC = () => {
   // eslint-disable-next-line max-len
-  const text = 'A transformative triple‑camecamera system that A transformative triple‑camera system thatA transformative triple‑camera system that A transformative triple‑camera system that A transformative triple‑camera system that A transformative triple‑camera system that A transformative triple‑camera system that';
+  const text = 'Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.';
 
   return (
     <div className={styles.about}>

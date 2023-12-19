@@ -4,7 +4,7 @@ import styles from './ProductDetailsPage.module.scss';
 
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { BackButton } from '../shared/BackButton';
-import { ProductDetailsSlider } from './components/ProductDetailsSlider';
+// import { ProductDetailsSlider } from './components/ProductDetailsSlider';
 import { ProductAbout }
   from './components/ProductDetailsSlider/ProductAbout/ProductAbout';
 import { ProductTechspec }
@@ -18,11 +18,11 @@ export const ProductDetailsPage: React.FC = () => {
 
       <BackButton />
 
-      <h2>Name of Product</h2>
+      <h2 className={styles.productDetails__title}>Name of Product</h2>
 
-      <article>
+      {/* <article>
         <ProductDetailsSlider />
-      </article>
+      </article> */}
 
       <ProductAbout />
 

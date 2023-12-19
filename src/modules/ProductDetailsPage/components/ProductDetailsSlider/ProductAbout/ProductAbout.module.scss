@@ -1,6 +1,8 @@
 @import '../../../../../styles/utils/mixins/mixin-typography';
 
 .about {
+  grid-column: span 4;
+
   &__title {
     position: relative;
     margin-bottom: 48px;
@@ -34,5 +36,9 @@
     font-size: 14px;
     line-height: 21px;
     color: $color__secondary;
+  }
+
+  @include onTablet {
+    grid-column: span 12;
   }
 }

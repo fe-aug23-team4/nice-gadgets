@@ -21,7 +21,7 @@ export const ProductTechspec = () => {
             Screen
           </div>
           <div className={styles.techspec__text}>
-            6.5” OLED
+            6.5” OLED123123123
           </div>
         </div>
 

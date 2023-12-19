@@ -1,6 +1,8 @@
 @import '../../../../../styles/utils/mixins/mixin-typography';
 
 .techspec {
+  grid-column: span 4;
+
   &__title {
     position: relative;
     margin-bottom: 48px;
@@ -43,5 +45,13 @@
     font-size: 14px;
     line-height: 21px;
     font-weight: 600;
+  }
+
+  @include onTablet {
+    grid-column: span 12;
+  }
+
+  @include onDesktop {
+    grid-column: 14 / 25;
   }
 }

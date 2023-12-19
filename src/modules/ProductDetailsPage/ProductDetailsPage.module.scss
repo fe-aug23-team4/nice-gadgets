@@ -1,1 +1,20 @@
+@import '../../styles/blocks/grid';
+@import '../../styles/utils/mixins/mixin-typography';
 
+.productDetails {
+  @extend .grid;
+
+  &__title {
+    grid-column: span 4;
+
+    @include h2-typography;
+
+    @include onTablet {
+      grid-column: span 12;
+    }
+
+    @include onDesktop {
+      grid-column: span 24;
+    }
+  }
+}
