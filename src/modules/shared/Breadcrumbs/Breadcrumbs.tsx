@@ -33,7 +33,7 @@ export const Breadcrumbs: React.FC = () => {
             : (
               <div className={styles.link}>
                 <ArrowRightIcon
-                  color={isDarkTheme ? '##4a4d58' : '#b4bdc3'}
+                  color={isDarkTheme ? '#4a4d58' : '#b4bdc3'}
                 />
                 <p
                   className={cn(styles.content, {
