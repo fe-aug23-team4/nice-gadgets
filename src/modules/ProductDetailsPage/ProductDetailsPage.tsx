@@ -8,21 +8,23 @@ import styles from './ProductDetailsPage.module.scss';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { BackButton } from '../shared/BackButton';
 // import { ProductDetailsSlider } from './components/ProductDetailsSlider';
+import { EndPoints } from '../../types/Enums';
 import { ProductAbout }
   from './components/ProductDetailsSlider/ProductAbout/ProductAbout';
 import { ProductTechspec }
   from './components/ProductDetailsSlider/ProductTechspec/ProductTechspec';
-import { EndPoints } from '../../types/Enums';
 import { Detail } from '../../types/Product';
 import { useAppSelector } from '../../store/hooks';
 // import { ProductSlider } from '../shared/ProductSlider';
 
 type Props = {
   loadData: (endPoint: EndPoints, itemId: string) => Promise<Detail>,
+  endPoint: EndPoints
 };
 
 export const ProductDetailsPage: React.FC<Props> = ({
   loadData,
+  endPoint,
 }) => {
   const { itemId } = useParams();
   const [itemDetails, setItemDetails] = useState<Detail>();
@@ -30,10 +32,10 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
   useEffect(() => {
     if (itemId) {
-      loadData(EndPoints.Phones, itemId)
+      loadData(endPoint, itemId)
         .then(setItemDetails);
     }
-  }, [loadData, itemId]);
+  }, [loadData, itemId, endPoint]);
 
   return (
     <div className={cn(styles.productDetails, {
@@ -51,8 +53,8 @@ export const ProductDetailsPage: React.FC<Props> = ({
           </h2>
 
           {/* <article>
-            <ProductDetailsSlider />
-          </article> */}
+        <ProductDetailsSlider images={phoneDetails?.images} />
+      </article> */}
 
           {itemDetails.current.description && (
             <ProductAbout
