@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import style from './ProductCard.module.scss';
 import { useAppSelector } from '../../../store/hooks';
-import { Phone } from '../../../types/Phone';
 import { AddToCart } from '../AddToCart';
 import { AddToFavourites } from '../AddToFavourites';
+import { Product } from '../../../types/Product';
 
 type Props = {
-  phone: Phone;
+  phone: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
@@ -36,7 +36,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       })}
     >
       <Link
-        to={phone.phoneId}
+        to={phone.itemId}
         className={style.productCard__image__container}
       >
         <img src={image} alt={name} className={style.productCard__image} />

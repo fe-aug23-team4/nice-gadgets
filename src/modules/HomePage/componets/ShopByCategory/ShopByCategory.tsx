@@ -7,13 +7,8 @@ import categoryPhone from '../../../../static/banners/category-phones.png';
 import categoryTablet from '../../../../static/banners/category-tablets.png';
 import categoryAccessories
   from '../../../../static/banners/category-accessories.png';
-import { getPhonesAmount } from '../../../../api/service';
-
-interface ProductsAmount {
-  phones: number;
-  tablets: number;
-  accessories: number;
-}
+import { getProductAmount } from '../../../../api/service';
+import { Categories, ProductsAmount } from '../../../../types/Enums';
 
 export const ShopByCategory: React.FC = () => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
@@ -24,11 +19,7 @@ export const ShopByCategory: React.FC = () => {
   });
 
   useEffect(() => {
-    getPhonesAmount()
-      .then((amount) => setProductsAmount(prev => ({
-        ...prev,
-        phones: amount,
-      })));
+    getProductAmount(Categories.All).then(setProductsAmount);
   }, []);
 
   return (

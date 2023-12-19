@@ -1,15 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { Phone, PhoneWithAmount } from '../../types/Phone';
 import { localClient } from '../../utils/localClient';
+import { Product, ProductWithAmount } from '../../types/Product';
 
 export interface CartState {
-  cart: PhoneWithAmount[];
+  cart: ProductWithAmount[];
 }
 
-function prepareProductForCart(phone: Phone): PhoneWithAmount {
-  return Object.assign(phone, { amount: 1 });
+function prepareProductForCart(product: Product): ProductWithAmount {
+  return Object.assign(product, { amount: 1 });
 }
 
 const initialState: CartState = {
@@ -20,7 +20,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<Phone>) => {
+    add: (state, action: PayloadAction<Product>) => {
       const preparedProduct = prepareProductForCart(action.payload);
 
       state.cart.push(preparedProduct);
@@ -48,6 +48,11 @@ const cartSlice = createSlice({
           localClient.update('cart', item);
         }
       });
+    },
+
+    clear: (state) => {
+      state.cart = [];
+      localClient.write('cart', []);
     },
   },
 });
