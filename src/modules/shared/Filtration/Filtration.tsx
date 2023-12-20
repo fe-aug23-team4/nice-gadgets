@@ -40,13 +40,17 @@ export const Filtration: React.FC<Props> = ({
   const getPerPageParams = (newPerPage: string) => {
     if (newPerPage === 'All') {
       const search = getSearchWith(
-        searchParams, { perPage: totalPhones.toString() },
+        searchParams,
+        { perPage: totalPhones.toString(), page: '1' },
       );
 
       return search;
     }
 
-    const search = getSearchWith(searchParams, { perPage: newPerPage });
+    const search = getSearchWith(
+      searchParams,
+      { perPage: newPerPage, page: '1' },
+    );
 
     return search;
   };
@@ -107,6 +111,7 @@ export const Filtration: React.FC<Props> = ({
                     search: getSearchWith(searchParams, {
                       sort: option.value,
                       order: option.order,
+                      page: '1',
                     }),
                   }}
                   key={option.label}

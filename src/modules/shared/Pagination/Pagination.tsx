@@ -75,39 +75,32 @@ export const Pagination: React.FC<Props> = ({
         </Link>
       </li>
 
-      {/* {currentPageNumber > 1 && (
-        <li className={cn(styles.pagination__item, {
-          [styles.pagination__item__DARK]: isDarkTheme,
-        })}
-        >
-          ..
-        </li>
-      )} */}
-
       <div className={styles.pagination__numbers}>
         {pages.map(pageNumber => (
           <li
             className={cn(styles.pagination__item, {
               [styles.pagination__item__DARK]: isDarkTheme,
-              [styles.pagination__item__active]: currentPage === pageNumber,
-              [styles.pagination__item__DARK__active]:
-                currentPage === pageNumber && isDarkTheme,
             })}
-            key={pageNumber}
+            key={pageNumber.key}
           >
             <Link
               to={{
-                search: getSearchWith(searchParams, { page: pageNumber }),
+                search: getSearchWith(searchParams, { page: pageNumber.value }),
               }}
               className={cn(styles.pagination__number, {
                 [styles.pagination__number__DARK]: isDarkTheme,
                 [styles.pagination__number__SELECTED]:
-                  currentPage === pageNumber,
+                  currentPage === pageNumber.value,
+                [styles.pagination__number__DISABLED]:
+                  pageNumber.value === '..',
                 [styles.pagination__number__DARK__SELECTED]:
-                  currentPage === pageNumber && isDarkTheme,
+                  currentPage === pageNumber.value && isDarkTheme,
+                [styles.pagination__number__DARK__DISABLED]:
+                  pageNumber.value === '..' && isDarkTheme,
               })}
+              aria-disabled={currentPage === '..'}
             >
-              {pageNumber}
+              {pageNumber.value}
             </Link>
           </li>
         ))}

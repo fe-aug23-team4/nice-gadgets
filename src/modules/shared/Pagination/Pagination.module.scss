@@ -25,27 +25,8 @@
       margin: 0px;
     }
 
-    &:hover {
-      border: 1px solid $color__primary;
-    }
-
-    &__active {
-      background-color: $color__primary;
-    }
-
     &__DARK {
       border-radius: 0px;
-      border: none;
-      background-color: $color__dark-theme__surface-1;
-
-      &:hover {
-        background-color: $color__dark-theme__elements;
-        border: none;
-      }
-
-      &__active {
-        background-color: $color__dark-theme__accent;
-      }
     }
   }
 
@@ -59,31 +40,44 @@
     border-radius: 48px;
     color: #000;
     border: 1px solid $color__elements;
-    transition: border 0.3s ease, background-color 0.3s ease;
+    transition: border 0.3s ease-in, background-color 0.3s ease-in;
 
     &:hover {
       border: 1px solid $color__primary;
+      transition-timing-function: linear;
     }
 
     &__SELECTED {
       border: none;
       background-color: $color__dark-theme__surface-1;
       color: $color__white;
+      transition-timing-function: linear;
+    }
+
+    &__DISABLED {
+      pointer-events: none;
     }
 
     &__DARK {
       border-radius: 0px;
       border: none;
       color: $color__dark-theme__white;
+      background-color: $color__dark-theme__surface-1;
 
       &:hover {
         background-color: $color__dark-theme__elements;
         border: none;
+        transition-timing-function: linear;
       }
 
       &__SELECTED {
         color: $color__dark-theme__white;
         background-color: $color__dark-theme__accent;
+        transition-timing-function: linear;
+      }
+
+      &__DISABLED {
+        pointer-events: none;
       }
     }
   }
