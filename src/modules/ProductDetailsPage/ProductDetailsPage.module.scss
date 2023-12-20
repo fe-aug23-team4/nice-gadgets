@@ -1,4 +1,6 @@
 @import '../../styles/utils/mixins/mixin-typography';
+@import '../../styles/utils/mixins/mixin-media';
+@import '../../styles/blocks/grid';
 
 .productDetails {
   &__title {
@@ -8,6 +10,77 @@
 
 .productDetailsDark {
   .productDetails__title {
+    margin-top: 1rem;
     @include typography-dark;
   }
+}
+
+.breadCrumbContiner {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.top {
+  @extend .grid;
+
+  @include onTablet {
+    margin-top: -330px;
+  }
+
+  @include onDesktop {
+    margin-top: -510px;
+  }
+}
+
+.productDetailsSlider {
+  margin-top: 2.5rem;
+}
+
+.colorCapacityComponent {
+  grid-column: span 4;
+
+  @include onTablet {
+    grid-column: 8 / -1;
+  }
+
+  @include onDesktop {
+    grid-column: 14 / 24;
+  }
+
+}
+
+.aboutContent {
+  margin-top: 3.5rem;
+  @extend .grid;
+
+  @include onTablet {
+    margin-top: 100px;
+  }
+
+  @include onDesktop {
+    margin-top: 300px;
+  }
+}
+
+.about {
+  grid-column: 1 / -1;
+
+  @include onDesktop {
+    grid-column: 1 / 13;
+  }
+
+}
+
+.techSpec {
+  grid-column: 1 / -1;
+
+  @include onDesktop {
+    grid-column: 14 / -1;
+  }
+}
+
+.productSlider {
+  margin-top: 3.5rem;
 }
