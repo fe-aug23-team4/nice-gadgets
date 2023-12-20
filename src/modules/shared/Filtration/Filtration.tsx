@@ -1,4 +1,9 @@
-import { useState } from 'react';
+import {
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useAppSelector } from '../../../store/hooks';
@@ -8,7 +13,7 @@ import {
   ReactComponent as ArrowDown,
 } from '../../../static/buttons/Icons_ArrowDown.svg';
 
-const PER_PAGE = ['All', '4', '8', '16'];
+const PER_PAGE = ['All', '8', '16', '32'];
 
 const SORT_OPTIONS = [
   { label: 'Newest', value: 'year', order: 'desc' },
@@ -37,6 +42,32 @@ export const Filtration: React.FC<Props> = ({
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
   const [searchParams] = useSearchParams();
 
+  function useOutsideAlerter(
+    ref: RefObject<HTMLElement>,
+    setIsListOpen: ((arg0: boolean) => void),
+  ) {
+    useEffect(() => {
+      function handleClickOutside(event: MouseEvent) {
+        if (ref.current
+            && !ref.current.contains(event.target as Node)) {
+          setIsListOpen(false);
+        }
+      }
+
+      document.addEventListener('mousedown', handleClickOutside);
+
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref, setIsListOpen]);
+  }
+
+  const sortDropdownRef = useRef(null);
+  const perPageDropdownRef = useRef(null);
+
+  useOutsideAlerter(sortDropdownRef, setIsSortOpen);
+  useOutsideAlerter(perPageDropdownRef, setIsPerPageOpen);
+
   const getPerPageParams = (newPerPage: string) => {
     if (newPerPage === 'All') {
       const search = getSearchWith(
@@ -62,6 +93,14 @@ export const Filtration: React.FC<Props> = ({
     return name?.label || 'Not chosen';
   };
 
+  const setPerPageName = () => {
+    if (perPage === totalPhones.toString()) {
+      return 'All';
+    }
+
+    return perPage;
+  };
+
   const handleSortOptionClick = () => {
     setIsSortOpen(false);
   };
@@ -81,8 +120,10 @@ export const Filtration: React.FC<Props> = ({
         >
           Sort by
         </label>
+
         <div
           className={styles.filtration__wrapper}
+          ref={sortDropdownRef}
         >
           <button
             type="button"
@@ -117,6 +158,10 @@ export const Filtration: React.FC<Props> = ({
                   key={option.label}
                   className={classNames(styles.filtration__option, {
                     [styles.filtration__option__DARK]: isDarkTheme,
+                    [styles.filtration__option__SELECTED]:
+                      sort === option.value && order === option.order,
+                    [styles.filtration__option__DARK__SELECTED]: isDarkTheme
+                      && sort === option.value && order === option.order,
                   })}
                   onClick={handleSortOptionClick}
                 >
@@ -138,6 +183,7 @@ export const Filtration: React.FC<Props> = ({
 
         <div
           className={styles.filtration__wrapper}
+          ref={perPageDropdownRef}
         >
           <button
             type="button"
@@ -146,9 +192,7 @@ export const Filtration: React.FC<Props> = ({
             })}
             onClick={() => setIsPerPageOpen(!isPerPageOpen)}
           >
-            {perPage === totalPhones.toString()
-              ? 'All'
-              : perPage}
+            {setPerPageName()}
 
             <ArrowDown
               color={isDarkTheme ? '#75767f' : '#b4bdc3'}
@@ -172,6 +216,14 @@ export const Filtration: React.FC<Props> = ({
                   key={amount}
                   className={classNames(styles.filtration__option, {
                     [styles.filtration__option__DARK]: isDarkTheme,
+                    [styles.filtration__option__SELECTED]:
+                      (perPage === amount
+                        || ((perPage === totalPhones.toString())
+                        && amount === 'All')),
+                    [styles.filtration__option__DARK__SELECTED]: isDarkTheme
+                    && (perPage === amount
+                      || ((perPage === totalPhones.toString())
+                      && amount === 'All')),
                   })}
                   onClick={handlePerPageOptionClick}
                 >
