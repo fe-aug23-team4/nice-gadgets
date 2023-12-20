@@ -55,7 +55,7 @@ export const Pagination: React.FC<Props> = ({
           styles.pagination__item__first, {
             [styles.pagination__item__DARK]: isDarkTheme,
           })}
-        key="arrow"
+        key="arrowLeft"
       >
         <Link
           to={{
@@ -63,9 +63,9 @@ export const Pagination: React.FC<Props> = ({
           }}
           className={cn(styles.pagination__arrow, {
             [styles.pagination__arrow__DARK]: isDarkTheme,
-            [styles.pagination__arrow__DISABLED]: isLastPage,
+            [styles.pagination__arrow__DISABLED]: isFirstPage,
             [styles.apagination__arrow__DARK__DISABLED]:
-            isLastPage && isDarkTheme,
+            isFirstPage && isDarkTheme,
           })}
           aria-disabled={isFirstPage}
         >
@@ -74,6 +74,15 @@ export const Pagination: React.FC<Props> = ({
           />
         </Link>
       </li>
+
+      {/* {currentPageNumber > 1 && (
+        <li className={cn(styles.pagination__item, {
+          [styles.pagination__item__DARK]: isDarkTheme,
+        })}
+        >
+          ..
+        </li>
+      )} */}
 
       <div className={styles.pagination__numbers}>
         {pages.map(pageNumber => (
@@ -108,6 +117,7 @@ export const Pagination: React.FC<Props> = ({
         className={cn(styles.pagination__item, {
           [styles.pagination__item__DARK]: isDarkTheme,
         })}
+        key="arrowRight"
       >
         <Link
           to={{

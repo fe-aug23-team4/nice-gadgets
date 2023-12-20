@@ -16,14 +16,6 @@
   &__item {
     margin-right: 8px;
     box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 48px;
-    border: 1px solid $color__elements;
-    transition: border 0.3s ease, background-color 0.3s ease;
 
     &__first {
       margin: 0px;
@@ -48,6 +40,7 @@
 
       &:hover {
         background-color: $color__dark-theme__elements;
+        border: none;
       }
 
       &__active {
@@ -57,6 +50,7 @@
   }
 
   &__number {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,6 +58,8 @@
     height: 32px;
     border-radius: 48px;
     color: #000;
+    border: 1px solid $color__elements;
+    transition: border 0.3s ease, background-color 0.3s ease;
 
     &:hover {
       border: 1px solid $color__primary;
@@ -76,10 +72,13 @@
     }
 
     &__DARK {
+      border-radius: 0px;
+      border: none;
       color: $color__dark-theme__white;
 
       &:hover {
         background-color: $color__dark-theme__elements;
+        border: none;
       }
 
       &__SELECTED {
@@ -90,6 +89,7 @@
   }
 
   &__arrow {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,6 +100,7 @@
     transition: border 0.3s ease, background-color 0.3s ease;
     border: 1px solid $color__icons;
     background-repeat: no-repeat;
+    color: none;
 
     &:hover {
       border: 1px solid $color__primary;
@@ -107,6 +108,7 @@
 
     &__DISABLED {
       border: 1px solid $color__elements;
+      pointer-events: none;
     }
 
     &__DARK {
@@ -121,6 +123,7 @@
       &__DISABLED {
         border: 1px solid $color__dark-theme__elements;
         background-color: none;
+        pointer-events: none;
       }
     }
   }
