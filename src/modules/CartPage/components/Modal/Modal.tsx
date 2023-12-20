@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { actions as cartActions } from '../../../../store/reducers/cartSlice';
