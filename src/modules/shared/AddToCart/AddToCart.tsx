@@ -25,7 +25,7 @@ export const AddToCart: React.FC<Props> = ({ productItem }) => {
       dispatch(cartActions.add(product));
       setIsSelected(true);
     } else {
-      navigate('../cart');
+      navigate('/cart');
     }
   };
 
