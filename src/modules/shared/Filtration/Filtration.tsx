@@ -11,10 +11,10 @@ import {
 const PER_PAGE = ['All', '4', '8', '16'];
 
 const SORT_OPTIONS = [
-  { label: 'Newest', value: 'date', order: 'desc' },
-  { label: 'Oldest', value: 'date', order: 'asc' },
-  { label: 'Alphabetically Asc', value: 'title', order: 'asc' },
-  { label: 'Alphabetically Desc', value: 'title', order: 'desc' },
+  { label: 'Newest', value: 'year', order: 'desc' },
+  { label: 'Oldest', value: 'year', order: 'asc' },
+  { label: 'Alphabetically Asc', value: 'name', order: 'asc' },
+  { label: 'Alphabetically Desc', value: 'name', order: 'desc' },
   { label: 'Cheapest', value: 'price', order: 'asc' },
   { label: 'Most Expensive', value: 'price', order: 'desc' },
 ];
@@ -40,13 +40,17 @@ export const Filtration: React.FC<Props> = ({
   const getPerPageParams = (newPerPage: string) => {
     if (newPerPage === 'All') {
       const search = getSearchWith(
-        searchParams, { perPage: totalPhones.toString() },
+        searchParams,
+        { perPage: totalPhones.toString(), page: '1' },
       );
 
       return search;
     }
 
-    const search = getSearchWith(searchParams, { perPage: newPerPage });
+    const search = getSearchWith(
+      searchParams,
+      { perPage: newPerPage, page: '1' },
+    );
 
     return search;
   };
@@ -107,6 +111,7 @@ export const Filtration: React.FC<Props> = ({
                     search: getSearchWith(searchParams, {
                       sort: option.value,
                       order: option.order,
+                      page: '1',
                     }),
                   }}
                   key={option.label}

@@ -16,14 +16,6 @@
   &__item {
     margin-right: 8px;
     box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 48px;
-    border: 1px solid $color__elements;
-    transition: border 0.3s ease, background-color 0.3s ease;
 
     &__first {
       margin: 0px;
@@ -33,30 +25,13 @@
       margin: 0px;
     }
 
-    &:hover {
-      border: 1px solid $color__primary;
-    }
-
-    &__active {
-      background-color: $color__primary;
-    }
-
     &__DARK {
       border-radius: 0px;
-      border: none;
-      background-color: $color__dark-theme__surface-1;
-
-      &:hover {
-        background-color: $color__dark-theme__elements;
-      }
-
-      &__active {
-        background-color: $color__dark-theme__accent;
-      }
     }
   }
 
   &__number {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,32 +39,50 @@
     height: 32px;
     border-radius: 48px;
     color: #000;
+    border: 1px solid $color__elements;
 
     &:hover {
       border: 1px solid $color__primary;
+      transition: border 0.3s ease;
     }
 
     &__SELECTED {
       border: none;
       background-color: $color__dark-theme__surface-1;
       color: $color__white;
+      transition: border 0.3s ease-in, background-color 0.3s ease-out;
+    }
+
+    &__DISABLED {
+      pointer-events: none;
     }
 
     &__DARK {
+      border-radius: 0px;
+      border: none;
       color: $color__dark-theme__white;
+      background-color: $color__dark-theme__surface-1;
 
       &:hover {
         background-color: $color__dark-theme__elements;
+        border: none;
+        transition: border 0.3s ease, background-color 0.3s ease;
       }
 
       &__SELECTED {
         color: $color__dark-theme__white;
         background-color: $color__dark-theme__accent;
+        transition: border 0.3s ease-in, background-color 0.3s ease-out;
+      }
+
+      &__DISABLED {
+        pointer-events: none;
       }
     }
   }
 
   &__arrow {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,6 +93,7 @@
     transition: border 0.3s ease, background-color 0.3s ease;
     border: 1px solid $color__icons;
     background-repeat: no-repeat;
+    color: none;
 
     &:hover {
       border: 1px solid $color__primary;
@@ -107,6 +101,7 @@
 
     &__DISABLED {
       border: 1px solid $color__elements;
+      pointer-events: none;
     }
 
     &__DARK {
@@ -121,6 +116,7 @@
       &__DISABLED {
         border: 1px solid $color__dark-theme__elements;
         background-color: none;
+        pointer-events: none;
       }
     }
   }
