@@ -19,6 +19,7 @@ import { ProductAbout } from './components/ProductAbout/ProductAbout';
 import { ProductTechSpec } from './components/ProductTechSpec/ProductTechSpec';
 import { ProductSlider } from '../shared/ProductSlider/ProductSlider';
 import { InfoAndPurchase } from './components/InfoAndPurchase';
+import { Loader } from '../shared/Loader';
 
 function getDetails(
   productDetail: Detail,
@@ -77,6 +78,7 @@ type Props = {
 export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const [productDetail, setProductDetail] = useState<Detail | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [recommended, setRecommended] = useState<Product[]>([]);
   const [color, setColor] = useState('');
   const [capacity, setCapacity] = useState('');
@@ -108,7 +110,10 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
 
   useEffect(() => {
     if (itemId) {
-      loadData(endPoint, itemId).then(setProductDetail);
+      setIsLoading(true);
+      loadData(endPoint, itemId)
+        .then(setProductDetail)
+        .finally(() => setIsLoading(false));
       getRecommendedProducts(endPoint, itemId).then(setRecommended);
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -124,6 +129,8 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
 
         <BackButton />
       </div>
+
+      {isLoading && <Loader />}
 
       {details && (
         <>
