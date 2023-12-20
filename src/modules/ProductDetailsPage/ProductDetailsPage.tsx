@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 
 import styles from './ProductDetailsPage.module.scss';
