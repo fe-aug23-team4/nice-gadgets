@@ -6,7 +6,9 @@ import styles from './ProductDetailsPage.module.scss';
 
 import { getRecommendedProducts } from '../../api/service';
 import { useAppSelector } from '../../store/hooks';
-import { Detail, Product } from '../../types/Product';
+import {
+  Detail, PreparedInfo, Product, ProductDetail,
+} from '../../types/Product';
 import { EndPoints } from '../../types/Enums';
 
 import { Breadcrumbs } from '../shared/Breadcrumbs';
@@ -16,11 +18,7 @@ import { ColorCapacityComponent } from './components/ColorCapacityComponent';
 import { ProductAbout } from './components/ProductAbout/ProductAbout';
 import { ProductTechSpec } from './components/ProductTechSpec/ProductTechSpec';
 import { ProductSlider } from '../shared/ProductSlider/ProductSlider';
-
-type Props = {
-  loadData: (endPoint: EndPoints, itemId: string) => Promise<Detail>;
-  endPoint: EndPoints;
-};
+import { InfoAndPurchase } from './components/InfoAndPurchase';
 
 function getDetails(
   productDetail: Detail,
@@ -31,25 +29,50 @@ function getDetails(
   if (color && capacity) {
     return productDetail.additional.find(
       (product) => product.color === color && product.capacity === capacity,
-    );
+    ) || null;
   }
 
   if (color) {
     return productDetail.additional.find(
       (product) => product.color === color
         && product.capacity === productDetail.current.capacity,
-    );
+    ) || null;
   }
 
   if (capacity) {
     return productDetail.additional.find(
       (product) => product.capacity === capacity
         && product.color === productDetail.current.color,
-    );
+    ) || null;
   }
 
   return productDetail.current;
 }
+
+function prepareInfo(
+  productDetail: Detail | null,
+  details: ProductDetail | null,
+): PreparedInfo | null {
+  if (productDetail && details) {
+    return {
+      fullPrice: details.priceRegular,
+      price: details.priceDiscount,
+      specs: {
+        screen: details.screen,
+        resolution: details.resolution,
+        processor: details.processor,
+        ram: details.ram,
+      },
+    };
+  }
+
+  return null;
+}
+
+type Props = {
+  loadData: (endPoint: EndPoints, itemId: string) => Promise<Detail>;
+  endPoint: EndPoints;
+};
 
 export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
@@ -64,6 +87,11 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
   const details = productDetail
     ? getDetails(productDetail, { color, capacity })
     : null;
+
+  const preparedInfo = prepareInfo(productDetail, details);
+  const product = productDetail?.products.find(
+    (prod) => prod.itemId === details?.id,
+  ) || null;
 
   const changeUrl = (id: string) => {
     navigate(`/${endPoint}/${id}`, {
@@ -114,6 +142,10 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
               />
             </div>
           </div>
+
+          {preparedInfo && (
+            <InfoAndPurchase product={product} info={preparedInfo} />
+          )}
 
           <div className={styles.aboutContent}>
             <div className={styles.about}>
