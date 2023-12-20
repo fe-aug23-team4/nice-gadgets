@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { actions as cartActions } from '../../../../store/reducers/cartSlice';
@@ -16,6 +17,7 @@ export const Modal: React.FC<Props> = ({
 }) => {
   const dispatch = useAppDispatch();
   const { isDarkTheme } = useAppSelector((state) => state.theme);
+  const navigate = useNavigate();
 
   if (!isOpen) {
     return null;
@@ -24,6 +26,7 @@ export const Modal: React.FC<Props> = ({
   const clearCartHandler = () => {
     dispatch(cartActions.clear());
     onClose();
+    navigate('/');
   };
 
   return (
