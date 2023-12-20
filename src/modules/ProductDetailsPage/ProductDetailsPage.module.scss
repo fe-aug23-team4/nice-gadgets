@@ -4,18 +4,18 @@
 
 .productDetails {
   &__title {
+    margin-top: 1rem;
     @include h2-typography;
   }
 }
 
 .productDetailsDark {
   .productDetails__title {
-    margin-top: 1rem;
     @include typography-dark;
   }
 }
 
-.breadCrumbContiner {
+.breadCrumbsContiner {
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -26,11 +26,11 @@
   @extend .grid;
 
   @include onTablet {
-    margin-top: -330px;
+    transform: translateY(-330px);
   }
 
   @include onDesktop {
-    margin-top: -510px;
+    transform: translateY(-510px);
   }
 }
 
@@ -38,7 +38,7 @@
   margin-top: 2.5rem;
 }
 
-.colorCapacityComponent {
+.interactive {
   grid-column: span 4;
 
   @include onTablet {
@@ -56,11 +56,11 @@
   @extend .grid;
 
   @include onTablet {
-    margin-top: 100px;
+    margin-top: -250px;
   }
 
-  @include onDesktop {
-    margin-top: 300px;
+  @include onTablet {
+    margin-top: -350px;
   }
 }
 

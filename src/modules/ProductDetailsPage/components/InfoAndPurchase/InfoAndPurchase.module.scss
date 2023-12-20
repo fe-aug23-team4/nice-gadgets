@@ -7,14 +7,6 @@
   flex-direction: column;
   grid-column: span 4;
 
-  @include onTablet {
-    grid-column: 8 / 12;
-  }
-
-  @include onDesktop {
-    grid-column: 14 / 20;
-  }
-
   &__price {
     display: flex;
     gap: 8px;

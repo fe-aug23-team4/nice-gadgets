@@ -119,7 +119,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
         [styles.productDetailsDark]: isDarkTheme,
       })}
     >
-      <div className={styles.breadCrumbContiner}>
+      <div className={styles.breadCrumbsContiner}>
         <Breadcrumbs />
 
         <BackButton />
@@ -128,24 +128,22 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
       {details && (
         <>
           <h2 className={styles.productDetails__title}>{details.name}</h2>
-
           <div className={styles.productDetailsSlider}>
             <ProductDetailsSlider images={details.images} />
           </div>
-
           <div className={styles.top}>
-            <div className={styles.colorCapacityComponent}>
+            <div className={styles.interactive}>
               <ColorCapacityComponent
                 productDetail={details}
                 setColor={setColor}
                 setCapacity={setCapacity}
               />
+
+              {preparedInfo && (
+                <InfoAndPurchase product={product} info={preparedInfo} />
+              )}
             </div>
           </div>
-
-          {preparedInfo && (
-            <InfoAndPurchase product={product} info={preparedInfo} />
-          )}
 
           <div className={styles.aboutContent}>
             <div className={styles.about}>

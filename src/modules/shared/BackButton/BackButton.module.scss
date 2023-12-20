@@ -1,6 +1,7 @@
 @import '../../../styles/utils/mixins/mixin-typography';
 
 .backButtonContainer {
+  padding: 0;
   display: flex;
   gap: 4px;
   align-items: flex-end;
