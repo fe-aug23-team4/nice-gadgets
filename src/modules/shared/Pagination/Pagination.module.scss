@@ -40,18 +40,17 @@
     border-radius: 48px;
     color: #000;
     border: 1px solid $color__elements;
-    transition: border 0.3s ease-in, background-color 0.3s ease-in;
 
     &:hover {
       border: 1px solid $color__primary;
-      transition-timing-function: linear;
+      transition: border 0.3s ease;
     }
 
     &__SELECTED {
       border: none;
       background-color: $color__dark-theme__surface-1;
       color: $color__white;
-      transition-timing-function: linear;
+      transition: border 0.3s ease-in, background-color 0.3s ease-out;
     }
 
     &__DISABLED {
@@ -67,13 +66,13 @@
       &:hover {
         background-color: $color__dark-theme__elements;
         border: none;
-        transition-timing-function: linear;
+        transition: border 0.3s ease, background-color 0.3s ease;
       }
 
       &__SELECTED {
         color: $color__dark-theme__white;
         background-color: $color__dark-theme__accent;
-        transition-timing-function: linear;
+        transition: border 0.3s ease-in, background-color 0.3s ease-out;
       }
 
       &__DISABLED {
