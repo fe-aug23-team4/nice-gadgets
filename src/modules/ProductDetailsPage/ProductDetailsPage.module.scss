@@ -1,5 +1,29 @@
 @import '../../styles/blocks/container';
+@import '../../styles/blocks/grid';
 
 .container {
   @extend .container;
+  @extend .grid;
+}
+
+.breadcrumbs {
+  grid-column: 1 / -1;
+}
+
+.backButton {
+  grid-column: 1 / -1;
+}
+
+.slider-container {
+  @include onMobile {
+    grid-column: 1 / -1;
+  }
+
+  @include onTablet {
+    grid-column: 1 / 7;
+  }
+
+  @include onDesktop {
+    grid-column: 1 / 13;
+  }
 }

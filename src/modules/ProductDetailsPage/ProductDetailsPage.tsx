@@ -20,13 +20,17 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Breadcrumbs />
+      <article className={styles.breadcrumbs}>
+        <Breadcrumbs />
+      </article>
 
-      <BackButton />
+      <article className={styles.backButton}>
+        <BackButton />
+      </article>
 
       <h2>Name of Product</h2>
 
-      <article>
+      <article className={styles['slider-container']}>
         <ProductDetailsSlider images={phoneDetails?.images} />
       </article>
 

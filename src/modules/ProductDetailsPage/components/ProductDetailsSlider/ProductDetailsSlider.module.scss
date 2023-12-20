@@ -1,4 +1,19 @@
 @import '../../../../styles/utils/mixins/mixin-media';
+@import '../../../../styles/utils/variables/colors';
+
+// .slider-container {
+//   @include onMobile {
+//     grid-column: 1 / -1;
+//   }
+
+//   @include onTablet {
+//     grid-column: 2 / 7;
+//   }
+
+//   @include onDesktop {
+//     grid-column: 3 / 13;
+//   }
+// }
 
 .slick-prev-phone,
 .slick-next-phone {
@@ -15,15 +30,55 @@
 
 .phonePhoto {
   @include onMobile {
-    width: 288px;
     height: 288px;
     object-fit: contain;
     margin-inline: auto;
   }
 
+  @media (min-width: 430px) and (max-width: 539px) {
+    height: 387px;
+    object-fit: contain;
+  }
+
+  @media (min-width: 540px) and (max-width: 639px) {
+    height: 486px;
+    object-fit: contain;
+  }
+
+
   @include onTablet {
     width: 288px;
     height: 288px;
+    object-fit: contain;
+  }
+
+  @media (min-width: 740px) and (max-width: 839px) {
+    width: 320px;
+    height: 320px;
+    object-fit: contain;
+  }
+
+  @media (min-width: 840px) and (max-width: 939px) {
+    width: 353px;
+    height: 353px;
+    object-fit: contain;
+  }
+
+  @media (min-width: 940px) and (max-width: 1039px) {
+    width: 385px;
+    height: 385px;
+    object-fit: contain;
+  }
+
+  @media (min-width: 1040px) and (max-width: 1119px) {
+    width: 418px;
+    height: 418px;
+    object-fit: contain;
+  }
+
+  @media (min-width: 1120px) and (max-width: 1199px) {
+    width: 444px;
+    height: 444px;
     object-fit: contain;
   }
 
@@ -37,39 +92,71 @@
 .slick-dots,
 .slick-thumb {
   cursor: pointer;
-  width: auto !important;
+  object-fit: contain;
+  padding-block: 4px;
 
   @include onMobile {
     height: 40px;
     width: 51px;
-    object-fit: contain;
-    padding-block: 4px;
   }
 
   @include onTablet {
     height: 28px;
     width: 28px;
-    object-fit: contain;
-    padding-block: 4px;
+  }
+
+  @media (min-width: 740px) and (max-width: 839px) {
+    height: 32px;
+    width: 32px;
+  }
+
+  @media (min-width: 840px) and (max-width: 939px) {
+    height: 38px;
+    width: 38px;
+  }
+
+  @media (min-width: 940px) and (max-width: 1039px) {
+    height: 43px;
+    width: 43px;
+  }
+
+  @media (min-width: 1040px) and (max-width: 1119px) {
+    height: 48px;
+    width: 48px;
+  }
+
+  @media (min-width: 1120px) and (max-width: 1199px) {
+    height: 53px;
+    width: 53px;
   }
 
   @include onDesktop {
     height: 67px;
     width: 67px;
-    object-fit: contain;
-    padding: 4px;
   }
 }
 
-#phone-photo {
-  width: auto !important;
-  height: 464px !important;
-  img {
-    width: auto !important;
-  }
-}
+// #phone-photo {
+//   // width: auto !important;
+//   // height: 464px !important;
+//   img {
+//     // width: auto !important;
+//   }
+// }
 
 .vertical-dots {
+  @include onMobile {
+    margin-top: 32px;
+  }
+
+  @include onTablet {
+    margin-top: 40px;
+  }
+
+  @include onDesktop {
+    margin-top: 40px;
+  }
+
   ul {
     display: flex !important;
     flex-direction: column;
@@ -97,31 +184,50 @@
     }
 
     li {
-      width: 79px;
+      width: 80px;
       height: 79px;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      @include onTablet {
-        width: 34px;
-        height: 34px;
-      }
-
-      @include onDesktop {
-        width: 79px;
-        height: 79px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
       @include onMobile {
         width: 48px;
         height: 48px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      }
+
+      @include onTablet {
+        width: 35px;
+        height: 34px;
+      }
+      @media (min-width: 740px) and (max-width: 839px) {
+        width: 40px;
+        height: 39px;
+      }
+
+      @media (min-width: 840px) and (max-width: 939px) {
+        width: 46px;
+        height: 45px;
+      }
+
+      @media (min-width: 940px) and (max-width: 1039px) {
+        width: 51px;
+        height: 50px;
+      }
+
+      @media (min-width: 1040px) and (max-width: 1119px) {
+        width: 56px;
+        height: 55px;
+      }
+
+      @media (min-width: 1120px) and (max-width: 1199px) {
+        width: 61px;
+        height: 60px;
+        object-fit: contain;
+      }
+
+      @include onDesktop {
+        width: 80px;
+        height: 79px;
       }
 
       a {
@@ -135,7 +241,6 @@
   }
 
   li {
-
     @include onMobile {
       width: 51px !important;
       margin-right: 8px;
@@ -171,21 +276,21 @@
 }
 
 .dots-border-light-cur {
-    border: 1px solid #0F0F11;
+    border: 1px solid $color__primary;
     border-radius: 4px;
 }
 
 .dots-border-light {
-    border: 1px solid #E2E6E9;
+    border: 1px solid $color__elements;
     border-radius: 4px;
 }
 
 .dots-border-dark {
-    border: 1px solid #3b3e4a;
+    border: 1px solid $color__dark-theme__elements;
     border-radius: 4px;
 }
 
 .dots-border-dark-cur {
-    border: 1px solid #f1f2f9;
+    border: 1px solid $color__dark-theme__white;
     border-radius: 4px;
 }

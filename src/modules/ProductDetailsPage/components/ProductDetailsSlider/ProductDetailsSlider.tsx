@@ -26,9 +26,6 @@ export const ProductDetailsSlider: React.FC<Props> = ({ images }) => {
             src={images?.[i]}
             alt={images?.[i]}
             className={styles['slick-dots']}
-            onClick={() => setCurrentSlide(i)}
-            onKeyDown={() => setCurrentSlide(i)}
-            role="presentation"
           />
         </a>
       );
@@ -38,12 +35,16 @@ export const ProductDetailsSlider: React.FC<Props> = ({ images }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    beforeChange: (oldIndex: number, newIndex: number) => {
+      setCurrentSlide(newIndex);
+    },
     nextArrow: (
       <NextArrow />
     ),
     prevArrow: (
       <PrevArrow />
     ),
+    swipeToSlide: false,
     vertical: true,
     verticalSwiping: true,
     responsive: [
@@ -81,6 +82,7 @@ export const ProductDetailsSlider: React.FC<Props> = ({ images }) => {
     <div
       style={{ backgroundColor: isDarkTheme ? '#0f1121' : '#fafbfc' }}
       id="phoneImagesSlider"
+      // className={styles['slider-container']}
     >
       <Slider
         {...settings}
@@ -88,10 +90,10 @@ export const ProductDetailsSlider: React.FC<Props> = ({ images }) => {
       >
         {images?.map(image => (
           <div
+            key={image}
             className={styles.phonePhoto}
           >
             <img
-              key={image}
               src={image}
               alt={image}
               className={styles.phonePhoto}

@@ -1,7 +1,5 @@
 @import '../../../styles/utils/mixins/mixin-media';
 
-/* Slider */
-
 .slick-slider {
   position: relative;
   display: block;
@@ -35,12 +33,12 @@
   padding:0 !important;
 
   &:focus {
-      outline: none;
+    outline: none;
   }
 
   &.dragging {
-      cursor: pointer;
-      cursor: hand;
+    cursor: pointer;
+    cursor: hand;
   }
 }
 
@@ -56,16 +54,16 @@
 
   &:before,
   &:after {
-      content: "";
-      display: table;
+    content: "";
+    display: table;
   }
 
   &:after {
-      clear: both;
+    clear: both;
   }
 
   .slick-loading & {
-      visibility: hidden;
+    visibility: hidden;
   }
 }
 
@@ -74,35 +72,36 @@
   height: 100%;
   min-height: 1px;
   [dir="rtl"] & {
-      float: right;
+    float: right;
   }
   img {
-      display: block;
+    display: block;
   }
   &.slick-loading img {
-      display: none;
+    display: none;
   }
 
   display: none;
 
   &.dragging img {
-      pointer-events: none;
+    pointer-events: none;
   }
 
   .slick-initialized & {
-      display: block;
+    display: block;
   }
 
   .slick-loading & {
-      visibility: hidden;
+    visibility: hidden;
   }
 
   .slick-vertical & {
-      display: block;
-      height: auto;
-      border: 1px solid transparent;
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
   }
 }
+
 .slick-arrow.slick-hidden {
   display: none;
 }
@@ -111,8 +110,22 @@
   .slick-track {
     display: flex;
   }
+  
+  .slick-slider .slick-track,
+  .slick-slider .slick-list  {
+    @include onMobile {
+      width: 106% !important;
+    }
+    @include onTablet {
+      width: 104% !important;
+    }
+    @include onDesktop {
+      width: 101.5% !important;
+    }
+  }
+
   .slick-slide {
-    width: 272px !important;
-    margin: 0px auto 0px 0px;
+    width: 100% !important;
+    margin: 0px auto 0px 16px;
   }
 }

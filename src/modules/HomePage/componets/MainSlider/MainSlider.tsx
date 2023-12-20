@@ -16,7 +16,6 @@ export const MainSlider: React.FC = () => {
   const ref = createRef<HTMLDivElement>();
 
   const { isDarkTheme } = useAppSelector((state) => state.theme);
-  // const isDarkTheme = true;
   const settings = {
     dots: true,
     infinite: true,
@@ -52,7 +51,7 @@ export const MainSlider: React.FC = () => {
   }, [ref, isDarkTheme]);
 
   return (
-    <div className={`page__main-slider ${style.container}`}>
+    <div className={style.container}>
       <Slider
         {...settings}
         className={cn(style.slider, {

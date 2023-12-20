@@ -43,7 +43,7 @@ export const HomePage: React.FC = () => {
         ) : (
           <ProductSlider
             title="Brand new models"
-            phones={newPhones}
+            products={newPhones}
           />
         )}
 
@@ -54,7 +54,7 @@ export const HomePage: React.FC = () => {
       ) : (
         <ProductSlider
           title="Hot prices"
-          phones={phonesWithDiscount}
+          products={phonesWithDiscount}
         />
       )}
 
