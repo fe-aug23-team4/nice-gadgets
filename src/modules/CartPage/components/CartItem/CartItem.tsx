@@ -79,6 +79,9 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
             aria-label="Decrease Amount"
             className={cn(
               styles.changeAmountButton,
+              {
+                [styles.noPointer]: phone.amount === 1,
+              },
               getClass(isDarkTheme, phone.amount === 1),
             )}
             disabled={phone.amount === 1}

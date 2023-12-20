@@ -133,6 +133,14 @@
   color: $color__dark-theme__white
 }
 
+.noPointer {
+  cursor: default;
+
+  &:hover {
+    transform: scale(1);
+  }
+}
+
 @keyframes rotateAnimation {
   to {
     transform: rotate(360deg);

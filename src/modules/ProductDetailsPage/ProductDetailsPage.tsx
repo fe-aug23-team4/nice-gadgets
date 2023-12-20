@@ -119,46 +119,60 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
         [styles.productDetailsDark]: isDarkTheme,
       })}
     >
-      <Breadcrumbs />
+      <div className={styles.breadCrumbsContiner}>
+        <Breadcrumbs />
 
-      <BackButton />
+        <BackButton />
+      </div>
 
       {details && (
         <>
           <h2 className={styles.productDetails__title}>{details.name}</h2>
+          <div className={styles.productDetailsSlider}>
+            <ProductDetailsSlider images={details.images} />
+          </div>
+          <div className={styles.top}>
+            <div className={styles.interactive}>
+              <ColorCapacityComponent
+                productDetail={details}
+                setColor={setColor}
+                setCapacity={setCapacity}
+              />
 
-          <ProductDetailsSlider images={details.images} />
+              {preparedInfo && (
+                <InfoAndPurchase product={product} info={preparedInfo} />
+              )}
+            </div>
+          </div>
 
-          <ColorCapacityComponent
-            productDetail={details}
-            setColor={setColor}
-            setCapacity={setCapacity}
-          />
+          <div className={styles.aboutContent}>
+            <div className={styles.about}>
+              <ProductAbout
+                isDarkTheme={isDarkTheme}
+                description={details.description}
+              />
+            </div>
 
-          {preparedInfo && (
-            <InfoAndPurchase product={product} info={preparedInfo} />
-          )}
+            <div className={styles.techSpec}>
+              <ProductTechSpec
+                isDarkTheme={isDarkTheme}
+                specs={{
+                  screen: details.screen,
+                  resolution: details.resolution,
+                  processor: details.processor,
+                  ram: details.ram,
+                  'built in memory': details.capacity,
+                  camera: details.camera,
+                  zoom: details.zoom,
+                  cell: details.cell,
+                }}
+              />
+            </div>
+          </div>
 
-          <ProductAbout
-            isDarkTheme={isDarkTheme}
-            description={details.description}
-          />
-
-          <ProductTechSpec
-            isDarkTheme={isDarkTheme}
-            specs={{
-              screen: details.screen,
-              resolution: details.resolution,
-              processor: details.processor,
-              ram: details.ram,
-              'built in memory': details.capacity,
-              camera: details.camera,
-              zoom: details.zoom,
-              cell: details.cell,
-            }}
-          />
-
-          <ProductSlider title="You may also like" phones={recommended} />
+          <div className={styles.productSlider}>
+            <ProductSlider title="You may also like" phones={recommended} />
+          </div>
         </>
       )}
     </section>
