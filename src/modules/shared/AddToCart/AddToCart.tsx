@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './AddToCart.module.scss';
@@ -28,6 +28,10 @@ export const AddToCart: React.FC<Props> = ({ productItem }) => {
       navigate('/cart');
     }
   };
+
+  useEffect(() => {
+    setIsSelected(cart.some((cartItem) => cartItem.id === productItem.id));
+  }, [cart, productItem.id]);
 
   return (
     <button

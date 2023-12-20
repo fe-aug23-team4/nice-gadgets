@@ -9,7 +9,10 @@ export interface CartState {
 }
 
 function prepareProductForCart(product: Product): ProductWithAmount {
-  return Object.assign(product, { amount: 1 });
+  return {
+    ...product,
+    amount: 1,
+  };
 }
 
 const initialState: CartState = {
