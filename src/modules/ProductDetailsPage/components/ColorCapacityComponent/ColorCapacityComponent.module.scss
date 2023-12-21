@@ -1,0 +1,80 @@
+@import '../../../../styles/utils/mixins/mixin-typography';
+@import '../../../../styles/utils/variables/colors';
+@import '../../../../styles/utils/mixins/mixin-media';
+
+.colorCapacity{
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  grid-column: span 4;
+
+  &__DARK {
+    background-color: $color__dark-theme__black;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  color: $color__secondary;
+  @include smallText-typography;
+
+  &__DARK {
+    color: $color__dark-theme__secondary;
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $color__elements;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.colorButton {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.colorContent {
+  opacity: 0;
+}
+
+.capacityButton {
+  padding: 8px 7px 4px;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid $color__icons;
+  text-align: center;
+  color: $color__primary;
+  cursor: pointer;
+  @include bodyText-typography;
+
+  &__DARK {
+    border-color: $color__dark-theme__icons;
+    color: $color__dark-theme__white;
+    border-radius: 0;
+  }
+
+  &__ACTIVE {
+    border: none;
+    background-color: $color__primary;
+    color: $color__white;
+
+    &__DARK {
+      background-color: $color__dark-theme__white;
+      color: $color__dark-theme__black;
+    }
+  }
+}

@@ -1,25 +1,96 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router';
+import cn from 'classnames';
 
 import styles from './ProductDetailsPage.module.scss';
+
+import { getRecommendedProducts } from '../../api/service';
+import { useAppSelector } from '../../store/hooks';
+import { Detail, Product } from '../../types/Product';
+import { EndPoints } from '../../types/Enums';
 
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { BackButton } from '../shared/BackButton';
 import { ProductDetailsSlider } from './components/ProductDetailsSlider';
-import { PhoneDetail } from '../../types/PhoneDetail';
-import { getProductDetail } from '../../api/service';
-import { EndPoints } from '../../types/Enums';
-// import { ProductSlider } from '../shared/ProductSlider';
+import { ColorCapacityComponent } from './components/ColorCapacityComponent';
+import { ProductAbout } from './components/ProductAbout/ProductAbout';
+import { ProductTechSpec } from './components/ProductTechSpec/ProductTechSpec';
+import { ProductSlider } from '../shared/ProductSlider/ProductSlider';
 
-export const ProductDetailsPage: React.FC = () => {
-  const [phoneDetails, setPhoneDetails] = useState<PhoneDetail | null>(null);
+type Props = {
+  loadData: (endPoint: EndPoints, itemId: string) => Promise<Detail>;
+  endPoint: EndPoints;
+};
+
+function getDetails(
+  productDetail: Detail,
+  params: { color: string; capacity: string },
+) {
+  const { color, capacity } = params;
+
+  if (color && capacity) {
+    return productDetail.additional.find(
+      (product) => product.color === color && product.capacity === capacity,
+    );
+  }
+
+  if (color) {
+    return productDetail.additional.find(
+      (product) => product.color === color
+        && product.capacity === productDetail.current.capacity,
+    );
+  }
+
+  if (capacity) {
+    return productDetail.additional.find(
+      (product) => product.capacity === capacity
+        && product.color === productDetail.current.color,
+    );
+  }
+
+  return productDetail.current;
+}
+
+export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
+  const { isDarkTheme } = useAppSelector((state) => state.theme);
+  const [productDetail, setProductDetail] = useState<Detail | null>(null);
+  const [recommended, setRecommended] = useState<Product[]>([]);
+  const [color, setColor] = useState('');
+  const [capacity, setCapacity] = useState('');
+  const { itemId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const details = productDetail
+    ? getDetails(productDetail, { color, capacity })
+    : null;
+
+  const changeUrl = (id: string) => {
+    navigate(`/${endPoint}/${id}`, {
+      replace: true,
+      state: { ...location.state },
+    });
+  };
 
   useEffect(() => {
-    getProductDetail(EndPoints.Phones, 'apple-iphone-7-32gb-black')
-      .then(setPhoneDetails);
-  }, []);
+    if (details) {
+      changeUrl(details.id);
+    }
+  }, [details]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (itemId) {
+      loadData(endPoint, itemId).then(setProductDetail);
+      getRecommendedProducts(endPoint, itemId).then(setRecommended);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className={styles.container}>
+    <section
+      className={cn(styles.productDetails, {
+        [styles.productDetailsDark]: isDarkTheme,
+      })}
+    >
       <article className={styles.breadcrumbs}>
         <Breadcrumbs />
       </article>
@@ -28,13 +99,46 @@ export const ProductDetailsPage: React.FC = () => {
         <BackButton />
       </article>
 
-      <h2>Name of Product</h2>
+      {details && (
+        <>
+          <h2 className={styles.productDetails__title}>{details.name}</h2>
 
-      <article className={styles['slider-container']}>
-        <ProductDetailsSlider images={phoneDetails?.images} />
-      </article>
+          <div className={styles.grid}>
+            <div className={styles.gridItem}>
+              <ProductDetailsSlider images={details?.images} />
+            </div>
+          </div>
 
-      {/* <ProductSlider  /> */}
-    </div>
+          <div className={styles.ccc}>
+            <ColorCapacityComponent
+              productDetail={details}
+              setColor={setColor}
+              setCapacity={setCapacity}
+            />
+          </div>
+
+          <ProductAbout
+            isDarkTheme={isDarkTheme}
+            description={details.description}
+          />
+
+          <ProductTechSpec
+            isDarkTheme={isDarkTheme}
+            specs={{
+              screen: details.screen,
+              resolution: details.resolution,
+              processor: details.processor,
+              ram: details.ram,
+              'built in memory': details.capacity,
+              camera: details.camera,
+              zoom: details.zoom,
+              cell: details.cell,
+            }}
+          />
+
+          <ProductSlider title="You may also like" products={recommended} />
+        </>
+      )}
+    </section>
   );
 };

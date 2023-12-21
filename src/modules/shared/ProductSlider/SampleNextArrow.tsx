@@ -37,6 +37,7 @@ export const SampleNextArrow: React.FC<Props> = (props: any) => {
         borderColor: chooseArrowColor(
           isHover, isNotDisabled, isDarkTheme,
         ),
+        cursor: isNotDisabled ? 'pointer' : 'default',
       }}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}

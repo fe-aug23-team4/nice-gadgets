@@ -1,29 +1,51 @@
 @import '../../styles/blocks/container';
 @import '../../styles/blocks/grid';
+@import '../../styles/utils/mixins/mixin-typography';
 
 .container {
   @extend .container;
-  @extend .grid;
+  // @extend .grid;
 }
 
-.breadcrumbs {
-  grid-column: 1 / -1;
-}
+// .gridItem {
+//   grid-column: 1 / 12;
+// }
 
-.backButton {
-  grid-column: 1 / -1;
-}
+// .ccc {
+//   grid-column: 13 / 24;
+// }
 
-.slider-container {
-  @include onMobile {
-    grid-column: 1 / -1;
+// .breadcrumbs {
+//   grid-column: 1 / -1;
+// }
+
+// .backButton {
+//   grid-column: 1 / -1;
+// }
+
+// .slider-container {
+//   @include onMobile {
+//     grid-column: 1 / -1;
+//   }
+
+//   @include onTablet {
+//     grid-column: 1 / 7;
+//   }
+
+//   @include onDesktop {
+//     grid-column: 1 / 13;
+//   }
+// }
+
+.productDetails {
+  &__title {
+    @include h2-typography;
   }
+}
 
-  @include onTablet {
-    grid-column: 1 / 7;
-  }
-
-  @include onDesktop {
-    grid-column: 1 / 13;
+.productDetailsDark {
+  .productDetails__title {
+    @include typography-dark;
   }
 }
+
