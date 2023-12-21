@@ -99,25 +99,7 @@
     &__price {
       display: flex;
       margin-top: 8px;
-      position: relative;
-      padding-bottom: 8px;
       column-gap: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        display: block;
-        width: 208px;
-        height: 1px;
-        background: $color__elements;
-      }
-
-      &__DARK {
-        &::after {
-          background: $color__dark-theme__elements;
-        }
-      }
     }
 
     &__realPrice {
@@ -142,6 +124,19 @@
 
       &__DARK {
         color: #75767f;
+      }
+    }
+
+    &__divider {
+      display: block;
+      height: 1px;
+      width: 100%;
+      background: $color__elements;
+      
+      margin-top: 8px;
+
+      &__DARK {
+        background: $color__dark-theme__elements;
       }
     }
 
