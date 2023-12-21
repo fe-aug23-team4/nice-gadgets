@@ -76,6 +76,7 @@
     margin-right: 16px;
     width: auto !important;
     margin-top: 0 !important;
+    z-index: 1000;
 
     @include onMobile {
       flex-direction: row;
