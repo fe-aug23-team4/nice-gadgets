@@ -22,8 +22,8 @@ export const MainSlider: React.FC = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
+    autoplay: false,
+    // autoplaySpeed: 5000,
     pauseOnHover: true,
     swipeToSlide: true,
     nextArrow: <SampleNextArrow />,
@@ -63,7 +63,9 @@ export const MainSlider: React.FC = () => {
             <img
               src={process.env.PUBLIC_URL + banner.photo}
               alt={banner.title}
-              className={style.sliderPhoto}
+              className={cn(style.sliderPhoto, {
+                [style.sliderPhoto__phone]: banner.title === 'banner-phones',
+              })}
             />
           </div>
         ))}
