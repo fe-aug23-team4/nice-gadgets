@@ -8,8 +8,46 @@
 @import './styles/blocks/grid';
 @import './styles/blocks/container';
 
+// Variables
+@import './styles/utils/variables/colors';
+
 :root {
   font-family: 'Mont', sans-serif;
   scroll-behavior: smooth;
+
+  // Light theme colors
+  [data-theme="light"] {
+    --scrollbar-bg: #{ $color__hover-and-bg };
+    --scrollbar-thumb: #{ $color__accent };
+  }
+
+
+  // Dark theme colors
+  [data-theme="dark"] {
+    --scrollbar-bg: #{ $color__dark-theme__black };
+    --scrollbar-thumb: #{ $color__dark-theme__accent };
+  }
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 10px;
+  border: 1px solid var(--scrollbar-bg);
 }
 

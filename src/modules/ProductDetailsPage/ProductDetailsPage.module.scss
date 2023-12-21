@@ -1,6 +1,8 @@
 @import '../../styles/blocks/container';
 @import '../../styles/blocks/grid';
 @import '../../styles/utils/mixins/mixin-typography';
+@import '../../styles/utils/mixins/mixin-media';
+@import '../../styles/blocks/grid';
 
 .container {
   @extend .container;
@@ -39,6 +41,7 @@
 
 .productDetails {
   &__title {
+    margin-top: 1rem;
     @include h2-typography;
   }
 }
@@ -49,3 +52,72 @@
   }
 }
 
+.breadCrumbsContiner {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.top {
+  @extend .grid;
+
+  @include onTablet {
+    transform: translateY(-330px);
+  }
+
+  @include onDesktop {
+    transform: translateY(-510px);
+  }
+}
+
+.productDetailsSlider {
+  margin-top: 2.5rem;
+}
+
+.interactive {
+  grid-column: span 4;
+
+  @include onTablet {
+    grid-column: 8 / -1;
+  }
+
+  @include onDesktop {
+    grid-column: 14 / 24;
+  }
+
+}
+
+.aboutContent {
+  margin-top: 3.5rem;
+  @extend .grid;
+
+  @include onTablet {
+    margin-top: -250px;
+  }
+
+  @include onTablet {
+    margin-top: -350px;
+  }
+}
+
+.about {
+  grid-column: 1 / -1;
+
+  @include onDesktop {
+    grid-column: 1 / 13;
+  }
+
+}
+
+.techSpec {
+  grid-column: 1 / -1;
+
+  @include onDesktop {
+    grid-column: 14 / -1;
+  }
+}
+
+.productSlider {
+  margin-top: 3.5rem;
+}

@@ -42,13 +42,14 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         <img src={image} alt={name} className={style.productCard__image} />
       </Link>
 
-      <p
+      <Link
+        to={`/${phone.category}/${phone.itemId}`}
         className={cn(style.productCard__name, {
           [style.productCard__name__DARK]: isDarkTheme,
         })}
       >
         {name}
-      </p>
+      </Link>
 
       <div
         className={cn(style.productCard__price, {

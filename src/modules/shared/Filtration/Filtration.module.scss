@@ -39,6 +39,8 @@
     background-color: $color__white;
     transition: border 0.3s ease;
 
+    cursor: pointer;
+
     &:hover {
       border: 1px solid $color__secondary;
     }
@@ -57,6 +59,7 @@
 
   &__list {
     position: absolute;
+    background-color: $color__white;
     width: 176px;
     margin-top: 8px;
     z-index: 1;
@@ -80,8 +83,8 @@
     font-weight: 500;
     line-height: 21px;
     background-color: $color__white;
-    margin-left: 1px;
-    margin-right: 1px;
+    padding-left: 5px;
+    padding-right: 1px;
     transition: border 0.3s ease, background-color 0.3s ease;
 
     &:first-child {
@@ -94,7 +97,13 @@
 
     &:hover {
       color: $color__primary;
-      background: $color__white;
+      background-color: $color__white;
+    }
+
+    &__SELECTED {
+      background-color: $color__accent;
+      color: $color__primary;
+      z-index: 1;
     }
 
     &__DARK {
@@ -104,6 +113,11 @@
       &:hover {
         background-color: $color__dark-theme__surface-2;
         color: $color__dark-theme__white;
+      }
+
+      &__SELECTED {
+        color: $color__dark-theme__white;
+        background-color: $color__dark-theme__accent;
       }
     }
   }

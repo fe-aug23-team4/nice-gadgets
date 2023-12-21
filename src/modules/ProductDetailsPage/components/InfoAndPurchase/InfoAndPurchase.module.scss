@@ -1,0 +1,71 @@
+@import '../../../../styles/utils/mixins/mixin-media';
+@import '../../../../styles/utils/mixins/mixin-typography';
+@import '../../../../styles/utils/variables/colors';
+
+.infoAndPurchase {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 4;
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    @include h2-typography;
+  }
+
+  &__fullPrice {
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration-line: line-through;
+    color: $color__secondary;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: $color__primary;
+
+    &__title {
+      font-weight: 600;
+      color: $color__secondary;
+    }
+
+    &__text {
+      font-weight: 700;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+}
+
+.infoAndPurchase__DARK {
+  .infoAndPurchase {
+    &__price {
+      @include typography-dark;
+    }
+
+    &__fullPrice {
+      color: $color__dark-theme__secondary;
+    }
+
+    &__spec {
+      color: $color__dark-theme__white;
+
+      &__title {
+        color: $color__dark-theme__secondary;
+      }
+    }
+  }
+}

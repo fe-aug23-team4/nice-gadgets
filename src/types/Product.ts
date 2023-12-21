@@ -54,4 +54,16 @@ export interface ProductWithAmount extends Product {
 export interface Detail {
   current: ProductDetail;
   additional: ProductDetail[];
+  products: Product[],
+}
+
+export interface PreparedInfo {
+  fullPrice: number;
+  price: number;
+  specs: {
+    screen: string;
+    resolution: string;
+    processor: string;
+    ram: string;
+  };
 }

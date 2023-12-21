@@ -61,7 +61,7 @@ export const ProductsPage: React.FC<Props> = ({
       page: page || '1',
       perPage: perPage || '16',
       sort: sort || 'price',
-      order: 'asc',
+      order: order || 'asc',
     };
 
     getProductsWithSearchParams(endpoint, params)

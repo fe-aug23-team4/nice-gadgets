@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 
 import styles from './ProductDetailsPage.module.scss';
 
 import { getRecommendedProducts } from '../../api/service';
 import { useAppSelector } from '../../store/hooks';
-import { Detail, Product } from '../../types/Product';
+import {
+  Detail, PreparedInfo, Product, ProductDetail,
+} from '../../types/Product';
 import { EndPoints } from '../../types/Enums';
 
 import { Breadcrumbs } from '../shared/Breadcrumbs';
@@ -16,11 +18,8 @@ import { ColorCapacityComponent } from './components/ColorCapacityComponent';
 import { ProductAbout } from './components/ProductAbout/ProductAbout';
 import { ProductTechSpec } from './components/ProductTechSpec/ProductTechSpec';
 import { ProductSlider } from '../shared/ProductSlider/ProductSlider';
-
-type Props = {
-  loadData: (endPoint: EndPoints, itemId: string) => Promise<Detail>;
-  endPoint: EndPoints;
-};
+import { InfoAndPurchase } from './components/InfoAndPurchase';
+import { Loader } from '../shared/Loader';
 
 function getDetails(
   productDetail: Detail,
@@ -31,29 +30,55 @@ function getDetails(
   if (color && capacity) {
     return productDetail.additional.find(
       (product) => product.color === color && product.capacity === capacity,
-    );
+    ) || null;
   }
 
   if (color) {
     return productDetail.additional.find(
       (product) => product.color === color
         && product.capacity === productDetail.current.capacity,
-    );
+    ) || null;
   }
 
   if (capacity) {
     return productDetail.additional.find(
       (product) => product.capacity === capacity
         && product.color === productDetail.current.color,
-    );
+    ) || null;
   }
 
   return productDetail.current;
 }
 
+function prepareInfo(
+  productDetail: Detail | null,
+  details: ProductDetail | null,
+): PreparedInfo | null {
+  if (productDetail && details) {
+    return {
+      fullPrice: details.priceRegular,
+      price: details.priceDiscount,
+      specs: {
+        screen: details.screen,
+        resolution: details.resolution,
+        processor: details.processor,
+        ram: details.ram,
+      },
+    };
+  }
+
+  return null;
+}
+
+type Props = {
+  loadData: (endPoint: EndPoints, itemId: string) => Promise<Detail>;
+  endPoint: EndPoints;
+};
+
 export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const [productDetail, setProductDetail] = useState<Detail | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [recommended, setRecommended] = useState<Product[]>([]);
   const [color, setColor] = useState('');
   const [capacity, setCapacity] = useState('');
@@ -64,6 +89,11 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
   const details = productDetail
     ? getDetails(productDetail, { color, capacity })
     : null;
+
+  const preparedInfo = prepareInfo(productDetail, details);
+  const product = productDetail?.products.find(
+    (prod) => prod.itemId === details?.id,
+  ) || null;
 
   const changeUrl = (id: string) => {
     navigate(`/${endPoint}/${id}`, {
@@ -80,7 +110,10 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
 
   useEffect(() => {
     if (itemId) {
-      loadData(endPoint, itemId).then(setProductDetail);
+      setIsLoading(true);
+      loadData(endPoint, itemId)
+        .then(setProductDetail)
+        .finally(() => setIsLoading(false));
       getRecommendedProducts(endPoint, itemId).then(setRecommended);
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -91,52 +124,62 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
         [styles.productDetailsDark]: isDarkTheme,
       })}
     >
-      <article className={styles.breadcrumbs}>
+      <div className={styles.breadCrumbsContiner}>
         <Breadcrumbs />
-      </article>
 
-      <article className={styles.backButton}>
         <BackButton />
-      </article>
+      </div>
+
+      {isLoading && <Loader />}
 
       {details && (
         <>
           <h2 className={styles.productDetails__title}>{details.name}</h2>
+          <div className={styles.productDetailsSlider}>
+            <ProductDetailsSlider images={details.images} />
+          </div>
+          <div className={styles.top}>
+            <div className={styles.interactive}>
+              <ColorCapacityComponent
+                productDetail={details}
+                setColor={setColor}
+                setCapacity={setCapacity}
+              />
 
-          <div className={styles.grid}>
-            <div className={styles.gridItem}>
-              <ProductDetailsSlider images={details?.images} />
+              {preparedInfo && (
+                <InfoAndPurchase product={product} info={preparedInfo} />
+              )}
             </div>
           </div>
 
-          <div className={styles.ccc}>
-            <ColorCapacityComponent
-              productDetail={details}
-              setColor={setColor}
-              setCapacity={setCapacity}
-            />
+          <div className={styles.aboutContent}>
+            <div className={styles.about}>
+              <ProductAbout
+                isDarkTheme={isDarkTheme}
+                description={details.description}
+              />
+            </div>
+
+            <div className={styles.techSpec}>
+              <ProductTechSpec
+                isDarkTheme={isDarkTheme}
+                specs={{
+                  screen: details.screen,
+                  resolution: details.resolution,
+                  processor: details.processor,
+                  ram: details.ram,
+                  'built in memory': details.capacity,
+                  camera: details.camera,
+                  zoom: details.zoom,
+                  cell: details.cell,
+                }}
+              />
+            </div>
           </div>
 
-          <ProductAbout
-            isDarkTheme={isDarkTheme}
-            description={details.description}
-          />
-
-          <ProductTechSpec
-            isDarkTheme={isDarkTheme}
-            specs={{
-              screen: details.screen,
-              resolution: details.resolution,
-              processor: details.processor,
-              ram: details.ram,
-              'built in memory': details.capacity,
-              camera: details.camera,
-              zoom: details.zoom,
-              cell: details.cell,
-            }}
-          />
-
-          <ProductSlider title="You may also like" products={recommended} />
+          <div className={styles.productSlider}>
+            <ProductSlider title="You may also like" products={recommended} />
+          </div>
         </>
       )}
     </section>

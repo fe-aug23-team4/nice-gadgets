@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import styles from './AddToFavourites.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
@@ -28,6 +28,12 @@ export const AddToFavourites: React.FC<Props> = ({ productItem }) => {
       setIsSelected(true);
     }
   };
+
+  useEffect(() => {
+    setIsSelected(
+      favorites.some((favoritesItem) => favoritesItem.id === productItem.id),
+    );
+  }, [favorites, productItem.id]);
 
   return (
     <button

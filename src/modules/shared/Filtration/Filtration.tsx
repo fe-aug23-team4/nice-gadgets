@@ -1,4 +1,9 @@
-import { useState } from 'react';
+import {
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useAppSelector } from '../../../store/hooks';
@@ -8,13 +13,13 @@ import {
   ReactComponent as ArrowDown,
 } from '../../../static/buttons/Icons_ArrowDown.svg';
 
-const PER_PAGE = ['All', '4', '8', '16'];
+const PER_PAGE = ['All', '8', '16', '32'];
 
 const SORT_OPTIONS = [
-  { label: 'Newest', value: 'date', order: 'desc' },
-  { label: 'Oldest', value: 'date', order: 'asc' },
-  { label: 'Alphabetically Asc', value: 'title', order: 'asc' },
-  { label: 'Alphabetically Desc', value: 'title', order: 'desc' },
+  { label: 'Newest', value: 'year', order: 'desc' },
+  { label: 'Oldest', value: 'year', order: 'asc' },
+  { label: 'Alphabetically Asc', value: 'name', order: 'asc' },
+  { label: 'Alphabetically Desc', value: 'name', order: 'desc' },
   { label: 'Cheapest', value: 'price', order: 'asc' },
   { label: 'Most Expensive', value: 'price', order: 'desc' },
 ];
@@ -37,16 +42,46 @@ export const Filtration: React.FC<Props> = ({
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
   const [searchParams] = useSearchParams();
 
+  function useOutsideAlerter(
+    ref: RefObject<HTMLElement>,
+    setIsListOpen: ((arg0: boolean) => void),
+  ) {
+    useEffect(() => {
+      function handleClickOutside(event: MouseEvent) {
+        if (ref.current
+            && !ref.current.contains(event.target as Node)) {
+          setIsListOpen(false);
+        }
+      }
+
+      document.addEventListener('mousedown', handleClickOutside);
+
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref, setIsListOpen]);
+  }
+
+  const sortDropdownRef = useRef(null);
+  const perPageDropdownRef = useRef(null);
+
+  useOutsideAlerter(sortDropdownRef, setIsSortOpen);
+  useOutsideAlerter(perPageDropdownRef, setIsPerPageOpen);
+
   const getPerPageParams = (newPerPage: string) => {
     if (newPerPage === 'All') {
       const search = getSearchWith(
-        searchParams, { perPage: totalPhones.toString() },
+        searchParams,
+        { perPage: totalPhones.toString(), page: '1' },
       );
 
       return search;
     }
 
-    const search = getSearchWith(searchParams, { perPage: newPerPage });
+    const search = getSearchWith(
+      searchParams,
+      { perPage: newPerPage, page: '1' },
+    );
 
     return search;
   };
@@ -56,6 +91,14 @@ export const Filtration: React.FC<Props> = ({
       .find(option => option.value === sort && option.order === order);
 
     return name?.label || 'Not chosen';
+  };
+
+  const setPerPageName = () => {
+    if (perPage === totalPhones.toString()) {
+      return 'All';
+    }
+
+    return perPage;
   };
 
   const handleSortOptionClick = () => {
@@ -77,8 +120,10 @@ export const Filtration: React.FC<Props> = ({
         >
           Sort by
         </label>
+
         <div
           className={styles.filtration__wrapper}
+          ref={sortDropdownRef}
         >
           <button
             type="button"
@@ -107,11 +152,16 @@ export const Filtration: React.FC<Props> = ({
                     search: getSearchWith(searchParams, {
                       sort: option.value,
                       order: option.order,
+                      page: '1',
                     }),
                   }}
                   key={option.label}
                   className={classNames(styles.filtration__option, {
                     [styles.filtration__option__DARK]: isDarkTheme,
+                    [styles.filtration__option__SELECTED]:
+                      sort === option.value && order === option.order,
+                    [styles.filtration__option__DARK__SELECTED]: isDarkTheme
+                      && sort === option.value && order === option.order,
                   })}
                   onClick={handleSortOptionClick}
                 >
@@ -133,6 +183,7 @@ export const Filtration: React.FC<Props> = ({
 
         <div
           className={styles.filtration__wrapper}
+          ref={perPageDropdownRef}
         >
           <button
             type="button"
@@ -141,9 +192,7 @@ export const Filtration: React.FC<Props> = ({
             })}
             onClick={() => setIsPerPageOpen(!isPerPageOpen)}
           >
-            {perPage === totalPhones.toString()
-              ? 'All'
-              : perPage}
+            {setPerPageName()}
 
             <ArrowDown
               color={isDarkTheme ? '#75767f' : '#b4bdc3'}
@@ -167,6 +216,14 @@ export const Filtration: React.FC<Props> = ({
                   key={amount}
                   className={classNames(styles.filtration__option, {
                     [styles.filtration__option__DARK]: isDarkTheme,
+                    [styles.filtration__option__SELECTED]:
+                      (perPage === amount
+                        || ((perPage === totalPhones.toString())
+                        && amount === 'All')),
+                    [styles.filtration__option__DARK__SELECTED]: isDarkTheme
+                    && (perPage === amount
+                      || ((perPage === totalPhones.toString())
+                      && amount === 'All')),
                   })}
                   onClick={handlePerPageOptionClick}
                 >

@@ -42,9 +42,39 @@
 .colorButton {
   width: 32px;
   height: 32px;
-  border: none;
-  background-color: transparent;
+  padding: 2px;
+  border: 1px solid $color__elements;
+  border-radius: 36px;
+  background-color: $color__white;
   cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+     border-color:$color__icons;
+  }
+
+  &__ACTIVE {
+    border-color: $color__primary;
+  }
+
+  &__DARK {
+    background-color: $color__dark-theme__black;
+    border-color: $color__dark-theme__elements;
+
+    &:hover {
+      border-color: $color__dark-theme__secondary;
+    }
+
+    &__ACTIVE {
+      border-color: $color__dark-theme__white;
+    }
+  }
+}
+
+.colorButtonInside {
+  border-radius: 36px;
+  width: 100%;
+  height: 100%;
 }
 
 .colorContent {
@@ -60,6 +90,11 @@
   color: $color__primary;
   cursor: pointer;
   @include bodyText-typography;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   &__DARK {
     border-color: $color__dark-theme__icons;
