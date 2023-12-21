@@ -20,7 +20,7 @@ export const ProductAbout: React.FC<Props> = ({ isDarkTheme, description }) => {
         <div key={item.title} className={styles.about__item}>
           <h5 className={styles.about__subtitle}>{item.title}</h5>
           {item.text.map((p) => (
-            <p className={styles.about__text}>{p}</p>
+            <p key={p} className={styles.about__text}>{p}</p>
           ))}
         </div>
       ))}

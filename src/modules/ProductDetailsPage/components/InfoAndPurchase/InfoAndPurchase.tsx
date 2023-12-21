@@ -41,7 +41,13 @@ export const InfoAndPurchase: React.FC<Props> = ({ product, info }) => {
       <div className={styles.infoAndPurchase__specs}>
         {Object.entries(specs).map(([key, value]) => (
           <div key={key} className={styles.infoAndPurchase__spec}>
-            <p className={styles.infoAndPurchase__spec__title}>{key}</p>
+            <p
+              className={cn(styles.infoAndPurchase__spec__title, {
+                [styles.infoAndPurchase__spec__titleRAM]: key === 'ram',
+              })}
+            >
+              {key}
+            </p>
             <p className={styles.infoAndPurchase__spec__text}>{value}</p>
           </div>
         ))}

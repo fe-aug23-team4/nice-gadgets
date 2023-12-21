@@ -21,48 +21,18 @@ import { ProductSlider } from '../shared/ProductSlider/ProductSlider';
 import { InfoAndPurchase } from './components/InfoAndPurchase';
 import { Loader } from '../shared/Loader';
 
-function getDetails(
-  productDetail: Detail,
-  params: { color: string; capacity: string },
-) {
-  const { color, capacity } = params;
-
-  if (color && capacity) {
-    return productDetail.additional.find(
-      (product) => product.color === color && product.capacity === capacity,
-    ) || null;
-  }
-
-  if (color) {
-    return productDetail.additional.find(
-      (product) => product.color === color
-        && product.capacity === productDetail.current.capacity,
-    ) || null;
-  }
-
-  if (capacity) {
-    return productDetail.additional.find(
-      (product) => product.capacity === capacity
-        && product.color === productDetail.current.color,
-    ) || null;
-  }
-
-  return productDetail.current;
-}
-
 function prepareInfo(
-  productDetail: Detail | null,
-  details: ProductDetail | null,
+  productDetail: ProductDetail | null,
 ): PreparedInfo | null {
-  if (productDetail && details) {
+  if (productDetail) {
     return {
-      fullPrice: details.priceRegular,
-      price: details.priceDiscount,
+      fullPrice: productDetail.priceRegular,
+      price: productDetail.priceDiscount,
       specs: {
-        screen: details.screen,
-        resolution: details.resolution,
-        processor: details.processor,
-        ram: details.ram,
+        screen: productDetail.screen,
+        resolution: productDetail.resolution,
+        processor: productDetail.processor,
+        ram: productDetail.ram,
       },
     };
   }
@@ -77,27 +47,28 @@ type Props = {
 
 export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
-  const [productDetail, setProductDetail] = useState<Detail | null>(null);
+  const [detail, setDetail] = useState<Detail | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [recommended, setRecommended] = useState<Product[]>([]);
-  const [color, setColor] = useState('');
-  const [capacity, setCapacity] = useState('');
-  // const [itemIdIsChanged, setItemIdIsChanged] = useState(false);
-  const [details, setDetails] = useState<ProductDetail | null>(null);
+  const [itemIdIsChanged, setItemIdIsChanged] = useState(true);
+  const [productDetail, setProductDetail] = useState<ProductDetail | null>(
+    null,
+  );
   const [product, setProduct] = useState<Product | null>(null);
 
   const { itemId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
 
-  // const details = productDetail
-  //   ? getDetails(productDetail, { color, capacity })
-  //   : null;
+  const preparedInfo = prepareInfo(productDetail);
 
-  const preparedInfo = prepareInfo(productDetail, details);
-  // const product = productDetail?.products.find(
-  //   (prod) => prod.itemId === details?.id,
-  // ) || null;
+  useEffect(() => {
+    if (detail?.additional.some((prod) => prod.id === itemId)) {
+      setProductDetail(
+        detail?.additional.find((prod) => prod.id === itemId) || null,
+      );
+    }
+  }, [itemId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const changeUrl = (id: string) => {
     navigate(`/${endPoint}/${id}`, {
@@ -107,38 +78,38 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
   };
 
   useEffect(() => {
-    setDetails(productDetail
-      ? getDetails(productDetail, { color, capacity })
-      : null);
-  }, [capacity, color, productDetail]);
-
-  useEffect(() => {
-    setProduct(productDetail?.products.find(
-      (prod) => prod.itemId === details?.id,
+    setProduct(detail?.products.find(
+      (prod) => prod.itemId === productDetail?.id,
     ) || null);
-  }, [details?.id, productDetail]);
-
-  // useEffect(() => {
-  //   setItemIdIsChanged(
-  //     !productDetail?.additional.some((prod) => prod.id === itemId),
-  //   );
-  // }, [itemId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [detail?.products, productDetail?.id]);
 
   useEffect(() => {
-    if (details) {
-      changeUrl(details.id);
+    setItemIdIsChanged(
+      detail ? !detail.additional.some((prod) => prod.id === itemId) : false,
+    );
+  }, [itemId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (productDetail) {
+      changeUrl(productDetail.id);
     }
-  }, [details]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [productDetail]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (itemId) {
+    if (itemId && itemIdIsChanged) {
       setIsLoading(true);
       loadData(endPoint, itemId)
-        .then(setProductDetail)
-        .finally(() => setIsLoading(false));
+        .then((data) => {
+          setDetail(data);
+          setProductDetail(data.current);
+        })
+        .finally(() => {
+          setItemIdIsChanged(false);
+          setIsLoading(false);
+        });
       getRecommendedProducts(endPoint, itemId).then(setRecommended);
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [itemIdIsChanged]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section
@@ -152,57 +123,61 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
         <BackButton />
       </div>
 
-      {isLoading && <Loader />}
-
-      {details && (
-        <>
-          <h2 className={styles.productDetails__title}>{details.name}</h2>
-          <div className={styles.productDetailsSlider}>
-            <ProductDetailsSlider images={details.images} />
-          </div>
-          <div className={styles.top}>
-            <div className={styles.interactive}>
-              <ColorCapacityComponent
-                productDetail={details}
-                setColor={setColor}
-                setCapacity={setCapacity}
-              />
-
-              {preparedInfo && (
-                <InfoAndPurchase product={product} info={preparedInfo} />
-              )}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        (productDetail && detail && !isLoading) && (
+          <>
+            <h2 className={styles.productDetails__title}>
+              {productDetail.name}
+            </h2>
+            <div className={styles.productDetailsSlider}>
+              <ProductDetailsSlider images={productDetail.images} />
             </div>
-          </div>
+            <div className={styles.top}>
+              <div className={styles.interactive}>
+                <ColorCapacityComponent
+                  productDetail={productDetail}
+                  additional={detail.additional}
+                  endPoint={endPoint}
+                />
 
-          <div className={styles.aboutContent}>
-            <div className={styles.about}>
-              <ProductAbout
-                isDarkTheme={isDarkTheme}
-                description={details.description}
-              />
+                {preparedInfo && (
+                  <InfoAndPurchase product={product} info={preparedInfo} />
+                )}
+              </div>
             </div>
 
-            <div className={styles.techSpec}>
-              <ProductTechSpec
-                isDarkTheme={isDarkTheme}
-                specs={{
-                  screen: details.screen,
-                  resolution: details.resolution,
-                  processor: details.processor,
-                  ram: details.ram,
-                  'built in memory': details.capacity,
-                  camera: details.camera,
-                  zoom: details.zoom,
-                  cell: details.cell,
-                }}
-              />
-            </div>
-          </div>
+            <div className={styles.aboutContent}>
+              <div className={styles.about}>
+                <ProductAbout
+                  isDarkTheme={isDarkTheme}
+                  description={productDetail.description}
+                />
+              </div>
 
-          <div className={styles.productSlider}>
-            <ProductSlider title="You may also like" products={recommended} />
-          </div>
-        </>
+              <div className={styles.techSpec}>
+                <ProductTechSpec
+                  isDarkTheme={isDarkTheme}
+                  specs={{
+                    screen: productDetail.screen,
+                    resolution: productDetail.resolution,
+                    processor: productDetail.processor,
+                    ram: productDetail.ram,
+                    'built in memory': productDetail.capacity,
+                    camera: productDetail.camera,
+                    zoom: productDetail.zoom,
+                    cell: productDetail.cell,
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className={styles.productSlider}>
+              <ProductSlider title="You may also like" products={recommended} />
+            </div>
+          </>
+        )
       )}
     </section>
   );
