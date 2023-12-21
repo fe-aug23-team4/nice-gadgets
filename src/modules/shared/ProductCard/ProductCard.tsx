@@ -35,75 +35,79 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         [style.productCard__DARK]: isDarkTheme,
       })}
     >
-      <Link
-        to={`/${phone.category}/${phone.itemId}`}
-        className={style.productCard__image__container}
-      >
-        <img src={image} alt={name} className={style.productCard__image} />
-      </Link>
+      <div className={style.productCard__containter}>
+        <Link
+          to={`/${phone.category}/${phone.itemId}`}
+          className={style.productCard__image__container}
+        >
+          <img src={image} alt={name} className={style.productCard__image} />
+        </Link>
 
-      <Link
-        to={`/${phone.category}/${phone.itemId}`}
-        className={cn(style.productCard__name, {
-          [style.productCard__name__DARK]: isDarkTheme,
-        })}
-      >
-        {name}
-      </Link>
-
-      <div
-        className={cn(style.productCard__price, {
-          [style.productCard__price__DARK]: isDarkTheme,
-        })}
-      >
-        <p
-          className={cn(style.productCard__realPrice, {
-            [style.productCard__realPrice__DARK]: isDarkTheme,
+        <Link
+          to={`/${phone.category}/${phone.itemId}`}
+          className={cn(style.productCard__name, {
+            [style.productCard__name__DARK]: isDarkTheme,
           })}
         >
-          {`$${price}`}
-        </p>
+          {name}
+        </Link>
 
-        {price !== fullPrice && (
+        <div
+          className={cn(style.productCard__price, {
+            [style.productCard__price__DARK]: isDarkTheme,
+          })}
+        >
           <p
-            className={cn(style.productCard__fullPrice, {
-              [style.productCard__fullPrice__DARK]: isDarkTheme,
+            className={cn(style.productCard__realPrice, {
+              [style.productCard__realPrice__DARK]: isDarkTheme,
             })}
           >
-            {`$${fullPrice}`}
+            {`$${price}`}
           </p>
-        )}
-      </div>
 
-      <div className={style.productCard__characteristics}>
-        {characteristicsArray.map((characteristic) => (
-          <div
-            className={style.productCard__characteristics__item}
-            key={characteristic.label}
-          >
+          {price !== fullPrice && (
             <p
-              className={cn(style.productCard__characteristics__label, {
-                [style.productCard__characteristics__label__DARK]: isDarkTheme,
+              className={cn(style.productCard__fullPrice, {
+                [style.productCard__fullPrice__DARK]: isDarkTheme,
               })}
             >
-              {characteristic.label}
+              {`$${fullPrice}`}
             </p>
+          )}
+        </div>
 
-            <p
-              className={cn(style.productCard__characteristics__state, {
-                [style.productCard__characteristics__state__DARK]: isDarkTheme,
-              })}
+        <div className={style.productCard__characteristics}>
+          {characteristicsArray.map((characteristic) => (
+            <div
+              className={style.productCard__characteristics__item}
+              key={characteristic.label}
             >
-              {characteristic.state}
-            </p>
-          </div>
-        ))}
-      </div>
+              <p
+                className={cn(style.productCard__characteristics__label, {
+                  [style.productCard__characteristics__label__DARK]:
+                    isDarkTheme,
+                })}
+              >
+                {characteristic.label}
+              </p>
 
-      <div className={style.productCard__buttons}>
-        <AddToCart productItem={phone} />
+              <p
+                className={cn(style.productCard__characteristics__state, {
+                  [style.productCard__characteristics__state__DARK]:
+                    isDarkTheme,
+                })}
+              >
+                {characteristic.state}
+              </p>
+            </div>
+          ))}
+        </div>
 
-        <AddToFavourites productItem={phone} />
+        <div className={style.productCard__buttons}>
+          <AddToCart productItem={phone} />
+
+          <AddToFavourites productItem={phone} />
+        </div>
       </div>
     </div>
   );

@@ -50,11 +50,12 @@
       border: none;
       background-color: $color__dark-theme__surface-1;
       color: $color__white;
-      transition: border 0.3s ease-in, background-color 0.3s ease-out;
+      transition: border 0.3s ease, background-color 0.3s ease;
     }
 
     &__DISABLED {
       pointer-events: none;
+      color: $color__secondary;
     }
 
     &__DARK {
@@ -77,6 +78,7 @@
 
       &__DISABLED {
         pointer-events: none;
+        color: $color__dark-theme__secondary;
       }
     }
   }
