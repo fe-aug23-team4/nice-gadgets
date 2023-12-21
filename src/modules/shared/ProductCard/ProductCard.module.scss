@@ -122,25 +122,8 @@
     &__price {
       display: flex;
       margin-top: 8px;
-      position: relative;
       padding-bottom: 8px;
       column-gap: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        display: block;
-        width: 28px;
-        height: 1px;
-        background: $color__elements;
-      }
-
-      &__DARK {
-        &::after {
-          background: $color__dark-theme__elements;
-        }
-      }
     }
 
     &__realPrice {
