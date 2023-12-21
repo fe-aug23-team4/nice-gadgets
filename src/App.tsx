@@ -12,6 +12,7 @@ export const App: React.FC = () => {
   const { isDarkTheme } = useAppSelector(state => state.theme);
 
   useEffect(() => {
+    document.body.dataset.theme = isDarkTheme ? 'dark' : 'light';
     document.body.style.backgroundColor = isDarkTheme ? '#0f1121' : '#fafbfc';
   }, [isDarkTheme]);
 
