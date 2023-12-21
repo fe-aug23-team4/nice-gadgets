@@ -12,10 +12,10 @@ import { SlideCard } from './SlideCard';
 
 type Props = {
   title: string;
-  phones: Product[];
+  products: Product[];
 };
 
-export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
+export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   const { isDarkTheme } = useAppSelector((state) => state.theme);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -23,17 +23,19 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
     dots: true,
     infinite: true,
     speed: 500,
+    rows: 1,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: false,
-    swipeToSlide: true,
+    variablewidth: true,
+    draggable: true,
     nextArrow: (
       <SampleNextArrow
         handleClick={() => {
           setCurrentSlide((current) => current + 1);
         }}
         currentSlide={currentSlide}
-        maxSlides={phones.length - 4}
+        maxSlides={products.length - 4}
       />
     ),
     prevArrow: (
@@ -83,7 +85,6 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
   return (
     <div
       id="phonesSlider"
-      className={`page__product-slider ${styles.container}`}
     >
       <h3
         className={cn(styles.header, {
@@ -104,8 +105,8 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
         )}
         {...settings}
       >
-        {phones.map((phone) => (
-          <SlideCard key={phone.id} phone={phone} />
+        {products.map((product) => (
+          <SlideCard key={product.id} product={product} />
         ))}
       </Slider>
     </div>

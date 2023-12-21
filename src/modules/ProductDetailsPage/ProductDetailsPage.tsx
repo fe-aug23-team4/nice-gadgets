@@ -178,7 +178,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
           </div>
 
           <div className={styles.productSlider}>
-            <ProductSlider title="You may also like" phones={recommended} />
+            <ProductSlider title="You may also like" products={recommended} />
           </div>
         </>
       )}

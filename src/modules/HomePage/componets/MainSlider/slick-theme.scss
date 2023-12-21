@@ -2,7 +2,6 @@
 @import '../../../../styles/utils/mixins/_mixin-media.scss';
 @import '../../../../styles/utils/variables/colors';
 
-/* Arrows */
 @include onMobile {
   .slick-prev,
   .slick-next,
@@ -27,9 +26,9 @@
     transform: translate(0, -50%);
     padding: 0;
 
-      &:hover {
-          border-color: $color__primary;
-      }
+    &:hover {
+      border-color: $color__primary;
+    }
   }
 
   .slick-prev {
@@ -37,7 +36,7 @@
   }
 
   .slick-next {
-      right: -49px;
+    right: -49px;
   }
 }
 
@@ -56,9 +55,9 @@
     transform: translate(0, -50%);
     padding: 0;
 
-      &:hover {
-          border-color: $color__primary;
-      }
+    &:hover {
+      border-color: $color__primary;
+    }
   }
 
   .slick-prev {
@@ -66,60 +65,59 @@
   }
 
   .slick-next {
-      right: -49px;
+    right: -49px;
   }
 }
 
-/* Dots */
 .slick-dots {
   margin-top: 8px;
   list-style: none;
   text-align: center;
   width: 100%;
 
-    li {
-      position: relative;
-      display: inline-block;
+  li {
+    position: relative;
+    display: inline-block;
 
-      button {
-        border: 0;
-        background: transparent;
-        width: 24px;
-        height: 24px;
-        margin: 0 4px;
-        padding: 0;
-        cursor: pointer;
-        color: transparent;
+    button {
+      border: 0;
+      background: transparent;
+      width: 24px;
+      height: 24px;
+      margin: 0 4px;
+      padding: 0;
+      cursor: pointer;
+      color: transparent;
 
-        &:before {
-          display: block;
-          position: absolute;
-          content: '';
-          width: 14px;
-          height: 4px;
-          margin-top: 7px;
-          margin-left: 4px;
-          background-color: $color__elements;
-          opacity: 1;
-        }
-      }
-
-      &.slick-active button:before {
-        background-color: $color__primary;
+      &:before {
+        display: block;
+        position: absolute;
+        content: '';
+        width: 14px;
+        height: 4px;
+        margin-top: 7px;
+        margin-left: 4px;
+        background-color: $color__elements;
         opacity: 1;
       }
     }
+
+    &.slick-active button:before {
+      background-color: $color__primary;
+      opacity: 1;
+    }
+  }
 
   &__dark {
     li {
       button {
         &:before {
-            background-color: #3b3e4a;
+          background-color: $color__dark-theme__elements;
         }
       }
 
       &.slick-active button:before {
-        background-color: #f1f2f9;
+        background-color: $color__dark-theme__white;
       }
     }
   }

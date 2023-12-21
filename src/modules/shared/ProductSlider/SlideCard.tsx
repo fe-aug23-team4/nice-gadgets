@@ -6,10 +6,10 @@ import { Product } from '../../../types/Product';
 import styles from './ProductSlider.module.scss';
 
 type Props = {
-  phone: Product;
+  product: Product;
 };
 
-export const SlideCard: React.FC<Props> = ({ phone, ...prop }) => {
+export const SlideCard: React.FC<Props> = ({ product, ...prop }) => {
   return (
     <div
       {...prop}
@@ -19,7 +19,7 @@ export const SlideCard: React.FC<Props> = ({ phone, ...prop }) => {
         styles['slick-clone-card'],
       )}
     >
-      <ProductCard phone={phone} />
+      <ProductCard phone={product} />
     </div>
   );
 };

@@ -21,38 +21,36 @@ export const SamplePrevArrow: React.FC<Props> = (props: any) => {
     style, onClick, handleClick, currentSlide,
   } = props;
   const { isDarkTheme } = useAppSelector((state) => state.theme);
-  // const isDarkTheme = true;
   const isNotDisabled = currentSlide > 0;
 
   return (
-    <>
-      <button
-        type="button"
-        className={styles['slick-prev-small']}
-        style={{
-          ...style,
-          background: chooseBackgroundColor(
-            isHover, isNotDisabled, isDarkTheme,
-          ),
-          borderColor: chooseArrowColor(
-            isHover, isNotDisabled, isDarkTheme,
-          ),
-        }}
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
-        onClick={() => {
-          if (currentSlide > 0) {
-            onClick();
-            handleClick();
-          }
-        }}
-        aria-label="samplePrevArrow"
-      >
-        <PrevIcon
-          className={styles.icon}
-          color={chooseIconColor(isDarkTheme, isNotDisabled)}
-        />
-      </button>
-    </>
+    <button
+      type="button"
+      className={styles['slick-prev-small']}
+      style={{
+        ...style,
+        background: chooseBackgroundColor(
+          isHover, isNotDisabled, isDarkTheme,
+        ),
+        borderColor: chooseArrowColor(
+          isHover, isNotDisabled, isDarkTheme,
+        ),
+        cursor: isNotDisabled ? 'pointer' : 'default',
+      }}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      onClick={() => {
+        if (currentSlide > 0) {
+          onClick();
+          handleClick();
+        }
+      }}
+      aria-label="samplePrevArrow"
+    >
+      <PrevIcon
+        className={styles.icon}
+        color={chooseIconColor(isDarkTheme, isNotDisabled)}
+      />
+    </button>
   );
 };

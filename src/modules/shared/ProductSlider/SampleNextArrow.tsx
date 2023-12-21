@@ -23,39 +23,37 @@ export const SampleNextArrow: React.FC<Props> = (props: any) => {
     style, onClick, handleClick, currentSlide, maxSlides,
   } = props;
   const { isDarkTheme } = useAppSelector((state) => state.theme);
-  // const isDarkTheme = true;
   const isNotDisabled = currentSlide < maxSlides;
 
   return (
-    <>
-      <button
-        type="button"
-        className={styles['slick-next-small']}
-        style={{
-          ...style,
-          background: chooseBackgroundColor(
-            isHover, isNotDisabled, isDarkTheme,
-          ),
-          borderColor: chooseArrowColor(
-            isHover, isNotDisabled, isDarkTheme,
-          ),
-        }}
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
-        onClick={() => {
-          if (currentSlide < maxSlides) {
-            onClick();
-            handleClick();
-          }
-        }}
-        aria-label="sampleNextArrow"
-        disabled={currentSlide > 6}
-      >
-        <NextIcon
-          className={styles.icon}
-          color={chooseIconColor(isDarkTheme, isNotDisabled)}
-        />
-      </button>
-    </>
+    <button
+      type="button"
+      className={styles['slick-next-small']}
+      style={{
+        ...style,
+        background: chooseBackgroundColor(
+          isHover, isNotDisabled, isDarkTheme,
+        ),
+        borderColor: chooseArrowColor(
+          isHover, isNotDisabled, isDarkTheme,
+        ),
+        cursor: isNotDisabled ? 'pointer' : 'default',
+      }}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      onClick={() => {
+        if (currentSlide < maxSlides) {
+          onClick();
+          handleClick();
+        }
+      }}
+      aria-label="sampleNextArrow"
+      disabled={!isNotDisabled}
+    >
+      <NextIcon
+        className={styles.icon}
+        color={chooseIconColor(isDarkTheme, isNotDisabled)}
+      />
+    </button>
   );
 };
