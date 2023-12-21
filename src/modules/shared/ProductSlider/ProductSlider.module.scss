@@ -6,6 +6,15 @@
 
   @include onMobile {
     width: 215px;
+    margin-top: 56px;
+  }
+
+  @include onTablet {
+    margin-top: 64px;
+  }
+
+  @include onDesktop {
+    margin-top: 80px;
   }
 
   &__DARK {
