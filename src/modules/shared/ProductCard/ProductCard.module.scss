@@ -4,12 +4,9 @@
 
   .productCard {
     box-sizing: border-box;
-
     border-radius: 8px;
     border: 1px solid $color__elements;
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-
     margin: 0 auto;
     max-width: 287px;
     grid-column: span 4;
@@ -102,22 +99,6 @@
       position: relative;
       padding-bottom: 8px;
       column-gap: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        display: block;
-        width: 208px;
-        height: 1px;
-        background: $color__elements;
-      }
-
-      &__DARK {
-        &::after {
-          background: $color__dark-theme__elements;
-        }
-      }
     }
 
     &__realPrice {
@@ -147,11 +128,16 @@
 
     &__characteristics {
       display: flex;
-      padding: 8px 0px;
+      padding: 16px 0px 8px;
       flex-direction: column;
       align-items: center;
       gap: 8px;
       align-self: stretch;
+      border-top: 1px solid $color__elements;
+
+      &__DARK {
+        border-color: $color__dark-theme__elements;
+      }
 
       &__item {
         display: flex;
