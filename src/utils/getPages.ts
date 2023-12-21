@@ -27,6 +27,10 @@ export const getPages = (totalPages: number, currentPage: number) => {
       { key: 'secondDots', value: '..' },
       { key: totalPages.toString(), value: totalPages.toString() },
     );
+  } else if (endPage === 7) {
+    pages.push(
+      { key: totalPages.toString(), value: totalPages.toString() },
+    );
   }
 
   return pages;
