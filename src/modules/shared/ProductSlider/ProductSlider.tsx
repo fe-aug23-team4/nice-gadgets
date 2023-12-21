@@ -46,7 +46,6 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         currentSlide={currentSlide}
       />
     ),
-    centerMode: false,
     responsive: [
       {
         breakpoint: 320,
