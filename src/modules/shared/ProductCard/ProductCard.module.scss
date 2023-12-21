@@ -4,8 +4,8 @@
 
   .productCard {
     display: flex;
-    margin: 0 auto;
-    max-width: 287px;;
+    max-width: 287px;
+    width: 100%;
     padding: 32px;
     flex-direction: column;
     align-items: flex-start;
@@ -13,23 +13,20 @@
     flex-wrap: wrap;
     align-content: flex-start;
     box-sizing: border-box;
-    grid-column: span 4;
+    grid-column: 1 / -1;
 
     border-radius: 8px;
     border: 1px solid $color__elements;
 
     @include onTablet {
-      max-width: 288px;
       grid-column: span 6;
     }
 
     @media (min-width: 768px) {
-      max-width: 229px;
       grid-column: span 4;
     }
 
     @include onDesktop {
-      max-width: 272px;
       grid-column: span 6;
     }
 
