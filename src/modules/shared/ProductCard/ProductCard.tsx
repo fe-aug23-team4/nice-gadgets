@@ -6,6 +6,13 @@ import { AddToCart } from '../AddToCart';
 import { AddToFavourites } from '../AddToFavourites';
 import { Product } from '../../../types/Product';
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
 type Props = {
   phone: Product;
 };
@@ -39,6 +46,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         <Link
           to={`/${phone.category}/${phone.itemId}`}
           className={style.productCard__image__container}
+          onClick={scrollToTop}
         >
           <img src={image} alt={name} className={style.productCard__image} />
         </Link>
@@ -48,6 +56,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           className={cn(style.productCard__name, {
             [style.productCard__name__DARK]: isDarkTheme,
           })}
+          onClick={scrollToTop}
         >
           {name}
         </Link>

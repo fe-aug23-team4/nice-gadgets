@@ -82,18 +82,22 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
   const [recommended, setRecommended] = useState<Product[]>([]);
   const [color, setColor] = useState('');
   const [capacity, setCapacity] = useState('');
+  // const [itemIdIsChanged, setItemIdIsChanged] = useState(false);
+  const [details, setDetails] = useState<ProductDetail | null>(null);
+  const [product, setProduct] = useState<Product | null>(null);
+
   const { itemId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const details = productDetail
-    ? getDetails(productDetail, { color, capacity })
-    : null;
+  // const details = productDetail
+  //   ? getDetails(productDetail, { color, capacity })
+  //   : null;
 
   const preparedInfo = prepareInfo(productDetail, details);
-  const product = productDetail?.products.find(
-    (prod) => prod.itemId === details?.id,
-  ) || null;
+  // const product = productDetail?.products.find(
+  //   (prod) => prod.itemId === details?.id,
+  // ) || null;
 
   const changeUrl = (id: string) => {
     navigate(`/${endPoint}/${id}`, {
@@ -101,6 +105,24 @@ export const ProductDetailsPage: React.FC<Props> = ({ loadData, endPoint }) => {
       state: { ...location.state },
     });
   };
+
+  useEffect(() => {
+    setDetails(productDetail
+      ? getDetails(productDetail, { color, capacity })
+      : null);
+  }, [capacity, color, productDetail]);
+
+  useEffect(() => {
+    setProduct(productDetail?.products.find(
+      (prod) => prod.itemId === details?.id,
+    ) || null);
+  }, [details?.id, productDetail]);
+
+  // useEffect(() => {
+  //   setItemIdIsChanged(
+  //     !productDetail?.additional.some((prod) => prod.id === itemId),
+  //   );
+  // }, [itemId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (details) {

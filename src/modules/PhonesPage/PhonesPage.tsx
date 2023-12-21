@@ -48,7 +48,7 @@ export const ProductsPage: React.FC<Props> = ({
       getSearchWith(searchParams, {
         page: '1',
         perPage: '16',
-        sort: 'price',
+        sort: 'discount',
         order: 'asc',
       });
     }
@@ -60,7 +60,7 @@ export const ProductsPage: React.FC<Props> = ({
     const params: QueryParams = {
       page: page || '1',
       perPage: perPage || '16',
-      sort: sort || 'price',
+      sort: sort || 'discount',
       order: order || 'asc',
     };
 
