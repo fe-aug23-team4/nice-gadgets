@@ -46,12 +46,13 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         currentSlide={currentSlide}
       />
     ),
+    centerMode: false,
     responsive: [
       {
         breakpoint: 320,
         settings: {
           slidesToShow: 1.5,
-          slidesToScroll: 1,
+          slidesToScroll: 1.5,
           centerMode: false,
         },
       },
@@ -59,7 +60,56 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         breakpoint: 640,
         settings: {
           slidesToShow: 2.5,
-          slidesToScroll: 1,
+          slidesToScroll: 1.25,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 680,
+        settings: {
+          slidesToShow: 2.5,
+          slidesToScroll: 1.15,
+          centerMode: false,
+        },
+      },
+
+      {
+        breakpoint: 720,
+        settings: {
+          slidesToShow: 2.5,
+          slidesToScroll: 1.1,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 780,
+        settings: {
+          slidesToShow: 2.5,
+          slidesToScroll: 0.8,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 860,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 0.9,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 920,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1.1,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 1100,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 0.9,
           centerMode: false,
         },
       },
