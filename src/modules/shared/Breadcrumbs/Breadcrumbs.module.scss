@@ -3,6 +3,7 @@
 .breadcrumbContainer {
   display: flex;
   gap: 8px;
+  align-items: flex-start;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -11,10 +12,10 @@
 .link {
   display: flex;
   gap: 8px;
-  align-items: flex-end;
 }
 
 .content {
+  align-self: center;
   color: $color__secondary;
   font-size: 12px;
   font-weight: 600;
@@ -31,4 +32,5 @@
     color: $color__dark-theme__secondary;
   }
 }
+
 

@@ -25,24 +25,27 @@ export const Breadcrumbs: React.FC = () => {
     return (
       <React.Fragment key={segment}>
         {isLastSegment ? (
-          <div className={styles.link}>
+          <div>
             {segment === '' ? (
               <HomeIcon color={isDarkTheme ? '#f1f2f9' : '#0f0f11'} />
             ) : (
-              <ArrowRightIcon
-                color={isDarkTheme ? '#4a4d58' : '#b4bdc3'}
-              />
+              <div className={styles.link}>
+                <ArrowRightIcon
+                  color={isDarkTheme ? '#4a4d58' : '#b4bdc3'}
+                />
+                <p
+                  className={cn(styles.content, {
+                    [styles.content__DARK]: isDarkTheme
+                      && currentPage === segment,
+                    [styles.content__prev]: currentPage !== segment,
+                    [styles.content__prev__DARK]: currentPage
+                      !== segment && isDarkTheme,
+                  })}
+                >
+                  {segment.charAt(0).toUpperCase() + segment.slice(1)}
+                </p>
+              </div>
             )}
-            <p
-              className={cn(styles.content, {
-                [styles.content__DARK]: isDarkTheme && currentPage === segment,
-                [styles.content__prev]: currentPage !== segment,
-                [styles.content__prev__DARK]: currentPage
-                  !== segment && isDarkTheme,
-              })}
-            >
-              {segment.charAt(0).toUpperCase() + segment.slice(1)}
-            </p>
           </div>
         ) : (
           <Link to={`${origin}/${url}`} key={segment}>
