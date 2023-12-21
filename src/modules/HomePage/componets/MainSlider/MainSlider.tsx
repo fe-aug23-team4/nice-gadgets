@@ -63,9 +63,7 @@ export const MainSlider: React.FC = () => {
             <img
               src={process.env.PUBLIC_URL + banner.photo}
               alt={banner.title}
-              className={cn(style.sliderPhoto, {
-                [style.sliderPhoto__phone]: banner.title === 'banner-phones',
-              })}
+              className={style.sliderPhoto}
             />
           </div>
         ))}

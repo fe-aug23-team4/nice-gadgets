@@ -41,10 +41,4 @@
   @include onDesktop {
     height: 400px;
   }
-
-  &__phone {
-    @media (min-width: 1100px) {
-      object-position: top;
-    }
-  }
 }
