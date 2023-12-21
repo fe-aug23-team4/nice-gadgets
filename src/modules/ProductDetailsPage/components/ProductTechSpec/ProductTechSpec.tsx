@@ -26,7 +26,13 @@ export const ProductTechSpec: React.FC<Props> = ({ isDarkTheme, specs }) => {
       <div className={styles.techSpec__wrapper}>
         {Object.entries(specs).map(([key, value]) => value && (
           <div key={key} className={styles.techSpec__item}>
-            <p className={styles.techSpec__subtitle}>{key}</p>
+            <p
+              className={cn(styles.techSpec__subtitle, {
+                [styles.techSpec__subtitleRAM]: key === 'ram',
+              })}
+            >
+              {key}
+            </p>
             <p className={styles.techSpec__text}>
               {Array.isArray(value) ? value.join(', ') : value}
             </p>

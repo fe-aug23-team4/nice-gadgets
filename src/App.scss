@@ -27,6 +27,8 @@
     --scrollbar-bg: #{ $color__dark-theme__black };
     --scrollbar-thumb: #{ $color__dark-theme__accent };
   }
+
+  overflow-x: hidden;
 }
 
 /* ===== Scrollbar CSS ===== */

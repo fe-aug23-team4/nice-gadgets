@@ -36,6 +36,11 @@
     &__title {
       font-weight: 600;
       color: $color__secondary;
+      text-transform: capitalize;
+
+      &RAM {
+        text-transform: uppercase;
+      }
     }
 
     &__text {
