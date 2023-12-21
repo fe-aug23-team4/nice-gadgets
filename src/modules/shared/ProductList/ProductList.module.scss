@@ -1,7 +1,17 @@
 @import '../../../styles/blocks/grid';
+@import '../../../styles/utils/mixins/mixin-media';
 
   .gridContainer {
     @extend .grid;
     grid-row-gap: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(287px, 1fr));
+
+  @media (min-width: 768px){
+      grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    }
   }
 
