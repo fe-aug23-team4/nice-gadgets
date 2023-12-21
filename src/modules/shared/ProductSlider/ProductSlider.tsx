@@ -21,7 +21,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     rows: 1,
     slidesToShow: 4,
@@ -46,24 +46,21 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         currentSlide={currentSlide}
       />
     ),
-    centerMode: false,
     responsive: [
       {
         breakpoint: 320,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.5,
           slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: '0px',
+          centerMode: false,
         },
       },
       {
         breakpoint: 640,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 2.5,
           slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: '0px',
+          centerMode: false,
         },
       },
       {
