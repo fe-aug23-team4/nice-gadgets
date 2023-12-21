@@ -42,7 +42,8 @@ export const Breadcrumbs: React.FC = () => {
                       !== segment && isDarkTheme,
                   })}
                 >
-                  {segment.charAt(0).toUpperCase() + segment.slice(1)}
+                  {(segment.charAt(0).toUpperCase() + segment.slice(1))
+                    .split('-').join(' ')}
                 </p>
               </div>
             )}

@@ -86,12 +86,10 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         </div>
 
         <div
-          className={cn(style.productCard__divider, {
-            [style.productCard__divider__DARK]: isDarkTheme,
+          className={cn(style.productCard__characteristics, {
+            [style.productCard__characteristics__DARK]: isDarkTheme,
           })}
-        />
-
-        <div className={style.productCard__characteristics}>
+        >
           {characteristicsArray.map((characteristic) => (
             <div
               className={style.productCard__characteristics__item}

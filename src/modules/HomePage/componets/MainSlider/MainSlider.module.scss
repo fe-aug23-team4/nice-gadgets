@@ -3,6 +3,10 @@
 
 .container {
   @extend .grid;
+
+  @include onDesktop {
+    height: 595px;
+  }
 }
 
 .slider {
@@ -39,6 +43,6 @@
   }
 
   @include onDesktop {
-    height: 400px;
+    height: 595px;
   }
 }

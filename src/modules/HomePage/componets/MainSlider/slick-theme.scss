@@ -43,13 +43,13 @@
 @include onDesktop {
   .slick-arrow {
     position: absolute;
-    height: 400px;
+    height: 595px;
     width: 32px;
     cursor: pointer;
     border: 1px solid $color__secondary;
     border-radius: 48px;
     background-color: $color__white;
-    top: 46.5% ;
+    top: 68.85% ;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);

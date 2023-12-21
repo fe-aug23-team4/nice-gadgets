@@ -7,6 +7,18 @@
   &__title {
     margin-bottom: 1.5rem;
     @include h2-typography;
+
+    @include onMobile {
+      margin-top: 56px;
+    }
+
+    @include onTablet {
+      margin-top: 64px;
+    }
+
+    @include onDesktop {
+      margin-top: 80px;
+    }
   }
 
   &__titleDark {

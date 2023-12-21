@@ -4,12 +4,9 @@
 
   .productCard {
     box-sizing: border-box;
-
     border-radius: 8px;
     border: 1px solid $color__elements;
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-
     margin: 0 auto;
     max-width: 287px;
     grid-column: span 4;
@@ -50,11 +47,11 @@
       @include onTablet {
         width: 224px;
       }
-  
+
       @media (min-width: 768px) {
         width: 165px;
       }
-  
+
       @include onDesktop {
         width: 208px;
       }
@@ -63,7 +60,7 @@
     &__DARK {
       background: #161827;
       border-radius: 0px;
-      border: none;
+      border: 1px #161827 solid
     }
 
     &__image__container {
@@ -99,6 +96,8 @@
     &__price {
       display: flex;
       margin-top: 8px;
+      position: relative;
+      padding-bottom: 8px;
       column-gap: 8px;
     }
 
@@ -127,26 +126,18 @@
       }
     }
 
-    &__divider {
-      display: block;
-      height: 1px;
-      width: 100%;
-      background: $color__elements;
-      
-      margin-top: 8px;
-
-      &__DARK {
-        background: $color__dark-theme__elements;
-      }
-    }
-
     &__characteristics {
       display: flex;
-      padding: 8px 0px;
+      padding: 16px 0px 8px;
       flex-direction: column;
       align-items: center;
       gap: 8px;
       align-self: stretch;
+      border-top: 1px solid $color__elements;
+
+      &__DARK {
+        border-color: $color__dark-theme__elements;
+      }
 
       &__item {
         display: flex;

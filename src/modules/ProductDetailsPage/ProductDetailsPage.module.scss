@@ -6,38 +6,7 @@
 
 .container {
   @extend .container;
-  // @extend .grid;
 }
-
-// .gridItem {
-//   grid-column: 1 / 12;
-// }
-
-// .ccc {
-//   grid-column: 13 / 24;
-// }
-
-// .breadcrumbs {
-//   grid-column: 1 / -1;
-// }
-
-// .backButton {
-//   grid-column: 1 / -1;
-// }
-
-// .slider-container {
-//   @include onMobile {
-//     grid-column: 1 / -1;
-//   }
-
-//   @include onTablet {
-//     grid-column: 1 / 7;
-//   }
-
-//   @include onDesktop {
-//     grid-column: 1 / 13;
-//   }
-// }
 
 .productDetails {
   &__title {
@@ -64,6 +33,26 @@
 
   @include onTablet {
     transform: translateY(-330px);
+  }
+
+  @media (min-width: 740px) and (max-width: 839px) {
+    transform: translateY(-369px);
+  }
+
+  @media (min-width: 840px) and (max-width: 939px) {
+    transform: translateY(-400px);
+  }
+
+  @media (min-width: 940px) and (max-width: 1039px) {
+    transform: translateY(-435px);
+  }
+
+  @media (min-width: 1040px) and (max-width: 1119px) {
+    transform: translateY(-465px);
+  }
+
+  @media (min-width: 1120px) and (max-width: 1199px) {
+    transform: translateY(-495px);
   }
 
   @include onDesktop {
