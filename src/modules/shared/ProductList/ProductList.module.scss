@@ -3,5 +3,6 @@
   .gridContainer {
     @extend .grid;
     grid-row-gap: 40px;
+    place-items: center;
   }
 

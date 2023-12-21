@@ -1,14 +1,27 @@
 @import '../../../styles/utils/variables/colors';
+@import '../../../styles/utils/mixins/mixin-media';
 
 .filtration {
   display: flex;
+  gap: 16px;
 
   &__block {
     display: flex;
     flex-direction: column;
+    width: 136px;
 
     &:first-child {
-      margin-right: 16px;
+      @include onTablet {
+        width: 187px;
+      }
+
+      @include onDesktop {
+        width: 176px;
+      }
+    }
+
+    @include onDesktop {
+      width: 128px;
     }
   }
 
@@ -31,7 +44,7 @@
     font-weight: 700;
     line-height: 21px;
 
-    width: 176px;
+    width: 100%;
     height: 40px;
     flex-shrink: 0;
     border-radius: 8px;
@@ -58,9 +71,10 @@
   }
 
   &__list {
+    box-sizing: border-box;
     position: absolute;
     background-color: $color__white;
-    width: 176px;
+    width: 136px;
     margin-top: 8px;
     z-index: 1;
     display: flex;
@@ -69,6 +83,20 @@
     border-radius: 8px;
     border: 1px solid $color__elements;
     box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
+
+    &__FIRST {
+      @include onTablet {
+        width: 187px;
+      }
+
+      @include onDesktop {
+        width: 176px;
+      }
+    }
+
+    @include onDesktop {
+      width: 128px;
+    }
 
     &__DARK {
       border-radius: 0px;

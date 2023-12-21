@@ -142,9 +142,10 @@ export const Filtration: React.FC<Props> = ({
 
           {isSortOpen && (
             <div
-              className={classNames(styles.filtration__list, {
-                [styles.filtration__list__DARK]: isDarkTheme,
-              })}
+              className={classNames(styles.filtration__list,
+                styles.filtration__list__FIRST, {
+                  [styles.filtration__list__DARK]: isDarkTheme,
+                })}
             >
               {SORT_OPTIONS.map((option) => (
                 <Link
