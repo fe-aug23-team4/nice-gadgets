@@ -67,7 +67,7 @@ export const ProductDetailsSlider: React.FC<Props> = ({ images }) => {
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 639.5,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

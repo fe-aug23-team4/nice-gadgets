@@ -50,11 +50,11 @@
       @include onTablet {
         width: 224px;
       }
-  
+
       @media (min-width: 768px) {
         width: 165px;
       }
-  
+
       @include onDesktop {
         width: 208px;
       }
@@ -63,7 +63,7 @@
     &__DARK {
       background: #161827;
       border-radius: 0px;
-      border: none;
+      border: 1px #161827 solid
     }
 
     &__image__container {
