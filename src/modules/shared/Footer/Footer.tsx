@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
         </Link>
         <div className={styles.nav_center}>
           <Link
-            to="https://github.com/fe-aug23-team4"
+            to="https://github.com/orgs/fe-aug23-team4/repositories"
             className={cn([styles.nav_text], {
               [styles.nav_text__dark]: isDarkTheme,
             })}
@@ -62,11 +62,10 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
         <div className={styles.return_button}>
-
-          <Link to="#Top" className={styles.button_top} onClick={scrollToTop}>
+          <Link to="." className={styles.button_top} onClick={scrollToTop}>
             Back to Top
           </Link>
-          <Link to="#Top" onClick={scrollToTop}>
+          <Link to="." onClick={scrollToTop}>
             <img
               src={isDarkTheme ? top_button_dark : top_button}
               alt="nice_gadgets_logo"

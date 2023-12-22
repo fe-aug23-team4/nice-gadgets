@@ -17,3 +17,11 @@
     @include typography-dark;
   }
 }
+
+.bottom {
+  margin-bottom: 64px;
+
+  @include onTablet {
+    margin-bottom: 80px;
+  }
+}

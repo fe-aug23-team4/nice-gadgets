@@ -37,27 +37,21 @@ export const HomePage: React.FC = () => {
 
       <MainSlider />
 
-      {!newPhones.length
-        ? (
-          <Loader />
-        ) : (
-          <ProductSlider
-            title="Brand new models"
-            products={newPhones}
-          />
-        )}
+      {!newPhones.length ? (
+        <Loader />
+      ) : (
+        <ProductSlider title="Brand new models" products={newPhones} />
+      )}
 
       <ShopByCategory />
 
       {!phonesWithDiscount.length ? (
         <Loader />
       ) : (
-        <ProductSlider
-          title="Hot prices"
-          products={phonesWithDiscount}
-        />
+        <div className={styles.bottom}>
+          <ProductSlider title="Hot prices" products={phonesWithDiscount} />
+        </div>
       )}
-
     </>
   );
 };

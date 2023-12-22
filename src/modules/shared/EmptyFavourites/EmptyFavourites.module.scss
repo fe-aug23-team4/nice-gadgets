@@ -3,6 +3,7 @@
 @import '../../../styles/utils/variables/colors';
 
 .container {
+  margin-top: 120px;
   height: 420px;
   overflow-y: hidden;
   display: flex;
@@ -12,6 +13,7 @@
   gap: 10px;
 
   @include onMobile {
+    margin-top: 80px;
     gap: 5px;
   }
 }

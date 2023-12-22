@@ -144,7 +144,7 @@ export const ProductsPage: React.FC<Props> = ({
             })}
           >
             {totalAmount
-              ? `${totalAmount} modeles`
+              ? `${totalAmount} models`
               : `There are no ${title.toLowerCase()} yet`}
           </p>
 

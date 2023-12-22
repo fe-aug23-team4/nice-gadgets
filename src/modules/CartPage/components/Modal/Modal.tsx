@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { actions as cartActions } from '../../../../store/reducers/cartSlice';
 import styles from './Modal.module.scss';
-import smile from './img/thinking-smile.png';
+// import smile from './img/thinking-smile.png';
 
 type Props = {
   isOpen: boolean;
@@ -37,11 +37,11 @@ export const Modal: React.FC<Props> = ({
         })}
       >
         <p>Would you like to place an order?</p>
-        <img
+        {/* <img
           src={smile}
           alt="thinking-smile"
           className={styles.smile}
-        />
+        /> */}
         <div className={styles.buttonsContainer}>
           <button
             type="button"

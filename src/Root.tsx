@@ -21,7 +21,7 @@ import {
 import { Categories, EndPoints, ProductsAmount } from './types/Enums';
 
 const MOBILE_TITLE = 'Mobile phones';
-const TABLETS_TITLE = 'Tablet';
+const TABLETS_TITLE = 'Tablets';
 const ACCESSORIES_TITLE = 'Accessories';
 
 export const Root = () => {
