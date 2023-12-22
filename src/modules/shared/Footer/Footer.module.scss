@@ -119,6 +119,14 @@
 }
 
 .button_top {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
   display: flex;
   color: $color__secondary;
   font-family: 'Mont', sans-serif;
