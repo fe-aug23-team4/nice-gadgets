@@ -8,7 +8,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useAppSelector } from '../../../store/hooks';
 import styles from './Filtration.module.scss';
-import { getSearchWith } from '../../../utils/getSearchWith';
+import { getSearchWith } from '../../../helpers/getSearchWith';
 import {
   ReactComponent as ArrowDown,
 } from '../../../static/buttons/Icons_ArrowDown.svg';

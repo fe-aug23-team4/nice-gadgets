@@ -44,12 +44,11 @@ export const localClient = {
     return !!existingData.find((item: Product) => item.id === id);
   },
 
-  // eslint-disable-next-line consistent-return, @typescript-eslint/no-explicit-any
-  init: (key: string, initialData: any) => {
+  init: (key: string, initialData: unknown) => {
     if (!localClient.read(key)) {
       localClient.write(key, initialData);
-
-      return localClient.read(key);
     }
+
+    return localClient.read(key);
   },
 };

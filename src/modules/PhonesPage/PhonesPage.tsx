@@ -13,14 +13,11 @@ import { Filtration } from '../shared/Filtration';
 import { EndPoints } from '../../types/Enums';
 import { Product, QueryParams } from '../../types/Product';
 import { useAppSelector } from '../../store/hooks';
-import { getSearchWith } from '../../utils/getSearchWith';
+import { getSearchWith } from '../../helpers/getSearchWith';
 
 type Props = {
   title: string;
-  loadData: (
-    EndPoint: EndPoints,
-    params?: QueryParams
-  ) => Promise<Product[]>;
+  loadData: (EndPoint: EndPoints, params?: QueryParams) => Promise<Product[]>;
   productAmount?: number;
   endpoint: EndPoints;
 };
@@ -88,12 +85,7 @@ export const ProductsPage: React.FC<Props> = ({
       return false;
     }
 
-    return (
-      <Pagination
-        totalPages={totalPages}
-        currentPage={page || '1'}
-      />
-    );
+    return <Pagination totalPages={totalPages} currentPage={page || '1'} />;
   };
 
   return (
@@ -116,9 +108,10 @@ export const ProductsPage: React.FC<Props> = ({
 
       {!isLoading && error && (
         <>
-          <p className={classNames(styles.productsPage__label, {
-            [styles.productsPage__label__DARK]: isDarkTheme,
-          })}
+          <p
+            className={classNames(styles.productsPage__label, {
+              [styles.productsPage__label__DARK]: isDarkTheme,
+            })}
           >
             {error}
           </p>
@@ -157,9 +150,7 @@ export const ProductsPage: React.FC<Props> = ({
             />
           </div>
 
-          {isLoading && (
-            <Loader />
-          )}
+          {isLoading && <Loader />}
 
           {!isLoading && !error && (
             <div className={styles.productsPage__phonesList}>

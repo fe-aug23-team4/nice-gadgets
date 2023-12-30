@@ -2,8 +2,8 @@ import cn from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
 import styles from './Pagination.module.scss';
 import { useAppSelector } from '../../../store/hooks';
-import { getPages } from '../../../utils/getPages';
-import { getSearchWith } from '../../../utils/getSearchWith';
+import { getPages } from '../../../helpers/getPages';
+import { getSearchWith } from '../../../helpers/getSearchWith';
 
 import {
   ReactComponent as NextIcon,
