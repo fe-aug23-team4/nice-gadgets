@@ -1,108 +1,77 @@
-<h1 align="center">Nice Gadgets 👌</h1>
+<a name="readme-top"></a>
 
+<h1 align="center">Welcome to Nice Gadgets store 👋</h1>
+<div align="center">
+
+  ![Create React App](https://img.shields.io/badge/Create%20React%20App-09D3AC.svg?style=for-the-badge&logo=Create-React-App&logoColor=white)
+  ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+  ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+  ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
+  ![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)
+  ![React Router](https://img.shields.io/badge/React%20Router-CA4245.svg?style=for-the-badge&logo=React-Router&logoColor=white)
+  ![Redux](https://img.shields.io/badge/Redux-764ABC.svg?style=for-the-badge&logo=Redux&logoColor=white)
+  ![Axios](https://img.shields.io/badge/Axios-5A29E4.svg?style=for-the-badge&logo=Axios&logoColor=white)
+  ![EsLint](https://img.shields.io/badge/ESLint-4B32C3.svg?style=for-the-badge&logo=ESLint&logoColor=white)
+  ![Prettier](https://img.shields.io/badge/Prettier-F7B93E.svg?style=for-the-badge&logo=Prettier&logoColor=black)
+</div>
+
+<!-- PROJECT LOGO -->
 <br />
+<div align="center">
+  <a href="https://fe-aug23-team4.github.io/nice-gadgets/">
+    <img src="src/static/logo/Logo.svg" alt="Logo" height="80">
+  </a>
 
-To get started, you need to clone the repository locally and run the next command:
+  <p align="center">
+    <a href="https://fe-aug23-team4.github.io/nice-gadgets/">View Demo</a>
+  </p>
+</div>
 
-```
-npm install
-```
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li>
+      <a href="#project-structure">Project structure</a>
+    </li>
+    <li><a href="#contributors">Contributors</a></li>
+  </ol>
+</details>
 
-We constantly work in this repository, you don't need to clone it every time, you only need to clone it for the first time
+<!-- ABOUT THE PROJECT -->
+## About The Project
+<div align="center">
 
-Group work on the project is carried out in separate branches, which should be called the name of your task
+  ![Nice Gadgets Demo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDRhd25udWt2dWl1djZoaGpoY3o2bnAxeW5iZGhoenB4bHFqa2lnNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZX8qTXn3O5nMHtNdcS/giphy.gif)
+</div>
 
-Before you start working on your task, you must pull the current version of the repository and MUST create your own branch IMMEDIATELY:
-
-```
-git pull
-git checkout -b "<name of the branch according to your task>"
-```
-
-After you finish working on the task, you should add all the changed files, commit them, push them to YOUR CREATED BRANCH, and make Pull Requests
-
-```
-git add
-git commit -m "<name of the commit>"
-git push origin "<name of your branch>"
-```
-
-Please make commits for each fully completed part of the task and name them properly
-
-<br />
-
-# 🚀 Available Scripts
-
-In the project directory, you can run:
-
-<br />
-
-## ⚡️ start
-
-```
-npm start
-```
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-<br />
-
-## 🧶 lint
-
-```
-npm run lint
-```
-
-<br />
-
-## 🎯 format
-
-```
-npm run format
-```
-
-<br />
-
-## 🎭 format + test
-
-```
-npm run fix-style
-```
-
-This command will be automatically run before each commit
-
-<br />
-
-## 💀 WARNING
-
-Please, do not run any scripts other than the ones mentioned above.
-
-<br />
-
-# 🧬 Project structure (in process)
-
-This is the structure of the files in the project:
+## Project structure
 
 ```sh
     │
     ├── public                  # public files (favicon, .htaccess, manifest, ...)
     ├── src                     # source files
-    │   ├── api
-    │   ├── fonts
-    │   ├── modules             # Pages, shared components constants and other resources
+    │   ├── api                 # API services
+    │   ├── fonts               # projects fonts
+    │   ├── helpers             # help functions
+    │   ├── modules             # pages and shared components
     │   │   ├── Pages
     │   │   └── shared
-    │   ├── store               # Redux store
+    │   ├── static              # static images (logos, icons, banners, ...)
+    │   ├── store               # redux store
     │   │   └── reducers        # store's reducers
-    │   ├── styles
+    │   ├── styles              # main project styles
     │   ├── types               # data interfaces
     │   ├── utils               # utilities functions
     │   ├── App.scss
     │   ├── App.tsx
     │   ├── index.tsx
     │   ├── react-app-env.d.ts
-    │   └── Root.tsx            # React component with all the routes
+    │   └── Root.tsx            # react component with all the routes
     ├── .editorconfig
     ├── .eslintrc.js
     ├── .gitignore
@@ -113,4 +82,61 @@ This is the structure of the files in the project:
     └── tsconfig.json
 ```
 
-<p align="center">The description will be supplemented</p>
+## Contributors
+
+<div align="justify">
+  <div>
+  👨‍💼 Mykhailo Pohorenyi (Team Lead)
+
+  [Github](https://github.com/mpohorenyi)
+  [LinkedIn](https://www.linkedin.com/in/mykhailo-pohorenyi/)
+  [Telegram](https://t.me/mpohorenyi)
+  <a href="mailto:mykhailo.pohorenyi@gmail.com">Gmail</a>
+  </div>
+  
+  <div>
+  👩‍💼 Olha Koziuk
+
+  [Github](https://github.com/OlhaKoziuk)
+  [LinkedIn](https://www.linkedin.com/in/olha-koziuk-9a84402a0/)
+  [Telegram](https://t.me/olhakoziuk)
+  <a href="mailto:olha.koziuk@gmail.com">Gmail</a>
+  </div>
+
+  <div>
+  👩‍💼 Viktoriia Levik
+
+  [Github](https://github.com/vlevik)
+  [LinkedIn](https://www.linkedin.com/in/viktoriia-levik-1905131b1/)
+  [Telegram](https://t.me/lefka)
+  <a href="mailto:viktoriia.levik@gmail.com">Gmail</a>
+  </div>
+
+  <div>
+  👩‍💼 Anastasiia Karkachova
+
+  [Github](https://github.com/dsfreedom)
+  [LinkedIn](https://www.linkedin.com/in/anastasiia-karkachova-47220819a/)
+  [Telegram](https://t.me/dancingsparrow)
+  <a href="mailto:anastasiiakarkachova@gmail.com">Gmail</a>
+  </div>
+
+  <div>
+  👨‍💼 Denys Shurubura
+
+  [Github](https://github.com/DenysShurubura)
+  [Telegram](https://t.me/shur416)
+  <a href="mailto:denys.shurubura@gmail.com">Gmail</a>
+  </div>
+
+  <div>
+  👨‍💼 Andrii Shmahin
+
+  [Github](https://github.com/mifyy)
+  [LinkedIn](https://www.linkedin.com/in/andrii-shmahin-910b13294/)
+  [Telegram](https://t.me/mifyy)
+  <a href="mailto:andriishmahin@gmail.com">Gmail</a>
+  </div>
+</div>
+
+<p align="right">(<a href="#readme-top">UP</a>)</p>
