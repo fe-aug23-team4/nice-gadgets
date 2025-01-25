@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://fe-aug23-team4-nice-gadgets-api.onrender.com',
+  baseURL: 'https://nice-gadgets-api-21a5.onrender.com',
 });
 
 export const axiosClient = {
